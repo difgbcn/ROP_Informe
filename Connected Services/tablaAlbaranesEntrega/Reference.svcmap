@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c774dc0a-0dce-494f-a448-760dae080dff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AXAOS2012TEST.alsina.red:8101/DynamicsAx/Services/CustPackingSlip" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CustPackingSlip.xsd" MetadataType="Schema" ID="7329634c-76fb-472f-aeb9-cef3299a5f1f" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd9" />
+    <MetadataFile FileName="CustPackingSlip1.xsd" MetadataType="Schema" ID="5a540bd0-5f66-4b81-8e54-0a971ad33a62" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd8" />
+    <MetadataFile FileName="CustPackingSlip2.xsd" MetadataType="Schema" ID="9d3dfbaa-6032-4bd5-ac8d-5ef536a11903" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd7" />
+    <MetadataFile FileName="CustPackingSlip3.xsd" MetadataType="Schema" ID="59da7dac-8809-456b-9608-23a4356028f9" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd6" />
+    <MetadataFile FileName="CustPackingSlip4.xsd" MetadataType="Schema" ID="2c564582-bd77-4295-884b-922c5955f9e7" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd10" />
+    <MetadataFile FileName="CustPackingSlip5.xsd" MetadataType="Schema" ID="4d3b1cb3-690b-46f2-bfd5-b06f45583a02" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd4" />
+    <MetadataFile FileName="CustPackingSlip6.xsd" MetadataType="Schema" ID="d1d9de3f-7b2e-4447-b173-43c20a1c7579" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd3" />
+    <MetadataFile FileName="CustPackingSlip7.xsd" MetadataType="Schema" ID="1ee24c20-ade9-45c9-bfe6-8703e95b9b51" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd2" />
+    <MetadataFile FileName="CustPackingSlip8.xsd" MetadataType="Schema" ID="ebba735e-1648-441d-98ab-b9ed9f1927d9" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd1" />
+    <MetadataFile FileName="CustPackingSlip9.xsd" MetadataType="Schema" ID="85645627-4353-42f9-927e-f164d5347261" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd0" />
+    <MetadataFile FileName="CustPackingSlip10.xsd" MetadataType="Schema" ID="e750d7a1-eaed-4144-bd87-9314f0cc62d5" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd11" />
+    <MetadataFile FileName="CustPackingSlip.wsdl" MetadataType="Wsdl" ID="80c83cd9-50d3-4eb8-92b7-b6f8e7231f58" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?wsdl=wsdl0" />
+    <MetadataFile FileName="CustPackingSlip1.wsdl" MetadataType="Wsdl" ID="c0c3b6d2-fe6a-4367-ab34-32e0f0e01754" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip" />
+    <MetadataFile FileName="CustPackingSlip11.xsd" MetadataType="Schema" ID="3a72870d-7de5-4b80-bf7f-97c657aa9f92" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

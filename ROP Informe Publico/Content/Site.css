@@ -1,0 +1,52 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 100px;
+    padding-bottom: 200px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 807px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        padding: 0;
+    }
+}
+
+.ExportarExcel {
+    min-width: 175px;
+    border-radius: 50px;
+    background: none;
+    outline: none;
+    border: none;
+    color: #fff;
+    padding: 15px 25px;
+    margin-top: 10px;
+    background: rgba(115,84,178,1);
+    background: -moz-linear-gradient(45deg, rgba(115,84,178,1) 0%, rgba(115,84,178,0.95) 34%, rgba(115,84,178,0.95) 35%, rgba(96,107,192,0.91) 62%, rgba(84,160,231,0.85) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(115,84,178,1)), color-stop(34%, rgba(115,84,178,0.95)), color-stop(35%, rgba(115,84,178,0.95)), color-stop(62%, rgba(96,107,192,0.91)), color-stop(100%, rgba(84,160,231,0.85)));
+    background: -webkit-linear-gradient(45deg, rgba(115,84,178,1) 0%, rgba(115,84,178,0.95) 34%, rgba(115,84,178,0.95) 35%, rgba(96,107,192,0.91) 62%, rgba(84,160,231,0.85) 100%);
+    background: -o-linear-gradient(45deg, rgba(115,84,178,1) 0%, rgba(115,84,178,0.95) 34%, rgba(115,84,178,0.95) 35%, rgba(96,107,192,0.91) 62%, rgba(84,160,231,0.85) 100%);
+    /*background: -ms-linear-gradient(45deg, rgba(115,84,178,1) 0%, rgba(115,84,178,0.95) 34%, rgba(115,84,178,0.95) 35%, rgba(96,107,192,0.91) 62%, rgba(84,160,231,0.85) 100%);*/
+    background: linear-gradient(45deg, rgba(115,84,178,1) 0%, rgba(115,84,178,0.95) 34%, rgba(115,84,178,0.95) 35%, rgba(96,107,192,0.91) 62%, rgba(84,160,231,0.85) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7354b2', endColorstr='#54a0e7', GradientType=1 );
+}
+

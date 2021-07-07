@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/dynamics/2008/01/documents/TransportTicket" xmlns:st="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/dynamics/2008/01/documents/TransportTicket" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd6" namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" />
+  <xs:element name="TransportTicket" type="tns:AxdTransportTicket" />
+  <xs:complexType name="AxdTransportTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClearNilFieldsOnUpdate" nillable="true" type="st:AxdEnum_boolean" />
+      <xs:element minOccurs="0" name="DocPurpose" nillable="true" type="st:AxdEnum_XMLDocPurpose" />
+      <xs:element minOccurs="0" name="SenderId" nillable="true" type="st:AxdExtType_DataAreaId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransportTicketTable" type="tns:AxdEntity_TransportTicketTable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_TransportTicketTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_DocumentHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AgencyId" nillable="true" type="st:AxdExtType_EffectiveAgency" />
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="st:AxdExtType_BusinessUnit" />
+      <xs:element minOccurs="0" name="ConductorId" nillable="true" type="st:AxdExtType_ConductorId" />
+      <xs:element minOccurs="0" name="ContractAgency" nillable="true" type="st:AxdExtType_ContractAgency" />
+      <xs:element minOccurs="0" name="CostCenter" nillable="true" type="st:AxdExtType_CostCenter" />
+      <xs:element minOccurs="0" name="CosteExcedido" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="st:AxdUnion_AxdExtType_CurrencyCode_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="Delegacion" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DeliveryDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="Grua" nillable="true" type="st:AxdExtType_Grua" />
+      <xs:element minOccurs="0" name="HorasEspera" nillable="true" type="st:AxdExtType_Hours" />
+      <xs:element minOccurs="0" name="HorasGrua" nillable="true" type="st:AxdExtType_Hours" />
+      <xs:element minOccurs="0" name="IdentifyOrig" nillable="true" type="st:AxdExtType_IdentifyOrig" />
+      <xs:element minOccurs="0" name="ImporteVales" nillable="true" type="st:AxdExtType_AmountMST" />
+      <xs:element minOccurs="0" name="InventLocationId" nillable="true" type="st:AxdExtType_InventLocationId" />
+      <xs:element minOccurs="0" name="InvoiceDate" nillable="true" type="st:AxdExtType_InvoiceDate" />
+      <xs:element minOccurs="0" name="InvoiceId" nillable="true" type="st:AxdExtType_InvoiceId" />
+      <xs:element minOccurs="0" name="Km" nillable="true" type="st:AxdExtType_Kilometers" />
+      <xs:element minOccurs="0" name="Matricula" nillable="true" type="st:AxdExtType_Matricula" />
+      <xs:element minOccurs="0" name="MatriculaRemolque" nillable="true" type="st:AxdExtType_MatriculaRemolque" />
+      <xs:element minOccurs="0" name="MotivoValeTransporte" nillable="true" type="st:AxdEnum_TransportTicketReason" />
+      <xs:element minOccurs="0" name="NetWeight" nillable="true" type="st:AxdExtType_Weight" />
+      <xs:element minOccurs="0" name="ObraId" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="Observaciones" nillable="true" type="st:AxdExtType_Notes" />
+      <xs:element minOccurs="0" name="OfficialNumber" nillable="true" type="st:AxdExtType_OfficialNumber" />
+      <xs:element minOccurs="0" name="PackingSlipId" nillable="true" type="st:AxdExtType_PackingSlipId" />
+      <xs:element minOccurs="0" name="PortesEspera" nillable="true" type="st:AxdExtType_AmountCur" />
+      <xs:element minOccurs="0" name="PortesGrua" nillable="true" type="st:AxdExtType_AmountCur" />
+      <xs:element minOccurs="0" name="Posted" nillable="true" type="st:AxdExtType_Posted" />
+      <xs:element minOccurs="0" name="PriceKgKm" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="PurchCompany" nillable="true" type="st:AxdExtType_DataAreaId" />
+      <xs:element minOccurs="0" name="PurchId" nillable="true" type="st:AxdExtType_PurchId" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="SalesOTransfer" nillable="true" type="st:AxdEnum_SalesOTransfer" />
+      <xs:element minOccurs="0" name="Seleccionado" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="TemporaryWeight" nillable="true" type="st:AxdExtType_Weight" />
+      <xs:element minOccurs="1" name="TipoTransId" type="st:AxdExtType_TipoTransId" />
+      <xs:element minOccurs="0" name="Toneladas" nillable="true" type="st:AxdExtType_Toneladas" />
+      <xs:element minOccurs="0" name="ToneladasAlbaran" nillable="true" type="st:AxdExtType_Weight" />
+      <xs:element minOccurs="0" name="TonelajeContratado" nillable="true" type="st:AxdType_Decimal" />
+      <xs:element minOccurs="0" name="TransportContainer" nillable="true" type="st:AxdExtType_TransportContainer" />
+      <xs:element minOccurs="0" name="TransportistaId" nillable="true" type="st:AxdUnion_AxdExtType_TransportistaId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="TransportNumPackage" nillable="true" type="st:AxdExtType_TransportNumPackage" />
+      <xs:element minOccurs="0" name="TransportSeal" nillable="true" type="st:AxdExtType_TransportSeal" />
+      <xs:element minOccurs="1" name="TransportTicketType" type="st:AxdEnum_TransportTicketType" />
+      <xs:element minOccurs="0" name="TransportTicketUnion" nillable="true" type="st:AxdExtType_TransportTicketUnion" />
+      <xs:element minOccurs="0" name="TypeTransportTicket" nillable="true" type="st:AxdEnum_TypeTransportTicket" />
+      <xs:element minOccurs="0" name="UPS" nillable="true" type="st:AxdExtType_Amount" />
+      <xs:element minOccurs="0" name="VendorPackingSlipId" nillable="true" type="st:AxdExtType_PackingSlipId" />
+      <xs:element minOccurs="0" name="YourVendNumber" nillable="true" type="st:AxdExtType_String" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+</xs:schema>

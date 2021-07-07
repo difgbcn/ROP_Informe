@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fd160926-ddc7-4128-9b6a-88498f9408b2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AXAOS2012TEST.alsina.red:8101/DynamicsAx/Services/SalesOrders" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SalesOrders2.wsdl" MetadataType="Wsdl" ID="0872787a-3122-4cd0-b44e-5937ee25b284" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders" />
+    <MetadataFile FileName="SalesOrders12.xsd" MetadataType="Schema" ID="7c0a4f0b-e2c3-49c2-9649-a3deb49ba2f3" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd9" />
+    <MetadataFile FileName="SalesOrders121.xsd" MetadataType="Schema" ID="e80a0408-d116-48c1-92bc-47e18b632dfb" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd8" />
+    <MetadataFile FileName="SalesOrders122.xsd" MetadataType="Schema" ID="fd49bcfc-18f4-40a0-a77a-76c8482cae45" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd7" />
+    <MetadataFile FileName="SalesOrders123.xsd" MetadataType="Schema" ID="7302a276-4987-44e0-bc67-57feda68c9e9" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd6" />
+    <MetadataFile FileName="SalesOrders124.xsd" MetadataType="Schema" ID="b7743bfb-9919-421e-813f-3ae498e4edb3" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd10" />
+    <MetadataFile FileName="SalesOrders21.wsdl" MetadataType="Wsdl" ID="b1aff492-83b8-4548-adc4-9eb27390fc68" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?wsdl=wsdl0" />
+    <MetadataFile FileName="SalesOrders125.xsd" MetadataType="Schema" ID="10a96750-5d36-418c-a1ee-ffe661211c17" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd3" />
+    <MetadataFile FileName="SalesOrders126.xsd" MetadataType="Schema" ID="02def624-74b7-4c16-9a61-3af0a9048bc6" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd2" />
+    <MetadataFile FileName="SalesOrders127.xsd" MetadataType="Schema" ID="91045ad9-a1a5-487f-924f-e83584d0f94e" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd1" />
+    <MetadataFile FileName="SalesOrders128.xsd" MetadataType="Schema" ID="19d9e14a-8fa0-4468-8662-335502607bf9" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd0" />
+    <MetadataFile FileName="SalesOrders129.xsd" MetadataType="Schema" ID="c090ae15-6ab3-4749-aa99-fe7aaa5e3ffb" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd4" />
+    <MetadataFile FileName="SalesOrders1210.xsd" MetadataType="Schema" ID="89ed189b-6d3e-4007-966e-b3c916fac113" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd11" />
+    <MetadataFile FileName="SalesOrders1211.xsd" MetadataType="Schema" ID="04e46a34-1413-419e-8aba-d128fb671b04" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/dynamics/2008/01/documents/InventTrans" xmlns:st="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/dynamics/2008/01/documents/InventTrans" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd6" namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" />
+  <xs:element name="InventTrans" type="tns:AxdInventTrans" />
+  <xs:complexType name="AxdInventTrans">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClearNilFieldsOnUpdate" nillable="true" type="st:AxdEnum_boolean" />
+      <xs:element minOccurs="0" name="DocPurpose" nillable="true" type="st:AxdEnum_XMLDocPurpose" />
+      <xs:element minOccurs="0" name="SenderId" nillable="true" type="st:AxdExtType_DataAreaId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InventTrans_1" type="tns:AxdEntity_InventTrans_1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_InventTrans_1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_DocumentHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CanonFenolico" nillable="true" type="st:AxdExtType_CanonFenolico" />
+      <xs:element minOccurs="0" name="CanonFenolicoOrig" nillable="true" type="st:AxdExtType_CanonFenolico" />
+      <xs:element minOccurs="0" name="CanonImport" nillable="true" type="st:AxdExtType_CanonImport" />
+      <xs:element minOccurs="0" name="CanonImportOrig" nillable="true" type="st:AxdExtType_CanonImport" />
+      <xs:element minOccurs="0" name="EurDia" nillable="true" type="st:AxdExtType_EurDia" />
+      <xs:element minOccurs="0" name="EurDiaOrig" nillable="true" type="st:AxdExtType_EurDia" />
+      <xs:element minOccurs="0" name="InventLocationId" nillable="true" type="st:AxdExtType_InventLocationId" />
+      <xs:element minOccurs="0" name="InventTransMovementType" nillable="true" type="st:AxdEnum_InventTransMovementType" />
+      <xs:element minOccurs="0" name="ItemId" nillable="true" type="st:AxdUnion_AxdExtType_ItemId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="ObraId" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="Qty" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="ValueDate" nillable="true" type="st:AxdExtType_ValueDate" />
+      <xs:element minOccurs="0" name="ValueDateCashFlow" nillable="true" type="st:AxdExtType_ValueDate" />
+      <xs:element minOccurs="0" name="ValuePackingSlip" nillable="true" type="st:AxdExtType_PackingSlipId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InventTransOrigin_1" type="tns:AxdEntity_InventTransOrigin_1" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_InventTransOrigin_1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InventTransId" nillable="true" type="st:AxdExtType_InventTransId" />
+      <xs:element minOccurs="0" name="ReferenceCategory" nillable="true" type="st:AxdEnum_InventTransType" />
+      <xs:element minOccurs="0" name="ReferenceId" nillable="true" type="st:AxdExtType_InventTransRefId" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/dynamics/2008/01/documents/SalesQuotations" xmlns:st="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/dynamics/2008/01/documents/SalesQuotations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd6" namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" />
+  <xs:element name="SalesQuotations" type="tns:AxdSalesQuotations" />
+  <xs:complexType name="AxdSalesQuotations">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClearNilFieldsOnUpdate" nillable="true" type="st:AxdEnum_boolean" />
+      <xs:element minOccurs="0" name="DocPurpose" nillable="true" type="st:AxdEnum_XMLDocPurpose" />
+      <xs:element minOccurs="0" name="SenderId" nillable="true" type="st:AxdExtType_DataAreaId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SalesQuotationMasterTable" type="tns:AxdEntity_SalesQuotationMasterTable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_SalesQuotationMasterTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_DocumentHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdministrativeName" nillable="true" type="st:AxdExtType_LogisticsDeliveryName" />
+      <xs:element minOccurs="0" name="AdministrativePostalAddress" nillable="true" type="st:AxdEntityKey_LogisticsPostalAddress" />
+      <xs:element minOccurs="0" name="AmpliOfer" nillable="true" type="st:AxdExtType_AmpliOfer" />
+      <xs:element minOccurs="0" name="BankDocumentType" nillable="true" type="st:AxdEnum_BankLGDocumentType" />
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="st:AxdExtType_BusinessUnit" />
+      <xs:element minOccurs="0" name="BusRelAccount" nillable="true" type="st:AxdExtType_smmBusRelAccount" />
+      <xs:element minOccurs="0" name="CallListID" nillable="true" type="st:AxdExtType_smmTMCallListID" />
+      <xs:element minOccurs="0" name="CampaignId" nillable="true" type="st:AxdExtType_smmCampaignId" />
+      <xs:element minOccurs="0" name="Canon" nillable="true" type="st:AxdExtType_Canon" />
+      <xs:element minOccurs="0" name="CaseTagging" nillable="true" type="st:AxdExtType_RFIDCaseTagging" />
+      <xs:element minOccurs="0" name="CashDiscPercent" nillable="true" type="st:AxdExtType_DiscPct" />
+      <xs:element minOccurs="0" name="CommissionGroup" nillable="true" type="st:AxdExtType_CommissCustomerGroup" />
+      <xs:element minOccurs="0" name="ConfirmDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="1" name="ContactPersonId" type="st:AxdExtType_ContactPersonId" />
+      <xs:element minOccurs="0" name="ContratoId" nillable="true" type="st:AxdExtType_ContratoId" />
+      <xs:element minOccurs="0" name="CostCenter" nillable="true" type="st:AxdExtType_CostCenter" />
+      <xs:element minOccurs="0" name="CountyOrigDest" nillable="true" type="st:AxdExtType_AddressCountyOrigDest" />
+      <xs:element minOccurs="0" name="CovStatus" nillable="true" type="st:AxdExtType_CovStatus" />
+      <xs:element minOccurs="0" name="CreatedDateTime" nillable="true" type="st:AxdExtType_CreatedDateTime" />
+      <xs:element minOccurs="1" name="CurrencyCode" type="st:AxdUnion_AxdExtType_CustCurrencyCode_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CustAccount" nillable="true" type="st:AxdUnion_AxdExtType_CustAccount_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CustomerRef" nillable="true" type="st:AxdExtType_CustRef" />
+      <xs:element minOccurs="0" name="CustPurchaseOrder" nillable="true" type="st:AxdExtType_CustPurchaseOrder" />
+      <xs:element minOccurs="0" name="DAXIntegrationId" nillable="true" type="st:AxdExtType_ConnIntegrationKey" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="Delegation" nillable="true" type="st:AxdExtType_Delegation" />
+      <xs:element minOccurs="0" name="DeliveryDate" nillable="true" type="st:AxdExtType_SalesShippingDate" />
+      <xs:element minOccurs="0" name="DeliveryDateControl" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="DeliveryDateControlType" nillable="true" type="st:AxdEnum_SalesDeliveryDateControlType" />
+      <xs:element minOccurs="0" name="DeliveryName" nillable="true" type="st:AxdExtType_LogisticsDeliveryName" />
+      <xs:element minOccurs="0" name="DeliveryPostalAddress" nillable="true" type="st:AxdEntityKey_LogisticsPostalAddress" />
+      <xs:element minOccurs="0" name="DiscPercent" nillable="true" type="st:AxdExtType_SalesEndDiscPct" />
+      <xs:element minOccurs="0" name="DlvMode" nillable="true" type="st:AxdUnion_AxdExtType_QuotationDlvModeId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DlvReason" nillable="true" type="st:AxdExtType_DlvReasonId" />
+      <xs:element minOccurs="0" name="DlvTerm" nillable="true" type="st:AxdUnion_AxdExtType_DlvTermId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DocuConclusion" nillable="true" type="st:AxdExtType_smmQuotationDocuConclusionText" />
+      <xs:element minOccurs="0" name="DocuIntro" nillable="true" type="st:AxdExtType_smmQuotationDocuIntroText" />
+      <xs:element minOccurs="0" name="DocuTitle" nillable="true" type="st:AxdExtType_smmQuotationDocuTitle" />
+      <xs:element minOccurs="0" name="DuracionEstimada" nillable="true" type="st:AxdExtType_Integer" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="st:AxdExtType_Email" />
+      <xs:element minOccurs="0" name="EndDisc" nillable="true" type="st:AxdExtType_CustEndDiscCode" />
+      <xs:element minOccurs="0" name="EnterpriseNumber" nillable="true" type="st:AxdExtType_TaxEnterpriseNumber" />
+      <xs:element minOccurs="0" name="EstadoContrato" nillable="true" type="st:AxdEnum_EstadoContrato" />
+      <xs:element minOccurs="0" name="Estimate" nillable="true" type="st:AxdExtType_SalesEstimateGross" />
+      <xs:element minOccurs="0" name="EXCEICL_CodModVenta" nillable="true" type="st:AxdExtType_EXCEICL_CodModVenta" />
+      <xs:element minOccurs="0" name="EXCEICL_GeneraGuiaDespacho" nillable="true" type="st:AxdExtType_EXCEICL_GeneraGuiaDespacho" />
+      <xs:element minOccurs="0" name="EXCEICL_InternalInvoiceId" nillable="true" type="st:AxdExtType_EXCEICL_ReferenceInvoiceID" />
+      <xs:element minOccurs="0" name="EXCEICL_PurchOrder" nillable="true" type="st:AxdExtType_EXCEICL_PurchOrder" />
+      <xs:element minOccurs="0" name="EXCEICL_PurchOrderDate" nillable="true" type="st:AxdExtType_EXCEICL_PurchOrderDate" />
+      <xs:element minOccurs="0" name="EXCEICL_ReferenceCode" nillable="true" type="st:AxdEnum_EXCEICL_ReferenceCode" />
+      <xs:element minOccurs="0" name="EXCEICL_ReferenceFolio" nillable="true" type="st:AxdExtType_Integer" />
+      <xs:element minOccurs="0" name="EXCEICL_ReferenceInvoiceId" nillable="true" type="st:AxdExtType_EXCEICL_ReferenceInvoiceID" />
+      <xs:element minOccurs="0" name="EXCEICR_ClaveTipoRelacion" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEICR_UUID" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveMetodoPago" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveTipoComprobante" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveTipoRelacion" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveUsoCFDI" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_Confirmacion" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_DocRelacionado" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodeMotivoNC" nillable="true" type="st:AxdExtType_EXCEIPE_CodeMotivoNC" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodeMotivoND" nillable="true" type="st:AxdExtType_EXCEIPE_CodeMotivoND" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodeTipoAfectacionIGV" nillable="true" type="st:AxdExtType_EXCEIPE_CodeTipoAfectacionIGV" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodigoISC" nillable="true" type="st:AxdExtType_EXCEIPE_CodigoISC" />
+      <xs:element minOccurs="0" name="EXCEIPE_DocRef" nillable="true" type="st:AxdExtType_EXCEIPE_DocRef" />
+      <xs:element minOccurs="0" name="EXCEIPE_MetodoPago" nillable="true" type="st:AxdEnum_EXCEIPE_MetodoPago" />
+      <xs:element minOccurs="0" name="EXCEIPE_TipoDocumento" nillable="true" type="st:AxdEnum_EXCEIPE_TipoDocumento" />
+      <xs:element minOccurs="0" name="EXCLATCL_SalesDocType" nillable="true" type="st:AxdExtType_EXCLATCL_SalesDocTypeEDT" />
+      <xs:element minOccurs="0" name="EXCLATCL_SalesDocTypePackingSlip" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCLATPA_CustConcept" nillable="true" type="st:AxdExtType_Integer" />
+      <xs:element minOccurs="0" name="EXCLATPA_CustFormat" nillable="true" type="st:AxdType_Int64" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocCode" nillable="true" type="st:AxdExtType_EXCLATPE_DocCodeSUNATEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocCodeInitial" nillable="true" type="st:AxdExtType_EXCLATPE_DocCodeSUNATEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocInitialVoid" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocNumInitial" nillable="true" type="st:AxdExtType_DocumentNum" />
+      <xs:element minOccurs="0" name="EXCLATPE_EmissionPointEDT" nillable="true" type="st:AxdExtType_EXCLATPE_EmissionPointEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_InventOperationTypeId" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="ExportReason" nillable="true" type="st:AxdExtType_SalesExportReason" />
+      <xs:element minOccurs="0" name="FixedDueDate" nillable="true" type="st:AxdExtType_SalesFixedDueDate" />
+      <xs:element minOccurs="0" name="FixedExchRate" nillable="true" type="st:AxdExtType_SalesFixedExchRate" />
+      <xs:element minOccurs="0" name="FreightSlipType" nillable="true" type="st:AxdExtType_CustFreightSlipType" />
+      <xs:element minOccurs="0" name="FreightZone" nillable="true" type="st:AxdExtType_CustFreightZoneId" />
+      <xs:element minOccurs="0" name="GestionPorte" nillable="true" type="st:AxdEnum_GestionPorte" />
+      <xs:element minOccurs="0" name="Grua" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="InclTax" nillable="true" type="st:AxdExtType_InclTax" />
+      <xs:element minOccurs="1" name="InventLocationId" type="st:AxdExtType_SalesInventLocationId" />
+      <xs:element minOccurs="0" name="InventSiteId" nillable="true" type="st:AxdExtType_InventSiteId" />
+      <xs:element minOccurs="0" name="InvoiceAccount" nillable="true" type="st:AxdUnion_AxdExtType_CustInvoiceAccount_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="ItemTagging" nillable="true" type="st:AxdExtType_RFIDItemTagging" />
+      <xs:element minOccurs="0" name="Kilometer" nillable="true" type="st:AxdExtType_Kilometer" />
+      <xs:element minOccurs="1" name="LanguageId" type="st:AxdExtType_LanguageId" />
+      <xs:element minOccurs="0" name="LATARPointOfSalesId" nillable="true" type="st:AxdExtType_LATARPointOfSalesId" />
+      <xs:element minOccurs="0" name="LATARPointOfSalesJurisdic" nillable="true" type="st:AxdExtType_LATARJurisdicId" />
+      <xs:element minOccurs="0" name="LATARSalesTypeId" nillable="true" type="st:AxdExtType_LATARSalesTypeId" />
+      <xs:element minOccurs="0" name="LATPECustGoodServiceTypes" nillable="true" type="st:AxdExtType_LATPECustVendGoodServiceTypeId" />
+      <xs:element minOccurs="0" name="LATPECustIssuePoints" nillable="true" type="st:AxdExtType_LATPECustVendIssuePointId" />
+      <xs:element minOccurs="0" name="LATPECustOperationTypes" nillable="true" type="st:AxdExtType_LATPECustVendOperationTypeId" />
+      <xs:element minOccurs="0" name="LATPECustSUNATDocumentTypes" nillable="true" type="st:AxdExtType_LATPECustVendSUNATDocumentTypeId" />
+      <xs:element minOccurs="0" name="LATPECustVendOperationTypeId" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="LATPEDocumentSeries" nillable="true" type="st:AxdExtType_LATPEDocumentSeries" />
+      <xs:element minOccurs="0" name="LineDisc" nillable="true" type="st:AxdExtType_CustLineDiscCode" />
+      <xs:element minOccurs="0" name="Listcode" nillable="true" type="st:AxdExtType_ListcodeId" />
+      <xs:element minOccurs="0" name="MarkupGroup" nillable="true" type="st:AxdExtType_CustMarkupGroupId" />
+      <xs:element minOccurs="1" name="MasterObrasId" type="st:AxdExtType_MasterObrasId" />
+      <xs:element minOccurs="0" name="ModelId" nillable="true" type="st:AxdExtType_ForecastModelId" />
+      <xs:element minOccurs="0" name="MultiLineDisc" nillable="true" type="st:AxdExtType_CustMultiLineDiscCode" />
+      <xs:element minOccurs="0" name="NoPaymDayId" nillable="true" type="st:AxdExtType_CustNoPaymDayId" />
+      <xs:element minOccurs="0" name="NumberSequenceGroup" nillable="true" type="st:AxdExtType_NumberSequenceGroupId" />
+      <xs:element minOccurs="0" name="ObraId" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="ObraName" nillable="true" type="st:AxdExtType_ObraName" />
+      <xs:element minOccurs="0" name="OMOperatingUnitNumber" nillable="true" type="st:AxdExtType_OMOperatingUnitNumber" />
+      <xs:element minOccurs="0" name="OpportunityId" nillable="true" type="st:AxdExtType_smmOpportunityId" />
+      <xs:element minOccurs="0" name="OrigQuotationId" nillable="true" type="st:AxdExtType_QuotationIdBase" />
+      <xs:element minOccurs="0" name="PalletTagging" nillable="true" type="st:AxdExtType_RFIDPalletTagging" />
+      <xs:element minOccurs="0" name="PaymDayId" nillable="true" type="st:AxdExtType_CustPaymDayId" />
+      <xs:element minOccurs="0" name="Payment" nillable="true" type="st:AxdExtType_CustPaymTermId" />
+      <xs:element minOccurs="0" name="PaymMode" nillable="true" type="st:AxdExtType_CustPaymMode" />
+      <xs:element minOccurs="0" name="PaymSched" nillable="true" type="st:AxdExtType_PaymSchedId" />
+      <xs:element minOccurs="0" name="PaymSpec" nillable="true" type="st:AxdExtType_PaymSpec" />
+      <xs:element minOccurs="0" name="Percent" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="PhaseId" nillable="true" type="st:AxdExtType_smmQuotationPhaseId" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="st:AxdExtType_Phone" />
+      <xs:element minOccurs="0" name="Port" nillable="true" type="st:AxdExtType_IntrastatPortId" />
+      <xs:element minOccurs="0" name="PostingProfile" nillable="true" type="st:AxdExtType_CustPostingProfile" />
+      <xs:element minOccurs="0" name="PriceGroupId" nillable="true" type="st:AxdExtType_CustPriceGroup" />
+      <xs:element minOccurs="0" name="ProbabilityId" nillable="true" type="st:AxdExtType_smmQuotationProbabilityId" />
+      <xs:element minOccurs="0" name="PrognosisDate" nillable="true" type="st:AxdExtType_smmQuotationPrognosisDate" />
+      <xs:element minOccurs="0" name="PrognosisFromDate" nillable="true" type="st:AxdExtType_smmQuotationPrognosisFromDate" />
+      <xs:element minOccurs="0" name="PrognosisId" nillable="true" type="st:AxdExtType_smmQuotationPrognosisId" />
+      <xs:element minOccurs="0" name="PrognosisToDate" nillable="true" type="st:AxdExtType_smmQuotationPrognosisToDate" />
+      <xs:element minOccurs="0" name="ProjIdRef" nillable="true" type="st:AxdExtType_ProjId" />
+      <xs:element minOccurs="0" name="ProjInvoiceProjId" nillable="true" type="st:AxdExtType_ProjInvoiceProjId" />
+      <xs:element minOccurs="0" name="PSAEstProjEndDate" nillable="true" type="st:AxdExtType_EndDate" />
+      <xs:element minOccurs="0" name="PSAEstProjStartDate" nillable="true" type="st:AxdExtType_StartDate" />
+      <xs:element minOccurs="0" name="PSASchedCalendarId" nillable="true" type="st:AxdExtType_CalendarId" />
+      <xs:element minOccurs="0" name="QuotationCategory" nillable="true" type="st:AxdExtType_SalesQuotationTypeId" />
+      <xs:element minOccurs="0" name="QuotationExpiryDate" nillable="true" type="st:AxdExtType_QuotationExpiryDate" />
+      <xs:element minOccurs="0" name="QuotationFollowupActivity" nillable="true" type="st:AxdExtType_smmQuotationFollowupActivity" />
+      <xs:element minOccurs="0" name="QuotationFollowUpDate" nillable="true" type="st:AxdExtType_smmQuotationFollowUpDate" />
+      <xs:element minOccurs="1" name="QuotationId" type="st:AxdExtType_QuotationId" />
+      <xs:element minOccurs="0" name="QuotationName" nillable="true" type="st:AxdExtType_QuotationName" />
+      <xs:element minOccurs="0" name="QuotationRef" nillable="true" type="st:AxdExtType_QuotationRef" />
+      <xs:element minOccurs="0" name="QuotationStatus" nillable="true" type="st:AxdEnum_SalesQuotationStatus" />
+      <xs:element minOccurs="0" name="QuotationType" nillable="true" type="st:AxdEnum_QuotationType" />
+      <xs:element minOccurs="0" name="ReasonId" nillable="true" type="st:AxdExtType_smmQuotationReasonId" />
+      <xs:element minOccurs="0" name="ReceiptDateRequested" nillable="true" type="st:AxdExtType_SalesReceiptDateRequested" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="SalesGroup" nillable="true" type="st:AxdExtType_CommissSalesGroup" />
+      <xs:element minOccurs="0" name="SalesIdRef" nillable="true" type="st:AxdExtType_SalesIDRef" />
+      <xs:element minOccurs="0" name="SalesOriginId" nillable="true" type="st:AxdExtType_SalesOriginId" />
+      <xs:element minOccurs="0" name="SalesPoolId" nillable="true" type="st:AxdExtType_SalesPoolId" />
+      <xs:element minOccurs="0" name="SalesPurchOperationType_BR" nillable="true" type="st:AxdExtType_SalesPurchOperationTypeRecId_BR" />
+      <xs:element minOccurs="1" name="SalesRental" type="st:AxdEnum_SalesRental" />
+      <xs:element minOccurs="0" name="SalesResponsible" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="SalesTaker" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="SalesUnitId" nillable="true" type="st:AxdExtType_smmSalesUnitId" />
+      <xs:element minOccurs="0" name="SecSubTipoObraId" nillable="true" type="st:AxdExtType_SecSubTipoObraId" />
+      <xs:element minOccurs="0" name="SendPrint" nillable="true" type="st:AxdExtType_SendPrint" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="st:AxdExtType_SMAAgreementId" />
+      <xs:element minOccurs="0" name="SettleVoucher" nillable="true" type="st:AxdExtType_SalesSettlementType" />
+      <xs:element minOccurs="1" name="ShippingDateRequested" type="st:AxdExtType_SalesShippingDateRequested" />
+      <xs:element minOccurs="0" name="SIP" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="StatProcId" nillable="true" type="st:AxdExtType_IntrastatProcId" />
+      <xs:element minOccurs="0" name="SubTipoObraId" nillable="true" type="st:AxdExtType_SubTipoObraId" />
+      <xs:element minOccurs="0" name="TaxGroup" nillable="true" type="st:AxdExtType_TaxGroup" />
+      <xs:element minOccurs="0" name="TeleFax" nillable="true" type="st:AxdExtType_TeleFax" />
+      <xs:element minOccurs="0" name="TemplateActive" nillable="true" type="st:AxdExtType_QuotationTemplateActive" />
+      <xs:element minOccurs="0" name="TemplateGroupId" nillable="true" type="st:AxdExtType_SalesQuotationTemplateGroupId" />
+      <xs:element minOccurs="0" name="TemplateName" nillable="true" type="st:AxdExtType_QuotationTemplateName" />
+      <xs:element minOccurs="0" name="TipoObraId" nillable="true" type="st:AxdExtType_TipoObraId" />
+      <xs:element minOccurs="0" name="TipoPorte" nillable="true" type="st:AxdEnum_TipoPorte" />
+      <xs:element minOccurs="0" name="TipoTransId" nillable="true" type="st:AxdExtType_TipoTransId" />
+      <xs:element minOccurs="0" name="Toneladas" nillable="true" type="st:AxdExtType_Toneladas" />
+      <xs:element minOccurs="0" name="TransactionCode" nillable="true" type="st:AxdExtType_IntrastatTransactionCodeId" />
+      <xs:element minOccurs="0" name="TransferredToForecast" nillable="true" type="st:AxdExtType_SalesQuotationTransferred" />
+      <xs:element minOccurs="0" name="TransferredToItemReq" nillable="true" type="st:AxdExtType_SalesQuotationTransferredItemReq" />
+      <xs:element minOccurs="0" name="Transport" nillable="true" type="st:AxdExtType_IntrastatTransport" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="st:AxdExtType_URL" />
+      <xs:element minOccurs="0" name="VATNum" nillable="true" type="st:AxdExtType_VATNumJournal" />
+      <xs:element minOccurs="0" name="ZonaId" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SalesQuotationTable" type="tns:AxdEntity_SalesQuotationTable" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_SalesQuotationTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmpliOfer" nillable="true" type="st:AxdExtType_AmpliOfer" />
+      <xs:element minOccurs="0" name="BankDocumentType" nillable="true" type="st:AxdEnum_BankLGDocumentType" />
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="st:AxdExtType_BusinessUnit" />
+      <xs:element minOccurs="0" name="BusRelAccount" nillable="true" type="st:AxdExtType_smmBusRelAccount" />
+      <xs:element minOccurs="0" name="CalcCashFlow" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="CallListID" nillable="true" type="st:AxdExtType_smmTMCallListID" />
+      <xs:element minOccurs="0" name="CampaignId" nillable="true" type="st:AxdExtType_smmCampaignId" />
+      <xs:element minOccurs="0" name="Canon" nillable="true" type="st:AxdExtType_Canon" />
+      <xs:element minOccurs="0" name="CaseTagging" nillable="true" type="st:AxdExtType_RFIDCaseTagging" />
+      <xs:element minOccurs="0" name="CashDisc" nillable="true" type="st:AxdExtType_CustCashDiscCode" />
+      <xs:element minOccurs="0" name="CashDiscPercent" nillable="true" type="st:AxdExtType_DiscPct" />
+      <xs:element minOccurs="0" name="CashFlow" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="CobroPortes" nillable="true" type="st:AxdExtType_CobroPortes" />
+      <xs:element minOccurs="0" name="CobroPortesManual" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="CommissionGroup" nillable="true" type="st:AxdExtType_CommissCustomerGroup" />
+      <xs:element minOccurs="0" name="ConfirmDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="ContactPersonId" nillable="true" type="st:AxdExtType_ContactPersonId" />
+      <xs:element minOccurs="0" name="ContributionToFixed" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="CostCenter" nillable="true" type="st:AxdExtType_CostCenter" />
+      <xs:element minOccurs="0" name="CountyOrigDest" nillable="true" type="st:AxdExtType_AddressCountyOrigDest" />
+      <xs:element minOccurs="0" name="CovStatus" nillable="true" type="st:AxdExtType_CovStatus" />
+      <xs:element minOccurs="0" name="CreatedDateTime" nillable="true" type="st:AxdExtType_CreatedDateTime" />
+      <xs:element minOccurs="0" name="CRMStatus" nillable="true" type="st:AxdUnion_AxdExtType_ProjCRMStatus_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="st:AxdUnion_AxdExtType_CustCurrencyCode_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CustAccount" nillable="true" type="st:AxdUnion_AxdExtType_CustAccount_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CustFinalUser_BR" nillable="true" type="st:AxdExtType_CustVendFinalUser_BR" />
+      <xs:element minOccurs="0" name="CustomerRef" nillable="true" type="st:AxdExtType_CustRef" />
+      <xs:element minOccurs="0" name="CustPurchaseOrder" nillable="true" type="st:AxdExtType_CustPurchaseOrder" />
+      <xs:element minOccurs="0" name="DAXIntegrationId" nillable="true" type="st:AxdExtType_ConnIntegrationKey" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="Delegation" nillable="true" type="st:AxdExtType_Delegation" />
+      <xs:element minOccurs="0" name="DeliveryDateControlType" nillable="true" type="st:AxdEnum_SalesDeliveryDateControlType" />
+      <xs:element minOccurs="0" name="DeliveryName" nillable="true" type="st:AxdExtType_CustName" />
+      <xs:element minOccurs="0" name="DeliveryPostalAddress" nillable="true" type="st:AxdEntityKey_LogisticsPostalAddress" />
+      <xs:element minOccurs="0" name="DiscPercent" nillable="true" type="st:AxdExtType_SalesEndDiscPct" />
+      <xs:element minOccurs="0" name="DlvMode" nillable="true" type="st:AxdUnion_AxdExtType_QuotationDlvModeId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DlvReason" nillable="true" type="st:AxdExtType_DlvReasonId" />
+      <xs:element minOccurs="0" name="DlvTerm" nillable="true" type="st:AxdUnion_AxdExtType_DlvTermId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DocuConclusion" nillable="true" type="st:AxdExtType_smmQuotationDocuConclusionText" />
+      <xs:element minOccurs="0" name="DocuIntro" nillable="true" type="st:AxdExtType_smmQuotationDocuIntroText" />
+      <xs:element minOccurs="0" name="DocuTitle" nillable="true" type="st:AxdExtType_smmQuotationDocuTitle" />
+      <xs:element minOccurs="0" name="DuracionEstimada" nillable="true" type="st:AxdExtType_Integer" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="st:AxdExtType_Email" />
+      <xs:element minOccurs="0" name="EndDisc" nillable="true" type="st:AxdExtType_CustEndDiscCode" />
+      <xs:element minOccurs="0" name="EnterpriseNumber" nillable="true" type="st:AxdExtType_TaxEnterpriseNumber" />
+      <xs:element minOccurs="0" name="EstadoContrato" nillable="true" type="st:AxdEnum_EstadoContrato" />
+      <xs:element minOccurs="0" name="Estimate" nillable="true" type="st:AxdExtType_SalesEstimateGross" />
+      <xs:element minOccurs="0" name="EXCEICL_CodModVenta" nillable="true" type="st:AxdExtType_EXCEICL_CodModVenta" />
+      <xs:element minOccurs="0" name="EXCEICL_GeneraGuiaDespacho" nillable="true" type="st:AxdExtType_EXCEICL_GeneraGuiaDespacho" />
+      <xs:element minOccurs="0" name="EXCEICL_InternalInvoiceId" nillable="true" type="st:AxdExtType_EXCEICL_ReferenceInvoiceID" />
+      <xs:element minOccurs="0" name="EXCEICL_PurchOrder" nillable="true" type="st:AxdExtType_EXCEICL_PurchOrder" />
+      <xs:element minOccurs="0" name="EXCEICL_PurchOrderDate" nillable="true" type="st:AxdExtType_EXCEICL_PurchOrderDate" />
+      <xs:element minOccurs="0" name="EXCEICL_ReferenceCode" nillable="true" type="st:AxdEnum_EXCEICL_ReferenceCode" />
+      <xs:element minOccurs="0" name="EXCEICL_ReferenceFolio" nillable="true" type="st:AxdExtType_Integer" />
+      <xs:element minOccurs="0" name="EXCEICL_ReferenceInvoiceId" nillable="true" type="st:AxdExtType_EXCEICL_ReferenceInvoiceID" />
+      <xs:element minOccurs="0" name="EXCEICR_ClaveTipoRelacion" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEICR_UUID" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveMetodoPago" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveTipoComprobante" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveTipoRelacion" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_ClaveUsoCFDI" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_Confirmacion" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIMX_DocRelacionado" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodeMotivoNC" nillable="true" type="st:AxdExtType_EXCEIPE_CodeMotivoNC" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodeMotivoND" nillable="true" type="st:AxdExtType_EXCEIPE_CodeMotivoND" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodeTipoAfectacionIGV" nillable="true" type="st:AxdExtType_EXCEIPE_CodeTipoAfectacionIGV" />
+      <xs:element minOccurs="0" name="EXCEIPE_CodigoISC" nillable="true" type="st:AxdExtType_EXCEIPE_CodigoISC" />
+      <xs:element minOccurs="0" name="EXCEIPE_DocRef" nillable="true" type="st:AxdExtType_EXCEIPE_DocRef" />
+      <xs:element minOccurs="0" name="EXCEIPE_MetodoPago" nillable="true" type="st:AxdEnum_EXCEIPE_MetodoPago" />
+      <xs:element minOccurs="0" name="EXCEIPE_TipoDocumento" nillable="true" type="st:AxdEnum_EXCEIPE_TipoDocumento" />
+      <xs:element minOccurs="0" name="EXCLATCL_SalesDocType" nillable="true" type="st:AxdExtType_EXCLATCL_SalesDocTypeEDT" />
+      <xs:element minOccurs="0" name="EXCLATCL_SalesDocTypePackingSlip" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="EXCLATPA_CustConcept" nillable="true" type="st:AxdExtType_Integer" />
+      <xs:element minOccurs="0" name="EXCLATPA_CustFormat" nillable="true" type="st:AxdType_Int64" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocCode" nillable="true" type="st:AxdExtType_EXCLATPE_DocCodeSUNATEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocCodeInitial" nillable="true" type="st:AxdExtType_EXCLATPE_DocCodeSUNATEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocInitialVoid" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="EXCLATPE_DocNumInitial" nillable="true" type="st:AxdExtType_DocumentNum" />
+      <xs:element minOccurs="0" name="EXCLATPE_EmissionPointEDT" nillable="true" type="st:AxdExtType_EXCLATPE_EmissionPointEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_InventOperationTypeId" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="ExpectedInvoicing" nillable="true" type="st:AxdExtType_Amount" />
+      <xs:element minOccurs="0" name="ExportReason" nillable="true" type="st:AxdExtType_SalesExportReason" />
+      <xs:element minOccurs="0" name="FineCode_BR" nillable="true" type="st:AxdExtType_CustFineCode_BR" />
+      <xs:element minOccurs="0" name="FixedDueDate" nillable="true" type="st:AxdExtType_SalesFixedDueDate" />
+      <xs:element minOccurs="0" name="FixedExchRate" nillable="true" type="st:AxdExtType_SalesFixedExchRate" />
+      <xs:element minOccurs="0" name="FreightSlipType" nillable="true" type="st:AxdExtType_CustFreightSlipType" />
+      <xs:element minOccurs="0" name="FreightZone" nillable="true" type="st:AxdExtType_CustFreightZoneId" />
+      <xs:element minOccurs="0" name="GestionPorte" nillable="true" type="st:AxdEnum_GestionPorte" />
+      <xs:element minOccurs="0" name="Grua" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="HasOrder" nillable="true" type="st:AxdExtType_HasOrder" />
+      <xs:element minOccurs="0" name="HoursDT" nillable="true" type="st:AxdExtType_Hours" />
+      <xs:element minOccurs="0" name="InclTax" nillable="true" type="st:AxdExtType_InclTax" />
+      <xs:element minOccurs="0" name="InterestCode_BR" nillable="true" type="st:AxdExtType_CustInterestCode_BR" />
+      <xs:element minOccurs="0" name="InventLocationId" nillable="true" type="st:AxdExtType_SalesInventLocationId" />
+      <xs:element minOccurs="0" name="InventSiteId" nillable="true" type="st:AxdExtType_InventSiteId" />
+      <xs:element minOccurs="0" name="InvoiceAccount" nillable="true" type="st:AxdUnion_AxdExtType_CustInvoiceAccount_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="InvoicingType" nillable="true" type="st:AxdEnum_InvoicingType" />
+      <xs:element minOccurs="0" name="InvolvedDT" nillable="true" type="st:AxdExtType_InvolvedDT" />
+      <xs:element minOccurs="0" name="ItemTagging" nillable="true" type="st:AxdExtType_RFIDItemTagging" />
+      <xs:element minOccurs="0" name="Kilometer" nillable="true" type="st:AxdExtType_Kilometer" />
+      <xs:element minOccurs="0" name="LanguageId" nillable="true" type="st:AxdExtType_LanguageId" />
+      <xs:element minOccurs="0" name="LATARPointOfSalesId" nillable="true" type="st:AxdExtType_LATARPointOfSalesId" />
+      <xs:element minOccurs="0" name="LATARPointOfSalesJurisdic" nillable="true" type="st:AxdExtType_LATARJurisdicId" />
+      <xs:element minOccurs="0" name="LATARSalesTypeId" nillable="true" type="st:AxdExtType_LATARSalesTypeId" />
+      <xs:element minOccurs="0" name="LATPECustGoodServiceTypes" nillable="true" type="st:AxdExtType_LATPECustVendGoodServiceTypeId" />
+      <xs:element minOccurs="0" name="LATPECustIssuePoints" nillable="true" type="st:AxdExtType_LATPECustVendIssuePointId" />
+      <xs:element minOccurs="0" name="LATPECustOperationTypes" nillable="true" type="st:AxdExtType_LATPECustVendOperationTypeId" />
+      <xs:element minOccurs="0" name="LATPECustSUNATDocumentTypes" nillable="true" type="st:AxdExtType_LATPECustVendSUNATDocumentTypeId" />
+      <xs:element minOccurs="0" name="LATPECustVendOperationTypeId" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="LATPEDocumentSeries" nillable="true" type="st:AxdExtType_LATPEDocumentSeries" />
+      <xs:element minOccurs="0" name="LineDisc" nillable="true" type="st:AxdExtType_CustLineDiscCode" />
+      <xs:element minOccurs="0" name="LineNum" nillable="true" type="st:AxdExtType_Line" />
+      <xs:element minOccurs="0" name="Listcode" nillable="true" type="st:AxdExtType_ListcodeId" />
+      <xs:element minOccurs="0" name="Margin" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="MarkupGroup" nillable="true" type="st:AxdExtType_CustMarkupGroupId" />
+      <xs:element minOccurs="0" name="MasterObrasId" nillable="true" type="st:AxdExtType_MasterObrasId" />
+      <xs:element minOccurs="0" name="ModelId" nillable="true" type="st:AxdExtType_ForecastModelId" />
+      <xs:element minOccurs="0" name="MultiLineDisc" nillable="true" type="st:AxdExtType_CustMultiLineDiscCode" />
+      <xs:element minOccurs="0" name="NumberSequenceGroup" nillable="true" type="st:AxdExtType_NumberSequenceGroupId" />
+      <xs:element minOccurs="0" name="ObraId" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="OpportunityId" nillable="true" type="st:AxdExtType_smmOpportunityId" />
+      <xs:element minOccurs="0" name="OrigQuotationId" nillable="true" type="st:AxdExtType_QuotationIdBase" />
+      <xs:element minOccurs="0" name="PalletTagging" nillable="true" type="st:AxdExtType_RFIDPalletTagging" />
+      <xs:element minOccurs="0" name="Payment" nillable="true" type="st:AxdExtType_CustPaymTermId" />
+      <xs:element minOccurs="0" name="PaymMode" nillable="true" type="st:AxdExtType_CustPaymMode" />
+      <xs:element minOccurs="0" name="PaymSpec" nillable="true" type="st:AxdExtType_CustPaymTermId" />
+      <xs:element minOccurs="0" name="Percent" nillable="true" type="st:AxdExtType_TantoPorMil" />
+      <xs:element minOccurs="0" name="PhotoId" nillable="true" type="st:AxdExtType_PhotoId" />
+      <xs:element minOccurs="0" name="Port" nillable="true" type="st:AxdExtType_IntrastatPortId" />
+      <xs:element minOccurs="0" name="PostingProfile" nillable="true" type="st:AxdExtType_CustPostingProfile" />
+      <xs:element minOccurs="0" name="PriceGroupId" nillable="true" type="st:AxdExtType_CustPriceGroup" />
+      <xs:element minOccurs="0" name="PrintDetail" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="ProjIdRef" nillable="true" type="st:AxdExtType_ProjId" />
+      <xs:element minOccurs="0" name="ProjInvoiceProjId" nillable="true" type="st:AxdExtType_ProjInvoiceProjId" />
+      <xs:element minOccurs="0" name="PSAEstProjEndDate" nillable="true" type="st:AxdExtType_EndDate" />
+      <xs:element minOccurs="0" name="PSAEstProjStartDate" nillable="true" type="st:AxdExtType_StartDate" />
+      <xs:element minOccurs="0" name="PSAExternalDescription" nillable="true" type="st:AxdExtType_Notes" />
+      <xs:element minOccurs="0" name="PSAInternalDescription" nillable="true" type="st:AxdExtType_Notes" />
+      <xs:element minOccurs="0" name="PSASchedCalendarId" nillable="true" type="st:AxdExtType_CalendarId" />
+      <xs:element minOccurs="0" name="PSAWizardNotOk" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="QuotationCategory" nillable="true" type="st:AxdExtType_SalesQuotationTypeId" />
+      <xs:element minOccurs="0" name="QuotationExpiryDate" nillable="true" type="st:AxdExtType_QuotationExpiryDate" />
+      <xs:element minOccurs="0" name="QuotationFollowupActivity" nillable="true" type="st:AxdExtType_smmQuotationFollowupActivity" />
+      <xs:element minOccurs="0" name="QuotationFollowUpDate" nillable="true" type="st:AxdExtType_smmQuotationFollowUpDate" />
+      <xs:element minOccurs="0" name="QuotationId" nillable="true" type="st:AxdExtType_QuotationIdBase" />
+      <xs:element minOccurs="0" name="QuotationName" nillable="true" type="st:AxdExtType_QuotationName" />
+      <xs:element minOccurs="0" name="QuotationStatus" nillable="true" type="st:AxdEnum_SalesQuotationStatus" />
+      <xs:element minOccurs="0" name="QuotationTitle" nillable="true" type="st:AxdExtType_QuotationTitle" />
+      <xs:element minOccurs="0" name="QuotationType" nillable="true" type="st:AxdEnum_QuotationType" />
+      <xs:element minOccurs="0" name="ReasonId" nillable="true" type="st:AxdExtType_smmQuotationReasonId" />
+      <xs:element minOccurs="0" name="ReceiptDateRequested" nillable="true" type="st:AxdExtType_SalesReceiptDateRequested" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="RefQuotationMaster" nillable="true" type="st:AxdExtType_QuotationMasterIdBase" />
+      <xs:element minOccurs="0" name="SalesCashflowInclude" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="SalesContributionRatio" nillable="true" type="st:AxdExtType_SalesContributionRatio" />
+      <xs:element minOccurs="0" name="SalesGroup" nillable="true" type="st:AxdExtType_CommissSalesGroup" />
+      <xs:element minOccurs="0" name="SalesIdRef" nillable="true" type="st:AxdExtType_SalesId" />
+      <xs:element minOccurs="0" name="SalesOriginId" nillable="true" type="st:AxdExtType_SalesOriginId" />
+      <xs:element minOccurs="0" name="SalesPoolId" nillable="true" type="st:AxdExtType_SalesPoolId" />
+      <xs:element minOccurs="0" name="SalesPurchOperationType_BR" nillable="true" type="st:AxdExtType_OperationTypeID_BR" />
+      <xs:element minOccurs="0" name="SalesRental" nillable="true" type="st:AxdEnum_SalesRental" />
+      <xs:element minOccurs="0" name="SalesUnitId" nillable="true" type="st:AxdExtType_smmSalesUnitId" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="st:AxdExtType_SMAAgreementId" />
+      <xs:element minOccurs="0" name="SettleVoucher" nillable="true" type="st:AxdExtType_SalesSettlementType" />
+      <xs:element minOccurs="0" name="ShippingDateRequested" nillable="true" type="st:AxdExtType_SalesShippingDateRequested" />
+      <xs:element minOccurs="0" name="StatProcId" nillable="true" type="st:AxdExtType_IntrastatProcId" />
+      <xs:element minOccurs="0" name="TaxGroup" nillable="true" type="st:AxdExtType_TaxGroup" />
+      <xs:element minOccurs="0" name="TemplateActive" nillable="true" type="st:AxdExtType_QuotationTemplateActive" />
+      <xs:element minOccurs="0" name="TemplateGroupId" nillable="true" type="st:AxdExtType_SalesQuotationTemplateGroupId" />
+      <xs:element minOccurs="0" name="TemplateName" nillable="true" type="st:AxdExtType_QuotationTemplateName" />
+      <xs:element minOccurs="0" name="TipoAlquiler" nillable="true" type="st:AxdExtType_TipoAlquiler" />
+      <xs:element minOccurs="0" name="TipoPorte" nillable="true" type="st:AxdEnum_TipoPorte" />
+      <xs:element minOccurs="0" name="TipoTransId" nillable="true" type="st:AxdExtType_TipoTransId" />
+      <xs:element minOccurs="0" name="TipoVenta" nillable="true" type="st:AxdExtType_TipoVenta" />
+      <xs:element minOccurs="0" name="Toneladas" nillable="true" type="st:AxdExtType_Toneladas" />
+      <xs:element minOccurs="0" name="TotalBalance" nillable="true" type="st:AxdExtType_AmountCur" />
+      <xs:element minOccurs="0" name="TotalCashDiscount" nillable="true" type="st:AxdExtType_DiscAmount" />
+      <xs:element minOccurs="0" name="TotalInvoice" nillable="true" type="st:AxdExtType_AmountCur" />
+      <xs:element minOccurs="0" name="TotalMiscCharges" nillable="true" type="st:AxdExtType_MarkupAmount" />
+      <xs:element minOccurs="0" name="TotalQty" nillable="true" type="st:AxdExtType_Qty" />
+      <xs:element minOccurs="0" name="TotalSalesTax" nillable="true" type="st:AxdExtType_TaxAmountCur" />
+      <xs:element minOccurs="0" name="TransactionCode" nillable="true" type="st:AxdExtType_IntrastatTransactionCodeId" />
+      <xs:element minOccurs="0" name="TransferredToForecast" nillable="true" type="st:AxdExtType_SalesQuotationTransferred" />
+      <xs:element minOccurs="0" name="TransferredToItemReq" nillable="true" type="st:AxdExtType_SalesQuotationTransferredItemReq" />
+      <xs:element minOccurs="0" name="Transport" nillable="true" type="st:AxdExtType_IntrastatTransport" />
+      <xs:element minOccurs="0" name="UnitType" nillable="true" type="st:AxdEnum_UnitType" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="st:AxdExtType_URL" />
+      <xs:element minOccurs="0" name="VATNum" nillable="true" type="st:AxdExtType_VATNumJournal" />
+      <xs:element minOccurs="0" name="WorkerSalesResponsible" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="WorkerSalesTaker" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SalesQuotationLine" type="tns:AxdEntity_SalesQuotationLine" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_SalesQuotationLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="st:AxdEnum_LedgerJournalACType" />
+      <xs:element minOccurs="0" name="AgrupacionId" nillable="true" type="st:AxdExtType_AgrupacionId" />
+      <xs:element minOccurs="0" name="AssessableValue_IN" nillable="true" type="st:AxdExtType_AmountCur" />
+      <xs:element minOccurs="0" name="BarCode" nillable="true" type="st:AxdExtType_SalesBarCode" />
+      <xs:element minOccurs="0" name="BarCodeType" nillable="true" type="st:AxdExtType_BarcodeSetupId" />
+      <xs:element minOccurs="0" name="Canon" nillable="true" type="st:AxdExtType_Canon" />
+      <xs:element minOccurs="0" name="CanonFenolico" nillable="true" type="st:AxdExtType_CanonFenolico" />
+      <xs:element minOccurs="0" name="CanonImport" nillable="true" type="st:AxdExtType_CanonImport" />
+      <xs:element minOccurs="0" name="CantidadUnidadAgrupacion" nillable="true" type="st:AxdExtType_CantidadUnidadAgrupacion" />
+      <xs:element minOccurs="0" name="CaseTagging" nillable="true" type="st:AxdExtType_RFIDCaseTagging" />
+      <xs:element minOccurs="0" name="CFOPTable_BR" nillable="true" type="st:AxdExtType_CustVendCFOPId_BR" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="st:AxdExtType_SelectableDataArea" />
+      <xs:element minOccurs="0" name="CompanyLocation_IN" nillable="true" type="st:AxdExtType_LogisticsLocationId" />
+      <xs:element minOccurs="0" name="ConfirmedDlv" nillable="true" type="st:AxdExtType_SalesShippingDate" />
+      <xs:element minOccurs="0" name="Consignment_IN" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="CostPrice" nillable="true" type="st:AxdExtType_ReturnCostPrice" />
+      <xs:element minOccurs="0" name="CountyOrigDest" nillable="true" type="st:AxdExtType_AddressCountyOrigDest" />
+      <xs:element minOccurs="0" name="Cubic" nillable="true" type="st:AxdExtType_Cubic" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="st:AxdUnion_AxdExtType_CustCurrencyCode_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CustAccount" nillable="true" type="st:AxdUnion_AxdExtType_CustAccount_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CustomerRef" nillable="true" type="st:AxdExtType_CustRefLine" />
+      <xs:element minOccurs="0" name="CustomsTariffCodeTable_IN" nillable="true" type="st:AxdEntityKey_CustomsTariffCodeTable_IN" />
+      <xs:element minOccurs="0" name="DAXIntegrationId" nillable="true" type="st:AxdExtType_ConnIntegrationKey" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="DeliveryDateControlType" nillable="true" type="st:AxdEnum_SalesDeliveryDateControlType" />
+      <xs:element minOccurs="0" name="DeliveryName" nillable="true" type="st:AxdExtType_CustName" />
+      <xs:element minOccurs="0" name="DeliveryPostalAddress" nillable="true" type="st:AxdEntityKey_LogisticsPostalAddress" />
+      <xs:element minOccurs="0" name="DirectSettlement_IN" nillable="true" type="st:AxdEnum_DirectSettlement_IN" />
+      <xs:element minOccurs="0" name="DlvMode" nillable="true" type="st:AxdUnion_AxdExtType_DlvModeId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DSA_IN" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="DuracionEstimada" nillable="true" type="st:AxdExtType_Integer" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="Equipo" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="EurDia" nillable="true" type="st:AxdExtType_EurDia" />
+      <xs:element minOccurs="0" name="ExciseRecordType_IN" nillable="true" type="st:AxdEnum_ExciseRecordType_IN" />
+      <xs:element minOccurs="0" name="ExciseTariffCodes_IN" nillable="true" type="st:AxdExtType_TariffCode_IN" />
+      <xs:element minOccurs="0" name="ExciseType_IN" nillable="true" type="st:AxdEnum_ExciseType_IN" />
+      <xs:element minOccurs="0" name="ExportOrder_IN" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="ExternalItemId" nillable="true" type="st:AxdExtType_SalesExternalItemId" />
+      <xs:element minOccurs="0" name="InclTax_IN" nillable="true" type="st:AxdExtType_InclTax" />
+      <xs:element minOccurs="0" name="InventDeliverNow" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="InventDimId" nillable="true" type="st:AxdExtType_InventDimId" />
+      <xs:element minOccurs="0" name="InventRefId" nillable="true" type="st:AxdExtType_InventRefId" />
+      <xs:element minOccurs="0" name="InventRefTransId" nillable="true" type="st:AxdExtType_InventRefTransId" />
+      <xs:element minOccurs="0" name="InventRefType" nillable="true" type="st:AxdEnum_InventRefType" />
+      <xs:element minOccurs="0" name="InventTransId" nillable="true" type="st:AxdExtType_TradeInventTransId" />
+      <xs:element minOccurs="0" name="IsOffer" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="ItemBOMId" nillable="true" type="st:AxdExtType_ItemBOMId" />
+      <xs:element minOccurs="0" name="ItemId" nillable="true" type="st:AxdUnion_AxdExtType_ItemIdSmall_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="ItemOrCategoryIntegrationKey" nillable="true" type="st:AxdExtType_ConnIntegrationKey" />
+      <xs:element minOccurs="0" name="ItemPBAId" nillable="true" type="st:AxdExtType_PBAId" />
+      <xs:element minOccurs="0" name="ItemRouteId" nillable="true" type="st:AxdExtType_ItemRouteId" />
+      <xs:element minOccurs="0" name="ItemTagging" nillable="true" type="st:AxdExtType_RFIDItemTagging" />
+      <xs:element minOccurs="0" name="LedgerDimension" nillable="true" type="st:AxdType_DefaultAccount" />
+      <xs:element minOccurs="0" name="LineAmount" nillable="true" type="st:AxdExtType_SalesLineAmount" />
+      <xs:element minOccurs="0" name="LineAmountMST" nillable="true" type="st:AxdExtType_AmountMST" />
+      <xs:element minOccurs="0" name="LineDisc" nillable="true" type="st:AxdExtType_SalesLineDisc" />
+      <xs:element minOccurs="0" name="LineHeader" nillable="true" type="st:AxdExtType_ItemFreeTxt" />
+      <xs:element minOccurs="0" name="LineNum" nillable="true" type="st:AxdExtType_LineNum" />
+      <xs:element minOccurs="0" name="LinePercent" nillable="true" type="st:AxdExtType_SalesLinePercent" />
+      <xs:element minOccurs="0" name="LinePropertyId" nillable="true" type="st:AxdExtType_ProjLinePropertyId" />
+      <xs:element minOccurs="0" name="Marcado" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="MaximumRetailPrice_IN" nillable="true" type="st:AxdExtType_MaximumRetailPrice_IN" />
+      <xs:element minOccurs="0" name="Meters" nillable="true" type="st:AxdExtType_Meters" />
+      <xs:element minOccurs="0" name="Meters2" nillable="true" type="st:AxdExtType_Meters2" />
+      <xs:element minOccurs="0" name="Meters3" nillable="true" type="st:AxdExtType_Meters3" />
+      <xs:element minOccurs="0" name="MetersInvoicing" nillable="true" type="st:AxdExtType_MetersInvoicing" />
+      <xs:element minOccurs="0" name="MultiLnDisc" nillable="true" type="st:AxdExtType_SalesMultiLnDisc" />
+      <xs:element minOccurs="0" name="MultiLnPercent" nillable="true" type="st:AxdExtType_SalesMultiLnPercent" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="st:AxdExtType_ItemFreeTxt" />
+      <xs:element minOccurs="0" name="NewSalesPrice" nillable="true" type="st:AxdExtType_SalesPrice" />
+      <xs:element minOccurs="0" name="NewTotalContributionRatio" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="OffsetAccountType" nillable="true" type="st:AxdEnum_LedgerJournalACType" />
+      <xs:element minOccurs="0" name="OffsetCompany" nillable="true" type="st:AxdExtType_SelectableDataArea" />
+      <xs:element minOccurs="0" name="OffsetTxt" nillable="true" type="st:AxdExtType_LedgerJournalTransTxt" />
+      <xs:element minOccurs="0" name="OrigCostPrice" nillable="true" type="st:AxdExtType_CostPrice" />
+      <xs:element minOccurs="0" name="OverDeliveryPct" nillable="true" type="st:AxdExtType_SalesOverDeliveryPct" />
+      <xs:element minOccurs="0" name="PackingUnit" nillable="true" type="st:AxdUnion_AxdExtType_InventPackingUnit_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="PackingUnitQty" nillable="true" type="st:AxdExtType_InventPackingUnitQty" />
+      <xs:element minOccurs="0" name="PalletTagging" nillable="true" type="st:AxdExtType_RFIDPalletTagging" />
+      <xs:element minOccurs="0" name="PdsCWDeliverNow" nillable="true" type="st:AxdExtType_PdsCWInventQty" />
+      <xs:element minOccurs="0" name="PdsCWQty" nillable="true" type="st:AxdExtType_PdsCWInventQty" />
+      <xs:element minOccurs="0" name="PdsCWRemainInventPhysical" nillable="true" type="st:AxdExtType_PdsCWInventQty" />
+      <xs:element minOccurs="0" name="Percent" nillable="true" type="st:AxdExtType_TantoPorMil" />
+      <xs:element minOccurs="0" name="Port" nillable="true" type="st:AxdExtType_IntrastatPortId" />
+      <xs:element minOccurs="0" name="PrecioRepercusion" nillable="true" type="st:AxdExtType_PrecioRepercusion" />
+      <xs:element minOccurs="0" name="PrecioUnidadAgrupacion" nillable="true" type="st:AxdExtType_PrecioUnidadAgrupacion" />
+      <xs:element minOccurs="0" name="PriceCalcId" nillable="true" type="st:AxdExtType_PriceCalcId" />
+      <xs:element minOccurs="0" name="PriceM2" nillable="true" type="st:AxdExtType_PriceM2" />
+      <xs:element minOccurs="0" name="PriceRatio" nillable="true" type="st:AxdExtType_PriceRatio" />
+      <xs:element minOccurs="0" name="PriceUnit" nillable="true" type="st:AxdExtType_PriceUnit" />
+      <xs:element minOccurs="0" name="ProjActivity" nillable="true" type="st:AxdExtType_smmActivityNumber" />
+      <xs:element minOccurs="0" name="ProjCategoryId" nillable="true" type="st:AxdExtType_QuotationProjCategory" />
+      <xs:element minOccurs="0" name="ProjDescription" nillable="true" type="st:AxdExtType_Description" />
+      <xs:element minOccurs="0" name="ProjectWorker" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="ProjTransType" nillable="true" type="st:AxdEnum_QuotationProjTransType" />
+      <xs:element minOccurs="0" name="PropuestaId" nillable="true" type="st:AxdExtType_PropuestaId" />
+      <xs:element minOccurs="0" name="PSARefRecId" nillable="true" type="st:AxdExtType_RefRecId" />
+      <xs:element minOccurs="0" name="QtyOrdered" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="QuotationId" nillable="true" type="st:AxdExtType_QuotationIdBase" />
+      <xs:element minOccurs="0" name="QuotationStatus" nillable="true" type="st:AxdEnum_SalesQuotationStatus" />
+      <xs:element minOccurs="0" name="ReceiptDateRequested" nillable="true" type="st:AxdExtType_SalesReceiptDateRequested" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="RefQuotationMaster" nillable="true" type="st:AxdExtType_QuotationId" />
+      <xs:element minOccurs="0" name="RemainInventPhysical" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="RemainSalesFinancial" nillable="true" type="st:AxdExtType_SalesQty" />
+      <xs:element minOccurs="0" name="RemainSalesPhysical" nillable="true" type="st:AxdExtType_SalesQty" />
+      <xs:element minOccurs="0" name="RetailVariantId" nillable="true" type="st:AxdExtType_RetailVariantId" />
+      <xs:element minOccurs="0" name="SalesCategory" nillable="true" type="st:AxdEntityKey_EcoResCategory" />
+      <xs:element minOccurs="0" name="SalesDeliverNow" nillable="true" type="st:AxdExtType_SalesQty" />
+      <xs:element minOccurs="0" name="SalesGroup" nillable="true" type="st:AxdExtType_CommissSalesGroup" />
+      <xs:element minOccurs="0" name="SalesMarkup" nillable="true" type="st:AxdExtType_SalesMarkup" />
+      <xs:element minOccurs="0" name="SalesPrice" nillable="true" type="st:AxdExtType_SalesPrice" />
+      <xs:element minOccurs="0" name="SalesQty" nillable="true" type="st:AxdExtType_SalesQty" />
+      <xs:element minOccurs="0" name="SalesTaxFormTypes_IN" nillable="true" type="st:AxdExtType_FormType_IN" />
+      <xs:element minOccurs="0" name="SalesUnit" nillable="true" type="st:AxdUnion_AxdExtType_SalesUnit_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="ServiceCodeTable_IN" nillable="true" type="st:AxdExtType_ServiceCode_IN" />
+      <xs:element minOccurs="0" name="ShippingDateRequested" nillable="true" type="st:AxdExtType_SalesShippingDateRequested" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="StatProcId" nillable="true" type="st:AxdExtType_IntrastatProcId" />
+      <xs:element minOccurs="0" name="StatTriangularDeal" nillable="true" type="st:AxdExtType_IntrastatTriangularDeal" />
+      <xs:element minOccurs="0" name="StructureId" nillable="true" type="st:AxdUnion_AxdExtType_StructureId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="SuframaDiscount_BR" nillable="true" type="st:AxdExtType_SalesLinePercent" />
+      <xs:element minOccurs="0" name="TaxAutoGenerated" nillable="true" type="st:AxdExtType_TaxAutoGenerated" />
+      <xs:element minOccurs="0" name="TaxGroup" nillable="true" type="st:AxdExtType_TaxGroup" />
+      <xs:element minOccurs="0" name="TaxInventVATCommodityCode_IN" nillable="true" type="st:AxdEntityKey_TaxInventVATCommodityCode_IN" />
+      <xs:element minOccurs="0" name="TaxItemGroup" nillable="true" type="st:AxdExtType_TaxItemGroup" />
+      <xs:element minOccurs="0" name="TCSGroup_IN" nillable="true" type="st:AxdExtType_TaxWithholdGroup" />
+      <xs:element minOccurs="0" name="TDSGroup_IN" nillable="true" type="st:AxdExtType_TaxWithholdGroup" />
+      <xs:element minOccurs="0" name="TransactionCode" nillable="true" type="st:AxdExtType_IntrastatTransactionCodeId" />
+      <xs:element minOccurs="0" name="TransactionCode1" nillable="true" type="st:AxdExtType_IntrastatTransactionCodeId" />
+      <xs:element minOccurs="0" name="TransDate" nillable="true" type="st:AxdExtType_ProjTransDate" />
+      <xs:element minOccurs="0" name="Transferred2Forecast" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="Transferred2ItemReq" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="Transferred2Journal" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="Transport" nillable="true" type="st:AxdExtType_IntrastatTransport" />
+      <xs:element minOccurs="0" name="UnderDeliveryPct" nillable="true" type="st:AxdExtType_SalesUnderDeliveryPct" />
+      <xs:element minOccurs="0" name="VersionId" nillable="true" type="st:AxdExtType_VersionId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InventTable" type="tns:AxdEntity_InventTable" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_InventTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ABCContributionMargin" nillable="true" type="st:AxdEnum_ABC" />
+      <xs:element minOccurs="0" name="ABCRevenue" nillable="true" type="st:AxdEnum_ABC" />
+      <xs:element minOccurs="0" name="ABCTieUp" nillable="true" type="st:AxdEnum_ABC" />
+      <xs:element minOccurs="0" name="ABCValue" nillable="true" type="st:AxdEnum_ABC" />
+      <xs:element minOccurs="0" name="AlcoholManufacturerId_RU" nillable="true" type="st:AxdExtType_AlcoholManufacturerId_RU" />
+      <xs:element minOccurs="0" name="AlcoholProductionTypeId_RU" nillable="true" type="st:AxdExtType_AlcoholProductionTypeId_RU" />
+      <xs:element minOccurs="0" name="AlcoholStrength_RU" nillable="true" type="st:AxdExtType_AlcoholStrength_RU" />
+      <xs:element minOccurs="0" name="AltConfigId" nillable="true" type="st:AxdExtType_ConfigIdAlternative" />
+      <xs:element minOccurs="0" name="AltInventColorId" nillable="true" type="st:AxdExtType_EcoResItemColorName" />
+      <xs:element minOccurs="0" name="AltInventSizeId" nillable="true" type="st:AxdExtType_EcoResItemSizeName" />
+      <xs:element minOccurs="0" name="AltInventStyleId" nillable="true" type="st:AxdExtType_EcoResItemStyleName" />
+      <xs:element minOccurs="0" name="AltItemId" nillable="true" type="st:AxdExtType_ItemIdAlternative" />
+      <xs:element minOccurs="0" name="ApproxTaxValue_BR" nillable="true" type="st:AxdExtType_ApproximateTaxValue_BR" />
+      <xs:element minOccurs="0" name="AssetGroupId_RU" nillable="true" type="st:AxdExtType_RAssetMainGroupId" />
+      <xs:element minOccurs="0" name="AssetId_RU" nillable="true" type="st:AxdExtType_RAssetId" />
+      <xs:element minOccurs="0" name="AutoReportFinished" nillable="true" type="st:AxdExtType_ItemAutoReportFinished" />
+      <xs:element minOccurs="0" name="BatchMergeDateCalculationMethod" nillable="true" type="st:AxdEnum_InventBatchMergeDateCalculationMethod" />
+      <xs:element minOccurs="0" name="BatchNumGroupId" nillable="true" type="st:AxdExtType_InventNumGroupId" />
+      <xs:element minOccurs="0" name="BOMCalcGroupId" nillable="true" type="st:AxdExtType_BOMCalcGroupId" />
+      <xs:element minOccurs="0" name="BOMLevel" nillable="true" type="st:AxdExtType_ItemBOMLevel" />
+      <xs:element minOccurs="0" name="BOMLevelPEF" nillable="true" type="st:AxdExtType_BOMLevel" />
+      <xs:element minOccurs="0" name="BOMManualReceipt" nillable="true" type="st:AxdExtType_ItemBOMManualReceipt" />
+      <xs:element minOccurs="0" name="BOMUnitId" nillable="true" type="st:AxdExtType_BOMUnitId" />
+      <xs:element minOccurs="0" name="BopClassificationRef_PTGLS" nillable="true" type="st:AxdExtType_BopClassification_PTGLS" />
+      <xs:element minOccurs="0" name="CNPJ_BR" nillable="true" type="st:AxdExtType_CNPJCPFNum_BR" />
+      <xs:element minOccurs="0" name="CommissionGroupId" nillable="true" type="st:AxdExtType_CommissItemGroup" />
+      <xs:element minOccurs="0" name="ControlCalidad" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="CostGroupId" nillable="true" type="st:AxdExtType_CostGroupIdDirectMaterial" />
+      <xs:element minOccurs="0" name="CostModel" nillable="true" type="st:AxdExtType_ItemCostModel" />
+      <xs:element minOccurs="0" name="CustomsExportTariffCodeTable_IN" nillable="true" type="st:AxdEntityKey_CustomsTariffCodeTable_IN" />
+      <xs:element minOccurs="0" name="CustomsImportTariffCodeTable_IN" nillable="true" type="st:AxdEntityKey_CustomsTariffCodeTable_IN" />
+      <xs:element minOccurs="0" name="DAXIntegrationKey" nillable="true" type="st:AxdExtType_ConnIntegrationKey" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="Density" nillable="true" type="st:AxdExtType_BOMMeasureDensity" />
+      <xs:element minOccurs="0" name="Depth" nillable="true" type="st:AxdExtType_BOMMeasureDepth" />
+      <xs:element minOccurs="0" name="EPCManager" nillable="true" type="st:AxdExtType_EPCManager" />
+      <xs:element minOccurs="0" name="ExceptionCode_BR" nillable="true" type="st:AxdExtType_ExceptionCode_BR" />
+      <xs:element minOccurs="0" name="ExciseTariffCodes_IN" nillable="true" type="st:AxdExtType_TariffCode_IN" />
+      <xs:element minOccurs="0" name="EXCLATPE_Balance20" nillable="true" type="st:AxdExtType_EXCLATPE_Balance20" />
+      <xs:element minOccurs="0" name="EXCLATPE_Commodity" nillable="true" type="st:AxdExtType_EXCLATPE_CommodityEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_ExistCode" nillable="true" type="st:AxdExtType_EXCLATPE_CodExistencia" />
+      <xs:element minOccurs="0" name="EXCLATPE_ProductClass" nillable="true" type="st:AxdExtType_EXCLATPE_ProductClassEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_ProductFamily" nillable="true" type="st:AxdExtType_EXCLATPE_ProductFamilyEDT" />
+      <xs:element minOccurs="0" name="EXCLATPE_ProductSegment" nillable="true" type="st:AxdExtType_EXCLATPE_ProductSegmentEDT" />
+      <xs:element minOccurs="0" name="ExcPE_SunatProductCodeId" nillable="true" type="st:AxdExtType_ExcPE_SunatProductCodeId" />
+      <xs:element minOccurs="0" name="Exempt_IN" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="EximProductGroupTable_IN" nillable="true" type="st:AxdExtType_EximProductGroup_IN" />
+      <xs:element minOccurs="0" name="FiscalLIFOAvoidCalc" nillable="true" type="st:AxdExtType_InventFiscalLIFOAvoidCalc" />
+      <xs:element minOccurs="0" name="FiscalLIFONormalValue" nillable="true" type="st:AxdExtType_InventFiscalLIFONormalValue" />
+      <xs:element minOccurs="0" name="FiscalLIFONormalValueCalc" nillable="true" type="st:AxdEnum_InventFiscalLIFONormalValueCalc" />
+      <xs:element minOccurs="0" name="ForecastDMPInclude" nillable="true" type="st:AxdExtType_ForecastDMPInclude" />
+      <xs:element minOccurs="0" name="FreeNotesGroup" nillable="true" type="st:AxdExtType_InventNotesGroupId" />
+      <xs:element minOccurs="0" name="grossDepth" nillable="true" type="st:AxdExtType_InventDepth" />
+      <xs:element minOccurs="0" name="grossHeight" nillable="true" type="st:AxdExtType_InventHeight" />
+      <xs:element minOccurs="0" name="grossWidth" nillable="true" type="st:AxdExtType_InventWidth" />
+      <xs:element minOccurs="0" name="Height" nillable="true" type="st:AxdExtType_BOMMeasureHeight" />
+      <xs:element minOccurs="0" name="HeightPackages" nillable="true" type="st:AxdExtType_HeightPackages" />
+      <xs:element minOccurs="0" name="HSNCodeTable_IN" nillable="true" type="st:AxdExtType_HSNCode_IN" />
+      <xs:element minOccurs="0" name="ICMSOnService_BR" nillable="true" type="st:AxdExtType_ICMSonService_BR" />
+      <xs:element minOccurs="0" name="Intracode" nillable="true" type="st:AxdExtType_IntrastatItemCodeId" />
+      <xs:element minOccurs="0" name="IntrastatExclude" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="IntrastatProcId_CZ" nillable="true" type="st:AxdExtType_IntrastatProcId" />
+      <xs:element minOccurs="0" name="IntraUnit" nillable="true" type="st:AxdExtType_IntrastatConvert" />
+      <xs:element minOccurs="0" name="InventFiscalLIFOGroup" nillable="true" type="st:AxdExtType_InventFiscalLIFOGroupId" />
+      <xs:element minOccurs="0" name="InventProductType_BR" nillable="true" type="st:AxdExtType_InventProductTypeId_BR" />
+      <xs:element minOccurs="0" name="ItemBuyerGroupId" nillable="true" type="st:AxdExtType_ItemBuyerGroupId" />
+      <xs:element minOccurs="0" name="ItemClass" nillable="true" type="st:AxdExtType_ItemClass" />
+      <xs:element minOccurs="0" name="ItemDimCostPrice" nillable="true" type="st:AxdExtType_ItemDimCostPrice" />
+      <xs:element minOccurs="0" name="ItemId" nillable="true" type="st:AxdExtType_ItemId" />
+      <xs:element minOccurs="0" name="ItemPriceToleranceGroupId" nillable="true" type="st:AxdExtType_ItemPriceToleranceGroupId" />
+      <xs:element minOccurs="0" name="ItemTaggingLevel" nillable="true" type="st:AxdEnum_RFIDItemTaggingLevel" />
+      <xs:element minOccurs="0" name="ItemType" nillable="true" type="st:AxdEnum_ItemType" />
+      <xs:element minOccurs="0" name="LATARARBACOTValue" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="LATARGainWHId" nillable="true" type="st:AxdExtType_LATARGainWHId" />
+      <xs:element minOccurs="0" name="LATARGainWHLevel" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="LATARGrossIncTransTypeId" nillable="true" type="st:AxdExtType_LATARGrossIncTransTypeId" />
+      <xs:element minOccurs="0" name="LATARGrossIncWHSubject" nillable="true" type="st:AxdExtType_LATARGrossIncWHSubject" />
+      <xs:element minOccurs="0" name="LATARGrossIncWHVendId" nillable="true" type="st:AxdExtType_LATARGrossIncWHVendId" />
+      <xs:element minOccurs="0" name="LATARSocChargeWHid" nillable="true" type="st:AxdExtType_LATARSocChargeWHIdEnabled" />
+      <xs:element minOccurs="0" name="LATARSocChargeWHMethod" nillable="true" type="st:AxdEnum_LATARSocChargeWHMethod" />
+      <xs:element minOccurs="0" name="LATARSocChargeWHSubject" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="LATARTaxWithholdInvoiceGroup" nillable="true" type="st:AxdExtType_LATARTaxWithholdInvoiceGroup" />
+      <xs:element minOccurs="0" name="LATARVATPerceptLevel" nillable="true" type="st:AxdEnum_LATARVATPerceptLevel" />
+      <xs:element minOccurs="0" name="LATARVATWHLevel" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="LATARVATWHSubject" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="LATARVATWHTransType" nillable="true" type="st:AxdExtType_LATARVATWHTransTypeId" />
+      <xs:element minOccurs="0" name="LATPECustGoodServiceTypes" nillable="true" type="st:AxdExtType_LATPECustVendGoodServiceTypeId" />
+      <xs:element minOccurs="0" name="LPE_ItemTypeCode" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="MarkupCode_RU" nillable="true" type="st:AxdExtType_MarkupCodeVend_RU" />
+      <xs:element minOccurs="0" name="MatchingPolicy" nillable="true" type="st:AxdEnum_PurchMatchingPolicyWithNotSetOption" />
+      <xs:element minOccurs="0" name="MinimumPalletQuantity" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="MiscCharge_Kg" nillable="true" type="st:AxdExtType_IntrastatMarkup_Kg" />
+      <xs:element minOccurs="0" name="NameAlias" nillable="true" type="st:AxdExtType_ItemNameAlias" />
+      <xs:element minOccurs="0" name="NetWeight" nillable="true" type="st:AxdExtType_ItemNetWeight" />
+      <xs:element minOccurs="0" name="NGPCodesTable_FR" nillable="true" type="st:AxdExtType_NGP_FR" />
+      <xs:element minOccurs="0" name="NRTaxGroup_LV" nillable="true" type="st:AxdExtType_LvNRTaxGroup" />
+      <xs:element minOccurs="0" name="OrigCountryRegionId" nillable="true" type="st:AxdExtType_ItemOrigCountryRegionId" />
+      <xs:element minOccurs="0" name="OrigCountyId" nillable="true" type="st:AxdExtType_ItemOrigCountyId" />
+      <xs:element minOccurs="0" name="OrigStateId" nillable="true" type="st:AxdExtType_ItemOrigStateId" />
+      <xs:element minOccurs="0" name="OwnLabor" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="PackagingGroupId" nillable="true" type="st:AxdExtType_ItemPackagingGroupId" />
+      <xs:element minOccurs="0" name="Packing_RU" nillable="true" type="st:AxdExtType_ItemPackingType_RU" />
+      <xs:element minOccurs="0" name="PalletTagging" nillable="true" type="st:AxdExtType_RFIDPalletTagging" />
+      <xs:element minOccurs="0" name="PBAAutoStart" nillable="true" type="st:AxdExtType_PBAAutostart" />
+      <xs:element minOccurs="0" name="PBAHideApproval" nillable="true" type="st:AxdExtType_PBAHideApproval" />
+      <xs:element minOccurs="0" name="PBAHideDialog" nillable="true" type="st:AxdExtType_PBAHideDialog" />
+      <xs:element minOccurs="0" name="PBAInventItemGroupId" nillable="true" type="st:AxdExtType_PBAInventItemGroupId" />
+      <xs:element minOccurs="0" name="PBAItemAutoGenerated" nillable="true" type="st:AxdExtType_PBAItemAutoGenerated" />
+      <xs:element minOccurs="0" name="PBAItemConfigurable" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="PBAMandatoryConfig" nillable="true" type="st:AxdExtType_PBAMandatoryConfig" />
+      <xs:element minOccurs="0" name="PctRepair" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="PctScrap" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="PDSBaseAttributeId" nillable="true" type="st:AxdExtType_PDSBaseAttributeId" />
+      <xs:element minOccurs="0" name="PdsBestBefore" nillable="true" type="st:AxdExtType_PdsLeadTimeBest" />
+      <xs:element minOccurs="0" name="PdsCWWMSMinimumPalletQty" nillable="true" type="st:AxdExtType_PdsCWInventQty" />
+      <xs:element minOccurs="0" name="PDSCWWMSqtyPerLayer" nillable="true" type="st:AxdExtType_PdsCWInventQty" />
+      <xs:element minOccurs="0" name="PdsCWWMSStandardPalletQty" nillable="true" type="st:AxdExtType_PdsCWInventQty" />
+      <xs:element minOccurs="0" name="PdsFreightAllocationGroupId" nillable="true" type="st:AxdExtType_PdsFreightAllocationGroupId" />
+      <xs:element minOccurs="0" name="PdsItemRebateGroupId" nillable="true" type="st:AxdExtType_PdsItemRebateGroupId" />
+      <xs:element minOccurs="0" name="PDSPotencyAttribRecording" nillable="true" type="st:AxdEnum_PDSPotencyAttribRecordingEnum" />
+      <xs:element minOccurs="0" name="PdsShelfAdvice" nillable="true" type="st:AxdExtType_PdsLeadTimeAdvice" />
+      <xs:element minOccurs="0" name="PdsShelfLife" nillable="true" type="st:AxdExtType_PdsLeadTimeLife" />
+      <xs:element minOccurs="0" name="PDSTargetFactor" nillable="true" type="st:AxdExtType_PDSTargetFactor" />
+      <xs:element minOccurs="0" name="PdsVendorCheckItem" nillable="true" type="st:AxdEnum_PdsVendorCheckItem" />
+      <xs:element minOccurs="0" name="Phantom" nillable="true" type="st:AxdExtType_ItemPhantom" />
+      <xs:element minOccurs="0" name="PKWiUCode_PL" nillable="true" type="st:AxdExtType_PlPKWiUCode" />
+      <xs:element minOccurs="0" name="PmfPlanningItemId" nillable="true" type="st:AxdExtType_PmfPlanningItemId" />
+      <xs:element minOccurs="0" name="PmfProductType" nillable="true" type="st:AxdEnum_PmfProductType" />
+      <xs:element minOccurs="0" name="PmfYieldPct" nillable="true" type="st:AxdExtType_PmfYieldPct" />
+      <xs:element minOccurs="0" name="PrimaryVendorId" nillable="true" type="st:AxdExtType_ItemPrimaryVendId" />
+      <xs:element minOccurs="0" name="ProdFlushingPrincip" nillable="true" type="st:AxdEnum_ProdFlushingPrincipItem" />
+      <xs:element minOccurs="0" name="ProdGroupId" nillable="true" type="st:AxdExtType_ItemProdGroupId" />
+      <xs:element minOccurs="0" name="ProdPoolId" nillable="true" type="st:AxdExtType_ItemProdPoolId" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="st:AxdExtType_EcoResProductDisplayProductNumber" />
+      <xs:element minOccurs="0" name="projCategoryId" nillable="true" type="st:AxdExtType_ProjCategoryId" />
+      <xs:element minOccurs="0" name="PropertyId" nillable="true" type="st:AxdExtType_PropertyIdItem" />
+      <xs:element minOccurs="0" name="PurchModel" nillable="true" type="st:AxdExtType_ItemPurchModel" />
+      <xs:element minOccurs="0" name="qtyPerLayer" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="QtyPerPaquete" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="RateType" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="RentHSNCodeTable_IN" nillable="true" type="st:AxdExtType_HSNCode_IN" />
+      <xs:element minOccurs="0" name="RentServiceAccountingCodeTable_IN" nillable="true" type="st:AxdExtType_SAC_IN" />
+      <xs:element minOccurs="0" name="RepairHSNCodeTable_IN" nillable="true" type="st:AxdExtType_HSNCode_IN" />
+      <xs:element minOccurs="0" name="RepairServiceAccountingCodeTable_IN" nillable="true" type="st:AxdExtType_SAC_IN" />
+      <xs:element minOccurs="0" name="ReqGroupId" nillable="true" type="st:AxdExtType_ReqGroupId" />
+      <xs:element minOccurs="0" name="SADRateCode_PL" nillable="true" type="st:AxdExtType_PlSADRateCode" />
+      <xs:element minOccurs="0" name="SalesContributionRatio" nillable="true" type="st:AxdExtType_ItemSalesContributionRatio" />
+      <xs:element minOccurs="0" name="SalesModel" nillable="true" type="st:AxdExtType_ItemSalesModel" />
+      <xs:element minOccurs="0" name="SalesPercentMarkup" nillable="true" type="st:AxdExtType_ItemSalesPercentMarkup" />
+      <xs:element minOccurs="0" name="SalesPriceModelBasic" nillable="true" type="st:AxdEnum_SalesPriceModelBasic" />
+      <xs:element minOccurs="0" name="SATCodeId_MX" nillable="true" type="st:AxdExtType_EInvoiceExtCodeId_MX" />
+      <xs:element minOccurs="0" name="ScaleIndicator_BR" nillable="true" type="st:AxdEnum_ScaleIndicator_BR" />
+      <xs:element minOccurs="0" name="ScrapConst" nillable="true" type="st:AxdExtType_ScrapConst" />
+      <xs:element minOccurs="0" name="ScrapHSNCodeTable_IN" nillable="true" type="st:AxdExtType_HSNCode_IN" />
+      <xs:element minOccurs="0" name="ScrapServiceAccountingCodeTable_IN" nillable="true" type="st:AxdExtType_SAC_IN" />
+      <xs:element minOccurs="0" name="ScrapVar" nillable="true" type="st:AxdExtType_ScrapVar" />
+      <xs:element minOccurs="0" name="SerialNumGroupId" nillable="true" type="st:AxdExtType_InventNumGroupId" />
+      <xs:element minOccurs="0" name="ServiceAccountingCodeTable_IN" nillable="true" type="st:AxdExtType_SAC_IN" />
+      <xs:element minOccurs="0" name="ServiceCodeTable_IN" nillable="true" type="st:AxdExtType_ServiceCode_IN" />
+      <xs:element minOccurs="0" name="SkipIntraCompanySync_RU" nillable="true" type="st:AxdExtType_SkipIntraCompanySync_RU" />
+      <xs:element minOccurs="0" name="sortCode" nillable="true" type="st:AxdExtType_WMSSortCode" />
+      <xs:element minOccurs="0" name="StandardConfigId" nillable="true" type="st:AxdExtType_ConfigIdStandard" />
+      <xs:element minOccurs="0" name="StandardInventColorId" nillable="true" type="st:AxdExtType_EcoResItemColorName" />
+      <xs:element minOccurs="0" name="StandardInventSizeId" nillable="true" type="st:AxdExtType_EcoResItemSizeName" />
+      <xs:element minOccurs="0" name="StandardInventStyleId" nillable="true" type="st:AxdExtType_EcoResItemStyleName" />
+      <xs:element minOccurs="0" name="standardPalletQuantity" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="StatisticsFactor" nillable="true" type="st:AxdExtType_IntrastatMarkupPct" />
+      <xs:element minOccurs="0" name="TaraWeight" nillable="true" type="st:AxdExtType_ItemTaraWeight" />
+      <xs:element minOccurs="0" name="Tarifa" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="TariffFraction" nillable="true" type="st:AxdExtType_EInvoiceExtCodeId_MX" />
+      <xs:element minOccurs="0" name="Tax394ItemCode_RO" nillable="true" type="st:AxdExtType_Tax394ItemCode_RO" />
+      <xs:element minOccurs="0" name="Tax394ItemCode_RO_Serv" nillable="true" type="st:AxdExtType_Tax394ItemCode_RO" />
+      <xs:element minOccurs="0" name="TaxationOrigin_BR" nillable="true" type="st:AxdEnum_FITaxationOrigin_BR" />
+      <xs:element minOccurs="0" name="TaxFiscalClassification_BR" nillable="true" type="st:AxdExtType_TaxFiscalClassificationId_BR" />
+      <xs:element minOccurs="0" name="TaxPackagingQty" nillable="true" type="st:AxdExtType_TaxPackagingQty" />
+      <xs:element minOccurs="0" name="TaxServiceCode_BR" nillable="true" type="st:AxdExtType_TaxServiceCodeId_BR" />
+      <xs:element minOccurs="0" name="UnitVolume" nillable="true" type="st:AxdExtType_ItemVolume" />
+      <xs:element minOccurs="0" name="UseAltItemId" nillable="true" type="st:AxdExtType_ItemUseAlternative" />
+      <xs:element minOccurs="0" name="WeightVolume" nillable="true" type="st:AxdExtType_WeightVolume" />
+      <xs:element minOccurs="0" name="Width" nillable="true" type="st:AxdExtType_BOMMeasureWidth" />
+      <xs:element minOccurs="0" name="WMSArrivalHandlingTime" nillable="true" type="st:AxdExtType_WMSArrivalHandlingTime" />
+      <xs:element minOccurs="0" name="WMSPalletTypeId" nillable="true" type="st:AxdExtType_WMSPalletTypeId" />
+      <xs:element minOccurs="0" name="WMSPickingQtyTime" nillable="true" type="st:AxdExtType_TimeHour24" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EcoResProduct" type="tns:AxdEntity_EcoResProduct_EcoResProduct" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Invent" type="tns:AxdEntity_Invent" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Purch" type="tns:AxdEntity_Purch" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sales" type="tns:AxdEntity_Sales" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_EcoResProduct_EcoResProduct" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BirthDate" nillable="true" type="st:AxdExtType_BirthDate" />
+      <xs:element minOccurs="0" name="Centralized" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="1" name="DisplayProductNumber" type="st:AxdExtType_EcoResProductDisplayProductNumber" />
+      <xs:element minOccurs="0" name="EngineerId" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="1" name="FamilyId" type="st:AxdExtType_FamilyId" />
+      <xs:element minOccurs="0" name="InstanceRelationType" nillable="true" type="st:AxdExtType_RelationType" />
+      <xs:element minOccurs="0" name="InValidation" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="1" name="InventoryTypeId" type="st:AxdExtType_InventoryTypeId" />
+      <xs:element minOccurs="0" name="ItemIdAsset" nillable="true" type="st:AxdExtType_EcoResProductDisplayProductNumber" />
+      <xs:element minOccurs="0" name="ItemIdAssociate" nillable="true" type="st:AxdExtType_EcoResProductDisplayProductNumber" />
+      <xs:element minOccurs="0" name="ItemIdDrawing" nillable="true" type="st:AxdExtType_EcoResProductDisplayProductNumber" />
+      <xs:element minOccurs="1" name="ItemTypeSecondary" type="st:AxdEnum_ItemTypeSecondary" />
+      <xs:element minOccurs="0" name="Joker" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="LastModifiedAssemblyManual" nillable="true" type="xs:date" />
+      <xs:element minOccurs="0" name="LastModifiedDrawing" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="LastModifiedDxf" nillable="true" type="xs:date" />
+      <xs:element minOccurs="0" name="MandatoryContainer" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="MetersInvoicing" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="NewFamily" nillable="true" type="st:AxdExtType_Num" />
+      <xs:element minOccurs="0" name="NewSubfamily" nillable="true" type="st:AxdExtType_Num" />
+      <xs:element minOccurs="0" name="PackagingTypeId" nillable="true" type="st:AxdExtType_PackagingTypeId" />
+      <xs:element minOccurs="0" name="PdsCWProduct" nillable="true" type="st:AxdExtType_PdsCWProduct" />
+      <xs:element minOccurs="1" name="ProductType" type="st:AxdEnum_EcoResProductType" />
+      <xs:element minOccurs="0" name="QualityControl" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="SearchName" nillable="true" type="st:AxdExtType_EcoResProductSearchName" />
+      <xs:element minOccurs="0" name="SpecialItem" nillable="true" type="st:AxdEnum_SpecialItem" />
+      <xs:element minOccurs="1" name="SubfamilyId" type="st:AxdExtType_SubfamilyId" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_EcoResProduct_EcoResDistinctProduct">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AxdEntity_EcoResProduct_EcoResProduct">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_EcoResProduct_EcoResProductMaster">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AxdEntity_EcoResProduct_EcoResProduct">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RetailColorGroupId" nillable="true" type="st:AxdExtType_RetailColorGroupId" />
+          <xs:element minOccurs="0" name="RetailSizeGroupId" nillable="true" type="st:AxdExtType_RetailSizeGroupId" />
+          <xs:element minOccurs="0" name="RetailStyleGroupId" nillable="true" type="st:AxdExtType_RetailStyleGroupId" />
+          <xs:element minOccurs="1" name="VariantConfigurationTechnology" type="st:AxdEnum_EcoResVariantConfigurationTechnologyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_EcoResProduct_EcoResDistinctProductVariant">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AxdEntity_EcoResProduct_EcoResDistinctProduct">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ProductMaster" type="st:AxdExtType_EcoResProductDisplayProductNumber" />
+          <xs:element minOccurs="0" name="RetaiTotalWeight" nillable="true" type="st:AxdExtType_RetailWeight" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_Invent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllocateMarkup" nillable="true" type="st:AxdExtType_PriceAllocateMarkup" />
+      <xs:element minOccurs="0" name="EndDisc" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="ExcludeCashDiscount" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="InterCompanyBlocked" nillable="true" type="st:AxdExtType_InterCompanyBlocked" />
+      <xs:element minOccurs="1" name="ItemId" type="st:AxdExtType_ItemId" />
+      <xs:element minOccurs="0" name="LATARTaxItemGroupUseGoods" nillable="true" type="st:AxdExtType_LATARTaxItemGroupUseGoods" />
+      <xs:element minOccurs="0" name="LineDisc" nillable="true" type="st:AxdExtType_InventLineDiscCode" />
+      <xs:element minOccurs="0" name="Markup" nillable="true" type="st:AxdExtType_InventPriceMarkup" />
+      <xs:element minOccurs="0" name="MarkupGroupId" nillable="true" type="st:AxdExtType_InventMarkupGroupId" />
+      <xs:element minOccurs="0" name="MarkupSecCur_RU" nillable="true" type="st:AxdExtType_InventPriceMarkupSecCur_RU" />
+      <xs:element minOccurs="0" name="MaximumRetailPrice_IN" nillable="true" type="st:AxdExtType_MaximumRetailPrice_IN" />
+      <xs:element minOccurs="0" name="MaxPriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="MinPriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="ModuleType" nillable="true" type="st:AxdEnum_ModuleInventPurchSales" />
+      <xs:element minOccurs="0" name="MultiLineDisc" nillable="true" type="st:AxdExtType_InventMultiLineDiscCode" />
+      <xs:element minOccurs="0" name="OverDeliveryPct" nillable="true" type="st:AxdExtType_OverDeliveryPct" />
+      <xs:element minOccurs="0" name="PcsPrice" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="PDSPricingPrecision" nillable="true" type="st:AxdExtType_PDSPricingPrecision" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="PriceDate" nillable="true" type="st:AxdExtType_PriceDate" />
+      <xs:element minOccurs="0" name="PriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="PriceQty" nillable="true" type="st:AxdExtType_PriceQty" />
+      <xs:element minOccurs="0" name="PriceSecCur_RU" nillable="true" type="st:AxdExtType_CostPriceSecCur_RU" />
+      <xs:element minOccurs="0" name="PriceUnit" nillable="true" type="st:AxdExtType_PriceUnit" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="SuppItemGroupId" nillable="true" type="st:AxdExtType_InventSuppItemGroupId" />
+      <xs:element minOccurs="0" name="TaxGSTReliefCategory_MY" nillable="true" type="st:AxdExtType_TaxGSTReliefCategoryId_MY" />
+      <xs:element minOccurs="0" name="TaxItemGroupId" nillable="true" type="st:AxdExtType_TaxItemGroup" />
+      <xs:element minOccurs="0" name="TaxItemGroupIdRent" nillable="true" type="st:AxdExtType_TaxItemGroup" />
+      <xs:element minOccurs="0" name="TaxWithholdCalculate_TH" nillable="true" type="st:AxdExtType_TaxWithholdCalculate_TH" />
+      <xs:element minOccurs="0" name="TaxWithholdItemGroupHeading_TH" nillable="true" type="st:AxdExtType_TaxWithholdItemGroup_TH" />
+      <xs:element minOccurs="0" name="UnderDeliveryPct" nillable="true" type="st:AxdExtType_UnderDeliveryPct" />
+      <xs:element minOccurs="0" name="UnitId" nillable="true" type="st:AxdExtType_UnitOfMeasureSymbol" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_Purch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllocateMarkup" nillable="true" type="st:AxdExtType_PriceAllocateMarkup" />
+      <xs:element minOccurs="0" name="EndDisc" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="ExcludeCashDiscount" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="InterCompanyBlocked" nillable="true" type="st:AxdExtType_InterCompanyBlocked" />
+      <xs:element minOccurs="1" name="ItemId" type="st:AxdExtType_ItemId" />
+      <xs:element minOccurs="0" name="LATARTaxItemGroupUseGoods" nillable="true" type="st:AxdExtType_LATARTaxItemGroupUseGoods" />
+      <xs:element minOccurs="0" name="LineDisc" nillable="true" type="st:AxdExtType_InventLineDiscCode" />
+      <xs:element minOccurs="0" name="Markup" nillable="true" type="st:AxdExtType_InventPriceMarkup" />
+      <xs:element minOccurs="0" name="MarkupGroupId" nillable="true" type="st:AxdExtType_InventMarkupGroupId" />
+      <xs:element minOccurs="0" name="MarkupSecCur_RU" nillable="true" type="st:AxdExtType_InventPriceMarkupSecCur_RU" />
+      <xs:element minOccurs="0" name="MaximumRetailPrice_IN" nillable="true" type="st:AxdExtType_MaximumRetailPrice_IN" />
+      <xs:element minOccurs="0" name="MaxPriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="MinPriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="ModuleType" nillable="true" type="st:AxdEnum_ModuleInventPurchSales" />
+      <xs:element minOccurs="0" name="MultiLineDisc" nillable="true" type="st:AxdExtType_InventMultiLineDiscCode" />
+      <xs:element minOccurs="0" name="OverDeliveryPct" nillable="true" type="st:AxdExtType_OverDeliveryPct" />
+      <xs:element minOccurs="0" name="PcsPrice" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="PDSPricingPrecision" nillable="true" type="st:AxdExtType_PDSPricingPrecision" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="PriceDate" nillable="true" type="st:AxdExtType_PriceDate" />
+      <xs:element minOccurs="0" name="PriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="PriceQty" nillable="true" type="st:AxdExtType_PriceQty" />
+      <xs:element minOccurs="0" name="PriceSecCur_RU" nillable="true" type="st:AxdExtType_CostPriceSecCur_RU" />
+      <xs:element minOccurs="0" name="PriceUnit" nillable="true" type="st:AxdExtType_PriceUnit" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="SuppItemGroupId" nillable="true" type="st:AxdExtType_InventSuppItemGroupId" />
+      <xs:element minOccurs="0" name="TaxGSTReliefCategory_MY" nillable="true" type="st:AxdExtType_TaxGSTReliefCategoryId_MY" />
+      <xs:element minOccurs="0" name="TaxItemGroupId" nillable="true" type="st:AxdExtType_TaxItemGroup" />
+      <xs:element minOccurs="0" name="TaxItemGroupIdRent" nillable="true" type="st:AxdExtType_TaxItemGroup" />
+      <xs:element minOccurs="0" name="TaxWithholdCalculate_TH" nillable="true" type="st:AxdExtType_TaxWithholdCalculate_TH" />
+      <xs:element minOccurs="0" name="TaxWithholdItemGroupHeading_TH" nillable="true" type="st:AxdExtType_TaxWithholdItemGroup_TH" />
+      <xs:element minOccurs="0" name="UnderDeliveryPct" nillable="true" type="st:AxdExtType_UnderDeliveryPct" />
+      <xs:element minOccurs="0" name="UnitId" nillable="true" type="st:AxdExtType_UnitOfMeasureSymbol" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_Sales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllocateMarkup" nillable="true" type="st:AxdExtType_PriceAllocateMarkup" />
+      <xs:element minOccurs="0" name="EndDisc" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="ExcludeCashDiscount" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="InterCompanyBlocked" nillable="true" type="st:AxdExtType_InterCompanyBlocked" />
+      <xs:element minOccurs="1" name="ItemId" type="st:AxdExtType_ItemId" />
+      <xs:element minOccurs="0" name="LATARTaxItemGroupUseGoods" nillable="true" type="st:AxdExtType_LATARTaxItemGroupUseGoods" />
+      <xs:element minOccurs="0" name="LineDisc" nillable="true" type="st:AxdExtType_InventLineDiscCode" />
+      <xs:element minOccurs="0" name="Markup" nillable="true" type="st:AxdExtType_InventPriceMarkup" />
+      <xs:element minOccurs="0" name="MarkupGroupId" nillable="true" type="st:AxdExtType_InventMarkupGroupId" />
+      <xs:element minOccurs="0" name="MarkupSecCur_RU" nillable="true" type="st:AxdExtType_InventPriceMarkupSecCur_RU" />
+      <xs:element minOccurs="0" name="MaximumRetailPrice_IN" nillable="true" type="st:AxdExtType_MaximumRetailPrice_IN" />
+      <xs:element minOccurs="0" name="MaxPriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="MinPriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="ModuleType" nillable="true" type="st:AxdEnum_ModuleInventPurchSales" />
+      <xs:element minOccurs="0" name="MultiLineDisc" nillable="true" type="st:AxdExtType_InventMultiLineDiscCode" />
+      <xs:element minOccurs="0" name="OverDeliveryPct" nillable="true" type="st:AxdExtType_OverDeliveryPct" />
+      <xs:element minOccurs="0" name="PcsPrice" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="PDSPricingPrecision" nillable="true" type="st:AxdExtType_PDSPricingPrecision" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="st:AxdExtType_Price" />
+      <xs:element minOccurs="0" name="PriceDate" nillable="true" type="st:AxdExtType_PriceDate" />
+      <xs:element minOccurs="0" name="PriceInclVAT" nillable="true" type="st:AxdExtType_RetailPriceInclVAT" />
+      <xs:element minOccurs="0" name="PriceQty" nillable="true" type="st:AxdExtType_PriceQty" />
+      <xs:element minOccurs="0" name="PriceSecCur_RU" nillable="true" type="st:AxdExtType_CostPriceSecCur_RU" />
+      <xs:element minOccurs="0" name="PriceUnit" nillable="true" type="st:AxdExtType_PriceUnit" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="SuppItemGroupId" nillable="true" type="st:AxdExtType_InventSuppItemGroupId" />
+      <xs:element minOccurs="0" name="TaxGSTReliefCategory_MY" nillable="true" type="st:AxdExtType_TaxGSTReliefCategoryId_MY" />
+      <xs:element minOccurs="0" name="TaxItemGroupId" nillable="true" type="st:AxdExtType_TaxItemGroup" />
+      <xs:element minOccurs="0" name="TaxItemGroupIdRent" nillable="true" type="st:AxdExtType_TaxItemGroup" />
+      <xs:element minOccurs="0" name="TaxWithholdCalculate_TH" nillable="true" type="st:AxdExtType_TaxWithholdCalculate_TH" />
+      <xs:element minOccurs="0" name="TaxWithholdItemGroupHeading_TH" nillable="true" type="st:AxdExtType_TaxWithholdItemGroup_TH" />
+      <xs:element minOccurs="0" name="UnderDeliveryPct" nillable="true" type="st:AxdExtType_UnderDeliveryPct" />
+      <xs:element minOccurs="0" name="UnitId" nillable="true" type="st:AxdExtType_UnitOfMeasureSymbol" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+</xs:schema>

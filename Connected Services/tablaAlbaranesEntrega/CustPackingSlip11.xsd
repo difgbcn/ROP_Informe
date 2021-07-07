@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/dynamics/2008/01/documents/CustPacking" xmlns:st="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/dynamics/2008/01/documents/CustPacking" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/CustPackingSlip?xsd=xsd6" namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" />
+  <xs:element name="CustPacking" type="tns:AxdCustPacking" />
+  <xs:complexType name="AxdCustPacking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClearNilFieldsOnUpdate" nillable="true" type="st:AxdEnum_boolean" />
+      <xs:element minOccurs="0" name="DocPurpose" nillable="true" type="st:AxdEnum_XMLDocPurpose" />
+      <xs:element minOccurs="0" name="SenderId" nillable="true" type="st:AxdExtType_DataAreaId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustPackingSlipTrans" type="tns:AxdEntity_CustPackingSlipTrans" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_CustPackingSlipTrans">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_DocumentHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="1" name="DeliveryDate" type="st:AxdExtType_SalesShippingDate" />
+      <xs:element minOccurs="0" name="InventQty" nillable="true" type="st:AxdExtType_InventQty" />
+      <xs:element minOccurs="0" name="InventTransId" nillable="true" type="st:AxdExtType_TradeInventTransId" />
+      <xs:element minOccurs="0" name="ItemId" nillable="true" type="st:AxdUnion_AxdExtType_ItemId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="ObraId" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="OrigSalesId" nillable="true" type="st:AxdExtType_SalesIdOrig" />
+      <xs:element minOccurs="1" name="PackingSlipId" type="st:AxdExtType_PackingSlipId" />
+      <xs:element minOccurs="0" name="Qty" nillable="true" type="st:AxdExtType_SalesQty" />
+      <xs:element minOccurs="0" name="SalesId" nillable="true" type="st:AxdExtType_SalesId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustPackingSlipJour" type="tns:AxdEntity_CustPackingSlipJour" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_CustPackingSlipJour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CostCenter" nillable="true" type="st:AxdExtType_CostCenter" />
+      <xs:element minOccurs="0" name="Delegation" nillable="true" type="st:AxdExtType_Delegation" />
+      <xs:element minOccurs="0" name="DeliveryDate" nillable="true" type="st:AxdExtType_SalesShippingDate" />
+      <xs:element minOccurs="0" name="PackingSlipId" nillable="true" type="st:AxdExtType_PackingSlipId" />
+      <xs:element minOccurs="1" name="SalesId" type="st:AxdExtType_SalesIdBase" />
+      <xs:element minOccurs="0" name="SalesType" nillable="true" type="st:AxdEnum_SalesType" />
+      <xs:element minOccurs="0" name="TipoAlquiler" nillable="true" type="st:AxdEnum_TiposAlquiler" />
+      <xs:element minOccurs="0" name="TipoVenta" nillable="true" type="st:AxdEnum_TiposVentas" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+</xs:schema>

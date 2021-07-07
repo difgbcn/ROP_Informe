@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9cad29a1-532d-4a1d-98a8-65c4a61c5d43" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AXAOS2012TEST.alsina.red:8101/DynamicsAx/Services/InventTransService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="InventTransService.xsd" MetadataType="Schema" ID="0245d5d8-5830-489d-9903-71b3b93c9bb7" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd3" />
+    <MetadataFile FileName="InventTransService1.xsd" MetadataType="Schema" ID="3fd2c90c-4877-4d0f-9197-908d4a8a048b" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd9" />
+    <MetadataFile FileName="InventTransService.wsdl" MetadataType="Wsdl" ID="7379bf0d-9d80-486c-8cb6-d59091110b50" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService" />
+    <MetadataFile FileName="InventTransService2.xsd" MetadataType="Schema" ID="38680b97-ec5b-49e2-90d4-bb31d9b102a4" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd7" />
+    <MetadataFile FileName="InventTransService3.xsd" MetadataType="Schema" ID="0604d1aa-ffeb-4594-873d-487c28745f71" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd5" />
+    <MetadataFile FileName="InventTransService4.xsd" MetadataType="Schema" ID="b56f6418-1aff-4e32-b1ea-2eaa0c8a8c46" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd10" />
+    <MetadataFile FileName="InventTransService5.xsd" MetadataType="Schema" ID="6793b889-f4a0-41ef-8d6a-9ad891f50680" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd11" />
+    <MetadataFile FileName="InventTransService6.xsd" MetadataType="Schema" ID="94a44a66-145b-46bd-a13f-a0125646c78c" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd1" />
+    <MetadataFile FileName="InventTransService7.xsd" MetadataType="Schema" ID="8daaa5a1-9727-496c-9483-9e741ea59e61" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd8" />
+    <MetadataFile FileName="InventTransService8.xsd" MetadataType="Schema" ID="0f2250be-4dad-439f-83e6-46774598b1ac" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd6" />
+    <MetadataFile FileName="InventTransService9.xsd" MetadataType="Schema" ID="32f9c95f-8385-4081-94f2-6788ab98c492" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd4" />
+    <MetadataFile FileName="InventTransService10.xsd" MetadataType="Schema" ID="7f44172d-f8e7-47bc-b543-80dc90130115" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd2" />
+    <MetadataFile FileName="InventTransService11.xsd" MetadataType="Schema" ID="9576eb5f-ab5e-4f97-8234-f4703c03275f" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd0" />
+    <MetadataFile FileName="InventTransService1.wsdl" MetadataType="Wsdl" ID="871e7a34-d721-4791-9efb-c6fad3b23320" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/InventTransService?wsdl=wsdl0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

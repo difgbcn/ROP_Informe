@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/dynamics/2008/01/documents/Obras" xmlns:st="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Obras" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd6" namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" />
+  <xs:element name="Obras" type="tns:AxdObras" />
+  <xs:complexType name="AxdObras">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClearNilFieldsOnUpdate" nillable="true" type="st:AxdEnum_boolean" />
+      <xs:element minOccurs="0" name="DocPurpose" nillable="true" type="st:AxdEnum_XMLDocPurpose" />
+      <xs:element minOccurs="0" name="SenderId" nillable="true" type="st:AxdExtType_DataAreaId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ObraTable_1" type="tns:AxdEntity_ObraTable_1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_ObraTable_1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_DocumentHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AprvCierre" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="AprvSPA" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="BankAccount" nillable="true" type="st:AxdExtType_CustBankAccountId" />
+      <xs:element minOccurs="0" name="BasisDate" nillable="true" type="xs:date" />
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="st:AxdExtType_BusinessUnit" />
+      <xs:element minOccurs="0" name="ContactPersonId" nillable="true" type="st:AxdExtType_ContactPersonId" />
+      <xs:element minOccurs="0" name="ContactPersonIdObra" nillable="true" type="st:AxdExtType_ContactPersonId" />
+      <xs:element minOccurs="0" name="CreatedDateTime" nillable="true" type="st:AxdExtType_CreatedDateTime" />
+      <xs:element minOccurs="0" name="CreditMaxMST" nillable="true" type="st:AxdExtType_CreditMaxMST" />
+      <xs:element minOccurs="1" name="CurrencyCode" type="st:AxdUnion_AxdExtType_CurrencyCode_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="1" name="CustAccount" type="st:AxdUnion_AxdExtType_CustAccount_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="CustName" nillable="true" type="st:AxdExtType_CustName" />
+      <xs:element minOccurs="0" name="DistanciaKm" nillable="true" type="st:AxdType_Decimal" />
+      <xs:element minOccurs="1" name="DuracionObra" type="st:AxdExtType_DuracionObra" />
+      <xs:element minOccurs="0" name="EInvoiceProponentAgency" nillable="true" type="st:AxdExtType_EInvoiceProponentAgency" />
+      <xs:element minOccurs="0" name="EmailSII" nillable="true" type="st:AxdExtType_Email" />
+      <xs:element minOccurs="0" name="ExpensesDT" nillable="true" type="st:AxdExtType_Amount" />
+      <xs:element minOccurs="1" name="FechaApertura" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="FechaCierre" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="GestionPorte" nillable="true" type="st:AxdEnum_GestionPorte" />
+      <xs:element minOccurs="0" name="Grua" nillable="true" type="st:AxdExtType_Grua" />
+      <xs:element minOccurs="0" name="InventLocationId" nillable="true" type="st:AxdExtType_InventLocationId" />
+      <xs:element minOccurs="0" name="InvoiceAmountMST" nillable="true" type="st:AxdExtType_AmountMST" />
+      <xs:element minOccurs="0" name="InvoicedaySales" nillable="true" type="st:AxdExtType_InvoiceDaysId" />
+      <xs:element minOccurs="0" name="InvoiceDaysAlquiler" nillable="true" type="st:AxdExtType_InvoiceDaysId" />
+      <xs:element minOccurs="0" name="InvoiceTipeSales" nillable="true" type="st:AxdEnum_InvoicingType" />
+      <xs:element minOccurs="0" name="InvoiceTypeAlquiler" nillable="true" type="st:AxdEnum_InvoicingType" />
+      <xs:element minOccurs="1" name="MasterObrasId" type="st:AxdExtType_MasterObrasId" />
+      <xs:element minOccurs="0" name="MaxInvoiceDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="MinDeliveryDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="NoPaymDayId" nillable="true" type="st:AxdExtType_CustNoPaymDayId" />
+      <xs:element minOccurs="1" name="ObraId" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="ObraRef" nillable="true" type="st:AxdExtType_ObraRef" />
+      <xs:element minOccurs="0" name="ObraStatus" nillable="true" type="st:AxdEnum_ObraStatus" />
+      <xs:element minOccurs="0" name="ObraStatusDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="OriginId" nillable="true" type="st:AxdExtType_OriginId" />
+      <xs:element minOccurs="0" name="Party" nillable="true" type="st:AxdExtType_DirPartyNumber" />
+      <xs:element minOccurs="0" name="PaymBankAccountId" nillable="true" type="st:AxdExtType_CompanyBankAccountId" />
+      <xs:element minOccurs="0" name="PaymDayId" nillable="true" type="st:AxdExtType_CustPaymDayId" />
+      <xs:element minOccurs="0" name="PaymMode" nillable="true" type="st:AxdExtType_CustPaymMode" />
+      <xs:element minOccurs="0" name="PaymSched" nillable="true" type="st:AxdExtType_PaymSchedId" />
+      <xs:element minOccurs="0" name="PaymSpec" nillable="true" type="st:AxdExtType_PaymSpec" />
+      <xs:element minOccurs="0" name="PaymTermId" nillable="true" type="st:AxdExtType_CustPaymTermId" />
+      <xs:element minOccurs="0" name="PctCleaningMaterial" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="PeriodoFacturacionObraId" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="PortsAmountMST" nillable="true" type="st:AxdExtType_AmountMST" />
+      <xs:element minOccurs="0" name="QuotationId" nillable="true" type="st:AxdExtType_QuotationId" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="ReferenciaClienteProducto" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="RentInvoicePrintType" nillable="true" type="st:AxdEnum_RentInvoicePrintType" />
+      <xs:element minOccurs="0" name="ResponsibleObraReceipt" nillable="true" type="st:AxdExtType_ContactPersonId" />
+      <xs:element minOccurs="0" name="SalesBalanceMST" nillable="true" type="st:AxdType_Decimal" />
+      <xs:element minOccurs="0" name="SalesResponsible" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="SecSubTipoObraId" nillable="true" type="st:AxdExtType_SecSubTipoObraId" />
+      <xs:element minOccurs="0" name="SubTipoObraId" nillable="true" type="st:AxdExtType_SubTipoObraId" />
+      <xs:element minOccurs="0" name="TaxGroup" nillable="true" type="st:AxdExtType_TaxGroup" />
+      <xs:element minOccurs="0" name="TecnicoAsociadoComercial" nillable="true" type="st:AxdExtType_ComercialTecnico" />
+      <xs:element minOccurs="1" name="TipoAlquiler" type="st:AxdExtType_TipoAlquiler" />
+      <xs:element minOccurs="0" name="TipoObraId" nillable="true" type="st:AxdExtType_TipoObraId" />
+      <xs:element minOccurs="0" name="TipoPorte" nillable="true" type="st:AxdEnum_TipoPorte" />
+      <xs:element minOccurs="0" name="TipoTransId" nillable="true" type="st:AxdExtType_TipoTransId" />
+      <xs:element minOccurs="0" name="Toneladas" nillable="true" type="st:AxdExtType_Toneladas" />
+      <xs:element minOccurs="0" name="TransportBreakdown" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="Turnkey" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="UVIId" nillable="true" type="st:AxdExtType_UVIId" />
+      <xs:element minOccurs="0" name="ValueOfNewDlvMaterialObra" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="ValueOfNewDlvMaterialObraToStandardP" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjTable_1" type="tns:AxdEntity_ProjTable_1" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_ProjTable_1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlternateBudgetProject" nillable="true" type="st:AxdExtType_ProjId" />
+      <xs:element minOccurs="0" name="AssetId" nillable="true" type="st:AxdExtType_AssetId" />
+      <xs:element minOccurs="0" name="BankDocumentType" nillable="true" type="st:AxdEnum_BankLGDocumentType" />
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="st:AxdExtType_BusinessUnit" />
+      <xs:element minOccurs="0" name="CertifiedPayroll" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="CheckBudget" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="CompleteScheduled" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="ContactPersonId" nillable="true" type="st:AxdExtType_ContactPersonId" />
+      <xs:element minOccurs="0" name="ContactPersonIdObra" nillable="true" type="st:AxdExtType_ContactPersonId" />
+      <xs:element minOccurs="0" name="ContractAmendment_SA" nillable="true" type="st:AxdExtType_AmountCur" />
+      <xs:element minOccurs="0" name="ContractDate_SA" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="ContractPeriod_SA" nillable="true" type="st:AxdExtType_ProjContractPeriodZakat_SA" />
+      <xs:element minOccurs="0" name="ContractValue_SA" nillable="true" type="st:AxdExtType_AmountCur" />
+      <xs:element minOccurs="0" name="CostCenter" nillable="true" type="st:AxdExtType_CostCenter" />
+      <xs:element minOccurs="0" name="Created" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="CreatedDateTime" nillable="true" type="st:AxdExtType_CreatedDateTime" />
+      <xs:element minOccurs="0" name="CustAccount" nillable="true" type="st:AxdUnion_AxdExtType_CustAccount_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="Delegation" nillable="true" type="st:AxdExtType_Delegation" />
+      <xs:element minOccurs="0" name="DeliveryLocation" nillable="true" type="st:AxdExtType_LogisticsLocationId" />
+      <xs:element minOccurs="0" name="DlvName" nillable="true" type="st:AxdExtType_CompanyName" />
+      <xs:element minOccurs="0" name="DuracionObra" nillable="true" type="st:AxdExtType_DuracionObra" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="st:AxdExtType_Email" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="st:AxdExtType_ProjEndDate" />
+      <xs:element minOccurs="0" name="ExtensionDate" nillable="true" type="st:AxdExtType_ProjExtensionDate" />
+      <xs:element minOccurs="0" name="Format" nillable="true" type="st:AxdExtType_NumberSequenceFormat" />
+      <xs:element minOccurs="0" name="Header" nillable="true" type="st:AxdExtType_ProjHeader" />
+      <xs:element minOccurs="0" name="JobId" nillable="true" type="st:AxdExtType_JmgJobId" />
+      <xs:element minOccurs="0" name="JobPayType" nillable="true" type="st:AxdExtType_JmgJobPayType" />
+      <xs:element minOccurs="0" name="LATPECustGoodServiceTypes" nillable="true" type="st:AxdExtType_LATPECustVendGoodServiceTypeId" />
+      <xs:element minOccurs="0" name="LATPECustIssuePoints" nillable="true" type="st:AxdExtType_LATPECustVendIssuePointId" />
+      <xs:element minOccurs="0" name="LATPECustOperationTypes" nillable="true" type="st:AxdExtType_LATPECustVendOperationTypeId" />
+      <xs:element minOccurs="0" name="LATPECustSUNATDocumentTypes" nillable="true" type="st:AxdExtType_LATPECustVendSUNATDocumentTypeId" />
+      <xs:element minOccurs="0" name="LATPEDocumentSeries" nillable="true" type="st:AxdExtType_LATPEDocumentSeries" />
+      <xs:element minOccurs="0" name="MasterObrasId" nillable="true" type="st:AxdExtType_MasterObrasId" />
+      <xs:element minOccurs="0" name="MinTimeIncrement" nillable="true" type="st:AxdExtType_TSMinTimeIncrement" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="st:AxdExtType_ProjName" />
+      <xs:element minOccurs="0" name="ObraId" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="ObraIdLookup" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="OCIP" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="OCIPGL" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="ParentId" nillable="true" type="st:AxdExtType_ProjParentId" />
+      <xs:element minOccurs="0" name="ProjBudgetaryControlOn" nillable="true" type="st:AxdEnum_ProjBudgetaryControlOn" />
+      <xs:element minOccurs="0" name="ProjBudgetInterval" nillable="true" type="st:AxdEnum_ProjBudgetInterval" />
+      <xs:element minOccurs="0" name="ProjBudgetManagement" nillable="true" type="st:AxdEnum_ProjBudgetManagement" />
+      <xs:element minOccurs="0" name="ProjBudgetOverrunOption" nillable="true" type="st:AxdEnum_ProjBudgetOverrunOption" />
+      <xs:element minOccurs="0" name="ProjCarryForwardNegativeBudget" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="ProjCarryForwardRemainingBudget" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="ProjectedEndDate" nillable="true" type="st:AxdExtType_ProjProjectedEndDate" />
+      <xs:element minOccurs="0" name="ProjectedStartDate" nillable="true" type="st:AxdExtType_ProjProjectedStartDate" />
+      <xs:element minOccurs="0" name="ProjGroupId" nillable="true" type="st:AxdExtType_ProjGroupId" />
+      <xs:element minOccurs="1" name="ProjId" type="st:AxdExtType_ProjId" />
+      <xs:element minOccurs="0" name="ProjInvoiceProjId" nillable="true" type="st:AxdExtType_ProjInvoiceProjId" />
+      <xs:element minOccurs="0" name="ProjLedgerPosting" nillable="true" type="st:AxdEnum_ProjLedgerPosting" />
+      <xs:element minOccurs="0" name="ProjLinePropertySearch" nillable="true" type="st:AxdEnum_ProjLinePropertySearch" />
+      <xs:element minOccurs="0" name="ProjPreSaleObra" nillable="true" type="st:AxdEnum_ProjPreSaleObra" />
+      <xs:element minOccurs="0" name="ProjPriceGroup" nillable="true" type="st:AxdExtType_ProjPriceGroupID" />
+      <xs:element minOccurs="0" name="PSADoInvoiceCost" nillable="true" type="st:AxdExtType_PSADoInvoiceCost" />
+      <xs:element minOccurs="0" name="PSAForecastModelId" nillable="true" type="st:AxdExtType_ForecastModelId" />
+      <xs:element minOccurs="0" name="PSAForecastModelIdExternal" nillable="true" type="st:AxdExtType_ForecastModelId" />
+      <xs:element minOccurs="0" name="PSAInvoiceMethod" nillable="true" type="st:AxdEnum_PSAInvoiceMethod" />
+      <xs:element minOccurs="0" name="PSANotes" nillable="true" type="st:AxdExtType_Notes" />
+      <xs:element minOccurs="0" name="PSAPhone" nillable="true" type="st:AxdExtType_Phone" />
+      <xs:element minOccurs="0" name="PSAPReqControl" nillable="true" type="st:AxdEnum_PSAPReqControl" />
+      <xs:element minOccurs="0" name="PSAPReqHourValidate" nillable="true" type="st:AxdEnum_PSAPReqValidate" />
+      <xs:element minOccurs="0" name="PSAPReqItemValidate" nillable="true" type="st:AxdEnum_PSAPReqValidate" />
+      <xs:element minOccurs="0" name="PSAProjStatus" nillable="true" type="st:AxdEnum_PSAProjStatus" />
+      <xs:element minOccurs="0" name="PSAProjTask" nillable="true" type="st:AxdEnum_PSAProjTask" />
+      <xs:element minOccurs="0" name="PSAReadyForInvoicing" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="PSAResSchedStatus" nillable="true" type="st:AxdEnum_PSAResSchedStatus" />
+      <xs:element minOccurs="0" name="PSARetainIncludeLower" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="PSARetainPercent" nillable="true" type="st:AxdExtType_Percent" />
+      <xs:element minOccurs="0" name="PSARetainScheduleId" nillable="true" type="st:AxdExtType_PSAProjRetainScheduleId" />
+      <xs:element minOccurs="0" name="PSASchedCalendarId" nillable="true" type="st:AxdExtType_CalendarId" />
+      <xs:element minOccurs="0" name="PSASchedConstraintDate" nillable="true" type="st:AxdExtType_PSAConstraintDate" />
+      <xs:element minOccurs="0" name="PSASchedConstraintType" nillable="true" type="st:AxdEnum_PSAConstraintType" />
+      <xs:element minOccurs="0" name="PSASchedDefaultDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="PSASchedDuration" nillable="true" type="st:AxdExtType_RealBase" />
+      <xs:element minOccurs="0" name="PSASchedEffort" nillable="true" type="st:AxdExtType_Hours" />
+      <xs:element minOccurs="0" name="PSASchedEndDate" nillable="true" type="st:AxdExtType_SchedToDate" />
+      <xs:element minOccurs="0" name="PSASchedFromTime" nillable="true" type="st:AxdExtType_SchedFromTime" />
+      <xs:element minOccurs="0" name="PSASchedIgnoreCalendar" nillable="true" type="st:AxdExtType_PSAIgnoreCalendar" />
+      <xs:element minOccurs="0" name="PSASchedMilestone" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="PSASchedScheduled" nillable="true" type="st:AxdEnum_PSAScheduled" />
+      <xs:element minOccurs="0" name="PSASchedStartDate" nillable="true" type="st:AxdExtType_SchedFromDate" />
+      <xs:element minOccurs="0" name="PSASchedToTime" nillable="true" type="st:AxdExtType_SchedToTime" />
+      <xs:element minOccurs="0" name="PSASchedUseDuration" nillable="true" type="st:AxdExtType_PSADurationToEnd" />
+      <xs:element minOccurs="0" name="PSATeleFax" nillable="true" type="st:AxdExtType_TeleFax" />
+      <xs:element minOccurs="0" name="PSATimeMeasure" nillable="true" type="st:AxdEnum_PSAProjTimeMeasure" />
+      <xs:element minOccurs="0" name="PSATrackCost" nillable="true" type="st:AxdEnum_PSAProjTrackCost" />
+      <xs:element minOccurs="0" name="PSAUnitId" nillable="true" type="st:AxdUnion_AxdExtType_UnitOfMeasureSymbol_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="RequireActivityExpenseForecast" nillable="true" type="st:AxdExtType_RequireActivityExpenseForecast" />
+      <xs:element minOccurs="0" name="RequireActivityExpenseTrx" nillable="true" type="st:AxdExtType_RequireActivityExpenseTrx" />
+      <xs:element minOccurs="0" name="RequireActivityHourForecast" nillable="true" type="st:AxdExtType_RequireActivityHourForecast" />
+      <xs:element minOccurs="0" name="RequireActivityHourTrx" nillable="true" type="st:AxdExtType_RequireActivityHourTrx" />
+      <xs:element minOccurs="0" name="RequireActivityItemForecast" nillable="true" type="st:AxdExtType_RequireActivityItemForecast" />
+      <xs:element minOccurs="0" name="RequireActivityItemTrx" nillable="true" type="st:AxdExtType_RequireActivityItemTrx" />
+      <xs:element minOccurs="0" name="SortingId" nillable="true" type="tns:AxdArray_AxdExtType_ProjSortingId" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="st:AxdExtType_ProjStartDate" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="st:AxdEnum_ProjStatus" />
+      <xs:element minOccurs="0" name="Subject_SA" nillable="true" type="st:AxdExtType_ProjSubjectZakat_SA" />
+      <xs:element minOccurs="0" name="SyncCreatedByExternal" nillable="true" type="st:AxdExtType_SyncCreatedByExternal" />
+      <xs:element minOccurs="0" name="SyncEntityId" nillable="true" type="st:AxdExtType_SyncEntityId" />
+      <xs:element minOccurs="0" name="SyncLastTransId" nillable="true" type="st:AxdExtType_SyncTransId" />
+      <xs:element minOccurs="1" name="SyncToCRM" type="st:AxdExtType_ProjSyncToCRM" />
+      <xs:element minOccurs="0" name="SyncVersion" nillable="true" type="st:AxdExtType_SyncVersion" />
+      <xs:element minOccurs="0" name="TaxGroupId" nillable="true" type="st:AxdExtType_TaxGroup" />
+      <xs:element minOccurs="0" name="Template" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="TipoAlquiler" nillable="true" type="st:AxdExtType_TipoAlquiler" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="st:AxdEnum_ProjType" />
+      <xs:element minOccurs="0" name="UseAlternateProject" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="UseBudgeting" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="ValidateProjCategory" nillable="true" type="st:AxdExtType_ProjValidateOption" />
+      <xs:element minOccurs="0" name="WIPProject" nillable="true" type="st:AxdExtType_ProjWipId" />
+      <xs:element minOccurs="0" name="WorkerPSAArchitect" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="WorkerResponsible" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="WorkerResponsibleFinancial" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="WorkerResponsibleSales" nillable="true" type="st:AxdExtType_HcmPersonnelNumberId" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdArray_AxdExtType_ProjSortingId">
+    <xs:annotation>
+      <xs:documentation xml:lang="ES">Campo de ordenación 1:Campo alternativo de ordenación de informes para el proyecto
+Campo de ordenación 2:Campo alternativo de ordenación de informes para el proyecto
+Campo de ordenación 3:Campo alternativo de ordenación de informes para el proyecto</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="3" maxOccurs="3" name="element" type="st:AxdExtType_ProjSortingId" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
