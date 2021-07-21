@@ -89,7 +89,8 @@
              <tr>
                  <th data-field="Concepto">Concepto</th>
                  <th data-field="Importe" data-align="right">Importe</th>
-                 <th data-field="%" data-align="right">%</th>
+                 <th data-field="%%" data-align="right">%</th>
+                 <%--<th data-field="%" data-align="right">%</th>--%>
              </tr>
          </thead>
      </table>
@@ -235,7 +236,7 @@
        <%-- function ponerSpinnerExcel() {
             if (flg) {
                 try {
-                    var btn = $("#<%=btnExcel.ClientID%>");
+                    var btn = $("#<=btnExcel.ClientID%>");
                      btn.html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Generando');//.addClass('disabled');
                      btn.prop("disabled", true);
                      flg = false;

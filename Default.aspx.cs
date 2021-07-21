@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Dynamic;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
@@ -130,8 +132,8 @@ namespace ROP_Informe
         decimal porcentajeCosteBonificacionTaximetroConsumible = 0;
         decimal importeCosteVenta = 0;
         decimal porcentajeCosteVenta = 0;
-        decimal importeCosteMPO= 0;
-        decimal porcentajeCosteMPO= 0;
+        decimal importeCosteMPO = 0;
+        decimal porcentajeCosteMPO = 0;
         decimal importeCostePorte = 0;
         decimal porcentajeCostePorte = 0;
 
@@ -203,7 +205,7 @@ namespace ROP_Informe
         List<decimal> dec_importeGastosFijosCentralesVentaCapitulos = new List<decimal>();
 
         decimal dec_importeCosteMPOMixto = 0;
-        decimal dec_importeCosteMPONuevo= 0;
+        decimal dec_importeCosteMPONuevo = 0;
         decimal dec_importeCosteMPOUsado = 0;
 
         string strHijoFacturacionAlquiler = "";
@@ -216,7 +218,7 @@ namespace ROP_Informe
         string strHijoCosteBonificacionTaximetroConsumible = "";
 
         string strHijoCosteVenta = "";
-        string strHijoCosteMPO= "";
+        string strHijoCosteMPO = "";
         string strHijoCostePorte = "";
         string strHijoMargenAlquiler = "";
         string strHijoMargenVenta = "";
@@ -234,255 +236,606 @@ namespace ROP_Informe
         string strHijoROPBasicoAlquiler = "";
         string strHijoROPBasicoVenta = "";
 
+        //public string inicioJson = "[";
+        //public string finJson = "]";
+        //public string inicioCabecera = "{";
+        //public string finCabecera = "}";
+        //public string cabecera =  "  \"Concepto\": \"__CAPITULO__\"," +
+        //                          "  \"Importe\": \"__importeCapitulo__\"," +
+        //                          "  \"%\": \"__porcentajeCapitulo__\"," +
+        //                          "  \"colorEncabezado\": \"__color__\",";
 
-        public string inicioHijo = "           ,\"hijo\": [";
-        public string finHijo = "           ]";
+        ////public string inicioHijo = "           ,\"hijo\": [";
+        ////public string finHijo = "           ]";
+        //public string inicioHijo = "\"hijo\": [";
+        //public string finHijo = "]";
+
+        //public string primerHijo = "           {" +
+        //   "               \"Concepto\": \"__CAPITULO__\"," +
+        //   "               \"Importe\": \"__importeCapitulo__\"," +
+        //   "               \"%\": \"__porcentajeCapitulo__\"" +
+        //   "           }";
+        //public string siguienteHijo = "           ,{" +
+        //   "               \"Concepto\": \"__CAPITULO__\"," +
+        //   "               \"Importe\": \"__importeCapitulo__\"," +
+        //   "               \"%\": \"__porcentajeCapitulo__\"" +
+        //   "           }";
+
+
+        //public string baseDatosJson = "[" +
+        //   "   {" +
+        //   "       \"Concepto\": \"FACTURACIÓN\"," +
+        //   "       \"Importe\": \"__importeFacturacion__\"," +
+        //   "       \"%\": \"__porcentajeFacturacion__\"," +
+        //   "       \"colorEncabezado\": \"#044bc9\"," +
+        //   "       \"hijo\": [" +
+        //   "       {" +
+        //   "           \"Concepto\": \"ALQUILERES\"," +
+        //   "           \"Importe\": \"__importeAlquiler__\"," +
+        //   "           \"%\": \"__porcentajeAlquiler__\"," +
+        //   "           \"colorEncabezado\": \"#4886f4\"" +
+        //   "           __HIJO_FACTURACION_ALQUILERES__" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"VENTAS\"," +
+        //   "           \"Importe\": \"__importeVenta__\"," +
+        //   "           \"%\": \"__porcentajeVenta__\"," +
+        //   "           \"colorEncabezado\": \"#4886f4\"," +
+        //   "           \"hijo\": [" +
+        //   "           {" +
+        //   "               \"Concepto\": \"PRODUCTOS\"," +
+        //   "               \"Importe\": \"__importeProducto__\"," +
+        //   "               \"%\": \"__porcentajeProducto__\"," +
+        //   "               \"colorEncabezado\": \"#b6cdf7\"," +
+        //   "               \"hijo\": [" +
+        //   "               {" +
+        //   "                   \"Concepto\": \"VENTAS DIRECTAS\"," +
+        //   "                   \"Importe\": \"__importeVentasDirectas__\"," +
+        //   "                   \"%\": \"__porcentajeVentasDirectas__\"," +
+        //   "                   \"colorEncabezado\": \"#d3e1f9\"" +
+        //   "                   __HIJO_FACTURACION_VENTAS_DIRECTAS__" +
+        //   "               }," +
+        //   "               {" +
+        //   "                   \"Concepto\": \"VENTAS MATERIAL ALQUILADO\"," +
+        //   "                   \"Importe\": \"__importeVentasMaterialAlquilado__\"," +
+        //   "                   \"%\": \"__porcentajeVentasMaterialAlquilado__\"," +
+        //   "                   \"colorEncabezado\": \"#d3e1f9\"," +
+        //   "                   \"hijo\": [" +
+        //   "                   {" +
+        //   "                        \"Concepto\": \"VENTAS\"," +
+        //   "                        \"Importe\": \"__importeVentasMaterialAlquiladoVentas__\"," +
+        //   "                        \"%\": \"__porcentajeVentasMaterialAlquiladoVentas__\"," +
+        //   "                        \"colorEncabezado\": \"#eaf1fb\"" +
+        //   "                        __HIJO_FACTURACION_VENTAS_MATERIAL_ALQUILADO_VENTAS__" +
+        //   "                    }," +
+        //   "                    {" +
+        //   "                        \"Concepto\": \"LIQUIDACIONES\"," +
+        //   "                        \"Importe\": \"__importeVentasMaterialAlquiladoLiquidaciones__\"," +
+        //   "                        \"%\": \"__porcentajeVentasMaterialAlquiladoLiquidaciones__\"," +
+        //   "                        \"colorEncabezado\": \"#eaf1fb\"," +
+        //   "                        __HIJO_FACTURACION_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES__" +
+        //   "                    }" +
+        //   "                    ]" +
+        //   "               }" +
+        //   "               ]" +
+        //   "           }," +
+        //   "           {" +
+        //   "               \"Concepto\": \"SERVICIOS\"," +
+        //   "               \"Importe\": \"__importeServicio__\"," +
+        //   "               \"%\": \"__porcentajeServicio__\"," +
+        //   "               \"colorEncabezado\": \"#b6cdf7\"," +
+        //  "                \"hijo\": [" +
+        //   "               {" +
+        //   "                   \"Concepto\": \"MONTAJES\"," +
+        //   "                   \"Importe\": \"__importeServicioMontaje__\"," +
+        //   "                   \"%\": \"__porcentajeServicioMontaje__\"," +
+        //   "                   \"colorEncabezado\": \"#d3e1f9\"" +
+        //   "                   __HIJO_FACTURACION_SERVICIOS_MONTAJES__" +
+        //   "               }," +
+        //   "               {" +
+        //   "                   \"Concepto\": \"DEPARTAMENTO TECNICO\"," +
+        //   "                   \"Importe\": \"__importeServicioDepartamentoTecnico__\"," +
+        //   "                   \"%\": \"__porcentajeServicioDepartamentoTecnico__\"," +
+        //   "                   \"colorEncabezado\": \"#d3e1f9\"" +
+        //   "                   __HIJO_FACTURACION_SERVICIOS_DEPARTAMENTO_TECNICO__" +
+        //   "               }," +
+        //   "               {" +
+        //   "                   \"Concepto\": \"FENOLICO NUEVO\"," +
+        //   "                   \"Importe\": \"__importeServicioFenolicoNuevo__\"," +
+        //   "                   \"%\": \"__porcentajeServicioFenolicoNuevo__\"," +
+        //   "                   \"colorEncabezado\": \"#d3e1f9\"" +
+        //   "                   __HIJO_FACTURACION_SERVICIOS_FENOLICO_NUEVO__" +
+        //   "               }," +
+        //   "               {" +
+        //   "                   \"Concepto\": \"UNE/CIF\"," +
+        //   "                   \"Importe\": \"__importeServicioUNECIF__\"," +
+        //   "                   \"%\": \"__porcentajeServicioUNECIF__\"," +
+        //   "                   \"colorEncabezado\": \"#d3e1f9\"" +
+        //   "                   __HIJO_FACTURACION_SERVICIOS_UNECIF__" +
+        //   "               }" +
+        //   "               ]" +
+        //   "           }" +
+        //   "           ]" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"PORTES\"," +
+        //   "           \"Importe\": \"__importePorte__\"," +
+        //   "           \"%\": \"__porcentajePorte__\"," +
+        //   "           \"colorEncabezado\": \"#1edccb\"" +
+        //   "           __HIJO_FACTURACION_PORTES__" +
+        //   "       }" +
+        //   "       ]" +
+        //   "   }," +
+        //   "   {" +
+        //   "       \"Concepto\": \"COSTE\"," +
+        //   "       \"Importe\": \"__importeCoste__\"," +
+        //   "       \"%\": \"__porcentajeCoste__\"," +
+        //   "       \"colorEncabezado\": \"#d61e08\"," +
+        //   "       \"hijo\": [" +
+        //   "       {" +
+        //   "           \"Concepto\": \"TAXÍMETROS\"," +
+        //   "           \"Importe\": \"__importeTaximetros__\"," +
+        //   "           \"%\": \"__porcentajeTaximetros__\"," +
+        //   "           \"colorEncabezado\": \"#fc3e27\"," +
+        //   "           \"hijo\": [" +
+        //   "           {" +
+        //   "               \"Concepto\": \"TAXÍMETRO NO CONSUMIBLE\"," +
+        //   "               \"Importe\": \"__importeTaximetroNoConsumible__\"," +
+        //   "               \"%\": \"__porcentajeTaximetroNoConsumible__\"," +
+        //   "               \"colorEncabezado\": \"#1edccb\"" +
+        //   "               __HIJO_COSTE_TAXIMETRO_NO_CONSUMIBLE__" +
+        //   "           }," +
+        //   "           {" +
+        //   "               \"Concepto\": \"TOTAL TAXÍMETRO CONSUMIBLE\"," +
+        //   "               \"Importe\": \"__importeTotalTaximetroConsumible__\"," +
+        //   "               \"%\": \"__porcentajeTotalTaximetroConsumible__\"," +
+        //   "               \"colorEncabezado\": \"#b081b2\"," +
+        //   "               \"hijo\": [" +
+        //   "               {" +
+        //   "                   \"Concepto\": \"TAXÍMETRO CONSUMIBLE\"," +
+        //   "                   \"Importe\": \"__importeTaximetroConsumible__\"," +
+        //   "                   \"%\": \"__porcentajeTaximetroConsumible__\"," +
+        //   "                   \"colorEncabezado\": \"#e4abe7\"" +
+        //   "                   __HIJO_COSTE_TAXIMETRO_CONSUMIBLE__" +
+        //   "               }," +
+        //   "               {" +
+        //   "                   \"Concepto\": \"AJUSTE TAXÍMETRO CONSUMIBLE\"," +
+        //   "                   \"Importe\": \"__importeTaximetroBonificacionConsumible__\"," +
+        //   "                   \"%\": \"__porcentajeTaximetroBonificacionConsumible__\"," +
+        //   "                   \"colorEncabezado\": \"#f9bcfc\"" +
+        //   "                   __HIJO_COSTE_TAXIMETRO_BONIFICACION_CONSUMIBLE__" +
+        //   "               }" +
+        //   "               ]" +
+        //   "           }" +
+        //   "           ]" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"MPO\"," +
+        //   "           \"Importe\": \"__importeCosteMPO__\"," +
+        //   "           \"%\": \"__porcentajeCosteMPO__\"," +
+        //   "           \"colorEncabezado\": \"#fc9589\"" +
+        //   "           __HIJO_COSTE_MPO__" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"VENTAS\"," +
+        //   "           \"Importe\": \"__importeCosteVenta__\"," +
+        //   "           \"%\": \"__porcentajeCosteVenta__\"," +
+        //   "           \"colorEncabezado\": \"#fc9589\"" +
+        //   "           __HIJO_COSTE_VENTAS__" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"PORTES\"," +
+        //   "           \"Importe\": \"__importeCostePorte__\"," +
+        //   "           \"%\": \"__porcentajeCostePorte__\"," +
+        //   "           \"colorEncabezado\": \"#fc9589\"" +
+        //   "           __HIJO_COSTE_PORTES__" +
+        //   "       }" +
+        //   "       ]" +
+        //   "   }," +
+        //   "   {" +
+        //   "       \"Concepto\": \"MARGEN\"," +
+        //   "       \"Importe\": \"__importeMargen__\"," +
+        //   "       \"%\": \"__porcentajeMargen__\"," +
+        //   "       \"colorEncabezado\": \"#09a723\"," +
+        //   "       \"hijo\": [" +
+        //   "       {" +
+        //   "           \"Concepto\": \"ALQUILERES\"," +
+        //   "           \"Importe\": \"__importeMargenAlquiler__\"," +
+        //   "           \"%\": \"__porcentajeMargenAlquiler__\"," +
+        //   "           \"colorEncabezado\": \"#bdfdae\"" +
+        //   "           __HIJO_MARGEN_ALQUILERES__" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"VENTAS\"," +
+        //   "           \"Importe\": \"__importeMargenVenta__\"," +
+        //   "           \"%\": \"__porcentajeMargenVenta__\"," +
+        //   "           \"colorEncabezado\": \"#7aed8e\"" +
+        //   "           __HIJO_MARGEN_VENTAS__" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"PORTES\"," +
+        //   "           \"Importe\": \"__importeMargenPorte__\"," +
+        //   "           \"%\": \"__porcentajeMargenPorte__\"," +
+        //   "           \"colorEncabezado\": \"#7aed8e\"" +
+        //   "           __HIJO_MARGEN_PORTES__" +
+        //   "       }" +
+        //   "       ]" +
+        //   "   }," +
+        //   "   {" +
+        //   "       \"Concepto\": \"GASTOS VARIABLES\"," +
+        //   "       \"Importe\": \"__importeGastoVariable__\"," +
+        //   "       \"%\": \"__porcentajeGastoVariable__\"," +
+        //   "       \"colorEncabezado\": \"#ff9f33\"," +
+        //   "       \"hijo\": [" +
+        //   "       {" +
+        //   "           \"Concepto\": \"ALQUILERES\"," +
+        //   "           \"Importe\": \"__importeGastoVariableAlquiler__\"," +
+        //   "           \"%\": \"__porcentajeGastoVariableAlquiler__\"," +
+        //   "           \"colorEncabezado\": \"#fec27e\"" +
+        //   "           __HIJO_GASTO_VARIABLE_ALQUILER__" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"VENTAS\"," +
+        //   "           \"Importe\": \"__importeGastoVariableVenta__\"," +
+        //   "           \"%\": \"__porcentajeGastoVariableVenta__\"," +
+        //   "           \"colorEncabezado\": \"#fec27e\"" +
+        //   "           __HIJO_GASTO_VARIABLE_VENTA__" +
+        //   "       }" +
+        //   "       ]" +
+        //   "   }," +
+        //   "   {" +
+        //   "       \"Concepto\": \"GASTOS FIJOS\"," +
+        //   "       \"Importe\": \"__importeGastoFijo__\"," +
+        //   "       \"%\": \"__porcentajeGastoFijo__\"," +
+        //   "       \"colorEncabezado\": \"#c6473d\"," +
+        //   "       \"hijo\": [" +
+        //   "       {" +
+        //   "           \"Concepto\": \"GASTOS FIJOS BU\"," +
+        //   "           \"Importe\": \"__importeGastoFijoBU__\"," +
+        //   "           \"%\": \"__porcentajeGastoFijoBU__\"," +
+        //   "           \"colorEncabezado\": \"#ee5246\"," +
+        //   "            \"hijo\": [" +
+        //   "           {" +
+        //   "               \"Concepto\": \"ALQUILERES\"," +
+        //   "               \"Importe\": \"__importeGastoFijoBUAlquiler__\"," +
+        //   "               \"%\": \"__porcentajGastoFijoBUAlquiler__\"," +
+        //   "               \"colorEncabezado\": \"#ee5246\"" +
+        //   "               __HIJO_GASTO_FIJO_BU_ALQUILER__" +
+        //   "           }," +
+        //   "           {" +
+        //   "               \"Concepto\": \"VENTAS\"," +
+        //   "               \"Importe\": \"__importeGastoFijoBUVenta__\"," +
+        //   "               \"%\": \"__porcentajeGastoFijoBUVenta__\"," +
+        //   "               \"colorEncabezado\": \"#ee5246\"" +
+        //   "               __HIJO_GASTO_FIJO_BU_VENTA__" +
+        //   "           }" +
+        //   "           ]" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"GASTOS FIJOS CENTRALES\"," +
+        //   "           \"Importe\": \"__importeGastoFijoCentral__\"," +
+        //   "           \"%\": \"__porcentajeGastoFijoCentral__\"," +
+        //   "           \"colorEncabezado\": \"#f3675c\"," +
+        //   "            \"hijo\": [" +
+        //   "           {" +
+        //   "               \"Concepto\": \"ALQUILERES\"," +
+        //   "               \"Importe\": \"__importeGastoFijoCentralAlquiler__\"," +
+        //   "               \"%\": \"__porcentajeGastoFijoCentralAlquiler__\"," +
+        //   "               \"colorEncabezado\": \"#f3675c\"" +
+        //   "               __HIJO_GASTO_FIJO_CENTRAL_ALQUILER__" +
+        //   "           }," +
+        //   "           {" +
+        //   "               \"Concepto\": \"VENTAS\"," +
+        //   "               \"Importe\": \"__importeGastoFijoCentralVenta__\"," +
+        //   "               \"%\": \"__porcentajeGastoFijoCentralVenta__\"," +
+        //   "               \"colorEncabezado\": \"#f3675c\"" +
+        //   "               __HIJO_GASTO_FIJO_CENTRAL_VENTA__" +
+        //   "           }" +
+        //   "           ]" +
+        //   "       }" +
+        //   "       ]" +
+        //   "   }," +
+        //   "   {" +
+        //   "       \"Concepto\": \"ROP BÁSICO\"," +
+        //   "       \"Importe\": \"__importeROPBasico__\"," +
+        //   "       \"%\": \"__porcentajeROPBasico__\"," +
+        //   "       \"colorEncabezado\": \"#52d891\"," +
+        //   "       \"hijo\": [" +
+        //   "       {" +
+        //   "           \"Concepto\": \"ALQUILERES\"," +
+        //   "           \"Importe\": \"__importeROPBasicoAlquiler__\"," +
+        //   "           \"%\": \"__porcentajeROPBasicoAlquiler__\"," +
+        //   "           \"colorEncabezado\": \"#95deb7\"" +
+        //   "           __HIJO_ROP_BASICO_ALQUILER__" +
+        //   "       }," +
+        //   "       {" +
+        //   "           \"Concepto\": \"VENTAS\"," +
+        //   "           \"Importe\": \"__importeROPBasicoVenta__\"," +
+        //   "           \"%\": \"__porcentajeROPBasicoVenta__\"," +
+        //   "           \"colorEncabezado\": \"#95deb7\"" +
+        //   "           __HIJO_ROP_BASICO_VENTA__" +
+        //   "       }" +
+        //   "       ]" +
+        //   "   }" +
+        //   "]";
+
+        ////public string baseDatosJson = "[" +
+        ////         "   {" +
+        ////         "       \"Concepto\": \"FACTURACIÓN\"," +
+        ////         "       \"Importe\": \"__importeFacturacion__\"," +
+        ////         "       \"%\": \"__porcentajeFacturacion__\"," +
+        ////         "       \"colorEncabezado\": \"#267a73\"," +
+        ////         "       \"hijo\": [" +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"ALQUILERES\"," +
+        ////         "           \"Importe\": \"__importeAlquiler__\"," +
+        ////         "           \"%\": \"__porcentajeAlquiler__\"," +
+        ////         "           \"colorEncabezado\": \"#ace5e0\"" +
+        ////         "           __HIJO_FACTURACION_ALQUILERES__" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"VENTAS\"," +
+        ////         "           \"Importe\": \"__importeVenta__\"," +
+        ////         "           \"%\": \"__porcentajeVenta__\"," +
+        ////         "           \"colorEncabezado\": \"#1edccb\"," +
+        ////         "           \"hijo\": [" +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"SERVICIOS\"," +
+        ////         "               \"Importe\": \"__importeServicio__\"," +
+        ////         "               \"%\": \"__porcentajeServicio__\"" +
+        ////         "               __HIJO_FACTURACION_SERVICIOS__" +
+        ////         "           }," +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"PRODUCTOS\"," +
+        ////         "               \"Importe\": \"__importeProducto__\"," +
+        ////         "               \"%\": \"__porcentajeProducto__\"" +
+        ////         "               __HIJO_FACTURACION_PRODUCTOS__" +
+        ////         "           }" +
+        ////         "           ]" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"PORTES\"," +
+        ////         "           \"Importe\": \"__importePorte__\"," +
+        ////         "           \"%\": \"__porcentajePorte__\"," +
+        ////         "           \"colorEncabezado\": \"#1edccb\"" +
+        ////         "           __HIJO_FACTURACION_PORTES__" +
+        ////         "       }" +
+        ////         "       ]" +
+        ////         "   }," +
+        ////         "   {" +
+        ////         "       \"Concepto\": \"COSTE\"," +
+        ////         "       \"Importe\": \"__importeCoste__\"," +
+        ////         "       \"%\": \"__porcentajeCoste__\"," +
+        ////         "       \"colorEncabezado\": \"#d61e08\"," +
+        ////         "       \"hijo\": [" +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"TAXÍMETROS\"," +
+        ////         "           \"Importe\": \"__importeTaximetros__\"," +
+        ////         "           \"%\": \"__porcentajeTaximetros__\"," +
+        ////         "           \"colorEncabezado\": \"#fc3e27\"," +
+        ////         "           \"hijo\": [" +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"TAXÍMETRO NO CONSUMIBLE\"," +
+        ////         "               \"Importe\": \"__importeTaximetroNoConsumible__\"," +
+        ////         "               \"%\": \"__porcentajeTaximetroNoConsumible__\"," +
+        ////         "               \"colorEncabezado\": \"#1edccb\"" +
+        ////         "               __HIJO_COSTE_TAXIMETRO_NO_CONSUMIBLE__" +
+        ////         "           }," +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"TOTAL TAXÍMETRO CONSUMIBLE\"," +
+        ////         "               \"Importe\": \"__importeTotalTaximetroConsumible__\"," +
+        ////         "               \"%\": \"__porcentajeTotalTaximetroConsumible__\"," +
+        ////         "               \"colorEncabezado\": \"#b081b2\"," +
+        ////         "               \"hijo\": [" +
+        ////         "               {" +
+        ////         "                   \"Concepto\": \"TAXÍMETRO CONSUMIBLE\"," +
+        ////         "                   \"Importe\": \"__importeTaximetroConsumible__\"," +
+        ////         "                   \"%\": \"__porcentajeTaximetroConsumible__\"," +
+        ////         "                   \"colorEncabezado\": \"#e4abe7\"" +
+        ////         "                   __HIJO_COSTE_TAXIMETRO_CONSUMIBLE__" +
+        ////         "               }," +
+        ////         "               {" +
+        ////         "                   \"Concepto\": \"AJUSTE TAXÍMETRO CONSUMIBLE\"," +
+        ////         "                   \"Importe\": \"__importeTaximetroBonificacionConsumible__\"," +
+        ////         "                   \"%\": \"__porcentajeTaximetroBonificacionConsumible__\"," +
+        ////         "                   \"colorEncabezado\": \"#f9bcfc\"" +
+        ////         "                   __HIJO_COSTE_TAXIMETRO_BONIFICACION_CONSUMIBLE__" +
+        ////         "               }" +
+        ////         "               ]" +
+        ////         "           }" +
+        ////         "           ]" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"MPO\"," +
+        ////         "           \"Importe\": \"__importeCosteMPO__\"," +
+        ////         "           \"%\": \"__porcentajeCosteMPO__\"," +
+        ////         "           \"colorEncabezado\": \"#fc9589\"" +
+        ////         "           __HIJO_COSTE_MPO__" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"VENTAS\"," +
+        ////         "           \"Importe\": \"c\"," +
+        ////         "           \"%\": \"__porcentajeCosteVenta__\"," +
+        ////         "           \"colorEncabezado\": \"#fc9589\"" +
+        ////         "           __HIJO_COSTE_VENTAS__" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"PORTES\"," +
+        ////         "           \"Importe\": \"__importeCostePorte__\"," +
+        ////         "           \"%\": \"__porcentajeCostePorte__\"," +
+        ////         "           \"colorEncabezado\": \"#fc9589\"" +
+        ////         "           __HIJO_COSTE_PORTES__" +
+        ////         "       }" +
+        ////         "       ]" +
+        ////         "   }," +
+        ////         "   {" +
+        ////         "       \"Concepto\": \"MARGEN\"," +
+        ////         "       \"Importe\": \"__importeMargen__\"," +
+        ////         "       \"%\": \"__porcentajeMargen__\"," +
+        ////         "       \"colorEncabezado\": \"#09a723\"," +
+        ////         "       \"hijo\": [" +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"ALQUILERES\"," +
+        ////         "           \"Importe\": \"__importeMargenAlquiler__\"," +
+        ////         "           \"%\": \"__porcentajeMargenAlquiler__\"," +
+        ////         "           \"colorEncabezado\": \"#bdfdae\"" +
+        ////         "           __HIJO_MARGEN_ALQUILERES__" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"VENTAS\"," +
+        ////         "           \"Importe\": \"__importeMargenVenta__\"," +
+        ////         "           \"%\": \"__porcentajeMargenVenta__\"," +
+        ////         "           \"colorEncabezado\": \"#7aed8e\"" +
+        ////         "           __HIJO_MARGEN_VENTAS__" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"PORTES\"," +
+        ////         "           \"Importe\": \"__importeMargenPorte__\"," +
+        ////         "           \"%\": \"__porcentajeMargenPorte__\"," +
+        ////         "           \"colorEncabezado\": \"#7aed8e\"" +
+        ////         "           __HIJO_MARGEN_PORTES__" +
+        ////         "       }" +
+        ////         "       ]" +
+        ////         "   }," +
+        ////         "   {" +
+        ////         "       \"Concepto\": \"GASTOS VARIABLES\"," +
+        ////         "       \"Importe\": \"__importeGastoVariable__\"," +
+        ////         "       \"%\": \"__porcentajeGastoVariable__\"," +
+        ////         "       \"colorEncabezado\": \"#ff9f33\"," +
+        ////         "       \"hijo\": [" +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"ALQUILERES\"," +
+        ////         "           \"Importe\": \"__importeGastoVariableAlquiler__\"," +
+        ////         "           \"%\": \"__porcentajeGastoVariableAlquiler__\"," +
+        ////         "           \"colorEncabezado\": \"#fec27e\"" +
+        ////         "           __HIJO_GASTO_VARIABLE_ALQUILER__" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"VENTAS\"," +
+        ////         "           \"Importe\": \"__importeGastoVariableVenta__\"," +
+        ////         "           \"%\": \"__porcentajeGastoVariableVenta__\"," +
+        ////         "           \"colorEncabezado\": \"#fec27e\"" +
+        ////         "           __HIJO_GASTO_VARIABLE_VENTA__" +
+        ////         "       }" +
+        ////         "       ]" +
+        ////         "   }," +
+        ////         "   {" +
+        ////         "       \"Concepto\": \"GASTOS FIJOS\"," +
+        ////         "       \"Importe\": \"__importeGastoFijo__\"," +
+        ////         "       \"%\": \"__porcentajeGastoFijo__\"," +
+        ////         "       \"colorEncabezado\": \"#c6473d\"," +
+        ////         "       \"hijo\": [" +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"GASTOS FIJOS BU\"," +
+        ////         "           \"Importe\": \"__importeGastoFijoBU__\"," +
+        ////         "           \"%\": \"__porcentajeGastoFijoBU__\"," +
+        ////         "           \"colorEncabezado\": \"#ee5246\"," +
+        ////         "            \"hijo\": [" +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"ALQUILERES\"," +
+        ////         "               \"Importe\": \"__importeGastoFijoBUAlquiler__\"," +
+        ////         "               \"%\": \"__porcentajGastoFijoBUAlquiler__\"," +
+        ////         "               \"colorEncabezado\": \"#ee5246\"" +
+        ////         "               __HIJO_GASTO_FIJO_BU_ALQUILER__" +
+        ////         "           }," +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"VENTAS\"," +
+        ////         "               \"Importe\": \"__importeGastoFijoBUVenta__\"," +
+        ////         "               \"%\": \"__porcentajeGastoFijoBUVenta__\"," +
+        ////         "               \"colorEncabezado\": \"#ee5246\"" +
+        ////         "               __HIJO_GASTO_FIJO_BU_VENTA__" +
+        ////         "           }" +
+        ////         "           ]" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"GASTOS FIJOS CENTRALES\"," +
+        ////         "           \"Importe\": \"__importeGastoFijoCentral__\"," +
+        ////         "           \"%\": \"__porcentajeGastoFijoCentral__\"," +
+        ////         "           \"colorEncabezado\": \"#f3675c\"," +
+        ////         "            \"hijo\": [" +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"ALQUILERES\"," +
+        ////         "               \"Importe\": \"__importeGastoFijoCentralAlquiler__\"," +
+        ////         "               \"%\": \"__porcentajeGastoFijoCentralAlquiler__\"," +
+        ////         "               \"colorEncabezado\": \"#f3675c\"" +
+        ////         "               __HIJO_GASTO_FIJO_CENTRAL_ALQUILER__" +
+        ////         "           }," +
+        ////         "           {" +
+        ////         "               \"Concepto\": \"VENTAS\"," +
+        ////         "               \"Importe\": \"__importeGastoFijoCentralVenta__\"," +
+        ////         "               \"%\": \"__porcentajeGastoFijoCentralVenta__\"," +
+        ////         "               \"colorEncabezado\": \"#f3675c\"" +
+        ////         "               __HIJO_GASTO_FIJO_CENTRAL_VENTA__" +
+        ////         "           }" +
+        ////         "           ]" +
+        ////         "       }" +
+        ////         "       ]" +
+        ////         "   }," +
+        ////         "   {" +
+        ////         "       \"Concepto\": \"ROP BÁSICO\"," +
+        ////         "       \"Importe\": \"__importeROPBasico__\"," +
+        ////         "       \"%\": \"__porcentajeROPBasico__\"," +
+        ////         "       \"colorEncabezado\": \"#52d891\"," +
+        ////         "       \"hijo\": [" +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"ALQUILERES\"," +
+        ////         "           \"Importe\": \"__importeROPBasicoAlquiler__\"," +
+        ////         "           \"%\": \"__porcentajeROPBasicoAlquiler__\"," +
+        ////         "           \"colorEncabezado\": \"#95deb7\"" +
+        ////         "           __HIJO_ROP_BASICO_ALQUILER__" +
+        ////         "       }," +
+        ////         "       {" +
+        ////         "           \"Concepto\": \"VENTAS\"," +
+        ////         "           \"Importe\": \"__importeROPBasicoVenta__\"," +
+        ////         "           \"%\": \"__porcentajeROPBasicoVenta__\"," +
+        ////         "           \"colorEncabezado\": \"#95deb7\"" +
+        ////         "           __HIJO_ROP_BASICO_VENTA__" +
+        ////         "       }" +
+        ////         "       ]" +
+        ////         "   }" +
+        ////         "]";
+
+        // Estructura para pintar el árbol 
+        public string inicioJson = "[";
+        public string finJson = "]";
+        public string inicioCabecera = "{";
+        public string finCabecera = "}";
+        public string finCabeceraSiguiente = "},";
+        public string cabecera = "  \"Concepto\": \"__CAPITULO__\"," +
+                                  "  \"Importe\": \"__importeCapitulo__\"," +
+                                  "  \"%\": \"__porcentajeCapitulo__\"," +
+                                  "  \"colorEncabezado\": \"__color__\"";
+
+        public string inicioHijo = ",\"hijo\": [";
+        public string finHijo = "}]";
+
         public string primerHijo = "           {" +
-           "               \"Concepto\": \"__CAPITULO__\"," +
-           "               \"Importe\": \"__importeCapitulo__\"," +
-           "               \"%\": \"__porcentajeCapitulo__\"" +
-           "           }";
-        public string siguienteHijo = "           ,{" +
-           "               \"Concepto\": \"__CAPITULO__\"," +
-           "               \"Importe\": \"__importeCapitulo__\"," +
-           "               \"%\": \"__porcentajeCapitulo__\"" +
-           "           }";
+            "               \"Concepto\": \"__CAPITULO__\"," +
+            "               \"Importe\": \"__importeCapitulo__\"," +
+            "               \"%\": \"__porcentajeCapitulo__\"," +
+            "               \"colorEncabezado\": \"__color__\"";
+        public string siguienteHijo = "}" +
+            "           ,{" +
+            "               \"Concepto\": \"__CAPITULO__\"," +
+            "               \"Importe\": \"__importeCapitulo__\"," +
+            "               \"%\": \"__porcentajeCapitulo__\"," +
+            "               \"colorEncabezado\": \"__color__\"";
 
-        public string baseDatosJson = "[" +
-           "   {" +
-           "       \"Concepto\": \"FACTURACIÓN\"," +
-           "       \"Importe\": \"__importeFacturacion__\"," +
-           "       \"%\": \"__porcentajeFacturacion__\"," +
-           "       \"colorEncabezado\": \"#267a73\"," +
-           "       \"hijo\": [" +
-           "       {" +
-           "           \"Concepto\": \"ALQUILERES\"," +
-           "           \"Importe\": \"__importeAlquiler__\"," +
-           "           \"%\": \"__porcentajeAlquiler__\"," +
-           "           \"colorEncabezado\": \"#ace5e0\"" +
-           "           __HIJO_FACTURACION_ALQUILERES__" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"VENTAS\"," +
-           "           \"Importe\": \"__importeVenta__\"," +
-           "           \"%\": \"__porcentajeVenta__\"," +
-           "           \"colorEncabezado\": \"#1edccb\"," +
-           "           \"hijo\": [" +
-           "           {" +
-           "               \"Concepto\": \"SERVICIOS\"," +
-           "               \"Importe\": \"__importeServicio__\"," +
-           "               \"%\": \"__porcentajeServicio__\"" +
-           "               __HIJO_FACTURACION_SERVICIOS__" +
-           "           }," +
-           "           {" +
-           "               \"Concepto\": \"PRODUCTOS\"," +
-           "               \"Importe\": \"__importeProducto__\"," +
-           "               \"%\": \"__porcentajeProducto__\"" +
-           "               __HIJO_FACTURACION_PRODUCTOS__" +
-           "           }" +
-           "           ]" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"PORTES\"," +
-           "           \"Importe\": \"__importePorte__\"," +
-           "           \"%\": \"__porcentajePorte__\"," +
-           "           \"colorEncabezado\": \"#1edccb\"" +
-           "           __HIJO_FACTURACION_PORTES__" +
-           "       }" +
-           "       ]" +
-           "   }," +
-           "   {" +
-           "       \"Concepto\": \"COSTE\"," +
-           "       \"Importe\": \"__importeCoste__\"," +
-           "       \"%\": \"__porcentajeCoste__\"," +
-           "       \"colorEncabezado\": \"#d61e08\"," +
-           "       \"hijo\": [" +
-           "       {" +
-           "           \"Concepto\": \"TAXÍMETROS\"," +
-           "           \"Importe\": \"__importeTaximetros__\"," +
-           "           \"%\": \"__porcentajeTaximetros__\"," +
-           "           \"colorEncabezado\": \"#fc3e27\"," +
-           "           \"hijo\": [" +
-           "           {" +
-           "               \"Concepto\": \"TAXÍMETRO NO CONSUMIBLE\"," +
-           "               \"Importe\": \"__importeTaximetroNoConsumible__\"," +
-           "               \"%\": \"__porcentajeTaximetroNoConsumible__\"," +
-           "               \"colorEncabezado\": \"#1edccb\"" +
-           "               __HIJO_COSTE_TAXIMETRO_NO_CONSUMIBLE__" +
-           "           }," +
-           "           {" +
-           "               \"Concepto\": \"TOTAL TAXÍMETRO CONSUMIBLE\"," +
-           "               \"Importe\": \"__importeTotalTaximetroConsumible__\"," +
-           "               \"%\": \"__porcentajeTotalTaximetroConsumible__\"," +
-           "               \"colorEncabezado\": \"#b081b2\"," +
-           "               \"hijo\": [" +
-           "               {" +
-           "                   \"Concepto\": \"TAXÍMETRO CONSUMIBLE\"," +
-           "                   \"Importe\": \"__importeTaximetroConsumible__\"," +
-           "                   \"%\": \"__porcentajeTaximetroConsumible__\"," +
-           "                   \"colorEncabezado\": \"#e4abe7\"" +
-           "                   __HIJO_COSTE_TAXIMETRO_CONSUMIBLE__" +
-           "               }," +
-           "               {" +
-           "                   \"Concepto\": \"AJUSTE TAXÍMETRO CONSUMIBLE\"," +
-           "                   \"Importe\": \"__importeTaximetroBonificacionConsumible__\"," +
-           "                   \"%\": \"__porcentajeTaximetroBonificacionConsumible__\"," +
-           "                   \"colorEncabezado\": \"#f9bcfc\"" +
-           "                   __HIJO_COSTE_TAXIMETRO_BONIFICACION_CONSUMIBLE__" +
-           "               }" +
-           "               ]" +
-           "           }" +
-           "           ]" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"MPO\"," +
-           "           \"Importe\": \"__importeCosteMPO__\"," +
-           "           \"%\": \"__porcentajeCosteMPO__\"," +
-           "           \"colorEncabezado\": \"#fc9589\"" +
-           "           __HIJO_COSTE_MPO__" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"VENTAS\"," +
-           "           \"Importe\": \"__importeCosteVenta__\"," +
-           "           \"%\": \"__porcentajeCosteVenta__\"," +
-           "           \"colorEncabezado\": \"#fc9589\"" +
-           "           __HIJO_COSTE_VENTAS__" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"PORTES\"," +
-           "           \"Importe\": \"__importeCostePorte__\"," +
-           "           \"%\": \"__porcentajeCostePorte__\"," +
-           "           \"colorEncabezado\": \"#fc9589\"" +
-           "           __HIJO_COSTE_PORTES__" +
-           "       }" +
-           "       ]" +
-           "   }," +
-           "   {" +
-           "       \"Concepto\": \"MARGEN\"," +
-           "       \"Importe\": \"__importeMargen__\"," +
-           "       \"%\": \"__porcentajeMargen__\"," +
-           "       \"colorEncabezado\": \"#09a723\"," +
-           "       \"hijo\": [" +
-           "       {" +
-           "           \"Concepto\": \"ALQUILERES\"," +
-           "           \"Importe\": \"__importeMargenAlquiler__\"," +
-           "           \"%\": \"__porcentajeMargenAlquiler__\"," +
-           "           \"colorEncabezado\": \"#bdfdae\"" +
-           "           __HIJO_MARGEN_ALQUILERES__" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"VENTAS\"," +
-           "           \"Importe\": \"__importeMargenVenta__\"," +
-           "           \"%\": \"__porcentajeMargenVenta__\"," +
-           "           \"colorEncabezado\": \"#7aed8e\"" +
-           "           __HIJO_MARGEN_VENTAS__" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"PORTES\"," +
-           "           \"Importe\": \"__importeMargenPorte__\"," +
-           "           \"%\": \"__porcentajeMargenPorte__\"," +
-           "           \"colorEncabezado\": \"#7aed8e\"" +
-           "           __HIJO_MARGEN_PORTES__" +
-           "       }" +
-           "       ]" +
-           "   }," +
-           "   {" +
-           "       \"Concepto\": \"GASTOS VARIABLES\"," +
-           "       \"Importe\": \"__importeGastoVariable__\"," +
-           "       \"%\": \"__porcentajeGastoVariable__\"," +
-           "       \"colorEncabezado\": \"#ff9f33\"," +
-           "       \"hijo\": [" +
-           "       {" +
-           "           \"Concepto\": \"ALQUILERES\"," +
-           "           \"Importe\": \"__importeGastoVariableAlquiler__\"," +
-           "           \"%\": \"__porcentajeGastoVariableAlquiler__\"," +
-           "           \"colorEncabezado\": \"#fec27e\"" +
-           "           __HIJO_GASTO_VARIABLE_ALQUILER__" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"VENTAS\"," +
-           "           \"Importe\": \"__importeGastoVariableVenta__\"," +
-           "           \"%\": \"__porcentajeGastoVariableVenta__\"," +
-           "           \"colorEncabezado\": \"#fec27e\"" +
-           "           __HIJO_GASTO_VARIABLE_VENTA__" +
-           "       }" +
-           "       ]" +
-           "   }," +
-           "   {" +
-           "       \"Concepto\": \"GASTOS FIJOS\"," +
-           "       \"Importe\": \"__importeGastoFijo__\"," +
-           "       \"%\": \"__porcentajeGastoFijo__\"," +
-           "       \"colorEncabezado\": \"#c6473d\"," +
-           "       \"hijo\": [" +
-           "       {" +
-           "           \"Concepto\": \"GASTOS FIJOS BU\"," +
-           "           \"Importe\": \"__importeGastoFijoBU__\"," +
-           "           \"%\": \"__porcentajeGastoFijoBU__\"," +
-           "           \"colorEncabezado\": \"#ee5246\"," +
-           "            \"hijo\": [" +
-           "           {" +
-           "               \"Concepto\": \"ALQUILERES\"," +
-           "               \"Importe\": \"__importeGastoFijoBUAlquiler__\"," +
-           "               \"%\": \"__porcentajGastoFijoBUAlquiler__\"," +
-           "               \"colorEncabezado\": \"#ee5246\"" +
-           "               __HIJO_GASTO_FIJO_BU_ALQUILER__" +
-           "           }," +
-           "           {" +
-           "               \"Concepto\": \"VENTAS\"," +
-           "               \"Importe\": \"__importeGastoFijoBUVenta__\"," +
-           "               \"%\": \"__porcentajeGastoFijoBUVenta__\"," +
-           "               \"colorEncabezado\": \"#ee5246\"" +
-           "               __HIJO_GASTO_FIJO_BU_VENTA__" +
-           "           }" +
-           "           ]" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"GASTOS FIJOS CENTRALES\"," +
-           "           \"Importe\": \"__importeGastoFijoCentral__\"," +
-           "           \"%\": \"__porcentajeGastoFijoCentral__\"," +
-           "           \"colorEncabezado\": \"#f3675c\"," +
-           "            \"hijo\": [" +
-           "           {" +
-           "               \"Concepto\": \"ALQUILERES\"," +
-           "               \"Importe\": \"__importeGastoFijoCentralAlquiler__\"," +
-           "               \"%\": \"__porcentajeGastoFijoCentralAlquiler__\"," +
-           "               \"colorEncabezado\": \"#f3675c\"" +
-           "               __HIJO_GASTO_FIJO_CENTRAL_ALQUILER__" +
-           "           }," +
-           "           {" +
-           "               \"Concepto\": \"VENTAS\"," +
-           "               \"Importe\": \"__importeGastoFijoCentralVenta__\"," +
-           "               \"%\": \"__porcentajeGastoFijoCentralVenta__\"," +
-           "               \"colorEncabezado\": \"#f3675c\"" +
-           "               __HIJO_GASTO_FIJO_CENTRAL_VENTA__" +
-           "           }" +
-           "           ]" +
-           "       }" +
-           "       ]" +
-           "   }," +
-           "   {" +
-           "       \"Concepto\": \"ROP BÁSICO\"," +
-           "       \"Importe\": \"__importeROPBasico__\"," +
-           "       \"%\": \"__porcentajeROPBasico__\"," +
-           "       \"colorEncabezado\": \"#52d891\"," +
-           "       \"hijo\": [" +
-           "       {" +
-           "           \"Concepto\": \"ALQUILERES\"," +
-           "           \"Importe\": \"__importeROPBasicoAlquiler__\"," +
-           "           \"%\": \"__porcentajeROPBasicoAlquiler__\"," +
-           "           \"colorEncabezado\": \"#95deb7\"" +
-           "           __HIJO_ROP_BASICO_ALQUILER__" +
-           "       }," +
-           "       {" +
-           "           \"Concepto\": \"VENTAS\"," +
-           "           \"Importe\": \"__importeROPBasicoVenta__\"," +
-           "           \"%\": \"__porcentajeROPBasicoVenta__\"," +
-           "           \"colorEncabezado\": \"#95deb7\"" +
-           "           __HIJO_ROP_BASICO_VENTA__" +
-           "       }" +
-           "       ]" +
-           "   }" +
-           "]";
+        // constantes para el manejo de los datos del árbol provenientes del SQL
+        public int COL_ARBOL_ID = 0;
+        public int COL_ARBOL_CONCEPTO = 1;
+        public int COL_ARBOL_COLOR = 2;
+        public int COL_ARBOL_HIJO_DE = 3;
+        public int COL_ARBOL_ETIQUETA_DESPLEGABLE = 4;
+        public int COL_ARBOL_ETIQUETA_TOTAL = 5;
+
+        // estructura para manejar los valores del árbol
+        System.Data.DataTable dtValores; 
+
+        public int dtValores_ETIQUETA = 0;
+        public int dtValores_CONCEPTO = 1;
+        public int dtValores_IMPORTE = 2;
+        public int dtValores_PORCENTAJE = 3;
 
         public string datosJson = "[]";
 
@@ -597,17 +950,260 @@ namespace ROP_Informe
                     calcularOferta();
                 }
 
-                armarJson(true);
+                //armarJson(true);
+                pintarArbol(true);
+            }
+        }
 
-                //cantidadTaximetroConsumible = 2;
-                //capitulosTaximetroConsumible.Add("uno");
-                //capitulosTaximetroConsumible.Add("dos");
-                //dec_importeCosteTaximetroConsumibleCapitulos.Add(1);
-                //dec_importeCosteTaximetroConsumibleCapitulos.Add(2);
-                //dec_importeCosteBonificacionTaximetroConsumibleCapitulos.Add(1);
-                //dec_importeCosteBonificacionTaximetroConsumibleCapitulos.Add(2);
-                //pintarDatos();
 
+        protected void pintarArbol(bool inicial)
+        {
+            string estructura = "";
+            string armarDesplegableDatos = "";
+            SqlDataAdapter adaptadorArbol;
+            System.Data.DataTable dtArbol = new System.Data.DataTable();
+            string hijoVa = "";
+            string[] cualVa;
+            string hijosAbiertos = "|";
+            int cantidad = 0;
+            string importe = "";
+            string porcentaje = "";
+
+            DataRow[] filaEncontrada;
+
+            try
+            {
+                dataDatos.DataSource = null;
+                dataDatos.Columns.Clear();
+                dataDatos.DataSource = dtTaximetro;
+                dataDatos.DataBind();
+                dataDatos.Visible = true;
+
+                txtNombreOferta.Text = datosGenerales;
+
+                if (inicial)
+                {
+                    dtValores = new System.Data.DataTable();
+                    dtValores.Columns.Add("ETIQUETA");
+                    dtValores.Columns.Add("CONCEPTO");
+                    dtValores.Columns.Add("IMPORTE");
+                    dtValores.Columns.Add("PORCENTAJE");
+                }
+
+                DataRow filaValores;
+
+                filaValores = dtValores.NewRow();
+                filaValores[dtValores_ETIQUETA] = "ALQUILERES";
+                filaValores[dtValores_CONCEPTO] = "";
+                filaValores[dtValores_IMPORTE] = (50).ToString("#,##0.00");
+                filaValores[dtValores_PORCENTAJE] = "0.00";
+                dtValores.Rows.Add(filaValores);
+                filaValores = null;
+
+                filaValores = dtValores.NewRow();
+                filaValores[dtValores_ETIQUETA] = "ALQUILERES";
+                filaValores[dtValores_CONCEPTO] = "";
+                filaValores[dtValores_IMPORTE] = (100).ToString("#,##0.00");
+                filaValores[dtValores_PORCENTAJE] = "0.00";
+                dtValores.Rows.Add(filaValores);
+                filaValores = null;
+
+
+                string total = dtValores.AsEnumerable()
+               .Where(y => y.Field<string>("ETIQUETA") == "ALQUILERES")
+               .Sum(x => x.Field<decimal>("IMPORTE"))
+               .ToString();
+
+                conexiones.crearConexion();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "ROP_ArbolROPConsulta";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                adaptadorArbol = new SqlDataAdapter(conexiones.comando);
+                adaptadorArbol.Fill(dtArbol);
+                adaptadorArbol.Dispose();
+                conexiones.comando.Dispose();
+                conexiones.conexion.Close();
+                conexiones.conexion.Dispose();
+
+                estructura = inicioJson;
+                estructura = estructura + inicioCabecera;
+                foreach (DataRow Row in dtArbol.Rows)
+                {
+                    importe = "0.00";
+                    porcentaje = "0.00";
+                    //if (Row.ItemArray[COL_ARBOL_ETIQUETA_TOTAL].ToString() != "" && !inicial)
+                    //{
+                    //    filaEncontrada = dtValores.Select("ETIQUETA = '" + Row.ItemArray[COL_ARBOL_ETIQUETA_TOTAL].ToString() + "'");
+                    //    foreach (DataRow filaValor in filaEncontrada)
+                    //    {
+                    //        importe = Convert.ToString(filaValor["IMPORTE"]);
+                    //        porcentaje = Convert.ToString(filaValor["PORCENTAJE"]);
+                    //        break;
+                    //    }
+                    //}
+
+
+                    if (Convert.ToInt32(Row.ItemArray[COL_ARBOL_HIJO_DE]) == 0)
+                    {
+                        cualVa = hijoVa.Split('|');
+                        // No hay ninguna rama hijo
+                        if (cualVa.GetUpperBound(0) != 0)
+                        {
+                            while (cualVa.GetUpperBound(0) != 0)
+                            {
+                                estructura = estructura + finHijo;
+                                hijoVa = hijoVa.Replace(cualVa[0] + "|", "");
+                                cualVa = hijoVa.Split('|');
+                                if (cualVa.GetUpperBound(0) == 0)
+                                {
+                                    estructura = estructura + finCabeceraSiguiente;
+                                    estructura = estructura + inicioCabecera;
+                                    break;
+                                }
+                            }
+                        }
+                        estructura = estructura + cabecera;
+                        estructura = estructura.Replace("__CAPITULO__", Row.ItemArray[COL_ARBOL_CONCEPTO].ToString());
+                        estructura = estructura.Replace("__importeCapitulo__", importe);
+                        estructura = estructura.Replace("__porcentajeCapitulo__", porcentaje);
+                        estructura = estructura.Replace("__color__", Row.ItemArray[COL_ARBOL_COLOR].ToString());
+                    }
+                    else
+                    {
+                        cualVa = hijoVa.Split('|');
+                        // No hay ninguna rama hijo
+                        if (cualVa.GetUpperBound(0) == 0)
+                        {
+                            estructura = estructura + inicioHijo;
+                            estructura = estructura + primerHijo;
+                            estructura = estructura.Replace("__CAPITULO__", Row.ItemArray[COL_ARBOL_CONCEPTO].ToString());
+                            estructura = estructura.Replace("__importeCapitulo__", importe);
+                            estructura = estructura.Replace("__porcentajeCapitulo__", porcentaje);
+                            estructura = estructura.Replace("__color__", Row.ItemArray[COL_ARBOL_COLOR].ToString());
+                            hijoVa = Row.ItemArray[COL_ARBOL_HIJO_DE].ToString() + "|";
+                            hijosAbiertos = hijosAbiertos + "|" + Row.ItemArray[COL_ARBOL_HIJO_DE].ToString();
+                        }
+                        else
+                        {
+                            if (Convert.ToInt32(cualVa[0]) != Convert.ToInt32(Row.ItemArray[COL_ARBOL_HIJO_DE]))
+                            {
+                                if (Convert.ToInt32(cualVa[0]) > Convert.ToInt32(Row.ItemArray[COL_ARBOL_HIJO_DE]))
+                                {
+                                    while (Convert.ToInt32(cualVa[0]) > Convert.ToInt32(Row.ItemArray[COL_ARBOL_HIJO_DE]))
+                                    {
+                                        estructura = estructura + finHijo;
+                                        hijoVa = hijoVa.Replace(cualVa[0] + "|", "");
+                                        cualVa = hijoVa.Split('|');
+                                        if (cualVa.GetUpperBound(0) == 0)
+                                            break;
+                                    }
+
+                                    if (Convert.ToInt32(Row.ItemArray[COL_ARBOL_HIJO_DE]) == 0)
+                                    {
+                                        estructura = estructura + cabecera;
+                                        estructura = estructura.Replace("__CAPITULO__", Row.ItemArray[COL_ARBOL_CONCEPTO].ToString());
+                                        estructura = estructura.Replace("__importeCapitulo__", importe);
+                                        estructura = estructura.Replace("__porcentajeCapitulo__", porcentaje);
+                                        estructura = estructura.Replace("__color__", Row.ItemArray[COL_ARBOL_COLOR].ToString());
+                                    }
+                                    else
+                                    {
+                                        if (hijosAbiertos.IndexOf("|" + Row.ItemArray[COL_ARBOL_HIJO_DE].ToString() + "|") >= 0)
+                                            estructura = estructura + siguienteHijo;
+                                        else
+                                        {
+                                            estructura = estructura + inicioHijo;
+                                            estructura = estructura + primerHijo;
+                                        }
+                                        estructura = estructura.Replace("__CAPITULO__", Row.ItemArray[COL_ARBOL_CONCEPTO].ToString());
+                                        estructura = estructura.Replace("__importeCapitulo__", importe);
+                                        estructura = estructura.Replace("__porcentajeCapitulo__", porcentaje);
+                                        estructura = estructura.Replace("__color__", Row.ItemArray[COL_ARBOL_COLOR].ToString());
+                                        if (hijoVa.IndexOf("|" + Row.ItemArray[COL_ARBOL_HIJO_DE].ToString() + "|") == 0)
+                                            hijoVa = Row.ItemArray[COL_ARBOL_HIJO_DE].ToString() + "|" + hijoVa;
+                                        hijosAbiertos = hijosAbiertos + "|" + Row.ItemArray[COL_ARBOL_HIJO_DE].ToString();
+                                    }
+                                }
+                                else
+                                {
+                                    if (hijosAbiertos.IndexOf("|" + Row.ItemArray[COL_ARBOL_HIJO_DE].ToString() + "|") >= 0)
+                                        estructura = estructura + siguienteHijo;
+                                    else
+                                    {
+                                        estructura = estructura + inicioHijo;
+                                        estructura = estructura + primerHijo;
+                                    }
+                                    estructura = estructura.Replace("__CAPITULO__", Row.ItemArray[COL_ARBOL_CONCEPTO].ToString());
+                                    estructura = estructura.Replace("__importeCapitulo__", importe);
+                                    estructura = estructura.Replace("__porcentajeCapitulo__", porcentaje);
+                                    estructura = estructura.Replace("__color__", Row.ItemArray[COL_ARBOL_COLOR].ToString());
+                                    hijoVa = Row.ItemArray[COL_ARBOL_HIJO_DE].ToString() + "|" + hijoVa;
+                                    hijosAbiertos = hijosAbiertos + "|" + Row.ItemArray[COL_ARBOL_HIJO_DE].ToString();
+                                }
+                            }
+                            else
+                            {
+                                estructura = estructura + siguienteHijo;
+                                estructura = estructura.Replace("__CAPITULO__", Row.ItemArray[COL_ARBOL_CONCEPTO].ToString());
+                                estructura = estructura.Replace("__importeCapitulo__", importe);
+                                estructura = estructura.Replace("__porcentajeCapitulo__", porcentaje);
+                                estructura = estructura.Replace("__color__", Row.ItemArray[COL_ARBOL_COLOR].ToString());
+                            }
+                        }
+                    }
+
+                    if (Row.ItemArray[COL_ARBOL_ETIQUETA_DESPLEGABLE].ToString() != "" && !inicial)
+                    {
+                        cantidad = 0;
+                        armarDesplegableDatos = "";
+                        filaEncontrada = dtValores.Select("ETIQUETA = '" + Row.ItemArray[COL_ARBOL_ETIQUETA_DESPLEGABLE].ToString() + "'");
+                        foreach (DataRow filaValor in filaEncontrada)
+                        {
+                            importe = Convert.ToString(filaValor["IMPORTE"]);
+                            porcentaje = Convert.ToString(filaValor["PORCENTAJE"]);
+
+                            if (cantidad == 0)
+                            {
+                                armarDesplegableDatos = inicioHijo + primerHijo;
+                                armarDesplegableDatos = armarDesplegableDatos.Replace("__CAPITULO__", Convert.ToString(filaValor["CONCEPTO"]));
+                                armarDesplegableDatos = armarDesplegableDatos.Replace("__importeCapitulo__", importe);
+                                armarDesplegableDatos = armarDesplegableDatos.Replace("__porcentajeCapitulo__", porcentaje);
+                            }
+                            else
+                            {
+                                armarDesplegableDatos = armarDesplegableDatos + siguienteHijo;
+                                armarDesplegableDatos = armarDesplegableDatos.Replace("__CAPITULO__", Convert.ToString(filaValor["CONCEPTO"]));
+                                armarDesplegableDatos = armarDesplegableDatos.Replace("__importeCapitulo__", importe);
+                                armarDesplegableDatos = armarDesplegableDatos.Replace("__porcentajeCapitulo__", porcentaje);
+                            }
+                            cantidad = cantidad + 1;
+                        }
+                        if (armarDesplegableDatos != "")
+                        {
+                            armarDesplegableDatos = armarDesplegableDatos + finHijo;
+                            estructura = estructura + armarDesplegableDatos;
+                        }
+                    }
+                }
+                cualVa = hijoVa.Split('|');
+                while (cualVa.GetUpperBound(0) != 0)
+                {
+                    estructura = estructura + finHijo;
+                    hijoVa = hijoVa.Replace(cualVa[0] + "|", "");
+                    cualVa = hijoVa.Split('|');
+                }
+
+                estructura = estructura + finCabecera;
+                estructura = estructura + finJson;
+
+                datosJson = estructura;
+            }
+            catch (Exception ex)
+            {
+                lblMensajeError.Visible = true;
+                lblMensajeError.Text = "Pintar árbol" + " // " + ex.Message;
             }
         }
 
@@ -1777,6 +2373,7 @@ namespace ROP_Informe
         protected void calcularOferta()
         {
             string dondeVa = "";
+            DataRow filaValores;
 
             try
             {
@@ -1789,6 +2386,12 @@ namespace ROP_Informe
                 int diasDesdeTaxNoConsumible = 0;
                 int diasHastaTaxNoConsumible = 0;
                 int diasTaximetroNoConsumibleCalcular = 0;
+
+                dtValores = new System.Data.DataTable();
+                dtValores.Columns.Add("ETIQUETA");
+                dtValores.Columns.Add("CONCEPTO");
+                dtValores.Columns.Add("IMPORTE");
+                dtValores.Columns.Add("PORCENTAJE");
 
                 dataDatos.DataSource = null;
                 dataDatos.Columns.Clear();
@@ -2270,56 +2873,6 @@ namespace ROP_Informe
                                         metersInvoicing = false;
                                         productType = "";
 
-                                        //horaDatosConfigurados_3 = DateTime.Now;
-                                        //conexiones.crearConexion();
-                                        //conexiones.comando = conexiones.conexion.CreateCommand();
-                                        //conexiones.comando.CommandText = "ROP_DatosConfiguracion";
-                                        //conexiones.comando.CommandTimeout = 240000;
-                                        //conexiones.comando.CommandType = CommandType.StoredProcedure;
-                                        //conexiones.comando.Parameters.AddWithValue("@empresa", cmbEmpresa.SelectedItem.ToString());
-                                        //conexiones.comando.Parameters.AddWithValue("@usuario",  usuario); // Environment.UserName););
-                                        //conexiones.comando.Parameters.AddWithValue("@articulo", axdEntity_SalesQuotationLine.ItemId.ToString());
-                                        ////SqlParameter parametroDuracion = new SqlParameter("@duracion", SqlDbType.Int);
-                                        ////parametroDuracion.Value = Convert.ToInt32(axdEntity_SalesQuotationLine.DuracionEstimada);
-                                        ////conexiones.comando.Parameters.Add(parametroDuracion);
-                                        //dr = conexiones.comando.ExecuteReader();
-                                        //if (dr.HasRows)
-                                        //{
-                                        //    while (dr.Read())
-                                        //    {
-                                        //        if (Convert.ToString(dr["Concepto"]) == "Coste superficie")
-                                        //            costeSuperficie = Convert.ToDecimal(dr["Valor"]);
-                                        //        if (Convert.ToString(dr["Concepto"]) == "Taxímetro consumible")
-                                        //        {
-                                        //            taximetroConsumible = Convert.ToDecimal(dr["Valor"]) / 100;
-                                        //            bonificacionTaximetroConsumible = taximetroConsumible - (Convert.ToDecimal(dr["Ajuste"]) / 100);
-                                        //            calcularPorSuperficie = false;
-                                        //            superficie = 0;
-                                        //            if (!String.IsNullOrEmpty(Convert.ToString(dr["Valorar"])))
-                                        //                if (Convert.ToString(dr["Valorar"]).ToUpper() == "SUPERFICIE")
-                                        //                {
-                                        //                    calcularPorSuperficie = true;
-                                        //                    superficie = Convert.ToDecimal(dr["Superficie"]);
-                                        //                }
-                                        //        }
-                                        //        if (Convert.ToString(dr["Concepto"]) == "Taxímetro no consumible" && (calcularPorSuperficie || taximetroConsumible == 0))
-                                        //            taximetroNoConsumible = Convert.ToDecimal(dr["Valor"]) / 100;
-                                        //        metersInvoicing = Convert.ToBoolean(dr["MetersInvoicing"]);
-                                        //        productType = Convert.ToString(dr["ProductTypeName_es"]);
-
-                                        //        if (Convert.ToString(dr["Concepto"]) == "Coef. Corrección PS Nuevo")
-                                        //            coeficienteNuevo= Convert.ToDecimal(dr["Valor"]);
-                                        //        if (Convert.ToString(dr["Concepto"]) == "Coef. Corrección PS Usado")
-                                        //            coeficienteUsado= Convert.ToDecimal(dr["Valor"]);
-                                        //        tipoArticulo = Convert.ToString(dr["TipoArticulo"]);
-                                        //    }
-                                        //}
-                                        //dr.Close();
-                                        //conexiones.comando.Dispose();
-                                        //conexiones.conexion.Close();
-                                        //conexiones.conexion.Dispose();
-                                        //horaDatosConfigurados_4 = DateTime.Now.Subtract(horaDatosConfigurados_3);
-
                                         precioCoste = 0;
                                         if (hayPrecio)
                                         {
@@ -2624,52 +3177,167 @@ namespace ROP_Informe
 
                                         if (productType.Trim().ToUpper() == "SERVICIO")
                                         {
-                                            cantidadVentaServicio = cantidadVentaServicio + 1;
-                                            capitulosVentaServicio.Add(axdEntity_SalesQuotationTable.QuotationId.ToString());
-                                            dec_importeFacturacionVentaServicioCapitulos.Add(importeFacturacionVentaServicioCapitulos);
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "SERVICIOS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                            filaValores[dtValores_IMPORTE] = importeFacturacionVentaServicioCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
                                         }
                                         else
                                         {
-                                            cantidadVentaProducto = cantidadVentaProducto + 1;
-                                            capitulosVentaProducto.Add(axdEntity_SalesQuotationTable.QuotationId.ToString());
-                                            dec_importeFacturacionVentaProductoCapitulos.Add(importeFacturacionVentaProductoCapitulos);
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "VENTAS_PRODUCTOS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                            filaValores[dtValores_IMPORTE] = importeFacturacionVentaProductoCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
                                         }
 
-                                        dec_importeCosteVentaCapitulos.Add(importeCosteVentaCapitulos);
-                                        dec_importeMargenVentaCapitulos.Add(importeFacturacionVentaCapitulos - importeCosteVentaCapitulos);
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "COSTE_VENTAS";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeCosteVentaCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
 
-                                        dec_importeGastosVariablesVentaCapitulos.Add(importeGastosVariablesVentaCapitulos);
-                                        dec_importeGastosFijosBUVentaCapitulos.Add(importeGastosFijosBUVentaCapitulos);
-                                        dec_importeGastosFijosCentralesVentaCapitulos.Add(importeGastosFijosCentralesVentaCapitulos);
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "MARGEN_VENTA";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = (importeFacturacionVentaCapitulos - importeCosteVentaCapitulos).ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_VENTA";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeGastosVariablesVentaCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_VENTA";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeGastosFijosBUVentaCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_VENTA";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeGastosFijosCentralesVentaCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
                                     }
                                     if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "RENTAL")
                                     {
-                                        cantidadAlquiler = cantidadAlquiler + 1;
-                                        cantidadTaximetroConsumible = cantidadTaximetroConsumible + 1;
-                                        cantidadTaximetroNoConsumible = cantidadTaximetroNoConsumible + 1;
+                                        dondeVa = "Importes/cantidades alquiler 1";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "ALQUILERES";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeFacturacionAlquilerCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
 
-                                        capitulosAlquiler.Add(axdEntity_SalesQuotationTable.QuotationId.ToString());
-                                        dec_importeFacturacionAlquilerCapitulos.Add(importeFacturacionAlquilerCapitulos);
-                                        dec_importeMargenAlquilerCapitulos.Add(importeFacturacionAlquilerCapitulos - (importeCosteTaximetroNoConsumibleCapitulos + importeCosteTaximetroConsumibleCapitulos- importeCosteBonificacionTaximetroConsumibleCapitulos));
+                                        dondeVa = "Importes/cantidades alquiler 2";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "TAXIMETRO_NO_CONSUMIBLE";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeCosteTaximetroNoConsumibleCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
 
-                                        capitulosTaximetroNoConsumible.Add(axdEntity_SalesQuotationTable.QuotationId.ToString());
-                                        dec_importeCosteTaximetroNoConsumibleCapitulos.Add(importeCosteTaximetroNoConsumibleCapitulos);
+                                        dondeVa = "Importes/cantidades alquiler 3";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "TAXIMETRO_CONSUMIBLE";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeCosteTaximetroConsumibleCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
 
-                                        capitulosTaximetroConsumible.Add(axdEntity_SalesQuotationTable.QuotationId.ToString());
-                                        dec_importeCosteTaximetroConsumibleCapitulos.Add(importeCosteTaximetroConsumibleCapitulos);
-                                        dec_importeCosteBonificacionTaximetroConsumibleCapitulos.Add(importeCosteBonificacionTaximetroConsumibleCapitulos);
+                                        dondeVa = "Importes/cantidades alquiler 4";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "AJUSTE_TAXIMETRO_CONSUMIBLE";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeCosteBonificacionTaximetroConsumibleCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
 
-                                        dec_importeGastosVariablesAlquilerCapitulos.Add(importeGastosVariablesAlquilerCapitulos);
-                                        dec_importeGastosFijosBUAlquilerCapitulos.Add(importeGastosFijosBUAlquilerCapitulos);
-                                        dec_importeGastosFijosCentralesAlquilerCapitulos.Add(importeGastosFijosCentralesAlquilerCapitulos);
+                                        dondeVa = "Importes/cantidades alquiler 5";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "MARGEN_ALQUILER";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = (importeFacturacionAlquilerCapitulos - (importeCosteTaximetroNoConsumibleCapitulos + importeCosteTaximetroConsumibleCapitulos - importeCosteBonificacionTaximetroConsumibleCapitulos)).ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+
+                                        dondeVa = "Importes/cantidades alquiler 6";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_ALQUILER";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeGastosVariablesAlquilerCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+
+                                        dondeVa = "Importes/cantidades alquiler 7";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_ALQUILER";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeGastosFijosBUAlquilerCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+
+                                        dondeVa = "Importes/cantidades alquiler 8";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_ALQUILER";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                        filaValores[dtValores_IMPORTE] = importeGastosFijosCentralesAlquilerCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
                                     }
 
                                     // Porte
-                                    cantidadPorte = cantidadPorte + 1;
-                                    capitulosPorte.Add(axdEntity_SalesQuotationTable.QuotationId.ToString());
-                                    dec_importeFacturacionPorteCapitulos.Add(importeFacturacionPorteCapitulos);
-                                    dec_importeCostePorteCapitulos.Add(importeCostePorteCapitulos);
-                                    dec_importeMargenPorteCapitulos.Add(importeFacturacionPorteCapitulos - importeCostePorteCapitulos);
+                                    dondeVa = "Importes/cantidades porte 1";
+                                    filaValores = dtValores.NewRow();
+                                    filaValores[dtValores_ETIQUETA] = "FACTURACION_PORTES";
+                                    filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                    filaValores[dtValores_IMPORTE] = importeFacturacionPorteCapitulos.ToString("#,##0.00");
+                                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                                    dtValores.Rows.Add(filaValores);
+                                    filaValores = null;
+
+                                    dondeVa = "Importes/cantidades porte 2";
+                                    filaValores = dtValores.NewRow();
+                                    filaValores[dtValores_ETIQUETA] = "COSTE_PORTES";
+                                    filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                    filaValores[dtValores_IMPORTE] = importeCostePorteCapitulos.ToString("#,##0.00");
+                                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                                    dtValores.Rows.Add(filaValores);
+                                    filaValores = null;
+
+                                    dondeVa = "Importes/cantidades porte 3";
+                                    filaValores = dtValores.NewRow();
+                                    filaValores[dtValores_ETIQUETA] = "MARGEN_PORTES";
+                                    filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                    filaValores[dtValores_IMPORTE] = (importeFacturacionPorteCapitulos - importeCostePorteCapitulos).ToString("#,##0.00");
+                                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                                    dtValores.Rows.Add(filaValores);
+                                    filaValores = null;
                                     
                                     dtDatosConfiguracion.Dispose();
                                 }
@@ -2710,8 +3378,9 @@ namespace ROP_Informe
                 conexiones.conexion.Close();
                 conexiones.conexion.Dispose();
 
-                dondeVa = "pintar datos";
-                pintarDatos();
+                dondeVa = "pintar árbol";
+                //pintarDatos();
+                pintarArbol(false);
             }
             catch (Exception ex)
             {
@@ -3913,19 +4582,21 @@ namespace ROP_Informe
             const int dtMovimientos_unidadesDias = 7;
             const int dtMovimientos_unidadesDiasNoTax = 8;
 
-            const int dtPedidos_fechaCreacion = 0;
-            const int dtPedidos_aaf = 1;
-            const int dtPedidos_itemID = 2;
-            const int dtPedidos_cantidad = 3;
+            const int dtPedidos_tipo = 0;
+            const int dtPedidos_fechaCreacion = 1;
+            const int dtPedidos_aaf = 2;
+            const int dtPedidos_itemID = 3;
+            const int dtPedidos_cantidad = 4;
 
-            const int dtPedidosAgrupados_fechaCreacion = 0;
-            const int dtPedidosAgrupados_aaf = 1;
-            const int dtPedidosAgrupados_articulo = 2;
-            const int dtPedidosAgrupados_cantidad = 3;
-            const int dtPedidosAgrupados_usado = 4;
-            const int dtPedidosAgrupados_mixto = 5;
-            const int dtPedidosAgrupados_nuevo = 6;
-
+            const int dtPedidosAgrupados_tipo = 0;
+            const int dtPedidosAgrupados_fechaCreacion = 1;
+            const int dtPedidosAgrupados_aaf = 2;
+            const int dtPedidosAgrupados_articulo = 3;
+            const int dtPedidosAgrupados_cantidad = 4;
+            const int dtPedidosAgrupados_usado = 5;
+            const int dtPedidosAgrupados_mixto = 6;
+            const int dtPedidosAgrupados_nuevo = 7;
+            
             const int dtAlbaranes_fecha = 0;
             const int dtAlbaranes_aaf = 1;
             const int dtAlbaranes_itemID = 2;
@@ -3941,6 +4612,12 @@ namespace ROP_Informe
             try
             {
                 System.Data.DataTable dtArticulosLiquidacion = new System.Data.DataTable();
+                dtPedidos.Columns.Add("TIPO");
+                dtPedidos.Columns.Add("FECHA_CREACION");
+                dtPedidos.Columns.Add("AAF");
+                dtPedidos.Columns.Add("ITEM_ID");
+                dtPedidos.Columns.Add("SALESQTY");
+
                 DataRow filaPedidos;
                 DataRow filaAlbaranes;
                 DataRow[] filaEncontrada;
@@ -4238,8 +4915,22 @@ namespace ROP_Informe
                         obraId = AxdEntity_InventTrans_1.ObraId;
 
                         insertar = true;
+
+                        if (AxdEntity_InventTrans_1.InventTransMovementType.ToString().ToUpper() == tablaInventario.AxdEnum_InventTransMovementType.LostJobsiteOut.ToString().ToUpper())
+                        {
+                            filaPedidos = dtPedidos.NewRow();
+                            filaPedidos[dtPedidos_tipo] = "MPO";
+                            filaPedidos[dtPedidos_fechaCreacion] = Convert.ToString(AxdEntity_InventTrans_1.ValueDate.Value.ToString("yyyyMMdd"));
+                            filaPedidos[dtPedidos_aaf] = Convert.ToString("");
+                            filaPedidos[dtPedidos_itemID] = Convert.ToString(AxdEntity_InventTrans_1.ItemId.ToString());
+                            filaPedidos[dtPedidos_cantidad] = Convert.ToDecimal(((-1) * Convert.ToDecimal(AxdEntity_InventTrans_1.Qty.ToString())).ToString());
+                            dtPedidos.Rows.Add(filaPedidos);
+                            filaPedidos = null;
+
+                            articulosLiquidacion = articulosLiquidacion + AxdEntity_InventTrans_1.ItemId.ToString() + "|";
+                        }
+
                         articulosConfiguracion = articulosConfiguracion + AxdEntity_InventTrans_1.ItemId.ToString() + "|";
-                        
                         // artículos si hay ficha
                         if (!listaArticulosPedido.Contains(AxdEntity_InventTrans_1.ItemId.ToString()))
                         {
@@ -4736,7 +5427,6 @@ namespace ROP_Informe
                 criterio_Pedido.CriteriaElement[0].FieldName = "OBRAID";
                 criterio_Pedido.CriteriaElement[0].Operator = tablaPedidos.Operator.Equal;
                 criterio_Pedido.CriteriaElement[0].Value1 = txtNumero.Text;
-                criterio_Pedido.CriteriaElement[0].Value1 = txtNumero.Text;
 
                 tablaPedidos.SalesOrdersServiceClient proxy_Pedido = new tablaPedidos.SalesOrdersServiceClient();
                 proxy_Pedido.ClientCredentials.Windows.ClientCredential.Domain = "ALSINA";
@@ -4750,12 +5440,6 @@ namespace ROP_Informe
                 }
                 else
                 {
-                    dondeVa = "Datos ws pedidos";
-                    dtPedidos.Columns.Add("FECHA_CREACION");
-                    dtPedidos.Columns.Add("AAF");
-                    dtPedidos.Columns.Add("ITEM_ID");
-                    dtPedidos.Columns.Add("SALESQTY");
-
                     dtAlbaranes.Columns.Add("FECHA");
                     dtAlbaranes.Columns.Add("AAF");
                     dtAlbaranes.Columns.Add("ItemId");
@@ -4776,6 +5460,7 @@ namespace ROP_Informe
                             {
                                 axdEntity_SalesQuotationTable = axdEntity_SalesQuotationTables[lineaCapitulo];
                                 filaPedidos = dtPedidos.NewRow();
+                                filaPedidos[dtPedidos_tipo] = "LIQ";
                                 filaPedidos[dtPedidos_fechaCreacion] = Convert.ToString(axdEntity_SalesQuotationTable.CreatedDateTime.Value.ToString("yyyyMMdd"));
                                 filaPedidos[dtPedidos_aaf] = Convert.ToString("");
                                 filaPedidos[dtPedidos_itemID] = Convert.ToString(axdEntity_SalesQuotationTable.ItemId.ToString());
@@ -4880,7 +5565,7 @@ namespace ROP_Informe
                         }
                         proxy_AlbaranEntrega.Close();
 
-                        // APLASTAR DTPEDIDOS POR FECHA / AAF
+                        // APLASTAR DTPEDIDOS POR FECHA / ITEM / AAF
                         // 40006251
                         dondeVa = "aplastar dtPedidos";
                         var dataPedidos = from d in dtPedidos.AsEnumerable()
@@ -4888,11 +5573,13 @@ namespace ROP_Informe
                                           group d by new
                                           {
                                               FECHA_CREACION = d.Field<string>("FECHA_CREACION"),
+                                              TIPO = d.Field<string>("TIPO"),
                                               ITEM = d.Field<string>("ITEM_ID"),
                                               CODIGO_AAF = d.Field<string>("AAF"),
                                           } into grupo
                                           select new
                                           {
+                                              tipo = grupo.Key.TIPO,
                                               fecha = grupo.Key.FECHA_CREACION,
                                               aaf = grupo.Key.CODIGO_AAF,
                                               articulo = grupo.Key.ITEM,
@@ -4905,7 +5592,8 @@ namespace ROP_Informe
                         dondeVa = "copiar a dtPedidosAgrupado";
                         System.Data.DataTable dtPedidosAgrupado = new System.Data.DataTable();
 
-                        dondeVa = "creando columnas en dtPedidosAgrupado";
+                        dondeVa = "creando columnas en dtPedidosAgrupado"; 
+                        dtPedidosAgrupado.Columns.Add("TIPO");
                         dtPedidosAgrupado.Columns.Add("FECHA");
                         dtPedidosAgrupado.Columns.Add("AAF");
                         dtPedidosAgrupado.Columns.Add("ARTICULO");
@@ -4916,7 +5604,7 @@ namespace ROP_Informe
 
                         dondeVa = "copiando a dtPedidosAgrupado";
                         foreach (var itemPedidos in dataPedidos)
-                            dtPedidosAgrupado.Rows.Add(itemPedidos.fecha.ToString(), itemPedidos.aaf.ToString(), itemPedidos.articulo.ToString(), itemPedidos.cantidad.ToString(), "0", "0", "0");
+                            dtPedidosAgrupado.Rows.Add(itemPedidos.tipo.ToString(), itemPedidos.fecha.ToString(), itemPedidos.aaf.ToString(), itemPedidos.articulo.ToString(), itemPedidos.cantidad.ToString(), "0", "0", "0");
 
                         // APLASTAR DTALBARANES POR FECHA / AAF / TIPO
                         // 40006251
@@ -5053,13 +5741,18 @@ namespace ROP_Informe
                             }
 
                             dondeVa = "calcular coste MPO";
-                            importeCosteVenta = importeCosteVenta + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_usado]) * precioCoste * coeficienteUsado);
-                            importeCosteVenta = importeCosteVenta + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_mixto]) * precioCoste * coeficienteMixto);
-                            importeCosteVenta = importeCosteVenta + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_nuevo]) * precioCoste * coeficienteNuevo);
-
-                            dec_importeCosteMPOMixto = dec_importeCosteMPOMixto + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_mixto]) * precioCoste * coeficienteMixto);
-                            dec_importeCosteMPONuevo = dec_importeCosteMPONuevo + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_nuevo]) * precioCoste * coeficienteNuevo);
-                            dec_importeCosteMPOUsado = dec_importeCosteMPOUsado + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_usado]) * precioCoste * coeficienteUsado);
+                            if (filaPedido[dtPedidosAgrupados_tipo].ToString() == "MPO")
+                            {
+                                dec_importeCosteMPOUsado = dec_importeCosteMPOUsado + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_usado]) * precioCoste * coeficienteUsado);
+                                dec_importeCosteMPOMixto = dec_importeCosteMPOMixto + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_mixto]) * precioCoste * coeficienteMixto);
+                                dec_importeCosteMPONuevo = dec_importeCosteMPONuevo + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_nuevo]) * precioCoste * coeficienteNuevo);
+                            }
+                            else
+                            {
+                                importeCosteVenta = importeCosteVenta + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_usado]) * precioCoste * coeficienteUsado);
+                                importeCosteVenta = importeCosteVenta + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_mixto]) * precioCoste * coeficienteMixto);
+                                importeCosteVenta = importeCosteVenta + (Convert.ToDecimal(filaPedido[dtPedidosAgrupados_nuevo]) * precioCoste * coeficienteNuevo);
+                            }
                         }
                     }
                 }
@@ -5136,14 +5829,289 @@ namespace ROP_Informe
             }
         }
 
+        //private void armarJson(bool inicial)
+        //{
+        //    try
+        //    {
+        //        if (inicial)
+        //        {
+        //            datosJson = baseDatosJson;
+        //            datosJson = datosJson.Replace("__importeFacturacion__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeFacturacion__", "0.00");
+        //            datosJson = datosJson.Replace("__importeAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__importeProducto__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeProducto__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVentasDirectas__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasDirectas__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVentasMaterialAlquilado__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasMaterialAlquilado__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVentasMaterialAlquiladoVentas__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasMaterialAlquiladoVentas__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVentasMaterialAlquiladoLiquidaciones__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasMaterialAlquiladoLiquidaciones__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicio__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicio__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicioMontaje__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioMontaje__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicioDepartamentoTecnico__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioDepartamentoTecnico__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicioFenolicoNuevo__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioFenolicoNuevo__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicioUNECIF__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioUNECIF__", "0.00");
+
+        //            datosJson = datosJson.Replace("__importePorte__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajePorte__", "0.00");
+
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_ALQUILERES__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_VENTAS_DIRECTAS__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_VENTAS_MATERIAL_ALQUILADO_VENTAS__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES__", "");
+
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_MONTAJES__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_DEPARTAMENTO_TECNICO__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_FENOLICO_NUEVO__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_UNECIF__", "");
+
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_PORTES__", "");
+
+        //            datosJson = datosJson.Replace("__importeCoste__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeCoste__", "0.00");
+
+        //            datosJson = datosJson.Replace("__importeTaximetros__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeTaximetros__", "0.00");
+        //            datosJson = datosJson.Replace("__importeTaximetroNoConsumible__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeTaximetroNoConsumible__", "0.00");
+        //            datosJson = datosJson.Replace("__importeTotalTaximetroConsumible__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeTotalTaximetroConsumible__", "0.00");
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_TAXIMETRO_NO_CONSUMIBLE__", "");
+
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_TAXIMETRO_CONSUMIBLE__", "");
+        //            datosJson = datosJson.Replace("__importeTaximetroConsumible__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeTaximetroConsumible__", "0.00");
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_TAXIMETRO_BONIFICACION_CONSUMIBLE__", "");
+        //            datosJson = datosJson.Replace("__importeTaximetroBonificacionConsumible__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeTaximetroBonificacionConsumible__", "0.00");
+
+        //            datosJson = datosJson.Replace("__importeCosteAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeCosteAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__importeCosteVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeCosteVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__importeCosteMPO__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeCosteMPO__", "0.00");
+        //            datosJson = datosJson.Replace("__importeCostePorte__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeCostePorte__", "0.00");
+
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_ALQUILERES__", "");
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_VENTAS__", "");
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_MPO__", "");
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_PORTES__", "");
+
+        //            datosJson = datosJson.Replace("__importeMargen__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeMargen__", "0.00");
+        //            datosJson = datosJson.Replace("__importeMargenAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeMargenAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__importeMargenVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeMargenVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__importeMargenPorte__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeMargenPorte__", "0.00");
+
+        //            datosJson = datosJson.Replace("__HIJO_MARGEN_ALQUILERES__", "");
+        //            datosJson = datosJson.Replace("__HIJO_MARGEN_VENTAS__", "");
+        //            datosJson = datosJson.Replace("__HIJO_MARGEN_PORTES__", "");
+
+        //            datosJson = datosJson.Replace("__importeGastoVariable__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoVariable__", "0.00");
+        //            datosJson = datosJson.Replace("__importeGastoVariableAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoVariableAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__importeGastoVariableVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoVariableVenta__", "0.00");
+
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_VARIABLE_ALQUILER__", "");
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_VARIABLE_VENTA__", "");
+
+        //            datosJson = datosJson.Replace("__importeGastoFijo__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijo__", "0.00");
+
+        //            datosJson = datosJson.Replace("__importeGastoFijoBU__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoBU__", "0.00");
+        //            datosJson = datosJson.Replace("__importeGastoFijoBUAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajGastoFijoBUAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__importeGastoFijoBUVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoBUVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_BU_ALQUILER__", "");
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_BU_VENTA__", "");
+
+        //            datosJson = datosJson.Replace("__importeGastoFijoCentral__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoCentral__", "0.00");
+        //            datosJson = datosJson.Replace("__importeGastoFijoCentralAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoCentralAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__importeGastoFijoCentralVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoCentralVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_CENTRAL_ALQUILER__", "");
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_CENTRAL_VENTA__", "");
+
+        //            datosJson = datosJson.Replace("__importeROPBasico__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeROPBasico__", "0.00");
+        //            datosJson = datosJson.Replace("__importeROPBasicoAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeROPBasicoAlquiler__", "0.00");
+        //            datosJson = datosJson.Replace("__importeROPBasicoVenta__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeROPBasicoVenta__", "0.00");
+
+        //            datosJson = datosJson.Replace("__HIJO_ROP_BASICO_ALQUILER__", "");
+        //            datosJson = datosJson.Replace("__HIJO_ROP_BASICO_VENTA__", "");
+        //        }
+        //        else
+        //        {
+        //            datosJson = baseDatosJson;
+        //            datosJson = datosJson.Replace("__importeFacturacion__", importeFacturacion.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeFacturacion__", porcentajeFacturacion.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeAlquiler__", importeAlquiler.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeAlquiler__", porcentajeAlquiler.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeVenta__", importeVenta.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeVenta__", porcentajeVenta.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeProducto__", importeVentaProducto.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeProducto__", porcentajeVentaProducto.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeVentasDirectas__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasDirectas__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVentasMaterialAlquilado__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasMaterialAlquilado__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVentasMaterialAlquiladoVentas__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasMaterialAlquiladoVentas__", "0.00");
+        //            datosJson = datosJson.Replace("__importeVentasMaterialAlquiladoLiquidaciones__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeVentasMaterialAlquiladoLiquidaciones__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicio__", importeVentaServicio.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeServicio__", porcentajeVentaServicio.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeServicioMontaje__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioMontaje__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicioDepartamentoTecnico__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioDepartamentoTecnico__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicioFenolicoNuevo__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioFenolicoNuevo__", "0.00");
+        //            datosJson = datosJson.Replace("__importeServicioUNECIF__", "0.00");
+        //            datosJson = datosJson.Replace("__porcentajeServicioUNECIF__", "0.00");
+        //            datosJson = datosJson.Replace("__importePorte__", importePorte.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajePorte__", porcentajePorte.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_ALQUILERES__", strHijoFacturacionAlquiler);
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_VENTAS_DIRECTAS__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_VENTAS_MATERIAL_ALQUILADO_VENTAS__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_MONTAJES__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_DEPARTAMENTO_TECNICO__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_FENOLICO_NUEVO__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_SERVICIOS_UNECIF__", "");
+        //            datosJson = datosJson.Replace("__HIJO_FACTURACION_PORTES__", strHijoFacturacionPorte);
+
+        //            datosJson = datosJson.Replace("__importeCoste__", importeCoste.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeCoste__", porcentajeCoste.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__importeTaximetros__", (importeCosteTaximetros).ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeTaximetros__", porcentajeCosteAlquiler.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__importeTaximetroNoConsumible__", importeCosteTaximetroNoConsumible.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeTaximetroNoConsumible__", porcentajeCosteTaximetroNoConsumible.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_TAXIMETRO_NO_CONSUMIBLE__", strHijoCosteTaximetroNoConsumible);
+
+        //            datosJson = datosJson.Replace("__importeTotalTaximetroConsumible__", importeCosteTotalTaximetroConsumible.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeTotalTaximetroConsumible__", porcentajeCosteTotalTaximetroConsumible.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__importeTaximetroConsumible__", importeCosteTaximetroConsumible.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeTaximetroConsumible__", porcentajeCosteTaximetroConsumible.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_TAXIMETRO_CONSUMIBLE__", strHijoCosteTaximetroConsumible);
+
+        //            datosJson = datosJson.Replace("__importeTaximetroBonificacionConsumible__", importeCosteBonificacionTaximetroConsumible.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeTaximetroBonificacionConsumible__", porcentajeCosteBonificacionTaximetroConsumible.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_TAXIMETRO_BONIFICACION_CONSUMIBLE__", strHijoCosteBonificacionTaximetroConsumible);
+
+        //            datosJson = datosJson.Replace("__importeCosteVenta__", importeCosteVenta.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeCosteVenta__", porcentajeCosteVenta.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__importeCosteMPO__", importeCosteMPO.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeCosteMPO__", porcentajeCosteMPO.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_MPO__", strHijoCosteMPO);
+
+        //            datosJson = datosJson.Replace("__importeCostePorte__", importeCostePorte.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeCostePorte__", porcentajeCostePorte.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_ALQUILERES__", strHijoCosteAlquiler);
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_VENTAS__", strHijoCosteVenta);
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_MPO__", strHijoCosteMPO);
+        //            datosJson = datosJson.Replace("__HIJO_COSTE_PORTES__", strHijoCostePorte);
+
+        //            datosJson = datosJson.Replace("__importeMargen__", importeMargen.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeMargen__", porcentajeMargen.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeMargenAlquiler__", importeMargenAlquiler.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeMargenAlquiler__", porcentajeMargenAlquiler.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeMargenVenta__", importeMargenVenta.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeMargenVenta__", porcentajeMargenVenta.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeMargenPorte__", importeMargenPorte.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeMargenPorte__", porcentajeMargenPorte.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__HIJO_MARGEN_ALQUILERES__", strHijoMargenAlquiler);
+        //            datosJson = datosJson.Replace("__HIJO_MARGEN_VENTAS__", strHijoMargenVenta);
+        //            datosJson = datosJson.Replace("__HIJO_MARGEN_PORTES__", strHijoMargenPorte);
+
+        //            datosJson = datosJson.Replace("__importeGastoVariable__", importeGastosVariables.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoVariable__", porcentajeGastosVariables.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeGastoVariableAlquiler__", importeAlquilerGastosVariables.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoVariableAlquiler__", porcentajeAlquilerGastosVariables.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeGastoVariableVenta__", importeVentaGastosVariables.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoVariableVenta__", porcentajeVentaGastosVariables.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_VARIABLE_ALQUILER__", strHijoGastosVariablesAlquiler);
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_VARIABLE_VENTA__", strHijoGastosVariablesVenta);
+
+        //            datosJson = datosJson.Replace("__importeGastoFijo__", importeGastosFijos.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijo__", porcentajeGastosFijos.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__importeGastoFijoBU__", importeGastosFijosBU.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoBU__", porcentajeGastosFijosBU.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeGastoFijoBUAlquiler__", importeAlquilerGastosFijosBU.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajGastoFijoBUAlquiler__", porcentajeAlquilerGastosFijosBU.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeGastoFijoBUVenta__", importeVentaGastosFijosBU.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoBUVenta__", porcentajeVentaGastosFijosBU.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_BU_ALQUILER__", strHijoGastosFijosBUAlquiler);
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_BU_VENTA__", strHijoGastosFijosBUVenta);
+
+        //            datosJson = datosJson.Replace("__importeGastoFijoCentral__", importeGastosFijosCentrales.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoCentral__", porcentajeGastosFijosCentrales.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeGastoFijoCentralAlquiler__", importeAlquilerGastosFijosCentrales.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoCentralAlquiler__", porcentajeAlquilerGastosFijosCentrales.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeGastoFijoCentralVenta__", importeVentaGastosFijosCentrales.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeGastoFijoCentralVenta__", porcentajeVentaGastosFijosCentrales.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_CENTRAL_ALQUILER__", strHijoGastosFijosCentralesAlquiler);
+        //            datosJson = datosJson.Replace("__HIJO_GASTO_FIJO_CENTRAL_VENTA__", strHijoGastosFijosCentralesVenta);
+
+        //            datosJson = datosJson.Replace("__importeROPBasico__", importeROPBasico.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeROPBasico__", porcentajeROPBasico.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeROPBasicoAlquiler__", importeROPBasicoAlquiler.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeROPBasicoAlquiler__", porcentajeROPBasicoAlquiler.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__importeROPBasicoVenta__", importeROPBasicoVenta.ToString("#,##0.00"));
+        //            datosJson = datosJson.Replace("__porcentajeROPBasicoVenta__", porcentajeROPBasicoVenta.ToString("#,##0.00"));
+
+        //            datosJson = datosJson.Replace("__HIJO_ROP_BASICO_ALQUILER__", strHijoROPBasicoAlquiler);
+        //            datosJson = datosJson.Replace("__HIJO_ROP_BASICO_VENTA__", strHijoROPBasicoVenta);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string dondeVa = "";
+        //        lblMensajeError.Visible = true;
+        //        lblMensajeError.Text = "Armar Json // " + dondeVa + " // " + ex.Message;
+        //    }
+        //}
+
         private void armarJson(bool inicial)
         {
             try
             {
                 if (inicial)
                 {
-                    porcentajeVenta = 89;
-                    datosJson = baseDatosJson;
+                    //datosJson = baseDatosJson;
                     datosJson = datosJson.Replace("__importeFacturacion__", "0.00");
                     datosJson = datosJson.Replace("__porcentajeFacturacion__", "0.00");
                     datosJson = datosJson.Replace("__importeAlquiler__", "0.00");
@@ -5251,7 +6219,7 @@ namespace ROP_Informe
                 }
                 else
                 {
-                    datosJson = baseDatosJson;
+                    //datosJson = baseDatosJson;
                     datosJson = datosJson.Replace("__importeFacturacion__", importeFacturacion.ToString("#,##0.00"));
                     datosJson = datosJson.Replace("__porcentajeFacturacion__", porcentajeFacturacion.ToString("#,##0.00"));
                     datosJson = datosJson.Replace("__importeAlquiler__", importeAlquiler.ToString("#,##0.00"));
@@ -5275,7 +6243,7 @@ namespace ROP_Informe
 
                     datosJson = datosJson.Replace("__importeTaximetros__", (importeCosteTaximetros).ToString("#,##0.00"));
                     datosJson = datosJson.Replace("__porcentajeTaximetros__", porcentajeCosteAlquiler.ToString("#,##0.00"));
-                    
+
                     datosJson = datosJson.Replace("__importeTaximetroNoConsumible__", importeCosteTaximetroNoConsumible.ToString("#,##0.00"));
                     datosJson = datosJson.Replace("__porcentajeTaximetroNoConsumible__", porcentajeCosteTaximetroNoConsumible.ToString("#,##0.00"));
                     datosJson = datosJson.Replace("__HIJO_COSTE_TAXIMETRO_NO_CONSUMIBLE__", strHijoCosteTaximetroNoConsumible);
@@ -5380,7 +6348,7 @@ namespace ROP_Informe
         //        nombreInforme = Server.MapPath("~/Ficheros excel/" + cmbConcepto.Text + "_" + txtNumero.Text + "_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
         //        dondeVa = "nuevo doc";
         //        SLDocument sl = new SLDocument();
-                
+
         //        dondeVa ="importar tabla";
         //        //sl.ImportDataTable(1, 1, dtTaximetro, true);
         //        sl.ImportDataTable(1, 1, dtTaximetroInforme, true);

@@ -182,8 +182,9 @@
         <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value==""||hidTAB.Value=="0"?"active":"" %>" custom="0" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Nivel 1</a></li>
         <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="1"?"active":"" %>" id="nav-profile-tab" custom="1" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Nivel 2</a></li>
         <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="2"?"active":"" %>" id="nav-profile-tab-fijo" custom="2" data-toggle="tab" href="#nav-profile_fijo" role="tab" aria-controls="nav-profile_fijo" aria-selected="false">Nivel 3</a></li>
-        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="3"?"active":"" %>" id="nav-profile-tab-usuario" custom="3" data-toggle="tab" href="#nav-profile_usuario" role="tab" aria-controls="nav-profile_usuario" aria-selected="false">Usuarios</a></li>
-        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="4"?"active":"" %>" id="nav-profile-tab-historico" custom="4" data-toggle="tab" href="#nav-profile_historico" role="tab" aria-controls="nav-profile_historico" aria-selected="false">Histórico</a></li>
+        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="3"?"active":"" %>" id="nav-profile-tab-servicio" custom="3" data-toggle="tab" href="#nav-profile_servicio" role="tab" aria-controls="nav-profile_servicio" aria-selected="false">Configuración servicios</a></li>
+        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="4"?"active":"" %>" id="nav-profile-tab-usuario" custom="4" data-toggle="tab" href="#nav-profile_usuario" role="tab" aria-controls="nav-profile_usuario" aria-selected="false">Usuarios</a></li>
+        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="5"?"active":"" %>" id="nav-profile-tab-servicio" custom="5" data-toggle="tab" href="#nav-profile_historico" role="tab" aria-controls="nav-profile_historico" aria-selected="false">Histórico</a></li>
 
     </ul>
     <div class="tab-content" id="nav-tabContent" style="            border: 1px solid #d5d3d3;
@@ -244,8 +245,19 @@
                             <%# Eval("Actualizacion") %>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Subgrupo" HeaderText="Grupo" HeaderStyle-Width="300"/>
-                    <asp:BoundField DataField="Concepto" HeaderText="Concepto" HeaderStyle-Width="300"/>
+                    <asp:BoundField DataField="Subgrupo" HeaderText="Grupo" HeaderStyle-Width="0"/>
+<%--                    <asp:BoundField DataField="Concepto" HeaderText="Concepto" HeaderStyle-Width="300"/>--%>
+                    <asp:TemplateField HeaderStyle-Width="300">
+                        <HeaderTemplate>
+                            Concepto
+                            <asp:DropDownList ID="FiltroConceptoValor" runat="server" Font-Size="Small" OnSelectedIndexChanged="CambioFiltroConceptoValor" AutoPostBack="true" AppendDataBoundItems="true">
+                                <asp:ListItem Text="" Value=""></asp:ListItem>
+                            </asp:DropDownList>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <%# Eval("Concepto") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Empresa" HeaderText="Empresa" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100"/>
                     <asp:BoundField DataField="Familia" HeaderText="Familia" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100"/>
                     <asp:BoundField DataField="Subfamilia" HeaderText="Subfamilia" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100"/>
@@ -425,7 +437,62 @@
                 </asp:GridView>  
             </address>
         </div>
-        <div class="tab-pane fade <%=hidTAB.Value=="3"?"show active":"" %>" id="nav-profile_usuario" role="tabpanel" aria-labelledby="nav-profile_usuario-tab">
+
+        <div class="tab-pane fade <%=hidTAB.Value=="3"?"show active":"" %>" id="nav-profile_servicio" role="tabpanel" aria-labelledby="nav-profile_servicio-tab">
+            <br />
+            <address>
+                <asp:LinkButton ID="LinkButton1" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnLimpiarServicio_Click"><span class="glyphicon glyphicon-cog">Inicializar</span></asp:LinkButton>
+                &nbsp;
+                &nbsp;
+                <asp:Label ID="lblFamilia" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Familia" Style="margin-left: 0px"></asp:Label>
+                &nbsp;
+                <asp:TextBox ID="txtFamilia" runat="server" Width="100px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:TextBox>
+                &nbsp;
+                &nbsp;
+                <asp:Label ID="lblSubfamilia" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Subfamilia" Style="margin-left: 0px"></asp:Label>
+                &nbsp;
+                <asp:TextBox ID="txtSubfamilia" runat="server" Width="100px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:TextBox>&nbsp;
+                &nbsp;
+                &nbsp;
+                <asp:Label ID="lblArticulo" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Artículo" Style="margin-left: 0px"></asp:Label>
+                &nbsp;
+                <asp:TextBox ID="txtArticulo" runat="server" Width="100px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:TextBox>
+                &nbsp;
+                &nbsp;
+                <asp:Label ID="lblTipo" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Tipo" Style="margin-left: 0px"></asp:Label>
+                &nbsp;
+                &nbsp;
+                <asp:DropDownList ID="cmbTipo" runat="server" Width="150px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:DropDownList>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <asp:LinkButton ID="btnAgregarServicio" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnAgregarServicio_Click"><span class="glyphicon glyphicon-cog">Agregar</span></asp:LinkButton>
+            </address>
+            <asp:GridView ID="grvServicios" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="ART_ID" OnRowDeleting="grvServicios_RowDeleting" OnRowEditing="grvServicios_RowEditing" OnRowCancelingEdit="grvServicios_RowCancelingEdit" OnRowUpdating="grvServicios_RowUpdating" OnRowDataBound="grvServicios_RowDataBound">
+                <Columns>
+                    <asp:BoundField DataField="CFGSERV_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="1" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden"/>
+                    <asp:BoundField DataField="Familia" HeaderText="Familia" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="25%"/>
+                    <asp:BoundField DataField="Subfamilia" HeaderText="Subfamilia" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="25%"/>
+                    <asp:BoundField DataField="ART_ID" HeaderText="Artículo" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="25%"/>
+                     <asp:TemplateField HeaderText = "Tipo servicio">
+                        <ItemTemplate>
+                            <asp:Label ID="lblTipoServicio" runat="server" Text='<%# Eval("CFGSERV_Tipo") %>' Visible = "false" />
+                            <asp:DropDownList ID="cmbTipoServicio" runat="server">
+                            </asp:DropDownList>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField HeaderText="Editar" ShowEditButton="true" ButtonType="Image" EditImageUrl="~/Img/edicion.png" CancelImageUrl="~/Img/cancelar.png" UpdateImageUrl="~/Img/actualizar.png" HeaderStyle-Width ="10%"/>  
+                    <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="true"  ButtonType="Image" DeleteImageUrl="~/Img/eliminar.png" DeleteText="Borrar" HeaderStyle-Width="10%"/>
+                </Columns>
+                <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
+                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" HorizontalAlign="Center" />
+                <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
+                <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
+                <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+            </asp:GridView>
+        </div>
+
+        <div class="tab-pane fade <%=hidTAB.Value=="4"?"show active":"" %>" id="nav-profile_usuario" role="tabpanel" aria-labelledby="nav-profile_usuario-tab">
             <br />
             <address>
                 <asp:LinkButton ID="btnLimpiarUsuario" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnLimpiarUsuario_Click"><span class="glyphicon glyphicon-cog">Inicializar</span></asp:LinkButton>
@@ -455,7 +522,6 @@
                 &nbsp;
                 <asp:LinkButton ID="btnAgregarUsuario" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnAgregarUsuario_Click"><span class="glyphicon glyphicon-cog">Agregar usuario</span></asp:LinkButton>
             </address>
-<%--            <br />--%>
             <asp:GridView ID="grvUsuarios" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="USR_ID, USR_UsuarioRed" OnRowDeleting="grvUsuarios_RowDeleting" OnRowEditing="grvUsuarios_RowEditing" OnRowCancelingEdit="grvUsuarios_RowCancelingEdit" OnRowUpdating="grvUsuarios_RowUpdating">
                 <Columns>
                     <asp:BoundField DataField="USR_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden"/>
@@ -474,12 +540,12 @@
                 <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
             </asp:GridView>
         </div>
-        <div class="tab-pane fade <%=hidTAB.Value=="4"?"show active":"" %>" id="nav-profile_historico" role="tabpanel" aria-labelledby="nav-profile_historico-tab">
+
+        <div class="tab-pane fade <%=hidTAB.Value=="5"?"show active":"" %>" id="nav-profile_historico" role="tabpanel" aria-labelledby="nav-profile_historico-tab">
             <br />
             <asp:RadioButton ID="rdbGFV" runat="server" GroupName="TipoHistorico" Text="GFV" AutoPostBack="true" OnCheckedChanged="rbtn_CheckedChanged" />
             &nbsp;
             <asp:RadioButton ID="rdbParametros" runat="server" GroupName="TipoHistorico" Text="Parámetros" AutoPostBack="true" OnCheckedChanged="rbtn_CheckedChanged" />
- <%--           <br />--%>
             <asp:GridView ID="grvHistorico" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white">
                 <Columns>
                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="115"/>

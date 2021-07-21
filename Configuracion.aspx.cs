@@ -23,6 +23,12 @@ namespace ROP_Informe
         int COLGRID_USR_btnEditar = 6;
         int COLGRID_USR_btnEliminar = 7;
 
+        int COLGRID_ID = 0;
+        int COLGRID_Familia = 1;
+        int COLGRID_Subfamilia = 2;
+        int COLGRID_ART_ID = 3;
+        int COLGRID_CFGSERV_Tipo = 4;
+
         int COLGRID_MOV_ID = 0;
         int COLGRID_MOV_Signo = 3;
         int COLGRID_MOV_Dias = 4;
@@ -100,6 +106,7 @@ namespace ROP_Informe
                 chkEliminar.Checked = false;
                 ViewState["FiltroVersion"] = "";
                 ViewState["FiltroConcepto"] = "";
+                ViewState["FiltroConceptoValor"] = "";
                 ViewState["FiltroVersionGeneral"] = "";
                 ViewState["FiltroConceptoGeneral"] = "";
                 ViewState["FiltroEmpresaGeneral"] = "";
@@ -110,6 +117,8 @@ namespace ROP_Informe
                 rellenarCombosVersionGeneral();
                 rellenarGrid();
                 rellenarCombosVersion();
+                rellenarGridServicios();
+                rellenarServicio();
                 rellenarGridUsuarios();
                 rellenarDatosFijos();
                 validarAccionUsuario();
@@ -461,7 +470,7 @@ namespace ROP_Informe
         {
             conexiones.crearConexion();
             conexiones.comando = conexiones.conexion.CreateCommand();
-            conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralConceptoConsulta";
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralConceptosConsulta";
             conexiones.comando.CommandType = CommandType.StoredProcedure;
             if (ViewState["FiltroConceptoGeneral"].ToString() == "")
                 conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
@@ -1151,12 +1160,40 @@ namespace ROP_Informe
             cmbFiltroVersion.Items.FindByValue(ViewState["FiltroVersion"].ToString()).Selected = true;
         }
 
+        protected void CambioFiltroConceptoValor(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroConceptoValor = (DropDownList)sender;
+            ViewState["FiltroConceptoValor"] = cmbFiltroConceptoValor.SelectedValue;
+            this.rellenarGrid();
+        }
+        private void rellenarFiltroConceptoValor(DropDownList cmbFiltroConceptoValor)
+        {
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionConceptosValorConsulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (ViewState["FiltroConceptoValor"].ToString() == "")
+                conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@concepto", ViewState["FiltroConceptoValor"].ToString());
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroConceptoValor.DataSource = dt;
+            cmbFiltroConceptoValor.DataTextField = "CFGCONVAL_ConceptoValor";
+            cmbFiltroConceptoValor.DataValueField = "CFGCONVAL_ConceptoValor";
+            cmbFiltroConceptoValor.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroConceptoValor.Items.FindByValue(ViewState["FiltroConceptoValor"].ToString()).Selected = true;
+        }
+
         protected void CambioFiltroConcepto(object sender, EventArgs e)
         {
             DropDownList cmbFiltroConcepto = (DropDownList)sender;
             ViewState["FiltroConcepto"] = cmbFiltroConcepto.SelectedValue;
             this.rellenarGrid();
         }
+
         private void rellenarFiltroConcepto(DropDownList cmbFiltroConcepto)
         {
             conexiones.crearConexion();
@@ -1177,7 +1214,6 @@ namespace ROP_Informe
             conexiones.conexion.Close();
             cmbFiltroConcepto.Items.FindByValue(ViewState["FiltroConcepto"].ToString()).Selected = true;
         }
-
         private void rellenarGrid()
         {
             DropDownList cmbFiltro;
@@ -1200,6 +1236,14 @@ namespace ROP_Informe
             else
                 parametroConcepto.Value = ViewState["FiltroConcepto"].ToString();
             conexiones.comando.Parameters.Add(parametroConcepto);
+
+            SqlParameter parametroConceptoValor = new SqlParameter("@conceptoValor", SqlDbType.NVarChar, 100);
+            if (ViewState["FiltroConceptoValor"].ToString() == "")
+                parametroConceptoValor.Value = null;
+            else
+                parametroConceptoValor.Value = ViewState["FiltroConceptoValor"].ToString();
+            conexiones.comando.Parameters.Add(parametroConceptoValor);
+
             SqlDataReader dr = conexiones.comando.ExecuteReader();
             grvDatos.DataSource = dr;
             grvDatos.DataBind();
@@ -1210,6 +1254,9 @@ namespace ROP_Informe
 
             cmbFiltro = (DropDownList)grvDatos.HeaderRow.FindControl("FiltroConcepto");
             this.rellenarFiltroConcepto(cmbFiltro);
+
+            cmbFiltro = (DropDownList)grvDatos.HeaderRow.FindControl("FiltroConceptoValor");
+            this.rellenarFiltroConceptoValor(cmbFiltro);
         }
 
         private void exportarExcel()
@@ -1638,6 +1685,202 @@ namespace ROP_Informe
         }
         #endregion
 
+        #region "Servicios"
+
+        protected void rellenarServicio()
+        {
+            cmbTipo.DataSource = null;
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_servicioConsulta";
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbTipo.DataSource = dt;
+            cmbTipo.DataTextField = "CFGSERV_Tipo";
+            cmbTipo.DataValueField = "CFGSERV_Tipo";
+            cmbTipo.DataBind();
+            conexiones.conexion.Close();
+        }
+        protected void btnLimpiarServicio_Click(object sender, EventArgs e)
+        {
+            txtFamilia.Text = "";
+            txtSubfamilia.Text = "";
+            txtArticulo.Text = "";
+            cmbTipo.Text = "";
+        }
+
+        protected void btnAgregarServicio_Click(object sender, EventArgs e)
+        {
+            if ((txtFamilia.Text != "" || txtSubfamilia.Text != "" || txtArticulo.Text != "") && cmbTipo.Text != "")
+            {
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_ConfiguracionServicioAgregar";
+                conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parametroID = new SqlParameter("@CFGSERV_ID", SqlDbType.Int);
+                parametroID.Value = null;
+                conexiones.comando.Parameters.Add(parametroID);
+                SqlParameter parametroFamilia = new SqlParameter("@Familia", SqlDbType.VarChar, 20);
+                if (txtFamilia.Text =="")
+                    parametroFamilia.Value = null;
+                else
+                    parametroFamilia.Value = txtFamilia.Text;
+                conexiones.comando.Parameters.Add(parametroFamilia);
+                SqlParameter parametroSubfamilia = new SqlParameter("@Subfamilia", SqlDbType.VarChar, 20);
+                if (txtSubfamilia.Text == "")
+                    parametroSubfamilia.Value = null;
+                else
+                    parametroSubfamilia.Value = txtSubfamilia.Text;
+                conexiones.comando.Parameters.Add(parametroSubfamilia);
+                SqlParameter parametroArticulo= new SqlParameter("@ART_ID", SqlDbType.VarChar, 20);
+                if (txtArticulo.Text == "")
+                    parametroArticulo.Value = null;
+                else
+                    parametroArticulo.Value = txtArticulo.Text;
+                conexiones.comando.Parameters.Add(parametroArticulo);
+                SqlParameter parametroTipo= new SqlParameter("@CFGSERV_Tipo", SqlDbType.VarChar, 50);
+                parametroTipo.Value = cmbTipo.Text;
+                conexiones.comando.Parameters.Add(parametroTipo);
+
+                SqlDataReader dr = conexiones.comando.ExecuteReader();
+                conexiones.conexion.Close();
+            }
+            else
+            {
+                lblTituloError.Text = "Agregar servicio";
+                lblMensajeError.Text = "Debe indicar la familia/subfamilia/artículo y el tipo de servicio.";
+                mpeError.Show();
+            }
+            txtFamilia.Text = "";
+            txtSubfamilia.Text = "";
+            txtArticulo.Text = "";
+            cmbTipo.Text = "";
+            rellenarGridServicios();
+        }
+
+        private void rellenarGridServicios()
+        {
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionServicioConsulta";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            grvServicios.DataSource = dr;
+            grvServicios.DataBind();
+            conexiones.conexion.Close();
+        }
+
+        protected void grvServicios_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            grvServicios.EditIndex = e.NewEditIndex;
+            rellenarGridServicios();
+        }
+
+        protected void grvServicios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //Find the DropDownList in the Row
+                DropDownList cmbTipoServicio = (e.Row.FindControl("cmbTipoServicio") as DropDownList);
+
+                cmbTipoServicio.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_servicioConsulta";
+                SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adaptador.Fill(dt);
+                cmbTipoServicio.DataSource = dt;
+                cmbTipoServicio.DataTextField = "CFGSERV_Tipo";
+                cmbTipoServicio.DataValueField = "CFGSERV_Tipo";
+                cmbTipoServicio.DataBind();
+                conexiones.conexion.Close();
+                cmbTipoServicio.Items.Insert(0, new ListItem(""));
+                string tipo = (e.Row.FindControl("lblTipoServicio") as Label).Text;
+                cmbTipoServicio.Items.FindByValue(tipo).Selected = true;
+                cmbTipoServicio.Enabled = e.Row.RowIndex == grvServicios.EditIndex;
+            }
+        }
+        
+        protected void grvServicios_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string ID = ((System.Web.UI.WebControls.TextBox)grvServicios.Rows[e.RowIndex].Cells[COLGRID_ID].Controls[0]).Text;
+            string Familia = ((System.Web.UI.WebControls.TextBox)grvServicios.Rows[e.RowIndex].Cells[COLGRID_Familia].Controls[0]).Text;
+            string Subfamilia = ((System.Web.UI.WebControls.TextBox)grvServicios.Rows[e.RowIndex].Cells[COLGRID_Subfamilia].Controls[0]).Text;
+            string ART_ID = ((System.Web.UI.WebControls.TextBox)grvServicios.Rows[e.RowIndex].Cells[COLGRID_ART_ID].Controls[0]).Text;
+            DropDownList cmbTipoServicio = grvServicios.Rows[e.RowIndex].FindControl("cmbTipoServicio") as DropDownList;
+            string tipoServicio = Convert.ToString(cmbTipoServicio.SelectedValue);
+
+            if ((ART_ID != "" || Familia !="" || Subfamilia!="") && tipoServicio != "")
+            {
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_ConfiguracionServicioAgregar";
+                conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parametroID = new SqlParameter("@CFGSERV_ID", SqlDbType.Int);
+                parametroID.Value = Convert.ToInt32(ID);
+                conexiones.comando.Parameters.Add(parametroID);
+                SqlParameter parametroFamilia = new SqlParameter("@Familia", SqlDbType.VarChar, 20);
+                if (Familia == "")
+                    parametroFamilia.Value = null;
+                else
+                    parametroFamilia.Value = Familia;
+                conexiones.comando.Parameters.Add(parametroFamilia);
+                SqlParameter parametroSubfamilia = new SqlParameter("@Subfamilia", SqlDbType.VarChar, 20);
+                if (Subfamilia == "")
+                    parametroSubfamilia.Value = null;
+                else
+                    parametroSubfamilia.Value = Subfamilia;
+                conexiones.comando.Parameters.Add(parametroSubfamilia);
+                SqlParameter parametroArticulo = new SqlParameter("@ART_ID", SqlDbType.VarChar, 20);
+                if (ART_ID == "")
+                    parametroArticulo.Value = null;
+                else
+                    parametroArticulo.Value = ART_ID;
+                conexiones.comando.Parameters.Add(parametroArticulo);
+                SqlParameter parametroTipo = new SqlParameter("@CFGSERV_Tipo", SqlDbType.VarChar, 50);
+                parametroTipo.Value = tipoServicio;
+                conexiones.comando.Parameters.Add(parametroTipo);
+                SqlDataReader dr = conexiones.comando.ExecuteReader();
+                conexiones.conexion.Close();
+            
+                grvServicios.EditIndex = -1;
+                rellenarGridServicios();
+            }
+            else
+            {
+                lblTituloError.Text = "Modificar servicio";
+                lblMensajeError.Text = "Debe indicar la familia/subfamilia/artículo y el tipo de servicio.";
+                mpeError.Show();
+            }
+        }
+
+        protected void grvServicios_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            grvServicios.EditIndex = -1;
+            rellenarGridServicios();
+        }
+
+        protected void grvServicios_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string ID = grvServicios.DataKeys[e.RowIndex].Values["CFGSERV_ID"].ToString();
+
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionServicioEliminar";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parametroID = new SqlParameter("@CFGSERV_ID", SqlDbType.Int);
+            parametroID.Value =Convert.ToInt32(ID);
+            conexiones.comando.Parameters.Add(parametroID);
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            conexiones.conexion.Close();
+
+            rellenarGridServicios();
+        }
+        #endregion
+
         #region "Usuarios"
 
         protected void btnLimpiarUsuario_Click(object sender, EventArgs e)
@@ -1679,8 +1922,6 @@ namespace ROP_Informe
             }
             else
             {
-                //MessageBox.Show("Debe indicar el nombre de red del usuario.", "Agregar usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Debe indicar el nombre de red del usuario.');", true);
                 lblTituloError.Text = "Agregar usuario";
                 lblMensajeError.Text = "Debe indicar el nombre de red del usuario.";
                 mpeError.Show();
