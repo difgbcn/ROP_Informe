@@ -15,6 +15,7 @@ namespace ROP_Informe
     public partial class Default : System.Web.UI.Page
     {
         string usuario = Environment.UserName + "_" + DateTime.Now.ToString("hh_mm");
+        string idioma = "";
         string nombreFicha = "";
         string delegacion = "";
 
@@ -93,7 +94,7 @@ namespace ROP_Informe
         DateTime horaFechaOferta_1 = default(DateTime);
         TimeSpan horaFechaOferta_2 = default(TimeSpan);
 
-        string datosGenerales = "";
+        public static string datosGenerales = "";
         string moneda = "";
 
         int cantidadAlquiler = 0;
@@ -829,8 +830,11 @@ namespace ROP_Informe
         public int COL_ARBOL_ETIQUETA_DESPLEGABLE = 4;
         public int COL_ARBOL_ETIQUETA_TOTAL = 5;
 
+        public static decimal totalFacturacion = 0;
+        public static bool totalesCalculados = false;
+
         // estructura para manejar los valores del árbol
-        System.Data.DataTable dtValores; 
+        public static System.Data.DataTable dtValores; 
 
         public int dtValores_ETIQUETA = 0;
         public int dtValores_CONCEPTO = 1;
@@ -951,10 +955,31 @@ namespace ROP_Informe
                 }
 
                 //armarJson(true);
+                dtValores = new System.Data.DataTable();
+                totalFacturacion = 0;
+                totalesCalculados = false;
+                idioma = "ESPAÑOL";
                 pintarArbol(true);
             }
         }
 
+        protected void imgSpain_Click(object sender, EventArgs e)
+        {
+            idioma = "ESPAÑOL";
+            pintarArbol(false);
+        }
+
+        protected void imgCatalonia_Click(object sender, EventArgs e)
+        {
+            idioma = "CATALAN";
+            pintarArbol(false);
+        }
+
+        protected void imgUnited_Click(object sender, EventArgs e)
+        {
+            idioma = "INGLES";
+            pintarArbol(false);
+        }
 
         protected void pintarArbol(bool inicial)
         {
@@ -968,16 +993,28 @@ namespace ROP_Informe
             int cantidad = 0;
             string importe = "";
             string porcentaje = "";
+            decimal total = 0;
 
             DataRow[] filaEncontrada;
 
             try
             {
-                dataDatos.DataSource = null;
-                dataDatos.Columns.Clear();
-                dataDatos.DataSource = dtTaximetro;
-                dataDatos.DataBind();
-                dataDatos.Visible = true;
+                if (!(dtValores is null))
+                {
+                    dataTiempos.DataSource = null;
+                    dataTiempos.Columns.Clear();
+                    dataTiempos.DataSource = dtValores;
+                    dataTiempos.DataBind();
+                }
+
+                if (!(dtTaximetro is null))
+                {
+                    dataDatos.DataSource = null;
+                    dataDatos.Columns.Clear();
+                    dataDatos.DataSource = dtTaximetro;
+                    dataDatos.DataBind();
+                    dataDatos.Visible = true;
+                }
 
                 txtNombreOferta.Text = datosGenerales;
 
@@ -992,33 +1029,1355 @@ namespace ROP_Informe
 
                 DataRow filaValores;
 
-                filaValores = dtValores.NewRow();
-                filaValores[dtValores_ETIQUETA] = "ALQUILERES";
-                filaValores[dtValores_CONCEPTO] = "";
-                filaValores[dtValores_IMPORTE] = (50).ToString("#,##0.00");
-                filaValores[dtValores_PORCENTAJE] = "0.00";
-                dtValores.Rows.Add(filaValores);
-                filaValores = null;
+                if (!totalesCalculados)
+                {
+                    // --- INICIO TOTALES ---
+                    // -- FACTURACIÓN
+                    // TOTAL ALQUILERES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ALQUILERES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
-                filaValores = dtValores.NewRow();
-                filaValores[dtValores_ETIQUETA] = "ALQUILERES";
-                filaValores[dtValores_CONCEPTO] = "";
-                filaValores[dtValores_IMPORTE] = (100).ToString("#,##0.00");
-                filaValores[dtValores_PORCENTAJE] = "0.00";
-                dtValores.Rows.Add(filaValores);
-                filaValores = null;
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ALQUILERES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_VENTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL PRODUCTOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_PRODUCTOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL VENTAS DIRECTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_VENTAS_DIRECTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL VENTAS MATERIAL ALQUILADO Y LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL VENTAS MATERIAL ALQUILADO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL VENTAS LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_VENTAS_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL SERVICIOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_SERVICIOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MONTAJES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MONTAJES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MONTAJES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL DEPARTAMENTO TÉCNICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TÉCNICO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_DEPARTAMENTO_TÉCNICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL FENÓLICO NUEVO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "FENÓLICO_NUEVO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL UNE/CIF
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_UNE_CIF";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL FACTURACION PORTES
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "FACTURACION_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_FACTURACION_PORTES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL FACTURACION
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_ALQUILERES" || y.Field<string>("ETIQUETA") == "TOTAL_VENTAS" || y.Field<string>("ETIQUETA") == "TOTAL_FACTURACION_PORTES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    totalFacturacion = total;
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_FACTURACION";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "100.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // -- COSTES --
+                    // TOTAL TAXIMETROS
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "TAXIMETRO_NO_CONSUMIBLE" || y.Field<string>("ETIQUETA") == "TAXIMETRO_CONSUMIBLE" || y.Field<string>("ETIQUETA") == "AJUSTE_TAXIMETRO_CONSUMIBLE")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_TAXIMETROS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL TAXIMETRO NO CONSUMIBLE
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TAXIMETRO_NO_CONSUMIBLE")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_TAXIMETRO_NO_CONSUMIBLE";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL TAXIMETRO AJUSTE CONSUMIBLE
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TAXIMETRO_CONSUMIBLE" || y.Field<string>("ETIQUETA") == "AJUSTE_TAXIMETRO_CONSUMIBLE")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_TAXIMETRO_AJUSTE_CONSUMIBLE";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL TAXIMETRO CONSUMIBLE
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TAXIMETRO_CONSUMIBLE")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_TAXIMETRO_CONSUMIBLE";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL AJUSTE CONSUMIBLE
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "AJUSTE_TAXIMETRO_CONSUMIBLE")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_AJUSTE_TAXIMETRO_CONSUMIBLE";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE VENTAS DIRECTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "COSTE_VENTAS_DIRECTAS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_VENTAS_DIRECTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "COSTE_VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE MPO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MPO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MPO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE MATERIAL ALQUILADO Y VENDIDO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_COSTE_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "TOTAL_MPO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_MATERIAL_ALQUILADO_Y_VENDIDO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE PRODUCTOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_COSTE_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_MATERIAL_ALQUILADO_Y_VENDIDO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_PRODUCTOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE MONTAJES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "COSTE_MONTAJES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_MONTAJES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE DEPARTAMENTO TECNICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "COSTE_DEPARTAMENTO_TÉCNICO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_DEPARTAMENTO_TÉCNICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE FENOLICO NUEVO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "COSTE_FENOLICO_NUEVO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_FENOLICO_NUEVO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE UNE CIF
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "COSTE_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_UNE_CIF";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
 
 
-                string total = dtValores.AsEnumerable()
-               .Where(y => y.Field<string>("ETIQUETA") == "ALQUILERES")
-               .Sum(x => x.Field<decimal>("IMPORTE"))
-               .ToString();
+                    // TOTAL COSTE SERVICIOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_COSTE_MONTAJES" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_FENOLICO_NUEVO" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_SERVICIOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTE VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_COSTE_PRODUCTOS" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_SERVICIOS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTE_DE_VENTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL COSTES
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_TAXIMETROS" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_DE_VENTAS" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_COSTES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // -- MARGEN --
+                    // TOTAL MARGEN ALQUILER
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_ALQUILER")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_ALQUILER";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN VENTAS DIRECTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_DIRECTAS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_VENTAS_DIRECTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN VENTAS MATERIAL ALQUILADO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN VENTAS LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_VENTAS_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN VENTAS MATERIAL ALQUILADO Y LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN PRODUCTOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_PRODUCTOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN MONTAJES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_MONTAJES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_MONTAJES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN DEPARTAMENTO TÉCNICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_DEPARTAMENTO_TÉCNICO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_DEPARTAMENTO_TÉCNICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN FENÓLICO NUEVO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_FENÓLICO_NUEVO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_FENÓLICO_NUEVO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN_UNE/CIF
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_UNE_CIF";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN SERVICIOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_MONTAJES" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_SERVICIOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_PRODUCTOS" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_SERVICIOS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_VENTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN PORTES
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN_PORTES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL MARGEN
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_ALQUILER" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_VENTAS" || y.Field<string>("ETIQUETA") == "TOTAL_MARGEN_PORTES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_MARGEN";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // -- GASTOS VARIABLES --
+                    // TOTAL GASTOS VARIABLES ALQUILER
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_ALQUILER")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_ALQUILER";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES VENTAS DIRECTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_VENTAS_DIRECTAS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_VENTAS_DIRECTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES VENTAS MATERIAL ALQUILADO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES VENTAS LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_VENTAS_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES VENTAS MATERIAL ALQUILADO Y LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES PRODUCTOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_PRODUCTOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES MONTAJES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_MONTAJES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_MONTAJES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES DEPARTAMENTO TÉCNICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_DEPARTAMENTO_TÉCNICO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_DEPARTAMENTO_TÉCNICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES FENÓLICO NUEVO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_FENÓLICO_NUEVO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_FENÓLICO_NUEVO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES VARIABLES UNE/CIF
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_UNE_CIF";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES SERVICIOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_MONTAJES" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_SERVICIOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_PRODUCTOS" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_SERVICIOS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_VENTA";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES PORTES
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES_PORTES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS VARIABLES 
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_ALQUILER" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_VENTA" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_VARIABLES_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_VARIABLES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // -- GASTOS FIJOS BU --
+                    // TOTAL GASTOS FIJOS BU ALQUILER
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_ALQUILER")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_ALQUILER";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU VENTAS DIRECTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_VENTAS_DIRECTAS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_VENTAS_DIRECTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU VENTAS MATERIAL ALQUILADO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU VENTAS LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_VENTAS_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU VENTAS MATERIAL ALQUILADO Y LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU PRODUCTOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_PRODUCTOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU MONTAJES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_MONTAJES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_MONTAJES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU DEPARTAMENTO TÉCNICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_DEPARTAMENTO_TÉCNICO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_DEPARTAMENTO_TÉCNICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU FENÓLICO NUEVO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_FENÓLICO_NUEVO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_FENÓLICO_NUEVO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU VARIABLES UNE/CIF
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_UNE_CIF";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU SERVICIOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_MONTAJES" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_SERVICIOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_PRODUCTOS" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_SERVICIOS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_VENTA";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU PORTES
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU_PORTES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS BU 
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_ALQUILER" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_VENTA" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_BU";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // -- GASTOS FIJOS CENTRALES --
+                    // TOTAL GASTOS FIJOS CENTRALES ALQUILER
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_ALQUILER")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_ALQUILER";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES VENTAS DIRECTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_VENTAS_DIRECTAS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_DIRECTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES VENTAS MATERIAL ALQUILADO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES VENTAS LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES VENTAS MATERIAL ALQUILADO Y LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_MATERIAL_ALQUILADO_LIQUIDADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES PRODUCTOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_VENTAS_MATERIAL_ALQUILADO_LIQUIDADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_PRODUCTOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES MONTAJES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_MONTAJES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_MONTAJES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES DEPARTAMENTO TÉCNICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_DEPARTAMENTO_TÉCNICO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_DEPARTAMENTO_TÉCNICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES FENÓLICO NUEVO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_FENÓLICO_NUEVO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_FENÓLICO_NUEVO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES VARIABLES UNE/CIF
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_UNE_CIF";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES SERVICIOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_MONTAJES" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_SERVICIOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_PRODUCTOS" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_SERVICIOS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_VENTA";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES PORTES
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES_PORTES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS CENTRALES 
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_ALQUILER" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_VENTA" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS_CENTRALES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL GASTOS FIJOS  
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_BU" || y.Field<string>("ETIQUETA") == "TOTAL_GASTOS_FIJOS_CENTRALES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_GASTOS_FIJOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // -- ROP BÁSICO --
+                    // TOTAL ROP BASICO ALQUILER
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_ALQUILER")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_ALQUILER";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO VENTAS DIRECTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_VENTAS_DIRECTAS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_VENTAS_DIRECTAS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO VENTAS MATERIAL ALQUILADO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_VENTAS_MATERIAL_ALQUILADO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO VENTAS LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_VENTAS_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_VENTAS_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO VENTAS MATERIAL ALQUILADO Y LIQUIDACIONES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_VENTAS_MATERIAL_ALQUILADO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO PRODUCTOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_PRODUCTOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO MONTAJES
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_MONTAJES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_MONTAJES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO DEPARTAMENTO TÉCNICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_DEPARTAMENTO_TÉCNICO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_DEPARTAMENTO_TÉCNICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO FENÓLICO NUEVO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_FENÓLICO_NUEVO")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_FENÓLICO_NUEVO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP_BASICOUNE/CIF
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_UNE_CIF";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO SERVICIOS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_MONTAJES" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_DEPARTAMENTO_TÉCNICO" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_UNE_CIF")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_SERVICIOS";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO VENTAS
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_PRODUCTOS" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_SERVICIOS")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_VENTA";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO PORTES
+                    total = dtValores.AsEnumerable()
+                   .Where(y => y.Field<string>("ETIQUETA") == "ROP_BASICO_PORTES")
+                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO_PORTES";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    // TOTAL ROP BASICO
+                    total = dtValores.AsEnumerable()
+                    .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_ALQUILER" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_VENTA" || y.Field<string>("ETIQUETA") == "TOTAL_ROP_BASICO_PORTES")
+                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
+
+                    filaValores = dtValores.NewRow();
+                    filaValores[dtValores_ETIQUETA] = "TOTAL_ROP_BASICO";
+                    filaValores[dtValores_CONCEPTO] = "";
+                    filaValores[dtValores_IMPORTE] = total.ToString("#,##0.00");
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                    dtValores.Rows.Add(filaValores);
+                    filaValores = null;
+
+                    totalesCalculados = true;
+                    // --- FIN TOTALES ---
+                }
 
                 conexiones.crearConexion();
                 conexiones.comando = conexiones.conexion.CreateCommand();
                 conexiones.comando.CommandText = "ROP_ArbolROPConsulta";
                 conexiones.comando.CommandTimeout = 240000;
                 conexiones.comando.CommandType = CommandType.StoredProcedure;
+                conexiones.comando.Parameters.AddWithValue("@idioma", idioma);
 
                 adaptadorArbol = new SqlDataAdapter(conexiones.comando);
                 adaptadorArbol.Fill(dtArbol);
@@ -1031,18 +2390,24 @@ namespace ROP_Informe
                 estructura = estructura + inicioCabecera;
                 foreach (DataRow Row in dtArbol.Rows)
                 {
+                    //lblMensajeError.Visible = true;
+                    //lblMensajeError.Text = totalFacturacion.ToString("#,##0.00");
+
                     importe = "0.00";
                     porcentaje = "0.00";
-                    //if (Row.ItemArray[COL_ARBOL_ETIQUETA_TOTAL].ToString() != "" && !inicial)
-                    //{
-                    //    filaEncontrada = dtValores.Select("ETIQUETA = '" + Row.ItemArray[COL_ARBOL_ETIQUETA_TOTAL].ToString() + "'");
-                    //    foreach (DataRow filaValor in filaEncontrada)
-                    //    {
-                    //        importe = Convert.ToString(filaValor["IMPORTE"]);
-                    //        porcentaje = Convert.ToString(filaValor["PORCENTAJE"]);
-                    //        break;
-                    //    }
-                    //}
+                    if (Row.ItemArray[COL_ARBOL_ETIQUETA_TOTAL].ToString() != "" && !inicial)
+                    {
+                        filaEncontrada = dtValores.Select("ETIQUETA = '" + Row.ItemArray[COL_ARBOL_ETIQUETA_TOTAL].ToString() + "'");
+                        foreach (DataRow filaValor in filaEncontrada)
+                        {
+                            importe = Convert.ToString(filaValor["IMPORTE"]);
+                            if (totalFacturacion == 0)
+                                porcentaje = "0,00";
+                            else
+                                porcentaje = ((Convert.ToDecimal(importe) * 100) / totalFacturacion).ToString("##0.00"); //Convert.ToString(filaValor["PORCENTAJE"]);
+                            break;
+                        }
+                    }
 
 
                     if (Convert.ToInt32(Row.ItemArray[COL_ARBOL_HIJO_DE]) == 0)
@@ -1162,8 +2527,13 @@ namespace ROP_Informe
                         foreach (DataRow filaValor in filaEncontrada)
                         {
                             importe = Convert.ToString(filaValor["IMPORTE"]);
-                            porcentaje = Convert.ToString(filaValor["PORCENTAJE"]);
-
+                            //porcentaje = Convert.ToString(filaValor["PORCENTAJE"]);
+                            if (totalFacturacion == 0)
+                                porcentaje = "0,00";
+                            else
+                                porcentaje = ((Convert.ToDecimal(importe) * 100) / totalFacturacion).ToString("##0.00"); //Convert.ToString(filaValor["PORCENTAJE"]);
+                            //break;
+                        
                             if (cantidad == 0)
                             {
                                 armarDesplegableDatos = inicioHijo + primerHijo;
@@ -1203,7 +2573,7 @@ namespace ROP_Informe
             catch (Exception ex)
             {
                 lblMensajeError.Visible = true;
-                lblMensajeError.Text = "Pintar árbol" + " // " + ex.Message;
+                lblMensajeError.Text = lblMensajeError.Text  + "// " + "Pintar árbol" + " // " + ex.Message;
             }
         }
 
@@ -2387,6 +3757,11 @@ namespace ROP_Informe
                 int diasHastaTaxNoConsumible = 0;
                 int diasTaximetroNoConsumibleCalcular = 0;
 
+                string tipoServicio = "";
+                string tituloCapitulo = "";
+
+                totalesCalculados = false;
+                totalFacturacion = 0;
                 dtValores = new System.Data.DataTable();
                 dtValores.Columns.Add("ETIQUETA");
                 dtValores.Columns.Add("CONCEPTO");
@@ -2448,6 +3823,7 @@ namespace ROP_Informe
                 decimal coeficienteMixto = 0;
                 string tipoArticulo = "";
 
+                DateTime fechaPrecio = DateTime.Now;
                 decimal gastosVariablesAlquiler = 0;
                 decimal gastosVariablesVenta = 0;
                 decimal gastosFijosBUAlquiler = 0;
@@ -2455,7 +3831,6 @@ namespace ROP_Informe
                 decimal gastosFijosCentralesAlquiler = 0;
                 decimal gastosFijosCentralesVenta = 0;
 
-                DateTime fechaPrecio=DateTime.Now;
                 bool metersInvoicing = false;
                 string productType = "";
                 bool calcularPorSuperficie = false;
@@ -2490,7 +3865,10 @@ namespace ROP_Informe
                 decimal importeCosteTaximetroConsumibleCapitulos = 0;
                 decimal importeCosteBonificacionTaximetroConsumibleCapitulos = 0;
                 decimal importeFacturacionVentaCapitulos = 0;
-                decimal importeFacturacionVentaServicioCapitulos = 0;
+                decimal importeFacturacionVentaDepartamentoTecnicoCapitulos = 0;
+                decimal importeFacturacionVentFenolicoNuevoCapitulos = 0;
+                decimal importeFacturacionVentaUneCifCapitulos = 0;
+                decimal importeFacturacionVentaMontajesCapitulos = 0;
                 decimal importeFacturacionVentaProductoCapitulos = 0;
                 decimal importeCosteVentaCapitulos = 0;
                 decimal importeFacturacionPorteCapitulos = 0;
@@ -2501,6 +3879,28 @@ namespace ROP_Informe
                 decimal importeGastosFijosBUAlquilerCapitulos = 0;
                 decimal importeGastosFijosCentralesVentaCapitulos = 0;
                 decimal importeGastosFijosCentralesAlquilerCapitulos = 0;
+
+                decimal importeCosteVentaDepartamentoTecnicoCapitulos = 0;
+                decimal importeGastosVariablesVentaDepartamentoTecnicoCapitulos = 0;
+                decimal importeGastosFijosBUVentaDepartamentoTecnicoCapitulos = 0;
+                decimal importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos = 0;
+
+                decimal importeCosteVentaFenolicoNuevoCapitulos = 0;
+                decimal importeGastosVariablesVentaFenolicoNuevoCapitulos = 0;
+                decimal importeGastosFijosBUVentaFenolicoNuevoCapitulos = 0;
+                decimal importeGastosFijosCentralesVentaFenolicoNuevoCapitulos = 0;
+
+
+                decimal importeCosteVentaUneCifCapitulos = 0;
+                decimal importeGastosVariablesVentaUneCifCapitulos = 0;
+                decimal importeGastosFijosBUVentaUneCifCapitulos = 0;
+                decimal importeGastosFijosCentralesVentaUneCifCapitulos = 0;
+
+                decimal importeCosteVentaMontajesCapitulos = 0;
+                decimal importeGastosVariablesVentaMontajesCapitulos = 0;
+                decimal importeGastosFijosBUVentaMontajesCapitulos = 0;
+                decimal importeGastosFijosCentralesVentaMontajesCapitulos = 0;
+
 
                 tablaOfertas.AxdEntity_SalesQuotationTable[] axdEntity_SalesQuotationTables;
                 tablaOfertas.AxdEntity_SalesQuotationTable axdEntity_SalesQuotationTable;
@@ -2546,8 +3946,8 @@ namespace ROP_Informe
                 cantidadPorte = 0;
                 importeAlquiler = 0;
                 importeVenta = 0;
-                importeVentaServicio = 0;
-                importeVentaProducto = 0;
+                //importeVentaServicio = 0;
+                //importeVentaProducto = 0;
                 importePorte = 0;
                 importeCosteTaximetroNoConsumible = 0;
                 importeCosteTaximetroConsumible = 0;
@@ -2660,7 +4060,7 @@ namespace ROP_Informe
                         {
                             articulos = ";";
                             articulosCambio = ";";
-                            articulosConfiguracion = "";
+                            articulosConfiguracion = "|";
 
                             horaDatosPase1_1 = DateTime.Now;
                             for (int capitulo = 0; capitulo < axdEntity_SalesQuotationTables.Length; capitulo++)
@@ -2802,6 +4202,14 @@ namespace ROP_Informe
                             }
 
                             horaDatosConfigurados_1 = DateTime.Now;
+                            filaValores = dtValores.NewRow();
+                            filaValores[dtValores_ETIQUETA] = "VALIDAR " + cmbEmpresa.SelectedItem.ToString() + " // " + usuario;
+                            filaValores[dtValores_CONCEPTO] = articulosConfiguracion;
+                            filaValores[dtValores_IMPORTE] = "0.00";
+                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                            dtValores.Rows.Add(filaValores);
+                            filaValores = null;
+
                             datosSQL.datosConfigurados(cmbEmpresa.SelectedItem.ToString(), articulosConfiguracion, usuario);
                             horaDatosConfigurados_2 = DateTime.Now.Subtract(horaDatosConfigurados_1);
 
@@ -2821,10 +4229,33 @@ namespace ROP_Informe
 
                                     importeFacturacionAlquilerCapitulos = 0;
                                     importeFacturacionVentaCapitulos = 0;
-                                    importeFacturacionVentaServicioCapitulos = 0;
+                                    importeFacturacionVentaDepartamentoTecnicoCapitulos = 0;
+                                    importeFacturacionVentFenolicoNuevoCapitulos = 0;
+                                    importeFacturacionVentaUneCifCapitulos = 0;
+                                    importeFacturacionVentaMontajesCapitulos = 0;
                                     importeFacturacionVentaProductoCapitulos = 0;
                                     importeGastosVariablesAlquilerCapitulos = 0;
                                     importeGastosVariablesVentaCapitulos = 0;
+                                    importeCosteVentaDepartamentoTecnicoCapitulos = 0;
+                                    importeGastosVariablesVentaDepartamentoTecnicoCapitulos = 0;
+                                    importeGastosFijosBUVentaDepartamentoTecnicoCapitulos = 0;
+                                    importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos = 0;
+
+                                    importeCosteVentaFenolicoNuevoCapitulos = 0;
+                                    importeGastosVariablesVentaFenolicoNuevoCapitulos = 0;
+                                    importeGastosFijosBUVentaFenolicoNuevoCapitulos = 0;
+                                    importeGastosFijosCentralesVentaFenolicoNuevoCapitulos = 0;
+
+
+                                    importeCosteVentaUneCifCapitulos = 0;
+                                    importeGastosVariablesVentaUneCifCapitulos = 0;
+                                    importeGastosFijosBUVentaUneCifCapitulos = 0;
+                                    importeGastosFijosCentralesVentaUneCifCapitulos = 0;
+
+                                    importeCosteVentaMontajesCapitulos = 0;
+                                    importeGastosVariablesVentaMontajesCapitulos = 0;
+                                    importeGastosFijosBUVentaMontajesCapitulos = 0;
+                                    importeGastosFijosCentralesVentaMontajesCapitulos = 0;
 
                                     importeGastosFijosBUAlquilerCapitulos = 0;
                                     importeGastosFijosBUVentaCapitulos = 0;
@@ -2872,6 +4303,7 @@ namespace ROP_Informe
                                         calcularPorSuperficie = false;
                                         metersInvoicing = false;
                                         productType = "";
+                                        tipoServicio = "";
 
                                         precioCoste = 0;
                                         if (hayPrecio)
@@ -2910,6 +4342,10 @@ namespace ROP_Informe
                                         foreach (DataRow fila in filaEncontrada)
                                         {
                                             dondeVa = "encontró configuracion dataset // " + axdEntity_SalesQuotationLine.ItemId.ToString() + " // ";
+
+                                            dondeVa = "encontró configuracion dataset // Tipo Servicio ";
+                                            if (!String.IsNullOrEmpty(Convert.ToString(fila["CFGSERV_Tipo"])))
+                                                tipoServicio = Convert.ToString(fila["CFGSERV_Tipo"]);
                                             dondeVa = "encontró configuracion dataset // Coste superficie";
                                             if (Convert.ToString(fila["Concepto"]) == "Coste superficie")
                                                 costeSuperficie = Convert.ToDecimal(fila["Valor"]);
@@ -2963,6 +4399,7 @@ namespace ROP_Informe
 
                                         dondeVa = "salio configuracion dataset";
 
+                                        dondeVa = "Artículo nuevo/usado";
                                         if (tipoArticulo == "NUEVO")
                                         {
                                             coeficienteUsar = coeficienteNuevo;
@@ -2974,6 +4411,7 @@ namespace ROP_Informe
                                             oItemTaximetro[COL_DATA_PRECIO_CORRECION_USADO] = (precioCoste * coeficienteUsado).ToString("#,##0.00");
                                         }
 
+                                        dondeVa = "Guarda datos taxímetro";
                                         oItemTaximetro[COL_DATA_CAPITULO] = axdEntity_SalesQuotationTable.QuotationId.ToString();
                                         oItemTaximetro[COL_DATA_ITEM] = axdEntity_SalesQuotationLine.ItemId.ToString();
                                         oItemTaximetro[COL_DATA_TIPO_ITEM] = tipoArticulo;
@@ -2984,48 +4422,135 @@ namespace ROP_Informe
                                         
                                         if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "SALES")
                                         {
+                                            dondeVa = "VENTAS";
+
+                                            dondeVa = "VENTAS: Guardar coeficiente nuevo/usado";
                                             if (tipoArticulo == "NUEVO")
                                                 oItemTaximetro[COL_DATA_COEFICIENTE_NUEVO] = coeficienteNuevo.ToString("##0.00");
                                             else
                                                 oItemTaximetro[COL_DATA_COEFICIENTE_USADO] = coeficienteUsado.ToString("##0.00");
 
+                                            dondeVa = "VENTAS: Calcular importe venta";
                                             importeVenta = importeVenta + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
                                             importeFacturacionVentaCapitulos = importeFacturacionVentaCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
 
+                                            // mail 29/07/2021 Nacho: configuración manda sobre tipo producto
+                                            if (tipoServicio.ToUpper() == "DPTO_TECNICO")
+                                            {
+                                                importeFacturacionVentaDepartamentoTecnicoCapitulos = importeFacturacionVentaDepartamentoTecnicoCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                // COSTE
+                                                importeCosteVentaDepartamentoTecnicoCapitulos = importeCosteVentaDepartamentoTecnicoCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                // Gastos variables
+                                                importeGastosVariablesVentaDepartamentoTecnicoCapitulos = importeGastosVariablesVentaDepartamentoTecnicoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+                                                // Gastos fijos BU
+                                                importeGastosFijosBUVentaDepartamentoTecnicoCapitulos = importeGastosFijosBUVentaDepartamentoTecnicoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+                                                // Gastos fijos centrales
+                                                importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos = importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
+                                            }
+
+                                            if (tipoServicio.ToUpper() == "MONTAJES")
+                                            {
+                                                importeFacturacionVentaMontajesCapitulos = importeFacturacionVentaMontajesCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                // COSTE
+                                                importeCosteVentaMontajesCapitulos = importeCosteVentaMontajesCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                // Gastos variables
+                                                importeGastosVariablesVentaMontajesCapitulos = importeGastosVariablesVentaMontajesCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+                                                // Gastos fijos BU
+                                                importeGastosFijosBUVentaMontajesCapitulos = importeGastosFijosBUVentaMontajesCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+                                                // Gastos fijos centrales
+                                                importeGastosFijosCentralesVentaMontajesCapitulos = importeGastosFijosCentralesVentaMontajesCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
+                                            }
+
+                                            
                                             if (productType.Trim().ToUpper() == "SERVICIO")
                                             {
-                                                importeVentaServicio = importeVentaServicio + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
-                                                importeFacturacionVentaServicioCapitulos = importeFacturacionVentaServicioCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                dondeVa = "VENTAS: Servicio";
+                                                //importeVentaServicio = importeVentaServicio + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                //if (tipoServicio.ToUpper() == "DPTO_TECNICO")
+                                                //{
+                                                //    importeFacturacionVentaDepartamentoTecnicoCapitulos = importeFacturacionVentaDepartamentoTecnicoCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                //    // COSTE
+                                                //    importeCosteVentaDepartamentoTecnicoCapitulos = importeCosteVentaDepartamentoTecnicoCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                //    // Gastos variables
+                                                //    importeGastosVariablesVentaDepartamentoTecnicoCapitulos = importeGastosVariablesVentaDepartamentoTecnicoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+                                                //    // Gastos fijos BU
+                                                //    importeGastosFijosBUVentaDepartamentoTecnicoCapitulos = importeGastosFijosBUVentaDepartamentoTecnicoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+                                                //    // Gastos fijos centrales
+                                                //    importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos = importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
+                                                //}
 
+                                                //if (tipoServicio.ToUpper() == "MONTAJES")
+                                                //{
+                                                //    importeFacturacionVentaMontajesCapitulos = importeFacturacionVentaMontajesCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                //    // COSTE
+                                                //    importeCosteVentaMontajesCapitulos = importeCosteVentaMontajesCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                //    // Gastos variables
+                                                //    importeGastosVariablesVentaMontajesCapitulos = importeGastosVariablesVentaMontajesCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+                                                //    // Gastos fijos BU
+                                                //    importeGastosFijosBUVentaMontajesCapitulos = importeGastosFijosBUVentaMontajesCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+                                                //    // Gastos fijos centrales
+                                                //    importeGastosFijosCentralesVentaMontajesCapitulos = importeGastosFijosCentralesVentaMontajesCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
+                                                //}
+
+                                                // Fenólico
+                                                if (axdEntity_SalesQuotationLine.CanonFenolico.HasValue && axdEntity_SalesQuotationLine.CanonFenolico != 0)
+                                                {
+                                                    importeFacturacionVentFenolicoNuevoCapitulos = importeFacturacionVentFenolicoNuevoCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                    // COSTE
+                                                    importeCosteVentaFenolicoNuevoCapitulos = importeCosteVentaFenolicoNuevoCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.CanonFenolico); // Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                    // Gastos variables
+                                                    importeGastosVariablesVentaFenolicoNuevoCapitulos = importeGastosVariablesVentaFenolicoNuevoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+                                                    // Gastos fijos BU
+                                                    importeGastosFijosBUVentaFenolicoNuevoCapitulos = importeGastosFijosBUVentaFenolicoNuevoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+                                                    // Gastos fijos centrales
+                                                    importeGastosFijosCentralesVentaFenolicoNuevoCapitulos = importeGastosFijosCentralesVentaFenolicoNuevoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
+                                                }
+
+                                                // UNE/CIF
+                                                if (axdEntity_SalesQuotationLine.CanonImport.HasValue && axdEntity_SalesQuotationLine.CanonImport != 0)
+                                                {
+                                                    importeFacturacionVentaUneCifCapitulos = importeFacturacionVentaUneCifCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                    // COSTE
+                                                    importeCosteVentaUneCifCapitulos = importeCosteVentaUneCifCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.CanonImport); //Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                    // Gastos variables
+                                                    importeGastosVariablesVentaUneCifCapitulos = importeGastosVariablesVentaUneCifCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+                                                    // Gastos fijos BU
+                                                    importeGastosFijosBUVentaUneCifCapitulos = importeGastosFijosBUVentaUneCifCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+                                                    // Gastos fijos centrales
+                                                    importeGastosFijosCentralesVentaUneCifCapitulos = importeGastosFijosCentralesVentaUneCifCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
+                                                }
                                                 oItemTaximetro[COL_DATA_IMPORTE_VENTA_SERVICIO] = Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount).ToString("#,##0.00");
                                             }
                                             else
                                             {
-                                                importeVentaProducto = importeVentaProducto + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
+                                                dondeVa = "VENTAS: Producto";
+                                                //importeVentaProducto = importeVentaProducto + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
                                                 importeFacturacionVentaProductoCapitulos = importeFacturacionVentaProductoCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
                                                 oItemTaximetro[COL_DATA_IMPORTE_VENTA_PRODUCTO] = Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount).ToString("#,##0.00");
+
+                                                dondeVa = "Coste venta";
+                                                //importeCosteVenta = importeCosteVenta + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                importeCosteVentaCapitulos = importeCosteVentaCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+
+                                                // Gastos variables
+                                                dondeVa = "VENTAS: Gastos variables";
+                                                //importeVentaGastosVariables = importeVentaGastosVariables + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+                                                importeGastosVariablesVentaCapitulos = importeGastosVariablesVentaCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
+
+                                                // Gastos fijos BU
+                                                dondeVa = "VENTAS: Gastos fijos BU";
+                                                //importeVentaGastosFijosBU = importeVentaGastosFijosBU + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+                                                importeGastosFijosBUVentaCapitulos = importeGastosFijosBUVentaCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
+
+                                                // Gastos fijos centrales
+                                                dondeVa = "VENTAS: Gastos fijos centrales";
+                                                //importeVentaGastosFijosCentrales = importeVentaGastosFijosCentrales + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
+                                                importeGastosFijosCentralesVentaCapitulos = importeGastosFijosCentralesVentaCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
                                             }
 
-                                            importeCosteVenta = importeCosteVenta + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
-                                            importeCosteVentaCapitulos = importeCosteVentaCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
-
-                                            // Gastos variables
-                                            importeVentaGastosVariables = importeVentaGastosVariables + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
-                                            importeGastosVariablesVentaCapitulos = importeGastosVariablesVentaCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta);
-
-                                            // Gastos fijos BU
-                                            importeVentaGastosFijosBU = importeVentaGastosFijosBU + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
-                                            importeGastosFijosBUVentaCapitulos = importeGastosFijosBUVentaCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosBUVenta);
-
-                                            // Gastos fijos centrales
-                                            importeVentaGastosFijosCentrales = importeVentaGastosFijosCentrales + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
-                                            importeGastosFijosCentralesVentaCapitulos = importeGastosFijosCentralesVentaCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
-
+                                            dondeVa = "VENTAS: Datos en datatble taximetro";
                                             oItemTaximetro[COL_DATA_CANTIDAD] = Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty).ToString("#,##0.00");
                                             oItemTaximetro[COL_DATA_IMPORTE_VENTA] = Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount).ToString("#,##0.00");
-
-
-                                            //oItemTaximetro[COL_DATA_IMPORTE_COSTE] = (Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste).ToString("#,##0.00");
                                             oItemTaximetro[COL_DATA_GASTO_VARIABLE] = gastosVariablesVenta.ToString("#,##0.00");
                                             oItemTaximetro[COL_DATA_IMPORTE_GASTO_VARIABLE] = (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosVariablesVenta).ToString("#,##0.00");
                                             oItemTaximetro[COL_DATA_GASTO_FIJO_BU] = gastosFijosBUVenta.ToString("#,##0.00");
@@ -3035,22 +4560,41 @@ namespace ROP_Informe
                                         }
                                         if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "RENTAL")
                                         {
+                                            // UNE/CIF
+                                            if (axdEntity_SalesQuotationLine.CanonImport.HasValue && axdEntity_SalesQuotationLine.CanonImport != 0)
+                                            {
+                                                importeFacturacionVentaUneCifCapitulos = importeFacturacionVentaUneCifCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.CanonImport);
+                                                // COSTE
+                                                //importeCosteVentaUneCifCapitulos = importeCosteVentaUneCifCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.CanonImport); //Convert.ToDecimal(axdEntity_SalesQuotationLine.QtyOrdered) * precioCoste * coeficienteUsar;
+                                                // Gastos variables
+                                                //importeGastosVariablesVentaUneCifCapitulos = importeGastosVariablesVentaUneCifCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosVariablesAlquiler);
+                                                //// Gastos fijos BU
+                                                //importeGastosFijosBUVentaUneCifCapitulos = importeGastosFijosBUVentaUneCifCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosFijosBUAlquiler);
+                                                //// Gastos fijos centrales
+                                                //importeGastosFijosCentralesVentaUneCifCapitulos = importeGastosFijosCentralesVentaUneCifCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosFijosCentralesAlquiler);
+                                            }
+                                           
+                                            dondeVa = "ALQUILER";
                                             // (unidades* PS* taximetro (consumible o no consumible) % *días) / 30
                                             importeAlquiler = importeAlquiler + (Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada));
                                             importeFacturacionAlquilerCapitulos = importeFacturacionAlquilerCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada);
 
                                             // Gastos variables
+                                            dondeVa = "ALQUILER: Gastos variables";
                                             importeAlquilerGastosVariables = importeAlquilerGastosVariables + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosVariablesAlquiler);
                                             importeGastosVariablesAlquilerCapitulos = importeGastosVariablesAlquilerCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosVariablesAlquiler);
 
                                             // Gastos fijos BU
+                                            dondeVa = "ALQUILER: gastos fijos BU";
                                             importeAlquilerGastosFijosBU = importeAlquilerGastosFijosBU + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosFijosBUAlquiler);
                                             importeGastosFijosBUAlquilerCapitulos = importeGastosFijosBUAlquilerCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosFijosBUAlquiler);
 
                                             // Gastos fijos centrales
+                                            dondeVa = "ALQUILER: gastos centrales";
                                             importeAlquilerGastosFijosCentrales = importeAlquilerGastosFijosCentrales + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosFijosCentralesAlquiler);
                                             importeGastosFijosCentralesAlquilerCapitulos = importeGastosFijosCentralesAlquilerCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosFijosCentralesAlquiler);
-
+                                            
+                                            dondeVa = "ALQUILER: Datos en datatble taximetro";
                                             oItemTaximetro[COL_DATA_CANTIDAD] = Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty).ToString("#,##0.00");
                                             oItemTaximetro[COL_DATA_EURO_DIA] = Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia).ToString("#,##0.0000");
                                             oItemTaximetro[COL_DATA_DURACION_ESTIMADA] = Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada).ToString("#,##0.00");
@@ -3062,6 +4606,7 @@ namespace ROP_Informe
                                             oItemTaximetro[COL_DATA_GASTO_FIJO_CENTRAL] = gastosFijosCentralesAlquiler.ToString("#,##0.00");
                                             oItemTaximetro[COL_DATA_IMPORTE_GASTO_FIJO_CENTRAL] = ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.EurDia) * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) * gastosFijosCentralesAlquiler).ToString("#,##0.00");
 
+                                            dondeVa = "Calcular datos taxímetros";
                                             if (taximetroConsumible == 0)
                                             {
                                                 precioTaximetroNoConsumible = precioCoste;
@@ -3088,6 +4633,7 @@ namespace ROP_Informe
                                                 }
                                             }
 
+                                            dondeVa = "Calcular datos taxímetros: superficie";
                                             if (calcularPorSuperficie)
                                             {
                                                 if (!metersInvoicing)
@@ -3151,10 +4697,7 @@ namespace ROP_Informe
                                             importeCosteTaximetroNoConsumible = importeCosteTaximetroNoConsumible + (Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroNoConsumible * taximetroNoConsumible * diasTaximetroNoConsumibleCalcular) / diasxMes;
                                             importeCosteTaximetroNoConsumibleCapitulos = importeCosteTaximetroNoConsumibleCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroNoConsumible * taximetroNoConsumible * diasTaximetroNoConsumibleCalcular) / diasxMes;
                                             oItemTaximetro[COL_DATA_IMPORTE_NO_TAX] = ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroNoConsumible * taximetroNoConsumible * diasTaximetroNoConsumibleCalcular) / diasxMes).ToString("#,##0.00");
-
-                                            //importeCosteTaximetroNoConsumible = importeCosteTaximetroNoConsumible + (Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroNoConsumible * taximetroNoConsumible * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) / diasxMes;
-                                            //importeCosteTaximetroNoConsumibleCapitulos = importeCosteTaximetroNoConsumibleCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroNoConsumible * taximetroNoConsumible * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) / diasxMes;
-                                            //oItemTaximetro[COL_DATA_IMPORTE_NO_TAX] = ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroNoConsumible * taximetroNoConsumible * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) / diasxMes).ToString("#,##0.00");
+                                            
                                         }
                                       
                                         dtTaximetro.Rows.Add(oItemTaximetro);
@@ -3165,179 +4708,568 @@ namespace ROP_Informe
                                         importeCostePorte = 0;
                                         importeCostePorteCapitulos = 0;
                                     }
+                                    dondeVa = "FIN RECORRIDO CAPÍTULO";
 
                                     importeMargenAlquiler = importeAlquiler - (importeCosteTaximetroNoConsumible + importeCosteTaximetroConsumible - importeCosteBonificacionTaximetroConsumible);
                                     importeMargenVenta = importeVenta - importeCosteVenta;
                                     importeMargenPorte = 0;
 
-                                    if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "SALES")
-                                    {
+                                    dondeVa = "titulo capitulo";
+                                    tituloCapitulo = "";
+                                    if (axdEntity_SalesQuotationTable.QuotationTitle is null)
+                                        tituloCapitulo = "";
+                                    else
+                                        tituloCapitulo = " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                    dondeVa = "fuera titulo capitulo";
+
+                                    //if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "SALES")
+                                    //{
+                                        dondeVa = "VENTAS 2";
                                         cantidadVenta = cantidadVenta + 1;
                                         capitulosVenta.Add(axdEntity_SalesQuotationTable.QuotationId.ToString());
 
-                                        if (productType.Trim().ToUpper() == "SERVICIO")
+                                        dondeVa = "Importes/cantidades venta 1";
+                                        if (importeFacturacionVentaDepartamentoTecnicoCapitulos != 0)
                                         {
                                             filaValores = dtValores.NewRow();
-                                            filaValores[dtValores_ETIQUETA] = "SERVICIOS";
-                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                            filaValores[dtValores_IMPORTE] = importeFacturacionVentaServicioCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_ETIQUETA] = "DEPARTAMENTO_TÉCNICO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = importeFacturacionVentaDepartamentoTecnicoCapitulos.ToString("#,##0.00");
                                             filaValores[dtValores_PORCENTAJE] = "0.00";
                                             dtValores.Rows.Add(filaValores);
                                             filaValores = null;
                                         }
-                                        else
+
+                                        if (importeCosteVentaDepartamentoTecnicoCapitulos != 0)
                                         {
                                             filaValores = dtValores.NewRow();
-                                            filaValores[dtValores_ETIQUETA] = "VENTAS_PRODUCTOS";
-                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
+                                            filaValores[dtValores_ETIQUETA] = "COSTE_DEPARTAMENTO_TÉCNICO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeCosteVentaDepartamentoTecnicoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaDepartamentoTecnicoCapitulos != 0 || importeCosteVentaDepartamentoTecnicoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "MARGEN DEPARTAMENTO_TÉCNICO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaDepartamentoTecnicoCapitulos - importeCosteVentaDepartamentoTecnicoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosVariablesVentaDepartamentoTecnicoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_DEPARTAMENTO_TÉCNICO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosVariablesVentaDepartamentoTecnicoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosBUVentaDepartamentoTecnicoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_DEPARTAMENTO_TÉCNICO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosBUVentaDepartamentoTecnicoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_DEPARTAMENTO_TÉCNICO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaDepartamentoTecnicoCapitulos != 0|| importeCosteVentaDepartamentoTecnicoCapitulos != 0 || importeGastosVariablesVentaDepartamentoTecnicoCapitulos != 0 || importeGastosFijosBUVentaDepartamentoTecnicoCapitulos != 0|| importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "ROP_BASICO_DEPARTAMENTO_TÉCNICO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaDepartamentoTecnicoCapitulos - importeCosteVentaDepartamentoTecnicoCapitulos - importeGastosVariablesVentaDepartamentoTecnicoCapitulos - importeGastosFijosBUVentaDepartamentoTecnicoCapitulos - importeGastosFijosCentralesVentaDepartamentoTecnicoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentFenolicoNuevoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "FENÓLICO_NUEVO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = importeFacturacionVentFenolicoNuevoCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeCosteVentaFenolicoNuevoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "COSTE_FENÓLICO_NUEVO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeCosteVentaFenolicoNuevoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentFenolicoNuevoCapitulos != 0 || importeCosteVentaFenolicoNuevoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "MARGEN FENÓLICO_NUEVO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentFenolicoNuevoCapitulos - importeCosteVentaFenolicoNuevoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosVariablesVentaFenolicoNuevoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_FENÓLICO_NUEVO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosVariablesVentaFenolicoNuevoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosBUVentaFenolicoNuevoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_FENÓLICO_NUEVO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosBUVentaFenolicoNuevoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosCentralesVentaFenolicoNuevoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_FENÓLICO_NUEVO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosCentralesVentaFenolicoNuevoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentFenolicoNuevoCapitulos != 0 || importeCosteVentaFenolicoNuevoCapitulos != 0 || importeGastosVariablesVentaFenolicoNuevoCapitulos != 0 || importeGastosFijosBUVentaFenolicoNuevoCapitulos != 0 || importeGastosFijosCentralesVentaFenolicoNuevoCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "ROP_BASICO_FENÓLICO_NUEVO";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentFenolicoNuevoCapitulos - importeCosteVentaFenolicoNuevoCapitulos - importeGastosVariablesVentaFenolicoNuevoCapitulos - importeGastosFijosBUVentaFenolicoNuevoCapitulos - importeGastosFijosCentralesVentaFenolicoNuevoCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaUneCifCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "UNE_CIF";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = importeFacturacionVentaUneCifCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeCosteVentaUneCifCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "COSTE_UNE_CIF";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeCosteVentaUneCifCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaUneCifCapitulos != 0 || importeCosteVentaUneCifCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "MARGEN_UNE_CIF";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaUneCifCapitulos - importeCosteVentaUneCifCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosVariablesVentaUneCifCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_UNE_CIF";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosVariablesVentaUneCifCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosBUVentaUneCifCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_UNE_CIF";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosBUVentaUneCifCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosCentralesVentaUneCifCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_UNE_CIF";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosCentralesVentaUneCifCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaUneCifCapitulos != 0 || importeCosteVentaUneCifCapitulos != 0 || importeGastosVariablesVentaUneCifCapitulos != 0 || importeGastosFijosBUVentaUneCifCapitulos != 0 || importeGastosFijosCentralesVentaUneCifCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "ROP_BASICO_UNE_CIF";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaUneCifCapitulos - importeCosteVentaUneCifCapitulos - importeGastosVariablesVentaUneCifCapitulos - importeGastosFijosBUVentaUneCifCapitulos - importeGastosFijosCentralesVentaUneCifCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaMontajesCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "MONTAJES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = importeFacturacionVentaMontajesCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeCosteVentaMontajesCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "COSTE_MONTAJES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeCosteVentaMontajesCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaMontajesCapitulos != 0 || importeCosteVentaMontajesCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "MARGEN MONTAJES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaMontajesCapitulos - importeCosteVentaMontajesCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosVariablesVentaMontajesCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_MONTAJES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosVariablesVentaMontajesCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosBUVentaMontajesCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_MONTAJES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosBUVentaMontajesCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeGastosFijosCentralesVentaMontajesCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_MONTAJES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosCentralesVentaMontajesCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaMontajesCapitulos != 0 || importeCosteVentaMontajesCapitulos != 0 || importeGastosVariablesVentaMontajesCapitulos != 0 || importeGastosFijosBUVentaMontajesCapitulos != 0 || importeGastosFijosCentralesVentaMontajesCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "ROP_BASICO_MONTAJES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaMontajesCapitulos - importeCosteVentaMontajesCapitulos - importeGastosVariablesVentaMontajesCapitulos - importeGastosFijosBUVentaMontajesCapitulos - importeGastosFijosCentralesVentaMontajesCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaProductoCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades venta productos 1";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "VENTAS_DIRECTAS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
                                             filaValores[dtValores_IMPORTE] = importeFacturacionVentaProductoCapitulos.ToString("#,##0.00");
                                             filaValores[dtValores_PORCENTAJE] = "0.00";
                                             dtValores.Rows.Add(filaValores);
                                             filaValores = null;
                                         }
 
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "COSTE_VENTAS";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeCosteVentaCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeCosteVentaCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades venta 2";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "COSTE_VENTAS_DIRECTAS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeCosteVentaCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "MARGEN_VENTA";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = (importeFacturacionVentaCapitulos - importeCosteVentaCapitulos).ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeFacturacionVentaProductoCapitulos != 0 || importeCosteVentaCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades venta 3";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "MARGEN_VENTAS_DIRECTAS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaProductoCapitulos - importeCosteVentaCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_VENTA";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeGastosVariablesVentaCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeGastosVariablesVentaCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades venta 4";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_VENTAS_DIRECTAS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosVariablesVentaCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_VENTA";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeGastosFijosBUVentaCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeGastosFijosBUVentaCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades venta 5";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_VENTAS_DIRECTAS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosBUVentaCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_VENTA";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeGastosFijosCentralesVentaCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
-                                    }
-                                    if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "RENTAL")
-                                    {
+                                        if (importeGastosFijosCentralesVentaCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades venta 6";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_VENTAS_DIRECTAS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosCentralesVentaCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionVentaProductoCapitulos != 0 || importeCosteVentaCapitulos != 0 || importeGastosVariablesVentaCapitulos != 0 || importeGastosFijosBUVentaCapitulos != 0 || importeGastosFijosCentralesVentaCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades venta 7";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "ROP_BASICO_VENTAS_DIRECTAS";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionVentaProductoCapitulos - importeCosteVentaCapitulos - importeGastosVariablesVentaCapitulos - importeGastosFijosBUVentaCapitulos - importeGastosFijosCentralesVentaCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+                                    //}
+                                   
+                                    //if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "RENTAL")
+                                    //{
+                                        dondeVa = "ALQUILER 2";
+
                                         dondeVa = "Importes/cantidades alquiler 1";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "ALQUILERES";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeFacturacionAlquilerCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeFacturacionAlquilerCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "ALQUILERES";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = importeFacturacionAlquilerCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        dondeVa = "Importes/cantidades alquiler 2";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "TAXIMETRO_NO_CONSUMIBLE";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeCosteTaximetroNoConsumibleCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeCosteTaximetroNoConsumibleCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades alquiler 2";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "TAXIMETRO_NO_CONSUMIBLE";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeCosteTaximetroNoConsumibleCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        dondeVa = "Importes/cantidades alquiler 3";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "TAXIMETRO_CONSUMIBLE";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeCosteTaximetroConsumibleCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeCosteTaximetroConsumibleCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades alquiler 3";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "TAXIMETRO_CONSUMIBLE";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeCosteTaximetroConsumibleCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        dondeVa = "Importes/cantidades alquiler 4";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "AJUSTE_TAXIMETRO_CONSUMIBLE";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeCosteBonificacionTaximetroConsumibleCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeCosteBonificacionTaximetroConsumibleCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades alquiler 4";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "AJUSTE_TAXIMETRO_CONSUMIBLE";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = importeCosteBonificacionTaximetroConsumibleCapitulos.ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        dondeVa = "Importes/cantidades alquiler 5";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "MARGEN_ALQUILER";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = (importeFacturacionAlquilerCapitulos - (importeCosteTaximetroNoConsumibleCapitulos + importeCosteTaximetroConsumibleCapitulos - importeCosteBonificacionTaximetroConsumibleCapitulos)).ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeFacturacionAlquilerCapitulos != 0 || importeCosteTaximetroNoConsumibleCapitulos != 0 || importeCosteTaximetroConsumibleCapitulos != 0 || importeCosteBonificacionTaximetroConsumibleCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades alquiler 5";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "MARGEN_ALQUILER";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionAlquilerCapitulos - (importeCosteTaximetroNoConsumibleCapitulos + importeCosteTaximetroConsumibleCapitulos - importeCosteBonificacionTaximetroConsumibleCapitulos)).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        dondeVa = "Importes/cantidades alquiler 6";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_ALQUILER";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeGastosVariablesAlquilerCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeGastosVariablesAlquilerCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades alquiler 6";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_VARIABLES_ALQUILER";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosVariablesAlquilerCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        dondeVa = "Importes/cantidades alquiler 7";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_ALQUILER";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeGastosFijosBUAlquilerCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
+                                        if (importeGastosFijosBUAlquilerCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades alquiler 7";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_BU_ALQUILER";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosBUAlquilerCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
 
-                                        dondeVa = "Importes/cantidades alquiler 8";
-                                        filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_ALQUILER";
-                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                        filaValores[dtValores_IMPORTE] = importeGastosFijosCentralesAlquilerCapitulos.ToString("#,##0.00");
-                                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                                        dtValores.Rows.Add(filaValores);
-                                        filaValores = null;
-                                    }
+                                        if (importeGastosFijosCentralesAlquilerCapitulos != 0)
+                                        {
+                                            dondeVa = "Importes/cantidades alquiler 8";
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "GASTOS_FIJOS_CENTRALES_ALQUILER";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = ((-1) * importeGastosFijosCentralesAlquilerCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+
+                                        if (importeFacturacionAlquilerCapitulos != 0 ||  importeCosteTaximetroNoConsumibleCapitulos != 0 || importeCosteTaximetroConsumibleCapitulos != 0 || importeCosteBonificacionTaximetroConsumibleCapitulos != 0 || importeGastosVariablesAlquilerCapitulos != 0 || importeGastosFijosBUAlquilerCapitulos != 0 || importeGastosFijosCentralesAlquilerCapitulos != 0)
+                                        {
+                                            filaValores = dtValores.NewRow();
+                                            filaValores[dtValores_ETIQUETA] = "ROP_BASICO_ALQUILER";
+                                            filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                            filaValores[dtValores_IMPORTE] = (importeFacturacionAlquilerCapitulos - (importeCosteTaximetroNoConsumibleCapitulos + importeCosteTaximetroConsumibleCapitulos - importeCosteBonificacionTaximetroConsumibleCapitulos) - importeGastosVariablesAlquilerCapitulos - importeGastosFijosBUAlquilerCapitulos - importeGastosFijosCentralesAlquilerCapitulos).ToString("#,##0.00");
+                                            filaValores[dtValores_PORCENTAJE] = "0.00";
+                                            dtValores.Rows.Add(filaValores);
+                                            filaValores = null;
+                                        }
+                                    //}
 
                                     // Porte
                                     dondeVa = "Importes/cantidades porte 1";
-                                    filaValores = dtValores.NewRow();
-                                    filaValores[dtValores_ETIQUETA] = "FACTURACION_PORTES";
-                                    filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                    filaValores[dtValores_IMPORTE] = importeFacturacionPorteCapitulos.ToString("#,##0.00");
-                                    filaValores[dtValores_PORCENTAJE] = "0.00";
-                                    dtValores.Rows.Add(filaValores);
-                                    filaValores = null;
+                                    if (importeFacturacionPorteCapitulos != 0)
+                                    {
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "FACTURACION_PORTES";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                        filaValores[dtValores_IMPORTE] = importeFacturacionPorteCapitulos.ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+                                    }
 
                                     dondeVa = "Importes/cantidades porte 2";
-                                    filaValores = dtValores.NewRow();
-                                    filaValores[dtValores_ETIQUETA] = "COSTE_PORTES";
-                                    filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                    filaValores[dtValores_IMPORTE] = importeCostePorteCapitulos.ToString("#,##0.00");
-                                    filaValores[dtValores_PORCENTAJE] = "0.00";
-                                    dtValores.Rows.Add(filaValores);
-                                    filaValores = null;
+                                    if (importeCostePorteCapitulos != 0)
+                                    {
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "COSTE_PORTES";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                        filaValores[dtValores_IMPORTE] = ((-1) * importeCostePorteCapitulos).ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+                                    }
 
-                                    dondeVa = "Importes/cantidades porte 3";
-                                    filaValores = dtValores.NewRow();
-                                    filaValores[dtValores_ETIQUETA] = "MARGEN_PORTES";
-                                    filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + " / " + axdEntity_SalesQuotationTable.QuotationTitle.ToString();
-                                    filaValores[dtValores_IMPORTE] = (importeFacturacionPorteCapitulos - importeCostePorteCapitulos).ToString("#,##0.00");
-                                    filaValores[dtValores_PORCENTAJE] = "0.00";
-                                    dtValores.Rows.Add(filaValores);
-                                    filaValores = null;
+                                    if (importeFacturacionPorteCapitulos != 0 || importeCostePorteCapitulos != 0)
+                                    {
+                                        dondeVa = "Importes/cantidades porte 3";
+                                        filaValores = dtValores.NewRow();
+                                        filaValores[dtValores_ETIQUETA] = "MARGEN_PORTES";
+                                        filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
+                                        filaValores[dtValores_IMPORTE] = (importeFacturacionPorteCapitulos - importeCostePorteCapitulos).ToString("#,##0.00");
+                                        filaValores[dtValores_PORCENTAJE] = "0.00";
+                                        dtValores.Rows.Add(filaValores);
+                                        filaValores = null;
+                                    }
                                     
                                     dtDatosConfiguracion.Dispose();
                                 }

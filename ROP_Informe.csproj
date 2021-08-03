@@ -426,6 +426,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Img\actualizar.png" />
     <Content Include="Img\cancelar.png" />
+    <Content Include="Img\catalonia.png" />
     <Content Include="Img\collapse.png" />
     <Content Include="Img\edicion.png" />
     <Content Include="Img\eliminar.png" />
@@ -532,6 +533,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Img\logoAlsina.png" />
+    <Content Include="Img\spain.png" />
+    <Content Include="Img\unitedKingdom.png" />
     <Content Include="js\jquery.cookie.js" />
     <Content Include="js\jquery.treegrid.bootstrap2.js" />
     <Content Include="js\jquery.treegrid.bootstrap3.js" />

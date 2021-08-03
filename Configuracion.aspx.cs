@@ -1864,6 +1864,7 @@ namespace ROP_Informe
 
         protected void grvServicios_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+
             string ID = grvServicios.DataKeys[e.RowIndex].Values["CFGSERV_ID"].ToString();
 
             conexiones.crearConexion();

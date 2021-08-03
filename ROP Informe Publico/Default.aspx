@@ -84,13 +84,19 @@
         <asp:TextBox ID="txtNombreOferta" runat="server" Height="20px" Width="100%" Font-Names="Arial" Font-Size="Small"></asp:TextBox>
     </address>
     &nbsp;&nbsp;
+    <asp:ImageButton id="imgSpain" runat="server" ImageAlign="left" ImageUrl="Img/spain.png" OnClick="imgSpain_Click"/>
+     &nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:ImageButton id="imgCatalonian" runat="server" ImageAlign="left" ImageUrl="Img/catalonia.png" OnClick="imgCatalonia_Click"/>
+     &nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:ImageButton id="imgEnglish" runat="server" ImageAlign="left" ImageUrl="Img/unitedKingdom.png" OnClick="imgUnited_Click"/>
+    <br />
+    <br />
    <table id="table" data-detail-view="true" class="table table-striped table-borderless">
          <thead>
              <tr>
                  <th data-field="Concepto">Concepto</th>
                  <th data-field="Importe" data-align="right">Importe</th>
-                 <th data-field="%%" data-align="right">%</th>
-                 <%--<th data-field="%" data-align="right">%</th>--%>
+                 <th data-field="%" data-align="right">%</th>
              </tr>
          </thead>
      </table>

@@ -132,6 +132,33 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.TextBox txtNombreOferta;
 
         /// <summary>
+        /// Control imgSpain.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgSpain;
+
+        /// <summary>
+        /// Control imgCatalonian.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCatalonian;
+
+        /// <summary>
+        /// Control imgEnglish.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgEnglish;
+
+        /// <summary>
         /// Control dataTiempos.
         /// </summary>
         /// <remarks>

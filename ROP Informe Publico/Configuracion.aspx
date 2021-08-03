@@ -444,10 +444,17 @@
                 <asp:LinkButton ID="LinkButton1" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnLimpiarServicio_Click"><span class="glyphicon glyphicon-cog">Inicializar</span></asp:LinkButton>
                 &nbsp;
                 &nbsp;
+                <asp:Label ID="lblFamilia" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Familia" Style="margin-left: 0px"></asp:Label>
+                &nbsp;
+                <asp:TextBox ID="txtFamilia" runat="server" Width="100px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:TextBox>
+                &nbsp;
+                &nbsp;
+                <asp:Label ID="lblSubfamilia" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Subfamilia" Style="margin-left: 0px"></asp:Label>
+                &nbsp;
+                <asp:TextBox ID="txtSubfamilia" runat="server" Width="100px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:TextBox>&nbsp;
                 &nbsp;
                 &nbsp;
                 <asp:Label ID="lblArticulo" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Artículo" Style="margin-left: 0px"></asp:Label>
-                &nbsp;
                 &nbsp;
                 <asp:TextBox ID="txtArticulo" runat="server" Width="100px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:TextBox>
                 &nbsp;
@@ -455,19 +462,18 @@
                 <asp:Label ID="lblTipo" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Text="Tipo" Style="margin-left: 0px"></asp:Label>
                 &nbsp;
                 &nbsp;
-                <asp:DropDownList ID="cmbTipo" runat="server" Width="200px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:DropDownList>
+                <asp:DropDownList ID="cmbTipo" runat="server" Width="150px" Height="20px" Font-Size="Medium" AutoComplete="off"></asp:DropDownList>
                 &nbsp;
                 &nbsp;
                 &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                <asp:LinkButton ID="btnAgregarServicio" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnAgregarServicio_Click"><span class="glyphicon glyphicon-cog">Agregar servicio</span></asp:LinkButton>
+                <asp:LinkButton ID="btnAgregarServicio" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnAgregarServicio_Click"><span class="glyphicon glyphicon-cog">Agregar</span></asp:LinkButton>
             </address>
-            <asp:GridView ID="grvServicios" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="ART_ID" OnRowDeleting="grvServicios_RowDeleting" OnRowEditing="grvServicios_RowEditing" OnRowCancelingEdit="grvServicios_RowCancelingEdit" OnRowUpdating="grvServicios_RowUpdating" OnRowDataBound="grvServicios_RowDataBound">
+            <asp:GridView ID="grvServicios" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="CFGSERV_ID" OnRowDeleting="grvServicios_RowDeleting" OnRowEditing="grvServicios_RowEditing" OnRowCancelingEdit="grvServicios_RowCancelingEdit" OnRowUpdating="grvServicios_RowUpdating" OnRowDataBound="grvServicios_RowDataBound">
                 <Columns>
+                    <asp:BoundField DataField="CFGSERV_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="1" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden"/>
+                    <asp:BoundField DataField="Familia" HeaderText="Familia" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="25%"/>
+                    <asp:BoundField DataField="Subfamilia" HeaderText="Subfamilia" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="25%"/>
                     <asp:BoundField DataField="ART_ID" HeaderText="Artículo" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="25%"/>
-                   <%-- <asp:BoundField DataField="CFGSERV_Tipo" HeaderText="Tipo servicio" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="15%"/>--%>
                      <asp:TemplateField HeaderText = "Tipo servicio">
                         <ItemTemplate>
                             <asp:Label ID="lblTipoServicio" runat="server" Text='<%# Eval("CFGSERV_Tipo") %>' Visible = "false" />
