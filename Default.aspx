@@ -7,6 +7,9 @@
     <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
 
     <style type="text/css">
+        .icon-rojo {
+            color: red;
+        }
         .modalPopupInformacion
         {
             background-color:#FFFFFF;
@@ -23,12 +26,11 @@
             text-align: center;
             font-weight: bold;
         }
-        .modalPopupInformacion .footerInformacion
-        {
-            padding: 3px;
-            align-items: center;
-            align-content: center;
-        }
+            .modalPopupInformacion .footerInformacion {
+                padding: 3px;
+                align-items: center;
+                align-content: center;
+            }
         .modalPopupInformacion .buttonInformacion {
             height: 25px;
             color: black;
@@ -48,10 +50,86 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:Label ID="lblpopup" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Display="None" Text="no mostrar" Style="margin-left: 0px"></asp:Label>
     <br />
-    <h2>INFORME ROP</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>INFORME ROP</h2>
+        </div>
+         <div class="col-md-1">
+            <asp:Label ID="lblVersion" runat="server" Text="Versión" Style="margin-right: 0px"></asp:Label>
+         </div>
+         <div class="col-md-2">
+            <asp:DropDownList ID="cmbVersion" runat="server" CssClass="form-control" OnSelectedIndexChanged="CambioVersionSeleccion" AutoPostBack="true"></asp:DropDownList>
+        </div>
+        <div class="col-md-2">
+            <asp:Label ID="lblVersionUtilizada" runat="server" Text="" ForeColor="Red" Font-Size="Small"></asp:Label>
+         </div>
+        <div class="col-md-3">
+             &nbsp;&nbsp;
+            <asp:ImageButton id="imgCatalonian" runat="server" ImageAlign="right" ImageUrl="Img/catalonia.png" OnClick="imgCatalonia_Click"/>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:ImageButton id="imgEnglish" runat="server" ImageAlign="right" ImageUrl="Img/unitedKingdom.png" OnClick="imgUnited_Click"/>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:ImageButton id="imgSpain" runat="server" ImageAlign="right" ImageUrl="Img/spain.png" OnClick="imgSpain_Click"/>
+        </div>
+    </div>
     <br />
     <address>
-        <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="Small" Height="25px" Text="Concepto" Style="margin-left: 0px"></asp:Label>
+        <hr />
+        <div class="row">
+            <div class="col-md-1">
+                <%--<span>Concepto</span>--%>
+                <asp:Label ID="lblConcepto" runat="server" Text="Concepto" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:DropDownList ID="cmbConcepto" runat="server" CssClass="form-control" OnSelectedIndexChanged="CambioConceptoSeleccion" AutoPostBack="true"></asp:DropDownList>
+            </div>
+            <div class="col-md-1">
+               <%-- <span>Empresa</span>--%>
+                <asp:Label ID="lblEmpresa" runat="server" Text="Empresa" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:DropDownList ID="cmbEmpresa" runat="server" CssClass="form-control"></asp:DropDownList>
+            </div>
+            <div class="col-md-1">
+                 <%--<span>Número</span>--%>
+                <asp:Label ID="lblNumero" runat="server" Text="Número" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <%--<div class="col-md-1">    
+                <asp:CheckBox ID="chkBoxPortes" runat="server" Checked="false" Font-Bold="True"/>
+                <asp:Label ID="lblPortes" runat="server" Font-Size="Medium" Text="Con portes"></asp:Label>
+            </div> --%>
+            <div class="col-md-1">
+                <asp:LinkButton ID="btnBuscarInformacion" usesubmitbehavior="false" CssClass="btn btn-success" runat="server" OnClick="btnBuscarInformacion_Click"><span class="glyphicon glyphicon-cog">Obtener datos</span></asp:LinkButton>
+            </div>
+            <div class="col-md-1">
+                <asp:LinkButton ID="btnAbrirExcel" usesubmitbehavior="false" CssClass="btn btn-success" runat="server" OnClick="btnAbrirExcel_Click"><span class="glyphicon glyphicon-cog">Bajar excel</span></asp:LinkButton>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">    
+                <asp:CheckBox ID="chkBoxPortes" runat="server" Checked="false" Font-Bold="True"/>
+                <asp:Label ID="lblPortes" runat="server" Font-Size="Medium" Text="Con portes"></asp:Label>
+            </div>
+            <div class="col-md-3">    
+                <asp:CheckBox ID="chkBoxFenolico" runat="server" Checked="false" Font-Bold="True"/>
+                <asp:Label ID="lblFenolico" runat="server" Font-Size="Medium" Text="Con fenólico"></asp:Label>
+            </div>
+        </div> 
+        <hr />
+        <div class="row">
+            <div class="col-md-1">
+                <%--<span>Datos generales</span>--%>
+                <asp:Label ID="lblDatosGenerales" runat="server" Text="Datos generales" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-11">
+                 <asp:TextBox ID="txtNombreOferta" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+        <hr />
+  <%--      <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="Small" Height="25px" Text="Concepto" Style="margin-left: 0px"></asp:Label>
         &nbsp;&nbsp;
         <asp:DropDownList ID="cmbConcepto" runat="server" Width="100px" Height="20px" Font-Size="Small">
         </asp:DropDownList>
@@ -65,33 +143,42 @@
         &nbsp;&nbsp;
         <asp:TextBox ID="txtNumero" runat="server" Height="25px" Width="150px" Font-Size="Small"></asp:TextBox>
         &nbsp;
-<%--        <asp:checkBox ID="chkFecha" runat="server" AutoPostBack="true" Checked="false" Font-Bold="True" Font-Size="Large" Height="25px" Style="margin-left: 0px" />
-        <asp:Label ID="lblFecha" runat="server" Font-Bold="True" Font-Size="Large" Text="Fecha on-line"></asp:Label>--%>
         &nbsp;    
         <asp:LinkButton ID="btnBuscarInformacion" usesubmitbehavior="false" OnClientClick="return ponerSpinner()" CssClass="btn btn-info" runat="server" OnClick="btnBuscarInformacion_Click"><span class="glyphicon glyphicon-cog">Obtener datos</span></asp:LinkButton>
         &nbsp;
-     <%--   <asp:LinkButton ID="btnExcel" usesubmitbehavior="false" OnClientClick="return ponerSpinnerExcel()" CssClass="btn btn-info" runat="server" OnClick="btnExportar_Click"><span class="glyphicon glyphicon-cog">Exportar excel</span></asp:LinkButton>
-        &nbsp;--%>
         <asp:LinkButton ID="btnAbrirExcel" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnAbrirExcel_Click"><span class="glyphicon glyphicon-cog">Abrir/Bajar excel</span></asp:LinkButton>
-        &nbsp;
+        &nbsp;--%>
     </address>
     <address>
-        <asp:Label ID="lblMensajeError" runat="server" BackColor="Black" BorderStyle="None" Font-Bold="False" Font-Size="Medium" ForeColor="#FFFF66" Text="..." Width="100%" Style="text-align: center"></asp:Label>
+        <div class="row">
+            <div class="col-md-12">
+                <asp:Label ID="lblMensajeError" runat="server" BackColor="Black" BorderStyle="None" Font-Bold="False" Font-Size="Medium" ForeColor="#FFFF66" Text="..." Width="100%" Style="text-align: center"></asp:Label>
+            </div>
+        </div>
     </address>
-    <address>
-        &nbsp;<asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="Small" Height="18px" Text="Datos generales" Style="margin-left: 0px" Width="133px"></asp:Label>
+<%--   <address>
+         <div class="row">
+            <div class="col-md-1">
+                <span>Datos generales</span>
+            </div>
+            <div class="col-md-11">
+                 <asp:TextBox ID="txtNombreOferta" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>--%>
+        <%--&nbsp;<asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="Small" Height="18px" Text="Datos generales" Style="margin-left: 0px" Width="133px"></asp:Label>
         &nbsp;&nbsp;
-        <asp:TextBox ID="txtNombreOferta" runat="server" Height="20px" Width="100%" Font-Names="Arial" Font-Size="Small"></asp:TextBox>
-    </address>
-    &nbsp;&nbsp;
+        <asp:TextBox ID="txtNombreOferta" runat="server" Height="20px" Width="100%" Font-Names="Arial" Font-Size="Small"></asp:TextBox>--%>
+<%--        </div>
+    </address>--%>
+  <%--  &nbsp;&nbsp;
     <asp:ImageButton id="imgSpain" runat="server" ImageAlign="left" ImageUrl="Img/spain.png" OnClick="imgSpain_Click"/>
      &nbsp;&nbsp;&nbsp;&nbsp;
     <asp:ImageButton id="imgCatalonian" runat="server" ImageAlign="left" ImageUrl="Img/catalonia.png" OnClick="imgCatalonia_Click"/>
      &nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:ImageButton id="imgEnglish" runat="server" ImageAlign="left" ImageUrl="Img/unitedKingdom.png" OnClick="imgUnited_Click"/>
+    <asp:ImageButton id="imgEnglish" runat="server" ImageAlign="left" ImageUrl="Img/unitedKingdom.png" OnClick="imgUnited_Click"/>--%>
+ <%--   <br />--%>
     <br />
-    <br />
-   <table id="table" data-detail-view="true" class="table table-striped table-borderless">
+  
+    <table id="table" data-detail-view="true" class="table table-striped table-borderless">
          <thead>
              <tr>
                  <th data-field="Concepto">Concepto</th>
@@ -104,19 +191,8 @@
   
     <br />
     <br />
-    &nbsp;&nbsp;
+    <hr />
     <br />
-    <br />
-    &nbsp;&nbsp;
-    <br />
-    <br />
-    &nbsp;&nbsp;
-    <br />
-    <br />
-    &nbsp;&nbsp;
-    <br />
-    <br />
-    &nbsp;&nbsp;
     <br />
     <asp:GridView ID="dataTiempos" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small">
     </asp:GridView>
@@ -141,15 +217,19 @@
     </asp:Panel>
 
     <script>
+        var myTituloConcepto = '<%=tituloConcepto%>';
+        var myTituloImporte = '<%=tituloImporte%>';
         var mydata =<%=datosJson%>;
 
         $(function () {
             $('#table').bootstrapTable({
+                tituloConcepto: myTituloConcepto,
+                tituloImporte: myTituloImporte,
                 data: mydata,
                 detailView: true,
                 icons: {
-                    "detailOpen": "fa fa-caret-square-o-down",
-                    "detailClose": "fa fa-caret-square-o-up"
+                    "detailOpen": "fa fa-caret-square-o-down fa-lg",
+                    "detailClose": "fa fa-caret-square-o-up fa-lg icon-rojo"
                 },
                 detailFilter: function (index, row) {
                     return row.hijo != null;
@@ -159,6 +239,9 @@
                         expandirTabla(index, row, $detail);
                 }
             });
+            $('#table').find('th').eq(1).text(myTituloConcepto);
+            $('#table').find('th').eq(2).text(myTituloImporte);
+
             $('#table')[0].classList.value = "table table-bordered";
             if (mydata.colorEncabezado != null && mydata.colorEncabezado != "")
                 $('#table')[0].tHead.style = "background-color:" + row.colorEncabezado;
@@ -205,8 +288,9 @@
                     data: data,
                     detailView: true,
                     icons: {
-                        "detailOpen": "fa fa-caret-square-o-down",
-                        "detailClose": "fa fa-caret-square-o-up"
+                        "detailOpen": "fa fa-caret-square-o-down fa-lg",
+
+                        "detailClose": "fa fa-caret-square-o-up fa-lg icon-rojo"
                     },
                     detailFilter: function (index, row) {
                         return row.hijo != null;
@@ -254,5 +338,17 @@
                  return true;
              }
          }--%>
+
+        //var $table = $('#table')
+        //var $button = $('#button')
+          
+        //$(function() {
+        //    button.click(function () {
+        //        $table.bootstrapTable('updateColumnTitle', {
+        //            field: 'Concepto',
+        //            title: 'Concepto cambiado'
+        //        })
+        //    })
+        //})
     </script>
 </asp:Content>

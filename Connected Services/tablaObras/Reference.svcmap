@@ -19,23 +19,23 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://AXAOS2012TEST.alsina.red:8101/DynamicsAx/Services/ObraService" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://AXAOS2012PREP-NEW.ALSINA.RED:8101/DynamicsAx/Services/ObraService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ObraService.xsd" MetadataType="Schema" ID="2f062dd9-d657-4125-bc8c-df94c3ed6356" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd11" />
-    <MetadataFile FileName="ObraService1.xsd" MetadataType="Schema" ID="9ac3e8b8-689c-41c8-8483-a3bd388160ce" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd4" />
-    <MetadataFile FileName="ObraService2.xsd" MetadataType="Schema" ID="5bb11af9-6955-4a27-96d1-3cf472549596" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd10" />
-    <MetadataFile FileName="ObraService3.xsd" MetadataType="Schema" ID="d9043558-186a-4f3a-8f15-72a4aa8d851a" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd7" />
-    <MetadataFile FileName="ObraService4.xsd" MetadataType="Schema" ID="50e4df7c-1a0c-4448-858b-47fd3f37af98" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd6" />
-    <MetadataFile FileName="ObraService5.xsd" MetadataType="Schema" ID="508db2bc-e142-4fdd-b7f1-e7e6ea709bb1" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd5" />
-    <MetadataFile FileName="ObraService.wsdl" MetadataType="Wsdl" ID="aececbe8-d94d-4fc0-b398-dec501e5eb7a" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?wsdl=wsdl0" />
-    <MetadataFile FileName="ObraService6.xsd" MetadataType="Schema" ID="adcd1c7b-13e8-4aee-9a05-6a14b6aca3c3" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd3" />
-    <MetadataFile FileName="ObraService7.xsd" MetadataType="Schema" ID="45f20eab-7844-4ea4-92c5-21f87ae7d639" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd2" />
-    <MetadataFile FileName="ObraService8.xsd" MetadataType="Schema" ID="a053f332-cb5d-4696-b2a3-63d74fd5aefa" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd1" />
-    <MetadataFile FileName="ObraService9.xsd" MetadataType="Schema" ID="f890b5b4-72de-4e8d-a46d-1a705cf9f79b" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd0" />
-    <MetadataFile FileName="ObraService1.wsdl" MetadataType="Wsdl" ID="dd9f0baf-6734-4da4-8353-9ff4ea279e8f" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService" />
-    <MetadataFile FileName="ObraService10.xsd" MetadataType="Schema" ID="7fe2e99a-3752-434e-b316-56d99cfb94f2" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd9" />
-    <MetadataFile FileName="ObraService11.xsd" MetadataType="Schema" ID="8da2ff61-524c-4527-9705-89adbf136d64" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd8" />
+    <MetadataFile FileName="ObraService12.xsd" MetadataType="Schema" ID="90958916-85eb-46fe-9eb7-1eab828d97ea" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd10" />
+    <MetadataFile FileName="ObraService121.xsd" MetadataType="Schema" ID="ad9f8d6f-2cd2-4d23-95ce-9cc1c7ea2fe4" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd4" />
+    <MetadataFile FileName="ObraService122.xsd" MetadataType="Schema" ID="3338742f-fed3-45e7-96cd-2db90a3e479c" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd1" />
+    <MetadataFile FileName="ObraService123.xsd" MetadataType="Schema" ID="1ddf77a4-4084-4cdf-8432-d4bb14c48c5b" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd0" />
+    <MetadataFile FileName="ObraService124.xsd" MetadataType="Schema" ID="cb9c7366-be2c-4a20-af81-1e72f224e9f6" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd3" />
+    <MetadataFile FileName="ObraService125.xsd" MetadataType="Schema" ID="19d21948-5d7d-4c4c-bb1e-9aaee59c7c40" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd2" />
+    <MetadataFile FileName="ObraService126.xsd" MetadataType="Schema" ID="ae7ba110-932b-4425-bda5-8032b3c0b006" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd5" />
+    <MetadataFile FileName="ObraService127.xsd" MetadataType="Schema" ID="5d170523-845e-4fc2-96b4-6562d205b497" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd11" />
+    <MetadataFile FileName="ObraService128.xsd" MetadataType="Schema" ID="df8f763c-e0f5-4d65-9a06-6aa9d81d70fa" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd7" />
+    <MetadataFile FileName="ObraService129.xsd" MetadataType="Schema" ID="a4b0f7ec-bc4a-46dc-8bd4-22505a0f1043" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd6" />
+    <MetadataFile FileName="ObraService1210.xsd" MetadataType="Schema" ID="0889c12e-deed-4429-9418-2909e22ccd99" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd9" />
+    <MetadataFile FileName="ObraService1211.xsd" MetadataType="Schema" ID="76dfa341-3b5b-4760-83bf-3480ab6194ec" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?xsd=xsd8" />
+    <MetadataFile FileName="ObraService2.wsdl" MetadataType="Wsdl" ID="7a7b1b01-1a66-4e1c-b2b4-9de1030b1c57" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService?wsdl=wsdl0" />
+    <MetadataFile FileName="ObraService21.wsdl" MetadataType="Wsdl" ID="2e3ebd07-d058-44b5-a196-9edeaacb8fc4" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/ObraService" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

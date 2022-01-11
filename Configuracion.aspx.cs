@@ -8,7 +8,7 @@ using SpreadsheetLight;
 
 namespace ROP_Informe
 {
-  
+
     public partial class Configuracion : System.Web.UI.Page
     {
         string nombreInforme = "";
@@ -20,31 +20,80 @@ namespace ROP_Informe
         int COLGRID_USR_Exportar = 3;
         int COLGRID_USR_Importar = 4;
         int COLGRID_USR_Eliminar = 5;
-        int COLGRID_USR_btnEditar = 6;
-        int COLGRID_USR_btnEliminar = 7;
+        int COLGRID_USR_Elegir = 6;
+        int COLGRID_USR_btnEditar = 7;
+        int COLGRID_USR_btnEliminar = 8;
 
         int COLGRID_ID = 0;
         int COLGRID_Familia = 1;
         int COLGRID_Subfamilia = 2;
         int COLGRID_ART_ID = 3;
         int COLGRID_CFGSERV_Tipo = 4;
+        int COLGRID_SER_btnEditar = 5;
+        int COLGRID_SER_btnEliminar = 6;
+
+        // Transporte
+        public static int transporsteID = -1;
+        int CAMPO_IDTransporte = 0;
+        int CAMPO_Meses = 1;
+        int CAMPO_Desvio = 2;
+        int CAMPO_Fecha = 3;
+
+        int COLGRID_CFGTRA_ID = 0;
+        int COLGRID_Empresa = 1;
+        int COLGRID_Delegacion = 2;
+        int COLGRID_Margen = 3;
+        int COLGRID_Desde = 4;
+        int COLGRID_Hasta = 5;
+        int COLGRID_Distancia = 6;
+        int COLGRID_Prop = 7;
+        int COLGRID_Valor = 8;
+        int COLGRID_Desvio = 9;
+        int COLGRID_TRA_btnEditar = 10;
+        int COLGRID_TRA_btnEliminar = 11;
 
         int COLGRID_MOV_ID = 0;
         int COLGRID_MOV_Signo = 3;
         int COLGRID_MOV_Dias = 4;
 
+        int COLGRID_PANEL_ID_Indice = 0;
+        int COLGRID_PANEL_ID = 1;
+        int COLGRID_PANEL_Descripcion = 2;
+        int COLGRID_PANEL_Estandar = 3;
+
         // EXCELS
         int COL_Version = 0;
         int COL_Desde = 1;
-        int COL_Hasta= 2;
-        int COL_Grupo= 3;
-        int COL_Subgrupo= 4;
-        int COL_Concepto= 5;
-        int COL_Empresa = 6;
-        int COL_Familia = 7;
-        int COL_Subfamilia = 8;
-        int COL_Articulo = 9;
-        int COL_Valor = 10;
+        int COL_Hasta = 2;
+        
+        int COL_Concepto = 0;
+        int COL_Empresa = 1;
+        int COL_Familia = 2;
+        int COL_Subfamilia = 3;
+        int COL_Articulo = 4;
+        int COL_ValorDesde = 5;
+        int COL_ValorHasta = 6;
+        int COL_Valor = 7;
+        int COL_Moneda = 8;
+
+        int COL_Concepto_Nivel2 = 0;
+        int COL_Empresa_Nivel2 = 1;
+        int COL_Valor_Nivel2 = 2;
+
+        int COL_Concepto_Nivel3 = 0;
+        int COL_Signo_Nivel3 = 1;
+        int COL_Dias_Nivel3 = 2;
+
+        int COL_Concepto_Nivel4 = 0;
+        int COL_Valor_Nivel4 = 1;
+
+        int COL_FamiliaServicios = 0;
+        int COL_SubfamiliaServicios = 1;
+        int COL_ArticuloServicios = 2;
+        int COL_TipoServicio = 3;
+
+        int COL_AAFPaneles = 0;
+        int COL_EstandarPaneles = 1;
 
         int COL_Version_ID = 0;
         int COL_Version_Version = 1;
@@ -99,34 +148,46 @@ namespace ROP_Informe
         {
             if (!IsPostBack)
             {
+                chkBoxActivos.Checked = true;
+                txtPropuesto.Enabled = false;
                 txtUsuarioRed.Text = "";
                 chkVisualizar.Checked = true;
                 chkExportar.Checked = false;
                 chkImportar.Checked = false;
                 chkEliminar.Checked = false;
+                chkElegirVersion.Checked = false;
                 ViewState["FiltroVersion"] = "";
                 ViewState["FiltroConcepto"] = "";
                 ViewState["FiltroConceptoValor"] = "";
                 ViewState["FiltroVersionGeneral"] = "";
                 ViewState["FiltroConceptoGeneral"] = "";
                 ViewState["FiltroEmpresaGeneral"] = "";
+                ViewState["FiltroVersionMovimientosGeneral"]="";
                 ViewState["FiltroMovimiento"] = "";
-                rdbOperativoGeneral.Checked = true;
+                ViewState["FiltroEmpresaTransporte"] = "";
+                ViewState["FiltroDelegacionTransporte"] = "";
+                ViewState["FiltroDesdeTransporte"] = "";
+                ViewState["FiltroDistanciaTransporte"] = "";
                 rdbOperativo.Checked = true;
                 rellenarGridGeneral();
-                rellenarCombosVersionGeneral();
                 rellenarGrid();
                 rellenarCombosVersion();
                 rellenarGridServicios();
                 rellenarServicio();
+                rellenarEmpresa();
+                rellenarDelegacion();
+                rellenarGridTransporte();
+                rellenarTransporte();
+                rellenarTransporteGeneral();
+                datosPaneles();
+                rellenarGridPaneles();
                 rellenarGridUsuarios();
-                rellenarDatosFijos();
                 validarAccionUsuario();
                 rellenarAjustesFechaMovimientos();
-                rdbGFV.Checked = true;
+                //rdbGFV.Checked = true;
                 rellenarGridHistorico();
-                btnAbrirExcelGeneral.Visible = false;
                 btnAbrirExcel.Visible = false;
+                txtDesde.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
         }
 
@@ -146,17 +207,17 @@ namespace ROP_Informe
             if (dr.HasRows)
             {
                 dr.Read();
-                cmbVersionGeneralExportar.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
-                btnExcelGeneral.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
-                btnAbrirExcelGeneral.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
-                rdbOperativoGeneral.Visible= dr.GetBoolean(CAMPO_USR_Importar);
-                rdbPruebaGeneral.Visible = dr.GetBoolean(CAMPO_USR_Importar);
-                ficheroSeleccionadoGeneral.Visible = dr.GetBoolean(CAMPO_USR_Importar);
-                btnImportarExcelGeneral.Visible = dr.GetBoolean(CAMPO_USR_Importar);
-                cmbVersionGeneralEliminar.Visible = dr.GetBoolean(CAMPO_USR_Eliminar);
-                btnExcelGeneralEliminar.Visible = dr.GetBoolean(CAMPO_USR_Eliminar);
-                cmbVersionGeneralPruebas.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                btnVersionGeneralReal.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
+                //cmbVersionGeneralExportar.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
+                //btnExcelGeneral.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
+                //btnAbrirExcelGeneral.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
+                //rdbOperativoGeneral.Visible = dr.GetBoolean(CAMPO_USR_Importar);
+                //rdbPruebaGeneral.Visible = dr.GetBoolean(CAMPO_USR_Importar);
+                //ficheroSeleccionadoGeneral.Visible = dr.GetBoolean(CAMPO_USR_Importar);
+                //btnImportarExcelGeneral.Visible = dr.GetBoolean(CAMPO_USR_Importar);
+                //cmbVersionGeneralEliminar.Visible = dr.GetBoolean(CAMPO_USR_Eliminar);
+                //btnExcelGeneralEliminar.Visible = dr.GetBoolean(CAMPO_USR_Eliminar);
+                //cmbVersionGeneralPruebas.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                //btnVersionGeneralReal.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
 
                 cmbVersionExportar.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
                 btnExcel.Visible = dr.GetBoolean(CAMPO_USR_Exportar);
@@ -167,54 +228,90 @@ namespace ROP_Informe
                 btnImportarExcel.Visible = dr.GetBoolean(CAMPO_USR_Importar);
                 cmbVersionEliminar.Visible = dr.GetBoolean(CAMPO_USR_Eliminar);
                 btnExcelEliminar.Visible = dr.GetBoolean(CAMPO_USR_Eliminar);
-                cmbVersionPruebas.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                btnVersionReal.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
+                cmbVersionPruebas.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnVersionReal.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
 
-                btnLimpiarUsuario.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                btnAgregarUsuario.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                lblUsuario.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar); 
-                txtUsuarioRed.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                lblVisualizar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                chkVisualizar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                lblExportar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                chkExportar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                lblImportar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                chkImportar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                lblEliminar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                chkEliminar.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnLimpiarUsuario.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnAgregarUsuario.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                lblUsuario.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                txtUsuarioRed.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                lblVisualizar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                chkVisualizar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                lblExportar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                chkExportar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                lblImportar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                chkImportar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                lblEliminar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                chkEliminar.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                lblElegirVersion.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                chkElegirVersion.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
 
-                btnEditarFijo.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
-                btnGuardarFijo.Visible = false;
-                btnCancelarFijo.Visible = false;
-                
+                btnLimpiarServicio.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnAgregarServicio.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+
+                foreach (GridViewRow myRow in grvServicios.Rows)
+                {
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_SER_btnEditar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible =dr.GetBoolean(CAMPO_USR_Visualizar);
+                    }
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_SER_btnEliminar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                    }
+                }
+
+                btnLimpiarTransporte.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnAgregarTransporte.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+
+                foreach (GridViewRow myRow in grvTransporte.Rows)
+                {
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRA_btnEditar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                    }
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRA_btnEliminar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                    }
+                }
+
+                //btnEditarFijo.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                //btnGuardarFijo.Visible = false;
+                //btnCancelarFijo.Visible = false;
+
                 foreach (GridViewRow myRow in grvUsuarios.Rows)
                 {
                     imgBoton = (ImageButton)myRow.Cells[COLGRID_USR_btnEditar].Controls[0];
                     if (imgBoton != null)
                     {
-                        imgBoton.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
+                        imgBoton.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
                     }
                     imgBoton = (ImageButton)myRow.Cells[COLGRID_USR_btnEliminar].Controls[0];
                     if (imgBoton != null)
                     {
-                        imgBoton.Visible = !dr.GetBoolean(CAMPO_USR_Visualizar);
+                        imgBoton.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
                     }
                 }
                 conexiones.conexion.Close();
             }
-            else 
+            else
             {
-                cmbVersionGeneralExportar.Visible = false;
-                btnExcelGeneral.Visible = false;
-                btnAbrirExcelGeneral.Visible = false;
-                rdbOperativoGeneral.Visible = false;
-                rdbPruebaGeneral.Visible = false;
-                ficheroSeleccionadoGeneral.Visible = false;
-                btnImportarExcelGeneral.Visible = false;
-                cmbVersionGeneralEliminar.Visible = false;
-                btnExcelGeneralEliminar.Visible = false;
-                cmbVersionGeneralPruebas.Visible = false;
-                btnVersionGeneralReal.Visible = false;
+                //cmbVersionGeneralExportar.Visible = false;
+                //btnExcelGeneral.Visible = false;
+                //btnAbrirExcelGeneral.Visible = false;
+                //rdbOperativoGeneral.Visible = false;
+                //rdbPruebaGeneral.Visible = false;
+                //ficheroSeleccionadoGeneral.Visible = false;
+                //btnImportarExcelGeneral.Visible = false;
+                //cmbVersionGeneralEliminar.Visible = false;
+                //btnExcelGeneralEliminar.Visible = false;
+                //cmbVersionGeneralPruebas.Visible = false;
+                //btnVersionGeneralReal.Visible = false;
 
                 cmbVersionExportar.Visible = false;
                 btnExcel.Visible = false;
@@ -240,10 +337,46 @@ namespace ROP_Informe
                 chkImportar.Visible = false;
                 lblEliminar.Visible = false;
                 chkEliminar.Visible = false;
+                lblElegirVersion.Visible = false;
+                chkElegirVersion.Visible = false;
 
-                btnEditarFijo.Visible = false;
-                btnGuardarFijo.Visible = false;
-                btnCancelarFijo.Visible = false;
+                btnLimpiarServicio.Visible = false;
+                btnAgregarServicio.Visible = false;
+
+                foreach (GridViewRow myRow in grvServicios.Rows)
+                {
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_SER_btnEditar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = false;
+                    }
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_SER_btnEliminar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = false;
+                    }
+                }
+
+                btnLimpiarTransporte.Visible = false;
+                btnAgregarTransporte.Visible = false;
+
+                foreach (GridViewRow myRow in grvTransporte.Rows)
+                {
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRA_btnEditar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = false;
+                    }
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRA_btnEliminar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = false;
+                    }
+                }
+
+                //btnEditarFijo.Visible = false;
+                //btnGuardarFijo.Visible = false;
+                //btnCancelarFijo.Visible = false;
 
                 foreach (GridViewRow myRow in grvUsuarios.Rows)
                 {
@@ -262,115 +395,12 @@ namespace ROP_Informe
         }
 
         #region ConfiguracionGeneral
-        protected void btnExportarGeneral_Click(object sender, EventArgs e)
-        {
-            if (cmbVersionGeneralExportar.Text == "")
-            {
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Debe indicar el tipo de fichero a exportar.');", true);
-                lblTituloError.Text = "Exportar excel GFV";
-                lblMensajeError.Text = "Debe indicar el tipo de fichero a exportar.";
-                mpeError.Show();
-                return;
-            }
-            if (cmbVersionGeneralExportar.Text == "TODOS" || cmbVersionGeneralExportar.Text == "TODOS Reales" || cmbVersionGeneralExportar.Text == "TODOS Pruebas")
-            {
-                nombreInforme = Server.MapPath("~/Ficheros excel/ConfiguracionGFV_TODO_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
-                exportarExcelGeneralTodo();
-            }
-            else
-            {
-                nombreInforme = Server.MapPath("~/Ficheros excel/ConfiguracionGFV_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
-                exportarExcelGeneral();
-            }
-            //MessageBox.Show("Fichero excel generado.", "Exportar GFV", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Fichero excel generado.');", true);
-            lblTituloInformacion.Text = "Exportar GFV";
-            lblMensajeInformacion.Text = "Fichero excel generado.";
-            mpeInformacion.Show();
-        }
-
-        protected void btnAbrirExcelGeneral_Click(object sender, EventArgs e)
-        {
-            if (cmbVersionGeneralExportar.Text == "TODOS" || cmbVersionGeneralExportar.Text == "TODOS Reales" || cmbVersionGeneralExportar.Text == "TODOS Pruebas")
-                    Context.Response.Redirect("Ficheros excel/ConfiguracionGFV_TODO_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
-            else
-                    Context.Response.Redirect("Ficheros excel/ConfiguracionGFV_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
-            btnAbrirExcelGeneral.Visible = false;
-        }
-
-        protected void btnEliminarGeneral_Click(object sender, EventArgs e)
-        {
-            if (cmbVersionGeneralEliminar.Text == "")
-            {
-                //MessageBox.Show("Debe indicar la versión a eliminar.", "Eliminar GFV", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Debe indicar la versión a eliminar.');", true);
-                lblTituloError.Text = "Eliminar versión GFV";
-                lblMensajeError.Text = "Debe indicar la versión a eliminar.";
-                mpeError.Show();
-                return;
-            }
-            conexiones.crearConexion();
-            conexiones.comando = conexiones.conexion.CreateCommand();
-            conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralEliminar";
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            conexiones.comando.Parameters.AddWithValue("@CGE_Version", cmbVersionGeneralEliminar.Text);
-            conexiones.comando.ExecuteNonQuery();
-            conexiones.conexion.Close();
-
-            rellenarGridGeneral();
-            rellenarCombosVersionGeneral();
-
-            lblTituloError.Text = "Eliminar GFV";
-            lblMensajeError.Text = "Versión GFV eliminada.";
-            mpeError.Show();
-        }
-
-        protected void btnRealGeneral_Click(object sender, EventArgs e)
-        {
-            if (cmbVersionGeneralPruebas.Text == "")
-            {
-                //MessageBox.Show("Debe indicar la versión a pasar a real.", "Pasar GFV a real", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Debe indicar la versión a pasar a real.');", true);
-                lblTituloError.Text = "Pasar GFV a real";
-                lblMensajeError.Text = "Debe indicar la versión a pasar a real.";
-                mpeError.Show();
-                return;
-            }
-            else
-            {
-                txtObservaciones.Text = "";
-                mpePruebaReal.Show();
-            }
-        }
-
         protected void btnOkPruebaReal_Click(object sender, EventArgs e)
         {
             string observaciones = txtObservaciones.Text;
             lblTituloInformacion.Text = "Observaciones";
             lblMensajeInformacion.Text = observaciones;
             mpeInformacion.Show();
-        }
-
-        protected void btnSubirExcelGeneral_Click(object sender, EventArgs e)
-        {
-            string directorio;
-            String fichero;
-
-            directorio = Server.MapPath("~/Ficheros excel/");
-
-            if (ficheroSeleccionadoGeneral.HasFile)
-            {
-                fichero = ficheroSeleccionadoGeneral.FileName;
-                directorio += fichero;
-                ficheroSeleccionadoGeneral.SaveAs(directorio);
-                procesarExcelGeneral(directorio);
-            }
-            else
-            {
-                lblTituloError.Text = "Importar fichero excel GFV";
-                lblMensajeError.Text = "Debe indicar el fichero a importar.";
-                mpeError.Show();
-            }
         }
 
         protected void CambioFiltroVersionGeneral(object sender, EventArgs e)
@@ -380,80 +410,17 @@ namespace ROP_Informe
             this.rellenarGridGeneral();
         }
 
-        private void rellenarCombosVersionGeneral()
-        {
-            // para importar: reales y pruebas
-            cmbVersionGeneralExportar.Items.Clear();
-            cmbVersionGeneralExportar.Items.Add("");
-
-            conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionGeneralVersionConsulta";
-            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
-            conexiones.comando.Parameters.AddWithValue("@selector", 1);
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            SqlDataReader dr = conexiones.comando.ExecuteReader();
-            if (dr.HasRows)
-            {
-                while (dr.Read())
-                {
-                    cmbVersionGeneralExportar.Items.Add(dr.GetString(0));
-                }
-            }
-            conexiones.conexion.Close();
-            cmbVersionGeneralExportar.Text = "TODOS";
-
-            // para eliminar: a futuro y pruebas
-            cmbVersionGeneralEliminar.Items.Clear();
-            cmbVersionGeneralEliminar.Items.Add("");
-
-            conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionGeneralVersionEliminarConsulta";
-            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            SqlDataReader drEliminar = conexiones.comando.ExecuteReader();
-            if (drEliminar.HasRows)
-            {
-                while (drEliminar.Read())
-                {
-                    cmbVersionGeneralEliminar.Items.Add(drEliminar.GetString(0));
-                }
-            }
-            conexiones.conexion.Close();
-            cmbVersionGeneralEliminar.Text = "";
-
-            // para pasar a real: solo pruebas
-            cmbVersionGeneralPruebas.Items.Clear();
-            cmbVersionGeneralPruebas.Items.Add("");
-
-            conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionGeneralVersionPruebasConsulta";
-            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            SqlDataReader drPruebas= conexiones.comando.ExecuteReader();
-            if (drPruebas.HasRows)
-            {
-                while (drPruebas.Read())
-                {
-                    cmbVersionGeneralPruebas.Items.Add(drPruebas.GetString(0));
-                }
-            }
-            conexiones.conexion.Close();
-            cmbVersionGeneralPruebas.Text = "";
-            
-        }
-            
-        private void rellenarFiltroVersionGeneral(DropDownList cmbFiltroVersion)
+           private void rellenarFiltroVersionGeneral(DropDownList cmbFiltroVersion)
         {
             cmbFiltroVersion.DataSource = null;
             conexiones.crearConexion();
             conexiones.consulta = "sp_ROP_ConfiguracionGeneralVersionConsulta";
-            //conexiones.comando.Parameters.AddWithValue("@selector", 0);
             SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
             System.Data.DataTable dt = new System.Data.DataTable();
             adaptador.Fill(dt);
             cmbFiltroVersion.DataSource = dt;
-            cmbFiltroVersion.DataTextField = "CGE_Version";
-            cmbFiltroVersion.DataValueField = "CGE_Version";
+            cmbFiltroVersion.DataTextField = "CFG_Version";
+            cmbFiltroVersion.DataValueField = "CFG_Version";
             cmbFiltroVersion.DataBind();
             conexiones.conexion.Close();
             cmbFiltroVersion.Items.FindByValue(ViewState["FiltroVersionGeneral"].ToString()).Selected = true;
@@ -549,7 +516,7 @@ namespace ROP_Informe
             grvDatosGenerales.DataSource = dr;
             grvDatosGenerales.DataBind();
             conexiones.conexion.Close();
-            
+
             cmbFiltro = (DropDownList)grvDatosGenerales.HeaderRow.FindControl("FiltroVersionGeneral");
             this.rellenarFiltroVersionGeneral(cmbFiltro);
 
@@ -560,418 +527,418 @@ namespace ROP_Informe
             this.rellenarFiltroEmpresaGeneral(cmbFiltro);
         }
 
-        private void procesarExcelGeneral(string fichero)
-        {
-            int fila;
-            string version;
-            DateTime fechaDesde;
-            DateTime fechaHasta;
+        //private void procesarExcelGeneral(string fichero)
+        //{
+        //    int fila;
+        //    string version;
+        //    DateTime fechaDesde;
+        //    DateTime fechaHasta;
 
-            SqlParameter parametroVersion;
-            SqlParameter parametroPrueba;
-            SqlParameter parametroObservaciones;
-            SqlParameter parametroFechaDesde;
-            SqlParameter parametroFechaHasta;
-            SqlParameter parametroConcepto;
-            SqlParameter parametroEmpresa;
-            SqlParameter parametroValor;
+        //    SqlParameter parametroVersion;
+        //    SqlParameter parametroPrueba;
+        //    SqlParameter parametroObservaciones;
+        //    SqlParameter parametroFechaDesde;
+        //    SqlParameter parametroFechaHasta;
+        //    SqlParameter parametroConcepto;
+        //    SqlParameter parametroEmpresa;
+        //    SqlParameter parametroValor;
 
-            SLDocument sl = new SLDocument(fichero, "Configuracion general");
-         
-            if (sl.GetCellValueAsString(FILA_GENERAL_TITULO, 1).ToString().ToUpper() != "CONFIGURACIÓN GENERAL")
-            {
-                //MessageBox.Show("El fichero no parece tener el formato correcto." + Environment.NewLine + "Por favor, verifique el fichero e intente procesarlo de nuevo.", "Configuración parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('El fichero no parece tener el formato correcto. Por favor, verifique el fichero e intente procesarlo de nuevo.');", true);
-                lblTituloError.Text = "Configuración parámetros";
-                lblMensajeError.Text = "El fichero no parece tener el formato correcto."+ "<br /> &nbsp;" + "Por favor, verifique el fichero e intente procesarlo de nuevo.";
-                mpeError.Show();
-                return;
-            }
+        //    SLDocument sl = new SLDocument(fichero, "Configuracion general");
 
-            // Validar valores cabecera 
-            if ((sl.GetCellValueAsString(FILA_GENERAL_VERSION, 2).Length == 0) || (sl.GetCellValueAsString(FILA_GENERAL_FECHA_DESDE, 2).Length == 0))
-            {
-                //MessageBox.Show("Debe indicar la versión, y la fecha desde de la misma." + Environment.NewLine + "Por favor, verifique el fichero e intente procesarlo de nuevo", "Configuración parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Debe indicar la versión, y la fecha desde de la misma. Por favor, verifique el fichero e intente procesarlo de nuevo.');", true);
-                lblTituloError.Text = "Configuración parámetros";
-                lblMensajeError.Text = "Debe indicar la versión, y la fecha desde de la misma." + "<br /> &nbsp;" + "Por favor, verifique el fichero e intente procesarlo de nuevo.";
-                mpeError.Show();
-                return;
-            }
+        //    if (sl.GetCellValueAsString(FILA_GENERAL_TITULO, 1).ToString().ToUpper() != "CONFIGURACIÓN GENERAL")
+        //    {
+        //        //MessageBox.Show("El fichero no parece tener el formato correcto." + Environment.NewLine + "Por favor, verifique el fichero e intente procesarlo de nuevo.", "Configuración parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('El fichero no parece tener el formato correcto. Por favor, verifique el fichero e intente procesarlo de nuevo.');", true);
+        //        lblTituloError.Text = "Configuración parámetros";
+        //        lblMensajeError.Text = "El fichero no parece tener el formato correcto." + "<br /> &nbsp;" + "Por favor, verifique el fichero e intente procesarlo de nuevo.";
+        //        mpeError.Show();
+        //        return;
+        //    }
 
-            version = sl.GetCellValueAsString(FILA_GENERAL_VERSION, 2);
-            fechaDesde = sl.GetCellValueAsDateTime(FILA_GENERAL_FECHA_DESDE, 2);
-            fechaHasta = sl.GetCellValueAsDateTime(FILA_GENERAL_FECHA_HASTA, 2);
-            
-            // Validar versión y fechas
-            conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionGeneralValidar";
-            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    // Validar valores cabecera 
+        //    if ((sl.GetCellValueAsString(FILA_GENERAL_VERSION, 2).Length == 0) || (sl.GetCellValueAsString(FILA_GENERAL_FECHA_DESDE, 2).Length == 0))
+        //    {
+        //        //MessageBox.Show("Debe indicar la versión, y la fecha desde de la misma." + Environment.NewLine + "Por favor, verifique el fichero e intente procesarlo de nuevo", "Configuración parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Debe indicar la versión, y la fecha desde de la misma. Por favor, verifique el fichero e intente procesarlo de nuevo.');", true);
+        //        lblTituloError.Text = "Configuración parámetros";
+        //        lblMensajeError.Text = "Debe indicar la versión, y la fecha desde de la misma." + "<br /> &nbsp;" + "Por favor, verifique el fichero e intente procesarlo de nuevo.";
+        //        mpeError.Show();
+        //        return;
+        //    }
 
-            parametroVersion = new SqlParameter("@CGE_Version", SqlDbType.VarChar, 10);
-            parametroVersion.Value = version;
-            conexiones.comando.Parameters.Add(parametroVersion);
-            parametroFechaDesde = new SqlParameter("@CGE_FechaDesde", SqlDbType.DateTime);
-            if (sl.GetCellValueAsString(FILA_GENERAL_FECHA_DESDE, 2).Length == 0 || rdbPruebaGeneral.Checked)
-                parametroFechaDesde.Value = DBNull.Value;
-            else
-                parametroFechaDesde.Value = fechaDesde;
-            conexiones.comando.Parameters.Add(parametroFechaDesde);
-            SqlDataReader dr = conexiones.comando.ExecuteReader();
-            if (dr.HasRows)
-            {
-                dr.Read();
-                if (Convert.ToString(dr["CGE_Version"]).Length > 0)
-                {
-                    lblMensajeError.Text = "La versión indicada ya existe." + "<br /> &nbsp;" + "Por favor, indique un nuevo número de versión e intente procesar el fichero de nuevo.";
-                    mpeError.Show();
-                    return;
-                }
-                if (Convert.ToString(dr["CGE_FechaDesde"]).Length > 0)
-                {
-                    lblMensajeError.Text = "La versión indicada tiene una fecha que coincide con otra versión." + "<br /> &nbsp;" + "Por favor, indique otra fecha e intente procesar el fichero de nuevo.";
-                    mpeError.Show();
-                    return;
-                }
-            }
+        //    version = sl.GetCellValueAsString(FILA_GENERAL_VERSION, 2);
+        //    fechaDesde = sl.GetCellValueAsDateTime(FILA_GENERAL_FECHA_DESDE, 2);
+        //    fechaHasta = sl.GetCellValueAsDateTime(FILA_GENERAL_FECHA_HASTA, 2);
 
-            conexiones.crearConexion();
-            fila = FILA_GENERAL_DATOS;
-            while (sl.GetCellValueAsString(fila, 1) != "")
-            {
-                conexiones.consulta = "sp_ROP_ConfiguracionGeneralIncluir";
-                conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
-                conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    // Validar versión y fechas
+        //    conexiones.crearConexion();
+        //    conexiones.consulta = "sp_ROP_ConfiguracionGeneralValidar";
+        //    conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+        //    conexiones.comando.CommandType = CommandType.StoredProcedure;
 
-                parametroVersion = new SqlParameter("@CGE_Version", SqlDbType.VarChar, 10);
-                if (version.Length == 0)
-                    parametroVersion.Value = DBNull.Value;
-                else
-                    parametroVersion.Value = version;
-                conexiones.comando.Parameters.Add(parametroVersion);
+        //    parametroVersion = new SqlParameter("@CFG_Version", SqlDbType.VarChar, 10);
+        //    parametroVersion.Value = version;
+        //    conexiones.comando.Parameters.Add(parametroVersion);
+        //    parametroFechaDesde = new SqlParameter("@CGE_FechaDesde", SqlDbType.DateTime);
+        //    if (sl.GetCellValueAsString(FILA_GENERAL_FECHA_DESDE, 2).Length == 0 || rdbPruebaGeneral.Checked)
+        //        parametroFechaDesde.Value = DBNull.Value;
+        //    else
+        //        parametroFechaDesde.Value = fechaDesde;
+        //    conexiones.comando.Parameters.Add(parametroFechaDesde);
+        //    SqlDataReader dr = conexiones.comando.ExecuteReader();
+        //    if (dr.HasRows)
+        //    {
+        //        dr.Read();
+        //        if (Convert.ToString(dr["CFG_Version"]).Length > 0)
+        //        {
+        //            lblMensajeError.Text = "La versión indicada ya existe." + "<br /> &nbsp;" + "Por favor, indique un nuevo número de versión e intente procesar el fichero de nuevo.";
+        //            mpeError.Show();
+        //            return;
+        //        }
+        //        if (Convert.ToString(dr["CGE_FechaDesde"]).Length > 0)
+        //        {
+        //            lblMensajeError.Text = "La versión indicada tiene una fecha que coincide con otra versión." + "<br /> &nbsp;" + "Por favor, indique otra fecha e intente procesar el fichero de nuevo.";
+        //            mpeError.Show();
+        //            return;
+        //        }
+        //    }
 
-                parametroPrueba = new SqlParameter("@CGE_VersionPrueba", SqlDbType.Bit);
-                parametroPrueba.Value = rdbPruebaGeneral.Checked;
-                conexiones.comando.Parameters.Add(parametroPrueba);
+        //    conexiones.crearConexion();
+        //    fila = FILA_GENERAL_DATOS;
+        //    while (sl.GetCellValueAsString(fila, 1) != "")
+        //    {
+        //        conexiones.consulta = "sp_ROP_ConfiguracionGeneralIncluir";
+        //        conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+        //        conexiones.comando.CommandType = CommandType.StoredProcedure;
 
-                parametroObservaciones = new SqlParameter("@CGE_Observaciones", SqlDbType.VarChar,4000);
-                parametroObservaciones.Value = DBNull.Value;
-                conexiones.comando.Parameters.Add(parametroObservaciones);
+        //        parametroVersion = new SqlParameter("@CFG_Version", SqlDbType.VarChar, 10);
+        //        if (version.Length == 0)
+        //            parametroVersion.Value = DBNull.Value;
+        //        else
+        //            parametroVersion.Value = version;
+        //        conexiones.comando.Parameters.Add(parametroVersion);
 
-                parametroFechaDesde = new SqlParameter("@CGE_FechaDesde", SqlDbType.DateTime);
-                if (sl.GetCellValueAsString(FILA_GENERAL_FECHA_DESDE, 2).Length == 0 || rdbPruebaGeneral.Checked)
-                    parametroFechaDesde.Value = DBNull.Value;
-                else
-                    parametroFechaDesde.Value = fechaDesde;
-                conexiones.comando.Parameters.Add(parametroFechaDesde);
+        //        parametroPrueba = new SqlParameter("@CFG_VersionPrueba", SqlDbType.Bit);
+        //        parametroPrueba.Value = rdbPruebaGeneral.Checked;
+        //        conexiones.comando.Parameters.Add(parametroPrueba);
 
-                parametroFechaHasta= new SqlParameter("@CGE_FechaHasta", SqlDbType.DateTime);
-                if (sl.GetCellValueAsString(FILA_GENERAL_FECHA_HASTA, 2).Length == 0 || rdbPruebaGeneral.Checked)
-                    parametroFechaHasta.Value = DBNull.Value;
-                else
-                    parametroFechaHasta.Value = fechaHasta;
-                conexiones.comando.Parameters.Add(parametroFechaHasta);
+        //        parametroObservaciones = new SqlParameter("@CGE_Observaciones", SqlDbType.VarChar, 4000);
+        //        parametroObservaciones.Value = DBNull.Value;
+        //        conexiones.comando.Parameters.Add(parametroObservaciones);
 
-                parametroConcepto = new SqlParameter("@CGE_Concepto", SqlDbType.VarChar,100);
-                if (sl.GetCellValueAsString(fila, COL_FicheroGeneralConcepto).Length == 0)
-                    parametroConcepto.Value = DBNull.Value;
-                else
-                    parametroConcepto.Value = sl.GetCellValueAsString(fila, COL_FicheroGeneralConcepto);
-                conexiones.comando.Parameters.Add(parametroConcepto);
+        //        parametroFechaDesde = new SqlParameter("@CGE_FechaDesde", SqlDbType.DateTime);
+        //        if (sl.GetCellValueAsString(FILA_GENERAL_FECHA_DESDE, 2).Length == 0 || rdbPruebaGeneral.Checked)
+        //            parametroFechaDesde.Value = DBNull.Value;
+        //        else
+        //            parametroFechaDesde.Value = fechaDesde;
+        //        conexiones.comando.Parameters.Add(parametroFechaDesde);
 
-                parametroEmpresa= new SqlParameter("@CGE_Empresa", SqlDbType.VarChar,5);
-                if (sl.GetCellValueAsString(fila, COL_FicheroGeneralEmpresa).Length == 0)
-                    parametroEmpresa.Value = DBNull.Value;
-                else
-                    parametroEmpresa.Value = sl.GetCellValueAsString(fila, COL_FicheroGeneralEmpresa);
-                conexiones.comando.Parameters.Add(parametroEmpresa);
+        //        parametroFechaHasta = new SqlParameter("@CGE_FechaHasta", SqlDbType.DateTime);
+        //        if (sl.GetCellValueAsString(FILA_GENERAL_FECHA_HASTA, 2).Length == 0 || rdbPruebaGeneral.Checked)
+        //            parametroFechaHasta.Value = DBNull.Value;
+        //        else
+        //            parametroFechaHasta.Value = fechaHasta;
+        //        conexiones.comando.Parameters.Add(parametroFechaHasta);
 
-                parametroValor= new SqlParameter("@CGE_Valor", SqlDbType.Decimal);
-                parametroValor.Precision = 18;
-                parametroValor.Scale = 2;
-                if (sl.GetCellValueAsString(fila, COL_FicheroGeneralValor).ToString().Length == 0)
-                    parametroValor.Value = DBNull.Value;
-                else
-                    parametroValor.Value = sl.GetCellValueAsDecimal(fila, COL_FicheroGeneralValor);
-                conexiones.comando.Parameters.Add(parametroValor);
+        //        parametroConcepto = new SqlParameter("@CGE_Concepto", SqlDbType.VarChar, 100);
+        //        if (sl.GetCellValueAsString(fila, COL_FicheroGeneralConcepto).Length == 0)
+        //            parametroConcepto.Value = DBNull.Value;
+        //        else
+        //            parametroConcepto.Value = sl.GetCellValueAsString(fila, COL_FicheroGeneralConcepto);
+        //        conexiones.comando.Parameters.Add(parametroConcepto);
 
-                conexiones.comando.ExecuteNonQuery();
+        //        parametroEmpresa = new SqlParameter("@CGE_Empresa", SqlDbType.VarChar, 5);
+        //        if (sl.GetCellValueAsString(fila, COL_FicheroGeneralEmpresa).Length == 0)
+        //            parametroEmpresa.Value = DBNull.Value;
+        //        else
+        //            parametroEmpresa.Value = sl.GetCellValueAsString(fila, COL_FicheroGeneralEmpresa);
+        //        conexiones.comando.Parameters.Add(parametroEmpresa);
 
-                fila = fila + 1;
-            }
-            conexiones.conexion.Close();
-            //MessageBox.Show("Fichero procesado", "Agregar versión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Fichero procesado.');", true);
-            lblTituloInformacion.Text = "Agregar versión";
-            lblMensajeInformacion.Text = "Fichero procesado.";
-            mpeInformacion.Show();
+        //        parametroValor = new SqlParameter("@CGE_Valor", SqlDbType.Decimal);
+        //        parametroValor.Precision = 18;
+        //        parametroValor.Scale = 2;
+        //        if (sl.GetCellValueAsString(fila, COL_FicheroGeneralValor).ToString().Length == 0)
+        //            parametroValor.Value = DBNull.Value;
+        //        else
+        //            parametroValor.Value = sl.GetCellValueAsDecimal(fila, COL_FicheroGeneralValor);
+        //        conexiones.comando.Parameters.Add(parametroValor);
 
-            rellenarGridGeneral();
-            rellenarCombosVersionGeneral();
-        }
+        //        conexiones.comando.ExecuteNonQuery();
 
-        private void exportarExcelGeneral()
-        {
-            SLStyle style;
-            SLDataValidation dv;
-            int fila = 3;
-            int columna = 0;
-            int cantidadEmpresas = 0;
-            bool encabezado = false;
-          
-            btnAbrirExcelGeneral.Visible = false;
-            // Consulta SQL
-            conexiones.crearConexion();
-            conexiones.comando = conexiones.conexion.CreateCommand();
-            conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralConsulta";
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            conexiones.comando.Parameters.AddWithValue("@version", cmbVersionGeneralExportar.Text);
-            conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
-            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
-            DataSet ds = new DataSet();
-            adaptador.Fill(ds);
+        //        fila = fila + 1;
+        //    }
+        //    conexiones.conexion.Close();
+        //    //MessageBox.Show("Fichero procesado", "Agregar versión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaMensaje", "alert('Fichero procesado.');", true);
+        //    lblTituloInformacion.Text = "Agregar versión";
+        //    lblMensajeInformacion.Text = "Fichero procesado.";
+        //    mpeInformacion.Show();
 
-            // Crear el excel
-            SLDocument sl = new SLDocument();
+        //    rellenarGridGeneral();
+        //    //rellenarCombosVersionGeneral();
+        //}
 
-            sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Configuracion general");
-           
-            // Hojas ocultas
-            sl.AddWorksheet("Empresas");
-            conexiones.consulta = "sp_ROP_EmpresasListado";
-            SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
-            System.Data.DataTable dtEmpresas = new System.Data.DataTable();
-            adaptadorEmpresa.Fill(dtEmpresas);
-            sl.ImportDataTable(1, 1, dtEmpresas, false);
-            sl.HideWorksheet("Empresas");
-            cantidadEmpresas = dtEmpresas.Rows.Count;
+        //private void exportarExcelGeneral()
+        //{
+        //    SLStyle style;
+        //    SLDataValidation dv;
+        //    int fila = 3;
+        //    int columna = 0;
+        //    int cantidadEmpresas = 0;
+        //    bool encabezado = false;
 
-            sl.SelectWorksheet("Configuracion general");
-            sl.SetCellValue(1, 1, "CONFIGURACIÓN GENERAL");
+        //    btnAbrirExcelGeneral.Visible = false;
+        //    // Consulta SQL
+        //    conexiones.crearConexion();
+        //    conexiones.comando = conexiones.conexion.CreateCommand();
+        //    conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralConsulta";
+        //    conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    conexiones.comando.Parameters.AddWithValue("@version", cmbVersionGeneralExportar.Text);
+        //    conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
+        //    SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+        //    DataSet ds = new DataSet();
+        //    adaptador.Fill(ds);
 
-            encabezado = false;
-            foreach (DataRow Row in ds.Tables[0].Rows)
-            {
-                if (!encabezado)
-                {
-                    // VERSIÓN
-                    sl.SetCellValue(FILA_GENERAL_IDVERSION, 1, "ID");
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 12);
-                    style.Font.Bold = true;
-                    sl.SetCellStyle(FILA_GENERAL_IDVERSION, 1, style);
+        //    // Crear el excel
+        //    SLDocument sl = new SLDocument();
 
-                    sl.SetCellValue(FILA_GENERAL_IDVERSION, 2, Row.ItemArray[COL_GeneralID].ToString());
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 11);
-                    sl.SetCellStyle(FILA_GENERAL_IDVERSION, 2, style);
+        //    sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Configuracion general");
 
-                    sl.SetCellValue(FILA_GENERAL_VERSION, 1, "Versión");
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 12);
-                    style.Font.Bold = true;
-                    sl.SetCellStyle(FILA_GENERAL_VERSION, 1, style);
+        //    // Hojas ocultas
+        //    sl.AddWorksheet("Empresas");
+        //    conexiones.consulta = "sp_ROP_EmpresasListado";
+        //    SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+        //    System.Data.DataTable dtEmpresas = new System.Data.DataTable();
+        //    adaptadorEmpresa.Fill(dtEmpresas);
+        //    sl.ImportDataTable(1, 1, dtEmpresas, false);
+        //    sl.HideWorksheet("Empresas");
+        //    cantidadEmpresas = dtEmpresas.Rows.Count;
 
-                    sl.SetCellValue(FILA_GENERAL_VERSION, 2, Row.ItemArray[COL_GeneralVersion].ToString());
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 11);
-                    sl.SetCellStyle(FILA_GENERAL_VERSION, 2, style);
+        //    sl.SelectWorksheet("Configuracion general");
+        //    sl.SetCellValue(1, 1, "CONFIGURACIÓN GENERAL");
 
-                    // FECHA DESDE 
-                    sl.SetCellValue(FILA_GENERAL_FECHA_DESDE, 1, "Desde");
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 12);
-                    style.Font.Bold = true;
-                    style.FormatCode = "dd-MM-yyyy";
-                    sl.SetCellStyle(FILA_GENERAL_FECHA_DESDE, 1, style);
+        //    encabezado = false;
+        //    foreach (DataRow Row in ds.Tables[0].Rows)
+        //    {
+        //        if (!encabezado)
+        //        {
+        //            // VERSIÓN
+        //            sl.SetCellValue(FILA_GENERAL_IDVERSION, 1, "ID");
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 12);
+        //            style.Font.Bold = true;
+        //            sl.SetCellStyle(FILA_GENERAL_IDVERSION, 1, style);
 
-                    sl.SetCellValue(FILA_GENERAL_FECHA_DESDE, 2, Row.ItemArray[COL_GeneralDesde].ToString());
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 11);
-                    sl.SetCellStyle(FILA_GENERAL_FECHA_DESDE, 2, style);
+        //            sl.SetCellValue(FILA_GENERAL_IDVERSION, 2, Row.ItemArray[COL_GeneralID].ToString());
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 11);
+        //            sl.SetCellStyle(FILA_GENERAL_IDVERSION, 2, style);
 
-                    // FECHA HASTA
-                    sl.SetCellValue(FILA_GENERAL_FECHA_HASTA, 1, "Hasta");
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 12);
-                    style.Font.Bold = true;
-                    style.FormatCode = "dd-MM-yyyy";
-                    sl.SetCellStyle(FILA_GENERAL_FECHA_HASTA, 1, style);
+        //            sl.SetCellValue(FILA_GENERAL_VERSION, 1, "Versión");
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 12);
+        //            style.Font.Bold = true;
+        //            sl.SetCellStyle(FILA_GENERAL_VERSION, 1, style);
 
-                    sl.SetCellValue(FILA_GENERAL_FECHA_HASTA, 2, Row.ItemArray[COL_GeneralHasta].ToString());
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 11);
-                    sl.SetCellStyle(FILA_GENERAL_FECHA_HASTA, 2, style);
+        //            sl.SetCellValue(FILA_GENERAL_VERSION, 2, Row.ItemArray[COL_GeneralVersion].ToString());
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 11);
+        //            sl.SetCellStyle(FILA_GENERAL_VERSION, 2, style);
 
-                    sl.AutoFitColumn(1, 2);
+        //            // FECHA DESDE 
+        //            sl.SetCellValue(FILA_GENERAL_FECHA_DESDE, 1, "Desde");
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 12);
+        //            style.Font.Bold = true;
+        //            style.FormatCode = "dd-MM-yyyy";
+        //            sl.SetCellStyle(FILA_GENERAL_FECHA_DESDE, 1, style);
 
-                    sl.MergeWorksheetCells("A1", "C1");
-                    style = sl.CreateStyle();
-                    style.Font.Bold = true;
-                    style.Font.Italic = true;
-                    style.SetFont("Verdana", 12);
-                    sl.SetCellStyle(1, 1, style);
+        //            sl.SetCellValue(FILA_GENERAL_FECHA_DESDE, 2, Row.ItemArray[COL_GeneralDesde].ToString());
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 11);
+        //            sl.SetCellStyle(FILA_GENERAL_FECHA_DESDE, 2, style);
 
-                    // Crear el encabezado del informe
-                    sl.SetCellValue(FILA_GENERAL_DATOS-1, 1, "Concepto");
-                    sl.SetCellValue(FILA_GENERAL_DATOS-1, 2, "Empresa");
-                    sl.SetCellValue(FILA_GENERAL_DATOS-1, 3, "Valor");
+        //            // FECHA HASTA
+        //            sl.SetCellValue(FILA_GENERAL_FECHA_HASTA, 1, "Hasta");
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 12);
+        //            style.Font.Bold = true;
+        //            style.FormatCode = "dd-MM-yyyy";
+        //            sl.SetCellStyle(FILA_GENERAL_FECHA_HASTA, 1, style);
 
-                    style = sl.CreateStyle();
-                    sl.SetColumnWidth(1, 30);
-                    sl.SetColumnWidth(2, 20);
-                    sl.SetColumnWidth(3, 20);
-                    style.SetFont("Verdana", 10);
-                    style.Font.Bold = true;
-                    style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
-                    style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
-                    style.SetFontColor(System.Drawing.Color.White);
-                    style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                    for (columna = 1; columna <= 3; columna++)
-                        sl.SetCellStyle(FILA_GENERAL_DATOS - 1, columna, style);
+        //            sl.SetCellValue(FILA_GENERAL_FECHA_HASTA, 2, Row.ItemArray[COL_GeneralHasta].ToString());
+        //            style = sl.CreateStyle();
+        //            style.SetFont("Verdana", 11);
+        //            sl.SetCellStyle(FILA_GENERAL_FECHA_HASTA, 2, style);
 
-                    sl.FreezePanes(FILA_GENERAL_DATOS - 1, 3);
-                    fila = FILA_GENERAL_DATOS;
+        //            sl.AutoFitColumn(1, 2);
 
-                    encabezado = true;
-                }
+        //            sl.MergeWorksheetCells("A1", "C1");
+        //            style = sl.CreateStyle();
+        //            style.Font.Bold = true;
+        //            style.Font.Italic = true;
+        //            style.SetFont("Verdana", 12);
+        //            sl.SetCellStyle(1, 1, style);
 
-                // Datos
-                sl.SetCellValue(fila, 1, Row.ItemArray[COL_GeneralConcepto].ToString());
-                sl.SetCellValue(fila, 2, Row.ItemArray[COL_GeneralEmpresa].ToString());
-                sl.SetCellValue(fila, 3, Row.ItemArray[COL_GeneralValor].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
-                style.FormatCode = "#,##0.00";
-                sl.SetCellStyle(fila, 3, style);
+        //            // Crear el encabezado del informe
+        //            sl.SetCellValue(FILA_GENERAL_DATOS - 1, 1, "Concepto");
+        //            sl.SetCellValue(FILA_GENERAL_DATOS - 1, 2, "Empresa");
+        //            sl.SetCellValue(FILA_GENERAL_DATOS - 1, 3, "Valor");
 
-                fila++;
-            }
+        //            style = sl.CreateStyle();
+        //            sl.SetColumnWidth(1, 30);
+        //            sl.SetColumnWidth(2, 20);
+        //            sl.SetColumnWidth(3, 20);
+        //            style.SetFont("Verdana", 10);
+        //            style.Font.Bold = true;
+        //            style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+        //            style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+        //            style.SetFontColor(System.Drawing.Color.White);
+        //            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //            for (columna = 1; columna <= 3; columna++)
+        //                sl.SetCellStyle(FILA_GENERAL_DATOS - 1, columna, style);
 
-            if (fila >= FILA_GENERAL_DATOS)
-            {
-                sl.Filter("A" +(FILA_GENERAL_DATOS-1).ToString(), "B" + (fila - 1).ToString());
-               
-                dv = sl.CreateDataValidation("B"+(FILA_GENERAL_DATOS).ToString(), "B1000");
-                dv.AllowList("'Empresas'!$A$1:$A$" + cantidadEmpresas.ToString(), true, true);
-                sl.AddDataValidation(dv);
+        //            sl.FreezePanes(FILA_GENERAL_DATOS - 1, 3);
+        //            fila = FILA_GENERAL_DATOS;
 
-                dv = sl.CreateDataValidation("C"+(FILA_GENERAL_DATOS).ToString(), "C1000");
-                dv.AllowDecimal(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0.0, false);
-                sl.AddDataValidation(dv);
-            }
+        //            encabezado = true;
+        //        }
 
-            sl.SaveAs(nombreInforme);
-            btnAbrirExcelGeneral.Visible = true;
-        }
+        //        // Datos
+        //        sl.SetCellValue(fila, 1, Row.ItemArray[COL_GeneralConcepto].ToString());
+        //        sl.SetCellValue(fila, 2, Row.ItemArray[COL_GeneralEmpresa].ToString());
+        //        sl.SetCellValue(fila, 3, Row.ItemArray[COL_GeneralValor].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
+        //        style.FormatCode = "#.##0,00";
+        //        sl.SetCellStyle(fila, 3, style);
 
-        private void exportarExcelGeneralTodo()
-        {
-            SLStyle style;
-            int fila;
-            int columna = 0;
- 
-            btnAbrirExcelGeneral.Visible = false;
-            // Consulta SQL
-            conexiones.crearConexion();
-            conexiones.comando = conexiones.conexion.CreateCommand();
-            conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralConsulta";
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
-            conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
-            conexiones.comando.Parameters.AddWithValue("@empresa", DBNull.Value);
-            if (cmbVersionGeneralExportar.Text == "TODOS")
-                conexiones.comando.Parameters.AddWithValue("@tipo", 0);
-            else if (cmbVersionGeneralExportar.Text == "TODOS Reales")
-                conexiones.comando.Parameters.AddWithValue("@tipo", 1);
-            else
-                conexiones.comando.Parameters.AddWithValue("@tipo", 2);
-            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
-            DataSet ds = new DataSet();
-            adaptador.Fill(ds);
+        //        fila++;
+        //    }
 
-            // Crear el excel
-            SLDocument sl = new SLDocument();
+        //    if (fila >= FILA_GENERAL_DATOS)
+        //    {
+        //        sl.Filter("A" + (FILA_GENERAL_DATOS - 1).ToString(), "B" + (fila - 1).ToString());
 
-            sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Configuracion general");
+        //        dv = sl.CreateDataValidation("B" + (FILA_GENERAL_DATOS).ToString(), "B1000");
+        //        dv.AllowList("'Empresas'!$A$1:$A$" + cantidadEmpresas.ToString(), true, true);
+        //        sl.AddDataValidation(dv);
 
-            // Crear el encabezado del informe
-            sl.SetCellValue(1, 1, "ID");
-            sl.SetCellValue(1, 2, "Versión");
-            sl.SetCellValue(1, 3, "Desde");
-            sl.SetCellValue(1, 4, "Hasta");
-            sl.SetCellValue(1, 5, "Concepto");
-            sl.SetCellValue(1, 6, "Empresa");
-            sl.SetCellValue(1, 7, "Valor");
+        //        dv = sl.CreateDataValidation("C" + (FILA_GENERAL_DATOS).ToString(), "C1000");
+        //        dv.AllowDecimal(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0.0, false);
+        //        sl.AddDataValidation(dv);
+        //    }
 
-            style = sl.CreateStyle();
-            sl.SetColumnWidth(1, 20);
-            sl.SetColumnWidth(2, 30);
-            sl.SetColumnWidth(3, 20);
-            sl.SetColumnWidth(4, 20);
-            sl.SetColumnWidth(5, 30);
-            sl.SetColumnWidth(6, 20);
-            sl.SetColumnWidth(7, 20);
-            style.SetFont("Verdana", 10);
-            style.Font.Bold = true;
-            style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
-            style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
-            style.SetFontColor(System.Drawing.Color.White);
-            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-            for (columna = 1; columna <= 7; columna++)
-                sl.SetCellStyle(1, columna, style);
+        //    sl.SaveAs(nombreInforme);
+        //    btnAbrirExcelGeneral.Visible = true;
+        //}
 
-            fila = 2;
-            foreach (DataRow Row in ds.Tables[0].Rows)
-            {
-                // Datos
-                sl.SetCellValue(fila, 1, Row.ItemArray[COL_GeneralID].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 1, style);
+        //private void exportarExcelGeneralTodo()
+        //{
+        //    SLStyle style;
+        //    int fila;
+        //    int columna = 0;
 
-                sl.SetCellValue(fila, 2, Row.ItemArray[COL_GeneralVersion].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 2, style);
+        //    btnAbrirExcelGeneral.Visible = false;
+        //    // Consulta SQL
+        //    conexiones.crearConexion();
+        //    conexiones.comando = conexiones.conexion.CreateCommand();
+        //    conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralConsulta";
+        //    conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
+        //    conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
+        //    conexiones.comando.Parameters.AddWithValue("@empresa", DBNull.Value);
+        //    if (cmbVersionGeneralExportar.Text == "TODOS")
+        //        conexiones.comando.Parameters.AddWithValue("@tipo", 0);
+        //    else if (cmbVersionGeneralExportar.Text == "TODOS Reales")
+        //        conexiones.comando.Parameters.AddWithValue("@tipo", 1);
+        //    else
+        //        conexiones.comando.Parameters.AddWithValue("@tipo", 2);
+        //    SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+        //    DataSet ds = new DataSet();
+        //    adaptador.Fill(ds);
 
-                sl.SetCellValue(fila, 3, Row.ItemArray[COL_GeneralDesde].ToString());
-                sl.SetCellValue(fila, 4, Row.ItemArray[COL_GeneralHasta].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                style.FormatCode = "dd-MM-yyyy";
-                sl.SetCellStyle(fila, 3, style);
-                sl.SetCellStyle(fila, 4, style);
+        //    // Crear el excel
+        //    SLDocument sl = new SLDocument();
 
-                sl.SetCellValue(fila, 5, Row.ItemArray[COL_GeneralConcepto].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 5, style);
+        //    sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Configuracion general");
 
-                sl.SetCellValue(fila, 6, Row.ItemArray[COL_GeneralEmpresa].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 6, style);
+        //    // Crear el encabezado del informe
+        //    sl.SetCellValue(1, 1, "ID");
+        //    sl.SetCellValue(1, 2, "Versión");
+        //    sl.SetCellValue(1, 3, "Desde");
+        //    sl.SetCellValue(1, 4, "Hasta");
+        //    sl.SetCellValue(1, 5, "Concepto");
+        //    sl.SetCellValue(1, 6, "Empresa");
+        //    sl.SetCellValue(1, 7, "Valor");
 
-                sl.SetCellValue(fila, 7, Row.ItemArray[COL_GeneralValor].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
-                style.FormatCode = "#,##0.00";
-                sl.SetCellStyle(fila, 7, style);
-                fila++;
-            }
+        //    style = sl.CreateStyle();
+        //    sl.SetColumnWidth(1, 20);
+        //    sl.SetColumnWidth(2, 30);
+        //    sl.SetColumnWidth(3, 20);
+        //    sl.SetColumnWidth(4, 20);
+        //    sl.SetColumnWidth(5, 30);
+        //    sl.SetColumnWidth(6, 20);
+        //    sl.SetColumnWidth(7, 20);
+        //    style.SetFont("Verdana", 10);
+        //    style.Font.Bold = true;
+        //    style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+        //    style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+        //    style.SetFontColor(System.Drawing.Color.White);
+        //    style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //    for (columna = 1; columna <= 7; columna++)
+        //        sl.SetCellStyle(1, columna, style);
 
-            sl.SaveAs(nombreInforme);
-            btnAbrirExcelGeneral.Visible = true;
-        }
+        //    fila = 2;
+        //    foreach (DataRow Row in ds.Tables[0].Rows)
+        //    {
+        //        // Datos
+        //        sl.SetCellValue(fila, 1, Row.ItemArray[COL_GeneralID].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 1, style);
+
+        //        sl.SetCellValue(fila, 2, Row.ItemArray[COL_GeneralVersion].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 2, style);
+
+        //        sl.SetCellValue(fila, 3, Row.ItemArray[COL_GeneralDesde].ToString());
+        //        sl.SetCellValue(fila, 4, Row.ItemArray[COL_GeneralHasta].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        style.FormatCode = "dd-MM-yyyy";
+        //        sl.SetCellStyle(fila, 3, style);
+        //        sl.SetCellStyle(fila, 4, style);
+
+        //        sl.SetCellValue(fila, 5, Row.ItemArray[COL_GeneralConcepto].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 5, style);
+
+        //        sl.SetCellValue(fila, 6, Row.ItemArray[COL_GeneralEmpresa].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 6, style);
+
+        //        sl.SetCellValue(fila, 7, Row.ItemArray[COL_GeneralValor].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
+        //        style.FormatCode = "#.##0,00";
+        //        sl.SetCellStyle(fila, 7, style);
+        //        fila++;
+        //    }
+
+        //    sl.SaveAs(nombreInforme);
+        //    btnAbrirExcelGeneral.Visible = true;
+        //}
         #endregion
 
         #region "ConfiguracionVersion"
@@ -996,7 +963,8 @@ namespace ROP_Informe
                 }
             }
             conexiones.conexion.Close();
-            cmbVersionExportar.Text = "TODOS";
+            //cmbVersionExportar.Text = "TODOS";
+            cmbVersionExportar.Text = "";
 
             // para eliminar: a futuro y pruebas
             cmbVersionEliminar.Items.Clear();
@@ -1049,16 +1017,17 @@ namespace ROP_Informe
             if (cmbVersionExportar.Text == "TODOS" || cmbVersionExportar.Text == "TODOS Reales" || cmbVersionExportar.Text == "TODOS Pruebas")
             {
                 nombreInforme = Server.MapPath("~/Ficheros excel/Configuracion__TODO_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
-                exportarExcelTodo();
+                //exportarExcelTodo();
             }
             else
             {
                 nombreInforme = Server.MapPath("~/Ficheros excel/Configuracion_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
                 exportarExcel();
             }
-            lblTituloInformacion.Text = "Exportar GFV";
+            lblTituloInformacion.Text = "Exportar configuración";
             lblMensajeInformacion.Text = "Fichero excel generado.";
             mpeInformacion.Show();
+            btnAbrirExcel.Visible = true;
         }
 
         protected void btnAbrirExcel_Click(object sender, EventArgs e)
@@ -1222,14 +1191,14 @@ namespace ROP_Informe
             conexiones.consulta = "sp_ROP_ConfiguracionConsulta";
             conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
             conexiones.comando.CommandType = CommandType.StoredProcedure;
-            
+
             SqlParameter parametroVersion = new SqlParameter("@version", SqlDbType.NVarChar, 10);
             if (ViewState["FiltroVersion"].ToString() == "")
                 parametroVersion.Value = null;
             else
                 parametroVersion.Value = ViewState["FiltroVersion"].ToString();
             conexiones.comando.Parameters.Add(parametroVersion);
-            
+
             SqlParameter parametroConcepto = new SqlParameter("@concepto", SqlDbType.NVarChar, 100);
             if (ViewState["FiltroConcepto"].ToString() == "")
                 parametroConcepto.Value = null;
@@ -1262,33 +1231,34 @@ namespace ROP_Informe
         private void exportarExcel()
         {
             SLStyle style;
+            SLStyle styleDec;
             SLDataValidation dv;
-            string nombreGrupo = "";
-            int hojas = 1;
-            int fila = 5;
+            int fila = 2;
             int columna = 0;
+            decimal valor = 0;
+            int cantidadConceptosNivel1 = 0;
+            int cantidadConceptosNivel2 = 0;
+            int cantidadConceptosNivel3 = 0;
+            int cantidadConceptosNivel4 = 0;
+            int cantidadValoresNivel4 = 0;
             int cantidadEmpresas = 0;
             int cantidadFamilias = 0;
             int cantidadSubfamilias = 0;
-            SqlDataAdapter adaptadorSubgrupos;
-            System.Data.DataTable dtSubgrupos;
-            int cantidadSubgrupos = 0;
-            int columnaSubgrupo = 0;
+            int cantidadMonedas = 0;
+            int cantidadSignos = 2;
+            int cantidadTiposServicios = 0;
+            int cantidadBooleano = 2;
 
             btnAbrirExcel.Visible = false;
             // Consulta SQL
             conexiones.crearConexion();
             conexiones.comando = conexiones.conexion.CreateCommand();
-            conexiones.comando.CommandText = "sp_ROP_ConfiguracionConsulta";
+            conexiones.comando.CommandText = "sp_ROP_DatosConfiguracionConsulta";
             conexiones.comando.CommandType = CommandType.StoredProcedure;
-            if (ViewState["FiltroVersion"].ToString() == "")
+            if (cmbVersionExportar.Text == "")
                 conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
             else
-                conexiones.comando.Parameters.AddWithValue("@version", ViewState["FiltroVersion"].ToString());
-            if (ViewState["FiltroConcepto"].ToString() == "")
-                conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
-            else
-                conexiones.comando.Parameters.AddWithValue("@concepto", ViewState["FiltroConcepto"].ToString());
+                conexiones.comando.Parameters.AddWithValue("@version", cmbVersionExportar.Text);
             SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
             DataSet ds = new DataSet();
             adaptador.Fill(ds);
@@ -1298,391 +1268,709 @@ namespace ROP_Informe
 
             sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Datos Generales");
 
-            hojas = 0;
             foreach (DataRow Row in ds.Tables[0].Rows)
             {
-                if (nombreGrupo != Row.ItemArray[COL_Grupo].ToString())
-                {
-                    // Creamos una instancia de la primera hoja de trabajo de excel  
-                    if (hojas == 0)
-                    {
-                        sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Datos Generales");
+                sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Datos Generales");
 
-                        // VERSIÓN
-                        sl.SetCellValue(1, 1, "Versión");
-                        style = sl.CreateStyle();
-                        style.SetFont("Verdana", 12);
-                        style.Font.Bold  = true;
-                        sl.SetCellStyle(1, 1, style);
-
-                        sl.SetCellValue(1, 2, Row.ItemArray[COL_Version].ToString());
-                        style = sl.CreateStyle();
-                        style.SetFont("Verdana", 11);
-                        sl.SetCellStyle(1, 2, style);
-                        
-                        // FECHA DESDE 
-                        sl.SetCellValue(2, 1, "Desde");
-                        style = sl.CreateStyle();
-                        style.SetFont("Verdana", 12);
-                        style.Font.Bold = true;
-                        style.FormatCode = "dd-MM-yyyy";
-                        sl.SetCellStyle(2, 1, style);
-
-                        sl.SetCellValue(2, 2, Row.ItemArray[COL_Desde].ToString());
-                        style = sl.CreateStyle();
-                        style.SetFont("Verdana", 11);
-                        sl.SetCellStyle(2, 2, style);
-
-                        // FECHA HASTA
-                        sl.SetCellValue(3, 1, "Hasta");
-                        style = sl.CreateStyle();
-                        style.SetFont("Verdana", 12);
-                        style.Font.Bold = true;
-                        style.FormatCode = "dd-MM-yyyy";
-                        sl.SetCellStyle(3, 1, style);
-
-                        sl.SetCellValue(3, 2, Row.ItemArray[COL_Hasta].ToString());
-                        style = sl.CreateStyle();
-                        style.SetFont("Verdana", 11);
-                        sl.SetCellStyle(3, 2, style);
-
-                        sl.AutoFitColumn(1, 2);
-
-                        // Hojas ocultas
-                        sl.AddWorksheet("Empresas");
-                        conexiones.consulta = "sp_ROP_EmpresasListado";
-                        SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
-                        System.Data.DataTable dtEmpresas = new System.Data.DataTable();
-                        adaptadorEmpresa.Fill(dtEmpresas);
-                        sl.ImportDataTable(1, 1, dtEmpresas, false);
-                        sl.HideWorksheet("Empresas");
-                        cantidadEmpresas= dtEmpresas.Rows.Count;
-                        
-                        sl.AddWorksheet("Familias");
-                        conexiones.consulta = "sp_ROP_FamiliasListado";
-                        SqlDataAdapter adaptadorFamilia = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
-                        System.Data.DataTable dtFamilias = new System.Data.DataTable();
-                        adaptadorFamilia.Fill(dtFamilias);
-                        sl.ImportDataTable(1, 1, dtFamilias, false);
-                        sl.HideWorksheet("Familias");
-                        cantidadFamilias = dtFamilias.Rows.Count;
-
-                        sl.AddWorksheet("Subfamilias");
-                        conexiones.consulta = "sp_ROP_SubfamiliasListado";
-                        SqlDataAdapter adaptadorSubfamilia = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
-                        System.Data.DataTable dtSubfamilias = new System.Data.DataTable();
-                        adaptadorSubfamilia.Fill(dtSubfamilias);
-                        sl.ImportDataTable(1, 1, dtSubfamilias,false);
-                        sl.HideWorksheet("Subfamilias");
-                        cantidadSubfamilias = dtSubfamilias.Rows.Count;
-
-                        sl.AddWorksheet("Subgrupos");
-                        sl.HideWorksheet("Subgrupos");
-                    }
-                    else
-                    {
-                        sl.Filter("A4", "F" + (fila - 1).ToString());
-
-                        dv = sl.CreateDataValidation("A5", "A1000");
-                        dv.AllowList("'Subgrupos'!$" + letraExcel(columnaSubgrupo-1) + "$1:$" + letraExcel(columnaSubgrupo-1) + "$" + cantidadSubgrupos.ToString(), true, true);
-                        sl.AddDataValidation(dv);
-
-                        dv = sl.CreateDataValidation("C5", "C1000");
-                        dv.AllowList("'Empresas'!$A$1:$A$" + cantidadEmpresas.ToString(), true, true);
-                        sl.AddDataValidation(dv);
-
-                        dv = sl.CreateDataValidation("D5", "D1000");
-                        dv.AllowList("'Familias'!$A$1:$A$" + cantidadFamilias.ToString(), true, true);
-                        sl.AddDataValidation(dv);
-
-                        dv = sl.CreateDataValidation("E5", "E1000");
-                        dv.AllowList("'Subfamilias'!$A$1:$A$" + cantidadFamilias.ToString(), true, true);
-                        sl.AddDataValidation(dv);
-
-                        dv = sl.CreateDataValidation("G5", "G1000");
-                        dv.AllowDecimal(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0.0, false);
-                        sl.AddDataValidation(dv);
-                    }
-
-                    // Hoja Subgrupos 
-                    columnaSubgrupo = columnaSubgrupo + 1;
-                    sl.SelectWorksheet("Subgrupos");
-                    conexiones.comando = conexiones.conexion.CreateCommand();
-                    conexiones.comando.CommandText = "sp_ROP_ConfiguracionSubconceptosConsulta";
-                    conexiones.comando.CommandType = CommandType.StoredProcedure;
-                    if (Row.ItemArray[COL_Grupo].ToString() == "")
-                        conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
-                    else
-                        conexiones.comando.Parameters.AddWithValue("@concepto", Row.ItemArray[COL_Grupo].ToString());
-                    adaptadorSubgrupos = new SqlDataAdapter(conexiones.comando);
-                    dtSubgrupos = new System.Data.DataTable();
-                    adaptadorSubgrupos.Fill(dtSubgrupos);
-                    sl.ImportDataTable(1, columnaSubgrupo, dtSubgrupos, false);
-                    cantidadSubgrupos = dtSubgrupos.Rows.Count;
-
-                    // Cabecera general: Nombre del grupo / hoja
-                    if (Row.ItemArray[COL_Grupo].ToString() == "")
-                        sl.AddWorksheet("Sin nombre de grupo");
-                    else
-                        sl.AddWorksheet(Row.ItemArray[COL_Grupo].ToString());
-
-                    if (Row.ItemArray[COL_Grupo].ToString() == "")
-                        sl.SetCellValue(1, 1, "Sin nombre de grupo");
-                    else
-                        sl.SetCellValue(1, 1, Row.ItemArray[COL_Grupo].ToString());
-                    
-                    sl.MergeWorksheetCells("A1", "H1");
-                    style = sl.CreateStyle();
-                    style.Font.Bold = true;
-                    style.Font.Italic = true;
-                    style.SetFont("Verdana", 12);
-                    sl.SetCellStyle(1, 1, style);
-
-                    // Cabecera general: Versión
-                    sl.SetCellValue(2, 1, "Versión " + Row.ItemArray[COL_Version].ToString());
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 11);
-                    style.Font.Bold = true;
-                    sl.SetCellStyle(2, 1, style);
-
-                    // Cabecera general: Desde
-                    sl.SetCellValue(2, 3, "Desde " + Row.ItemArray[COL_Desde].ToString());
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 11);
-                    style.Font.Bold = true;
-                    sl.SetCellStyle(2, 3, style);
-
-                    // Cabecera general: Hasta
-                    sl.SetCellValue(2, 5, "Hasta " + Row.ItemArray[COL_Hasta].ToString());
-                    style = sl.CreateStyle();
-                    style.SetFont("Verdana", 11);
-                    style.Font.Bold = true;
-                    sl.SetCellStyle(2, 5, style);
-
-                    // Crear el encabezado del informe
-                    sl.SetCellValue(4, 1, "Subgrupo");
-                    sl.SetCellValue(4, 2, "Concepto");
-                    sl.SetCellValue(4, 3, "Empresa");
-                    sl.SetCellValue(4, 4, "Familia");
-                    sl.SetCellValue(4, 5, "Subfamilia");
-                    sl.SetCellValue(4, 6, "Artículo");
-                    sl.SetCellValue(4, 7, "Valor");
-
-                    style = sl.CreateStyle();
-                    sl.SetColumnWidth(1, 30);
-                    sl.SetColumnWidth(2, 30);
-                    sl.SetColumnWidth(3, 30);
-                    sl.SetColumnWidth(4, 25);
-                    sl.SetColumnWidth(5, 25);
-                    sl.SetColumnWidth(6, 25);
-                    sl.SetColumnWidth(7, 20);
-                    sl.SetColumnWidth(8, 20);
-                    style.SetFont("Verdana", 10);
-                    style.Font.Bold = true;
-                    style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
-                    style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
-                    style.SetFontColor(System.Drawing.Color.White);
-                    style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                    for (columna = 1; columna <= 7; columna++)
-                        sl.SetCellStyle(4, columna, style);
-
-                    sl.FreezePanes(4, 8);
-
-                    nombreGrupo = Row.ItemArray[COL_Grupo].ToString();
-                    hojas++;
-                    fila = 5;
-                }
-                
-                // Datos
-                sl.SetCellValue(fila, 1, Row.ItemArray[COL_Subgrupo].ToString());
-                sl.SetCellValue(fila, 2, Row.ItemArray[COL_Concepto].ToString());
-                sl.SetCellValue(fila, 3, Row.ItemArray[COL_Empresa].ToString());
-                sl.SetCellValue(fila, 4, Row.ItemArray[COL_Familia].ToString());
-                sl.SetCellValue(fila, 5, Row.ItemArray[COL_Subfamilia].ToString());
-                sl.SetCellValue(fila, 6, Row.ItemArray[COL_Articulo].ToString());
-                sl.SetCellValue(fila, 7, Row.ItemArray[COL_Valor].ToString());
+                // VERSIÓN
+                sl.SetCellValue(1, 1, "Versión");
                 style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
-                style.FormatCode = "#,##0.00";
-                sl.SetCellStyle(fila, 7, style);
+                style.SetFont("Verdana", 12);
+                style.Font.Bold = true;
+                sl.SetCellStyle(1, 1, style);
 
-                fila++;
+                sl.SetCellValue(1, 2, Row.ItemArray[COL_Version].ToString());
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 11);
+                sl.SetCellStyle(1, 2, style);
+
+                // FECHA DESDE 
+                sl.SetCellValue(2, 1, "Desde");
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 12);
+                style.Font.Bold = true;
+                style.FormatCode = "dd-MM-yyyy";
+                sl.SetCellStyle(2, 1, style);
+
+                sl.SetCellValue(2, 2, Row.ItemArray[COL_Desde].ToString());
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 11);
+                sl.SetCellStyle(2, 2, style);
+
+                // FECHA HASTA
+                sl.SetCellValue(3, 1, "Hasta");
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 12);
+                style.Font.Bold = true;
+                style.FormatCode = "dd-MM-yyyy";
+                sl.SetCellStyle(3, 1, style);
+
+                sl.SetCellValue(3, 2, Row.ItemArray[COL_Hasta].ToString());
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 11);
+                sl.SetCellStyle(3, 2, style);
+
+                sl.AutoFitColumn(1, 2);
             }
 
-            if (hojas != 0)
-            {
-                sl.Filter("A4", "F" + (fila-1).ToString());
+            // HOJAS OCULTAS
+            sl.AddWorksheet("Conceptos Nivel 1");
+            conexiones.consulta = "sp_ROP_ConceptosNivel1Listado";
+            SqlDataAdapter adaptadorConceptosNivel1 = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtConceptosNivel1 = new System.Data.DataTable();
+            adaptadorConceptosNivel1.Fill(dtConceptosNivel1);
+            sl.ImportDataTable(1, 1, dtConceptosNivel1, false);
+            sl.HideWorksheet("Conceptos Nivel 1");
+            cantidadConceptosNivel1= dtConceptosNivel1.Rows.Count;
 
-                dv = sl.CreateDataValidation("A5", "A1000");
-                dv.AllowList("'Subgrupos'!$"+ letraExcel(columnaSubgrupo-1) + "$1:$" +letraExcel(columnaSubgrupo-1)+ "$" + cantidadSubgrupos.ToString(), true, true);
-                sl.AddDataValidation(dv);
+            sl.AddWorksheet("Conceptos Nivel 2");
+            conexiones.consulta = "sp_ROP_ConceptosNivel2Listado";
+            SqlDataAdapter adaptadorConceptosNivel2 = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtConceptosNivel2 = new System.Data.DataTable();
+            adaptadorConceptosNivel2.Fill(dtConceptosNivel2);
+            sl.ImportDataTable(1, 1, dtConceptosNivel2, false);
+            sl.HideWorksheet("Conceptos Nivel 2");
+            cantidadConceptosNivel2 = dtConceptosNivel2.Rows.Count;
 
-                dv = sl.CreateDataValidation("C5", "C1000");
-                dv.AllowList("'Empresas'!$A$1:$A$" + cantidadEmpresas.ToString(), true, true);
-                sl.AddDataValidation(dv);
+            sl.AddWorksheet("Conceptos Nivel 3");
+            conexiones.consulta = "sp_ROP_ConceptosNivel3Listado";
+            SqlDataAdapter adaptadorConceptosNivel3 = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtConceptosNivel3 = new System.Data.DataTable();
+            adaptadorConceptosNivel3.Fill(dtConceptosNivel3);
+            sl.ImportDataTable(1, 1, dtConceptosNivel3, false);
+            sl.HideWorksheet("Conceptos Nivel 3");
+            cantidadConceptosNivel3 = dtConceptosNivel3.Rows.Count;
 
-                dv = sl.CreateDataValidation("D5", "D1000");
-                dv.AllowList("'Familias'!$A$1:$A$" + cantidadFamilias.ToString(), true, true);
-                sl.AddDataValidation(dv);
+            sl.AddWorksheet("Conceptos Nivel 4");
+            conexiones.consulta = "sp_ROP_ConceptosNivel4Listado";
+            SqlDataAdapter adaptadorConceptosNivel4 = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtConceptosNivel4 = new System.Data.DataTable();
+            adaptadorConceptosNivel4.Fill(dtConceptosNivel4);
+            sl.ImportDataTable(1, 1, dtConceptosNivel4, false);
+            sl.HideWorksheet("Conceptos Nivel 4");
+            cantidadConceptosNivel4 = dtConceptosNivel4.Rows.Count;
 
-                dv = sl.CreateDataValidation("E5", "E1000");
-                dv.AllowList("'Subfamilias'!$A$1:$A$" + cantidadFamilias.ToString(), true, true);
-                sl.AddDataValidation(dv);
+            sl.AddWorksheet("Valores Nivel 4");
+            conexiones.consulta = "sp_ROP_ValoresNivel4Listado";
+            SqlDataAdapter adaptadorValoresNivel4 = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtValoresNivel4 = new System.Data.DataTable();
+            adaptadorConceptosNivel4.Fill(dtValoresNivel4);
+            sl.ImportDataTable(1, 1, dtValoresNivel4, false);
+            sl.HideWorksheet("Valores Nivel 4");
+            cantidadValoresNivel4 = dtValoresNivel4.Rows.Count;
 
-                dv = sl.CreateDataValidation("G5", "G1000");
-                dv.AllowDecimal(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0.0, false);
-                sl.AddDataValidation(dv);
-            }
+            sl.AddWorksheet("Empresas");
+            conexiones.consulta = "sp_ROP_EmpresasListado";
+            SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtEmpresas = new System.Data.DataTable();
+            adaptadorEmpresa.Fill(dtEmpresas);
+            sl.ImportDataTable(1, 1, dtEmpresas, false);
+            sl.HideWorksheet("Empresas");
+            cantidadEmpresas = dtEmpresas.Rows.Count;
 
-            sl.SaveAs(nombreInforme);
-            btnAbrirExcel.Visible = true;
-        }
+            sl.AddWorksheet("Familias");
+            conexiones.consulta = "sp_ROP_FamiliasListado";
+            SqlDataAdapter adaptadorFamilia = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtFamilias = new System.Data.DataTable();
+            adaptadorFamilia.Fill(dtFamilias);
+            sl.ImportDataTable(1, 1, dtFamilias, false);
+            sl.HideWorksheet("Familias");
+            cantidadFamilias = dtFamilias.Rows.Count;
 
-        private void exportarExcelTodo()
-        {
-            SLStyle style;
-            int fila;
-            int columna = 0;
+            sl.AddWorksheet("Subfamilias");
+            conexiones.consulta = "sp_ROP_SubfamiliasListado";
+            SqlDataAdapter adaptadorSubfamilia = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtSubfamilias = new System.Data.DataTable();
+            adaptadorSubfamilia.Fill(dtSubfamilias);
+            sl.ImportDataTable(1, 1, dtSubfamilias, false);
+            sl.HideWorksheet("Subfamilias");
+            cantidadSubfamilias = dtSubfamilias.Rows.Count;
 
-            btnAbrirExcelGeneral.Visible = false;
-            // Consulta SQL
+            sl.AddWorksheet("Monedas");
+            conexiones.consulta = "sp_ROP_MonedasListado";
+            SqlDataAdapter adaptadorMonedas = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtMonedas = new System.Data.DataTable();
+            adaptadorMonedas.Fill(dtMonedas);
+            sl.ImportDataTable(1, 1, dtMonedas, false);
+            sl.HideWorksheet("Monedas");
+            cantidadMonedas= dtMonedas.Rows.Count;
+
+            sl.AddWorksheet("Signos");
+            sl.SetCellValue(1, 1, "+");
+            sl.SetCellValue(2, 1, "-");
+            sl.HideWorksheet("Signos");
+
+            sl.AddWorksheet("Tipos servicio");
+            conexiones.consulta = "sp_ROP_servicioConsulta";
+            SqlDataAdapter adaptadorTiposServicio = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dtTiposServicio = new System.Data.DataTable();
+            adaptadorTiposServicio.Fill(dtTiposServicio);
+            sl.ImportDataTable(1, 1, dtTiposServicio, false);
+            sl.HideWorksheet("Tipos servicio");
+            cantidadTiposServicios = dtTiposServicio.Rows.Count;
+
+            sl.AddWorksheet("Booleano");
+            sl.SetCellValue(1, 1, "SI");
+            sl.SetCellValue(2, 1, "NO");
+            sl.HideWorksheet("Booleano");
+
+            // Consulta SQL NIVEL 1
             conexiones.crearConexion();
             conexiones.comando = conexiones.conexion.CreateCommand();
-            conexiones.comando.CommandText = "sp_ROP_ConfiguracionConsulta";
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionNivel1Consulta";
             conexiones.comando.CommandType = CommandType.StoredProcedure;
-            conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
-            conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
-            if (cmbVersionGeneralExportar.Text == "TODOS")
-                conexiones.comando.Parameters.AddWithValue("@tipo", 0);
-            else if (cmbVersionGeneralExportar.Text == "TODOS Reales")
-                conexiones.comando.Parameters.AddWithValue("@tipo", 1);
+            if (cmbVersionExportar.Text == "")
+                conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
             else
-                conexiones.comando.Parameters.AddWithValue("@tipo", 2);
-            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
-            DataSet ds = new DataSet();
-            adaptador.Fill(ds);
+                conexiones.comando.Parameters.AddWithValue("@version", cmbVersionExportar.Text);
+            SqlDataAdapter adaptadorNivel1 = new SqlDataAdapter(conexiones.comando);
+            DataSet dsNivel1 = new DataSet();
+            adaptadorNivel1.Fill(dsNivel1);
 
-            // Crear el excel
-            SLDocument sl = new SLDocument();
+            sl.AddWorksheet("NIVEL 1");
+            sl.Filter("A1", "I1");
 
-            sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Configuracion versión");
+            dv = sl.CreateDataValidation("A2", "A1000");
+            dv.AllowList("'Conceptos Nivel 1'!$A$1:$A$" + cantidadConceptosNivel1.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("B2", "B1000");
+            dv.AllowList("'Empresas'!$A$1:$A$" + cantidadEmpresas.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("C2", "C1000");
+            dv.AllowList("'Familias'!$A$1:$A$" + cantidadFamilias.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("D2", "D1000");
+            dv.AllowList("'Subfamilias'!$A$1:$A$" + cantidadSubfamilias.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("F2", "G1000");
+            dv.AllowWholeNumber(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0, false);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("H2", "H1000");
+            dv.AllowDecimal(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0.00, false);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("I2", "I1000");
+            dv.AllowList("'Monedas'!$A$1:$A$" + cantidadMonedas.ToString(), true, true);
+            sl.AddDataValidation(dv);
 
             // Crear el encabezado del informe
-            sl.SetCellValue(1, 1, "ID");
-            sl.SetCellValue(1, 2, "Versión");
-            sl.SetCellValue(1, 3, "Desde");
-            sl.SetCellValue(1, 4, "Hasta");
-            sl.SetCellValue(1, 5, "Actualización");
-            sl.SetCellValue(1, 6, "Subgrupo");
-            sl.SetCellValue(1, 7, "Concepto");
-            sl.SetCellValue(1, 8, "Empresa");
-            sl.SetCellValue(1, 9, "Familia");
-            sl.SetCellValue(1, 10, "Subfamilia");
-            sl.SetCellValue(1, 11, "Artículo");
-            sl.SetCellValue(1, 12, "Valor");
+            sl.SetCellValue(1, 1, "Concepto");
+            sl.SetCellValue(1, 2, "Empresa");
+            sl.SetCellValue(1, 3, "Familia");
+            sl.SetCellValue(1, 4, "Subfamilia");
+            sl.SetCellValue(1, 5, "Artículo");
+            sl.SetCellValue(1, 6, "Desde");
+            sl.SetCellValue(1, 7, "Hasta");
+            sl.SetCellValue(1, 8, "Valor");
+            sl.SetCellValue(1, 9, "Moneda");
 
             style = sl.CreateStyle();
-            sl.SetColumnWidth(1, 20);
-            sl.SetColumnWidth(2, 30);
-            sl.SetColumnWidth(3, 20);
-            sl.SetColumnWidth(4, 20);
-            sl.SetColumnWidth(5, 30);
+            sl.SetColumnWidth(1, 30);
+            sl.SetColumnWidth(2, 20);
+            sl.SetColumnWidth(3, 30);
+            sl.SetColumnWidth(4, 25);
+            sl.SetColumnWidth(5, 20);
             sl.SetColumnWidth(6, 20);
             sl.SetColumnWidth(7, 20);
             sl.SetColumnWidth(8, 20);
             sl.SetColumnWidth(9, 20);
-            sl.SetColumnWidth(10, 20);
-            sl.SetColumnWidth(11, 20);
-            sl.SetColumnWidth(12, 20);
             style.SetFont("Verdana", 10);
             style.Font.Bold = true;
             style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
             style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
             style.SetFontColor(System.Drawing.Color.White);
             style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-            for (columna = 1; columna <= 12; columna++)
+            for (columna = 1; columna <= 9; columna++)
                 sl.SetCellStyle(1, columna, style);
 
+            //sl.FreezePanes(1, 1);
+
             fila = 2;
-            foreach (DataRow Row in ds.Tables[0].Rows)
+            foreach (DataRow Row in dsNivel1.Tables[0].Rows)
             {
                 // Datos
-                sl.SetCellValue(fila, 1, Row.ItemArray[COL_Version_ID].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 1, style);
-
-                sl.SetCellValue(fila, 2, Row.ItemArray[COL_Version_Version].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 2, style);
-
-                sl.SetCellValue(fila, 3, Row.ItemArray[COL_Version_Desde].ToString());
-                sl.SetCellValue(fila, 4, Row.ItemArray[COL_Version_Hasta].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                style.FormatCode = "dd-MM-yyyy";
-                sl.SetCellStyle(fila, 3, style);
-                sl.SetCellStyle(fila, 4, style);
-
-                sl.SetCellValue(fila, 5, Row.ItemArray[COL_Version_Grupo].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 5, style);
-
-                sl.SetCellValue(fila, 6, Row.ItemArray[COL_Version_Subgrupo].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 6, style);
-
-                sl.SetCellValue(fila, 7, Row.ItemArray[COL_Version_Concepto].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 7, style);
-
-                sl.SetCellValue(fila, 8, Row.ItemArray[COL_Version_Empresa].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 8, style);
-
-                sl.SetCellValue(fila, 9, Row.ItemArray[COL_Version_Familia].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 9, style);
-
-                sl.SetCellValue(fila, 10, Row.ItemArray[COL_Version_Subfamilia].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 10, style);
-
-                sl.SetCellValue(fila, 11, Row.ItemArray[COL_Version_Articulo].ToString());
-                style = sl.CreateStyle();
-                style.SetFont("Verdana", 10);
-                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
-                sl.SetCellStyle(fila, 11, style);
+                sl.SetCellValue(fila, 1, Row.ItemArray[COL_Concepto].ToString());
+                sl.SetCellValue(fila, 2, Row.ItemArray[COL_Empresa].ToString());
+                sl.SetCellValue(fila, 3, Row.ItemArray[COL_Familia].ToString());
+                sl.SetCellValue(fila, 4, Row.ItemArray[COL_Subfamilia].ToString());
+                sl.SetCellValue(fila, 5, Row.ItemArray[COL_Articulo].ToString());
+                sl.SetCellValue(fila, 6, Row.ItemArray[COL_ValorDesde].ToString());
+                sl.SetCellValue(fila, 7, Row.ItemArray[COL_ValorHasta].ToString());
+                decimal.TryParse(Row.ItemArray[COL_Valor].ToString(), out valor);
+                sl.SetCellValue(fila, 8, valor.ToString("#,##0.00"));
+                sl.SetCellValue(fila, 9, Row.ItemArray[COL_Moneda].ToString());
                 
-                sl.SetCellValue(fila, 12, Row.ItemArray[COL_Version_Valor].ToString());
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 10);
+                style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
+                style.FormatCode = "#,##0";
+                sl.SetCellStyle(fila, 6, style);
+                sl.SetCellStyle(fila, 7, style);
+                styleDec = sl.CreateStyle();
+                styleDec.SetFont("Verdana", 10);
+                styleDec.Alignment.Horizontal = HorizontalAlignmentValues.Right;
+                styleDec.FormatCode = "#,##0.00";
+                sl.SetCellStyle(fila, 8, styleDec);
+                fila++;
+            }
+            sl.AutoFitColumn(1, 9);
+
+            // Consulta SQL NIVEL 2
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionNivel2Consulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (cmbVersionExportar.Text == "")
+                conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@version", cmbVersionExportar.Text);
+            SqlDataAdapter adaptadorNivel2 = new SqlDataAdapter(conexiones.comando);
+            DataSet dsNivel2 = new DataSet();
+            adaptadorNivel2.Fill(dsNivel2);
+
+            sl.AddWorksheet("NIVEL 2");
+            sl.Filter("A1", "C1");
+
+            dv = sl.CreateDataValidation("A2", "A1000");
+            dv.AllowList("'Conceptos Nivel 2'!$A$1:$A$" + cantidadConceptosNivel2.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("B2", "B1000");
+            dv.AllowList("'Empresas'!$A$1:$A$" + cantidadEmpresas.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("C2", "C1000");
+            dv.AllowDecimal(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0.00, false);
+            sl.AddDataValidation(dv);
+
+            // Crear el encabezado del informe
+            sl.SetCellValue(1, 1, "Concepto");
+            sl.SetCellValue(1, 2, "Empresa");
+            sl.SetCellValue(1, 3, "Valor");
+
+            style = sl.CreateStyle();
+            sl.SetColumnWidth(1, 30);
+            sl.SetColumnWidth(2, 20);
+            sl.SetColumnWidth(3, 20);
+            style.SetFont("Verdana", 10);
+            style.Font.Bold = true;
+            style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+            style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+            style.SetFontColor(System.Drawing.Color.White);
+            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+            for (columna = 1; columna <= 3; columna++)
+                sl.SetCellStyle(1, columna, style);
+
+            //sl.FreezePanes(1, 1);
+
+            fila = 2;
+            foreach (DataRow Row in dsNivel2.Tables[0].Rows)
+            {
+                // Datos
+                sl.SetCellValue(fila, 1, Row.ItemArray[COL_Concepto_Nivel2].ToString());
+                sl.SetCellValue(fila, 2, Row.ItemArray[COL_Empresa_Nivel2].ToString());
+                decimal.TryParse(Row.ItemArray[COL_Valor_Nivel2].ToString(), out valor);
+                sl.SetCellValue(fila, 3, valor.ToString("#,##0.00"));
+
                 style = sl.CreateStyle();
                 style.SetFont("Verdana", 10);
                 style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
                 style.FormatCode = "#,##0.00";
-                sl.SetCellStyle(fila, 12, style);
+                sl.SetCellStyle(fila, 3, style);
                 fila++;
             }
+            sl.AutoFitColumn(1, 3);
+
+            // Consulta SQL NIVEL 3
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionNivel3Consulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (cmbVersionExportar.Text == "")
+                conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@version", cmbVersionExportar.Text);
+            SqlDataAdapter adaptadorNivel3 = new SqlDataAdapter(conexiones.comando);
+            DataSet dsNivel3 = new DataSet();
+            adaptadorNivel3.Fill(dsNivel3);
+
+            sl.AddWorksheet("NIVEL 3");
+            sl.Filter("A1", "C1");
+
+            dv = sl.CreateDataValidation("A2", "A1000");
+            dv.AllowList("'Conceptos Nivel 3'!$A$1:$A$" + cantidadConceptosNivel3.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("B2", "B1000");
+            dv.AllowList("'Signos'!$A$1:$A$" + cantidadSignos.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("C2", "C1000");
+            dv.AllowWholeNumber(SLDataValidationSingleOperandValues.GreaterThanOrEqual, 0, false);
+            sl.AddDataValidation(dv);
+
+            // Crear el encabezado del informe
+            sl.SetCellValue(1, 1, "Concepto");
+            sl.SetCellValue(1, 2, "Signo");
+            sl.SetCellValue(1, 3, "Días");
+
+            style = sl.CreateStyle();
+            sl.SetColumnWidth(1, 30);
+            sl.SetColumnWidth(2, 20);
+            sl.SetColumnWidth(3, 20);
+            style.SetFont("Verdana", 10);
+            style.Font.Bold = true;
+            style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+            style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+            style.SetFontColor(System.Drawing.Color.White);
+            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+            for (columna = 1; columna <= 3; columna++)
+                sl.SetCellStyle(1, columna, style);
+
+            //sl.FreezePanes(1, 1);
+
+            fila = 2;
+            foreach (DataRow Row in dsNivel3.Tables[0].Rows)
+            {
+                // Datos
+                sl.SetCellValue(fila, 1, Row.ItemArray[COL_Concepto_Nivel3].ToString());
+                sl.SetCellValue(fila, 2, Row.ItemArray[COL_Signo_Nivel3].ToString());
+                sl.SetCellValue(fila, 3, Row.ItemArray[COL_Dias_Nivel3].ToString());
+
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 10);
+                style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+                style.FormatCode = "#,##0";
+                sl.SetCellStyle(fila, 2, style);
+
+                style = sl.CreateStyle();
+                style.SetFont("Verdana", 10);
+                style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
+                style.FormatCode = "#,##0";
+                sl.SetCellStyle(fila, 3, style);
+                fila++;
+            }
+            sl.AutoFitColumn(1, 3);
+
+            // Consulta SQL NIVEL 4
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionNivel4_Consulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (cmbVersionExportar.Text == "")
+                conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@version", cmbVersionExportar.Text);
+            SqlDataAdapter adaptadorNivel4 = new SqlDataAdapter(conexiones.comando);
+            DataSet dsNivel4 = new DataSet();
+            adaptadorNivel4.Fill(dsNivel4);
+
+            sl.AddWorksheet("NIVEL 4");
+            sl.Filter("A1", "B1");
+
+            dv = sl.CreateDataValidation("A2", "A1000");
+            dv.AllowList("'Conceptos Nivel 4'!$A$1:$A$" + cantidadConceptosNivel4.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("B2", "B1000");
+            dv.AllowList("'Valores Nivel 4'!$A$1:$A$" + cantidadValoresNivel4.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            // Crear el encabezado del informe
+            sl.SetCellValue(1, 1, "Concepto");
+            sl.SetCellValue(1, 2, "Valor");
+
+            style = sl.CreateStyle();
+            sl.SetColumnWidth(1, 30);
+            sl.SetColumnWidth(2, 20);
+            style.SetFont("Verdana", 10);
+            style.Font.Bold = true;
+            style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+            style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+            style.SetFontColor(System.Drawing.Color.White);
+            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+            for (columna = 1; columna <= 2; columna++)
+                sl.SetCellStyle(1, columna, style);
+
+            //sl.FreezePanes(1, 1);
+
+            fila = 2;
+            foreach (DataRow Row in dsNivel4.Tables[0].Rows)
+            {
+                // Datos
+                sl.SetCellValue(fila, 1, Row.ItemArray[COL_Concepto_Nivel4].ToString());
+                sl.SetCellValue(fila, 2, Row.ItemArray[COL_Valor_Nivel4].ToString());
+
+                fila++;
+            }
+            sl.AutoFitColumn(1, 2);
+
+            // Consulta SQL SERVICIOS
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionServicio_Consulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (cmbVersionExportar.Text == "")
+                conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@version", cmbVersionExportar.Text);
+            SqlDataAdapter adaptadorServicio = new SqlDataAdapter(conexiones.comando);
+            DataSet dsServicio = new DataSet();
+            adaptadorServicio.Fill(dsServicio);
+
+            sl.AddWorksheet("SERVICIOS");
+            sl.Filter("A1", "D1");
+
+            dv = sl.CreateDataValidation("A2", "A1000");
+            dv.AllowList("'Familias'!$A$1:$A$" + cantidadFamilias.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("B2", "B1000");
+            dv.AllowList("'Subfamilias'!$A$1:$A$" + cantidadSubfamilias.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            dv = sl.CreateDataValidation("D2", "D1000");
+            dv.AllowList("'Tipos servicio'!$A$1:$A$" + cantidadTiposServicios.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            // Crear el encabezado del informe
+            sl.SetCellValue(1, 1, "Familia");
+            sl.SetCellValue(1, 2, "Subfamilia");
+            sl.SetCellValue(1, 3, "Artículo");
+            sl.SetCellValue(1, 4, "Tipo servicio");
+
+            style = sl.CreateStyle();
+            sl.SetColumnWidth(1, 30);
+            sl.SetColumnWidth(2, 20);
+            sl.SetColumnWidth(3, 30);
+            sl.SetColumnWidth(4, 30);
+            style.SetFont("Verdana", 10);
+            style.Font.Bold = true;
+            style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+            style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+            style.SetFontColor(System.Drawing.Color.White);
+            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+            for (columna = 1; columna <= 4; columna++)
+                sl.SetCellStyle(1, columna, style);
+
+            //sl.FreezePanes(1, 1);
+
+            fila = 2;
+            foreach (DataRow Row in dsServicio.Tables[0].Rows)
+            {
+                // Datos
+                sl.SetCellValue(fila, 1, Row.ItemArray[COL_FamiliaServicios].ToString());
+                sl.SetCellValue(fila, 2, Row.ItemArray[COL_SubfamiliaServicios].ToString());
+                sl.SetCellValue(fila, 3, Row.ItemArray[COL_ArticuloServicios].ToString());
+                sl.SetCellValue(fila, 4, Row.ItemArray[COL_TipoServicio].ToString());
+
+                fila++;
+            }
+            sl.AutoFitColumn(1, 4);
+
+            // Consulta SQL PANELES
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_DatosPanelesConsulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (cmbVersionExportar.Text == "")
+                conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@version", cmbVersionExportar.Text);
+            SqlDataAdapter adaptadorPanales= new SqlDataAdapter(conexiones.comando);
+            DataSet dsPaneles = new DataSet();
+            adaptadorPanales.Fill(dsPaneles);
+
+            sl.AddWorksheet("PANELES");
+            sl.Filter("A1", "B1");
+
+            dv = sl.CreateDataValidation("B2", "B1000");
+            dv.AllowList("'Booleano'!$A$1:$A$" + cantidadBooleano.ToString(), true, true);
+            sl.AddDataValidation(dv);
+
+            // Crear el encabezado del informe
+            sl.SetCellValue(1, 1, "AAF");
+            sl.SetCellValue(1, 2, "Estándar");
+
+            style = sl.CreateStyle();
+            sl.SetColumnWidth(1, 30);
+            sl.SetColumnWidth(2, 30);
+
+            style.SetFont("Verdana", 10);
+            style.Font.Bold = true;
+            style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+            style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+            style.SetFontColor(System.Drawing.Color.White);
+            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+            for (columna = 1; columna <= 2; columna++)
+                sl.SetCellStyle(1, columna, style);
+
+            //sl.FreezePanes(1, 1);
+
+            fila = 2;
+            foreach (DataRow Row in dsPaneles.Tables[0].Rows)
+            {
+                // Datos
+                sl.SetCellValue(fila, 1, Row.ItemArray[COL_AAFPaneles].ToString());
+                sl.SetCellValue(fila, 2, Row.ItemArray[COL_EstandarPaneles].ToString());
+
+                fila++;
+            }
+            sl.AutoFitColumn(1, 2);
 
             sl.SaveAs(nombreInforme);
-            btnAbrirExcelGeneral.Visible = true;
+            btnAbrirExcel.Visible = true;
         }
+
+        //private void exportarExcelTodo()
+        //{
+        //    SLStyle style;
+        //    int fila;
+        //    int columna = 0;
+
+        //    btnAbrirExcelGeneral.Visible = false;
+        //    // Consulta SQL
+        //    conexiones.crearConexion();
+        //    conexiones.comando = conexiones.conexion.CreateCommand();
+        //    conexiones.comando.CommandText = "sp_ROP_ConfiguracionConsulta";
+        //    conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    conexiones.comando.Parameters.AddWithValue("@version", DBNull.Value);
+        //    conexiones.comando.Parameters.AddWithValue("@concepto", DBNull.Value);
+        //    if (cmbVersionGeneralExportar.Text == "TODOS")
+        //        conexiones.comando.Parameters.AddWithValue("@tipo", 0);
+        //    else if (cmbVersionGeneralExportar.Text == "TODOS Reales")
+        //        conexiones.comando.Parameters.AddWithValue("@tipo", 1);
+        //    else
+        //        conexiones.comando.Parameters.AddWithValue("@tipo", 2);
+        //    SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+        //    DataSet ds = new DataSet();
+        //    adaptador.Fill(ds);
+
+        //    // Crear el excel
+        //    SLDocument sl = new SLDocument();
+
+        //    sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Configuracion versión");
+
+        //    // Crear el encabezado del informe
+        //    sl.SetCellValue(1, 1, "ID");
+        //    sl.SetCellValue(1, 2, "Versión");
+        //    sl.SetCellValue(1, 3, "Desde");
+        //    sl.SetCellValue(1, 4, "Hasta");
+        //    sl.SetCellValue(1, 5, "Actualización");
+        //    sl.SetCellValue(1, 6, "Subgrupo");
+        //    sl.SetCellValue(1, 7, "Concepto");
+        //    sl.SetCellValue(1, 8, "Empresa");
+        //    sl.SetCellValue(1, 9, "Familia");
+        //    sl.SetCellValue(1, 10, "Subfamilia");
+        //    sl.SetCellValue(1, 11, "Artículo");
+        //    sl.SetCellValue(1, 12, "Valor");
+
+        //    style = sl.CreateStyle();
+        //    sl.SetColumnWidth(1, 20);
+        //    sl.SetColumnWidth(2, 30);
+        //    sl.SetColumnWidth(3, 20);
+        //    sl.SetColumnWidth(4, 20);
+        //    sl.SetColumnWidth(5, 30);
+        //    sl.SetColumnWidth(6, 20);
+        //    sl.SetColumnWidth(7, 20);
+        //    sl.SetColumnWidth(8, 20);
+        //    sl.SetColumnWidth(9, 20);
+        //    sl.SetColumnWidth(10, 20);
+        //    sl.SetColumnWidth(11, 20);
+        //    sl.SetColumnWidth(12, 20);
+        //    style.SetFont("Verdana", 10);
+        //    style.Font.Bold = true;
+        //    style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+        //    style.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.DarkBlue, System.Drawing.Color.DarkBlue);
+        //    style.SetFontColor(System.Drawing.Color.White);
+        //    style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //    for (columna = 1; columna <= 12; columna++)
+        //        sl.SetCellStyle(1, columna, style);
+
+        //    fila = 2;
+        //    foreach (DataRow Row in ds.Tables[0].Rows)
+        //    {
+        //        // Datos
+        //        sl.SetCellValue(fila, 1, Row.ItemArray[COL_Version_ID].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 1, style);
+
+        //        sl.SetCellValue(fila, 2, Row.ItemArray[COL_Version_Version].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 2, style);
+
+        //        sl.SetCellValue(fila, 3, Row.ItemArray[COL_Version_Desde].ToString());
+        //        sl.SetCellValue(fila, 4, Row.ItemArray[COL_Version_Hasta].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        style.FormatCode = "dd-MM-yyyy";
+        //        sl.SetCellStyle(fila, 3, style);
+        //        sl.SetCellStyle(fila, 4, style);
+
+        //        sl.SetCellValue(fila, 5, Row.ItemArray[COL_Version_Grupo].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 5, style);
+
+        //        sl.SetCellValue(fila, 6, Row.ItemArray[COL_Version_Subgrupo].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 6, style);
+
+        //        sl.SetCellValue(fila, 7, Row.ItemArray[COL_Version_Concepto].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 7, style);
+
+        //        sl.SetCellValue(fila, 8, Row.ItemArray[COL_Version_Empresa].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 8, style);
+
+        //        sl.SetCellValue(fila, 9, Row.ItemArray[COL_Version_Familia].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 9, style);
+
+        //        sl.SetCellValue(fila, 10, Row.ItemArray[COL_Version_Subfamilia].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 10, style);
+
+        //        sl.SetCellValue(fila, 11, Row.ItemArray[COL_Version_Articulo].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+        //        sl.SetCellStyle(fila, 11, style);
+
+        //        sl.SetCellValue(fila, 12, Row.ItemArray[COL_Version_Valor].ToString());
+        //        style = sl.CreateStyle();
+        //        style.SetFont("Verdana", 10);
+        //        style.Alignment.Horizontal = HorizontalAlignmentValues.Right;
+        //        style.FormatCode = "#.##0,00";
+        //        sl.SetCellStyle(fila, 12, style);
+        //        fila++;
+        //    }
+
+        //    sl.SaveAs(nombreInforme);
+        //    btnAbrirExcelGeneral.Visible = true;
+        //}
         #endregion
 
         #region "Servicios"
@@ -1722,7 +2010,7 @@ namespace ROP_Informe
                 parametroID.Value = null;
                 conexiones.comando.Parameters.Add(parametroID);
                 SqlParameter parametroFamilia = new SqlParameter("@Familia", SqlDbType.VarChar, 20);
-                if (txtFamilia.Text =="")
+                if (txtFamilia.Text == "")
                     parametroFamilia.Value = null;
                 else
                     parametroFamilia.Value = txtFamilia.Text;
@@ -1733,13 +2021,13 @@ namespace ROP_Informe
                 else
                     parametroSubfamilia.Value = txtSubfamilia.Text;
                 conexiones.comando.Parameters.Add(parametroSubfamilia);
-                SqlParameter parametroArticulo= new SqlParameter("@ART_ID", SqlDbType.VarChar, 20);
+                SqlParameter parametroArticulo = new SqlParameter("@ART_ID", SqlDbType.VarChar, 20);
                 if (txtArticulo.Text == "")
                     parametroArticulo.Value = null;
                 else
                     parametroArticulo.Value = txtArticulo.Text;
                 conexiones.comando.Parameters.Add(parametroArticulo);
-                SqlParameter parametroTipo= new SqlParameter("@CFGSERV_Tipo", SqlDbType.VarChar, 50);
+                SqlParameter parametroTipo = new SqlParameter("@CFGSERV_Tipo", SqlDbType.VarChar, 50);
                 parametroTipo.Value = cmbTipo.Text;
                 conexiones.comando.Parameters.Add(parametroTipo);
 
@@ -1801,7 +2089,7 @@ namespace ROP_Informe
                 cmbTipoServicio.Enabled = e.Row.RowIndex == grvServicios.EditIndex;
             }
         }
-        
+
         protected void grvServicios_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             string ID = ((System.Web.UI.WebControls.TextBox)grvServicios.Rows[e.RowIndex].Cells[COLGRID_ID].Controls[0]).Text;
@@ -1811,7 +2099,7 @@ namespace ROP_Informe
             DropDownList cmbTipoServicio = grvServicios.Rows[e.RowIndex].FindControl("cmbTipoServicio") as DropDownList;
             string tipoServicio = Convert.ToString(cmbTipoServicio.SelectedValue);
 
-            if ((ART_ID != "" || Familia !="" || Subfamilia!="") && tipoServicio != "")
+            if ((ART_ID != "" || Familia != "" || Subfamilia != "") && tipoServicio != "")
             {
                 conexiones.crearConexion();
                 conexiones.consulta = "sp_ROP_ConfiguracionServicioAgregar";
@@ -1844,7 +2132,7 @@ namespace ROP_Informe
                 conexiones.comando.Parameters.Add(parametroTipo);
                 SqlDataReader dr = conexiones.comando.ExecuteReader();
                 conexiones.conexion.Close();
-            
+
                 grvServicios.EditIndex = -1;
                 rellenarGridServicios();
             }
@@ -1873,7 +2161,7 @@ namespace ROP_Informe
             conexiones.comando.CommandType = CommandType.StoredProcedure;
 
             SqlParameter parametroID = new SqlParameter("@CFGSERV_ID", SqlDbType.Int);
-            parametroID.Value =Convert.ToInt32(ID);
+            parametroID.Value = Convert.ToInt32(ID);
             conexiones.comando.Parameters.Add(parametroID);
             SqlDataReader dr = conexiones.comando.ExecuteReader();
             conexiones.conexion.Close();
@@ -1881,6 +2169,800 @@ namespace ROP_Informe
             rellenarGridServicios();
         }
         #endregion
+
+        #region "Transporte"
+
+        protected void txtDesvioTransporte_TextChanged(object sender, EventArgs e)
+        {
+            decimal numero = Convert.ToDecimal(txtDesvioTransporte.Text.Replace(".", ","));
+            txtDesvioTransporte.Text = numero.ToString("N2");
+        }
+
+        protected void txtMargen_TextChanged(object sender, EventArgs e)
+        {
+            decimal numero = Convert.ToDecimal(txtMargen.Text.Replace(".",","));
+            txtMargen.Text = numero.ToString("N2");
+        }
+
+        protected void txtValor_TextChanged(object sender, EventArgs e)
+        {
+            decimal numero = Convert.ToDecimal(txtValor.Text.Replace(".", ","));
+            txtValor.Text = numero.ToString("N6");
+        }
+
+        protected void rellenarEmpresa()
+        {
+            cmbEmpresa.Items.Clear();
+            cmbEmpresa.DataSource = null;
+            cmbEmpresa.DataBind();
+
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_Empresas";
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbEmpresa.DataSource = dt;
+            cmbEmpresa.DataTextField = "Empresa";
+            cmbEmpresa.DataValueField = "Empresa";
+            cmbEmpresa.DataBind();
+            conexiones.conexion.Close();
+        }
+
+        protected void rellenarDelegacion()
+        {
+            cmbDelegacion.Items.Clear();
+            cmbDelegacion.DataSource = null;
+            cmbDelegacion.DataBind();
+
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_Delegaciones";
+            conexiones.comando.CommandTimeout = 240000;
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroEmpresa = new SqlParameter("@empresa", SqlDbType.VarChar, 5);
+            parametroEmpresa.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroEmpresa);
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbDelegacion.DataSource = dt;
+            cmbDelegacion.DataTextField = "Delegacion";
+            cmbDelegacion.DataValueField = "Delegacion";
+            cmbDelegacion.DataBind();
+
+            adaptador.Dispose();
+            conexiones.comando.Dispose();
+            conexiones.conexion.Close();
+            conexiones.conexion.Dispose();
+        }
+
+        protected void rellenarTransporte()
+        {
+            cmbDistancia.DataSource = null;
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_transporteConsulta";
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbDistancia.DataSource = dt;
+            cmbDistancia.DataTextField = "CFGTRA_Distancia";
+            cmbDistancia.DataValueField = "CFGTRA_Distancia";
+            cmbDistancia.DataBind();
+            conexiones.conexion.Close();
+        }
+
+        protected void btnLimpiarTransporteGeneral_Click(object sender, EventArgs e)
+        {
+            txtMeses.Text = "";
+            txtDesvioTransporte.Text = "";
+        }
+
+        protected void cmbEmpresa_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            DropDownList dropEmpresa = (DropDownList)sender;
+            string selectedEmpresa = (string)dropEmpresa.SelectedValue;
+
+            if (selectedEmpresa != "")
+            {
+                cmbDelegacion.Items.Clear();
+                cmbDelegacion.DataSource = null;
+                cmbDelegacion.DataBind();
+
+                conexiones.crearConexion();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "sp_ROP_Delegaciones";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                SqlParameter parametroEmpresa = new SqlParameter("@empresa", SqlDbType.VarChar, 5);
+                parametroEmpresa.Value = selectedEmpresa.ToString();
+                conexiones.comando.Parameters.Add(parametroEmpresa);
+                SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adaptador.Fill(dt);
+                cmbDelegacion.DataSource = dt;
+                cmbDelegacion.DataTextField = "Delegacion";
+                cmbDelegacion.DataValueField = "Delegacion";
+                cmbDelegacion.DataBind();
+                adaptador.Dispose();
+                conexiones.comando.Dispose();
+                conexiones.conexion.Close();
+                conexiones.conexion.Dispose();
+            }
+        }
+
+        protected void btnEditarTransporteGeneral_Click(object sender, EventArgs e)
+        {
+            txtMeses.Enabled = true;
+            txtDesvioTransporte.Enabled = true;
+            btnEditarTransporteGeneral.Visible = false;
+            btnGuardarTransporteGeneral.Visible = true;
+            btnCancelarTransporteGeneral.Visible = true;
+            btnctualizarTransporte.Enabled = false;
+        }
+
+        protected void btnCancelarTransporteGeneral_Click(object sender, EventArgs e)
+        {
+            txtMeses.Enabled = false;
+            txtDesvioTransporte.Enabled = false;
+            btnEditarTransporteGeneral.Visible = true;
+            btnGuardarTransporteGeneral.Visible = false;
+            btnCancelarTransporteGeneral.Visible = false;
+            btnctualizarTransporte.Enabled = true;
+        }
+
+        protected void btnGuardarTransporteGeneral_Click(object sender, EventArgs e)
+        {
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteGeneral";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            conexiones.comando.Parameters.AddWithValue("@CFGTRA_Meses", Convert.ToInt32(txtMeses.Text));
+            conexiones.comando.Parameters.AddWithValue("@CFGTRA_Desvio", Convert.ToDecimal(txtDesvioTransporte.Text));
+            conexiones.comando.ExecuteNonQuery();
+            conexiones.conexion.Close();
+
+            txtMeses.Enabled = false;
+            txtDesvioTransporte.Enabled = false;
+            btnEditarTransporteGeneral.Visible = true;
+            btnGuardarTransporteGeneral.Visible = false;
+            btnCancelarTransporteGeneral.Visible = false;
+            btnctualizarTransporte.Enabled = true;
+
+            conexiones.crearConexion();
+            conexiones.consulta = "ROP_Transporte";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            conexiones.comando.ExecuteNonQuery();
+            conexiones.conexion.Close();
+
+            rellenarGridTransporte();
+        }
+
+        protected void btnActualizarTransporteGeneral_Click(object sender, EventArgs e)
+        {
+            //DateTime horaTotal_1 = default(DateTime);
+            //TimeSpan horaTotal_2 = default(TimeSpan);
+
+
+            //horaTotal_1 = DateTime.Now;
+            conexiones.crearConexion();
+            conexiones.consulta = "ROP_Transporte";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            conexiones.comando.ExecuteNonQuery();
+            conexiones.conexion.Close();
+
+            //horaTotal_2 = DateTime.Now.Subtract(horaTotal_1);
+            //lbltiempo.Text = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
+
+            rellenarTransporteGeneral();
+            rellenarGridTransporte();
+        }
+
+        //protected void btnActualizarTransporteGeneralPRUEBA_Click(object sender, EventArgs e)
+        //{
+        //    DateTime horaTotal_1 = default(DateTime);
+        //    TimeSpan horaTotal_2 = default(TimeSpan);
+
+
+        //    horaTotal_1 = DateTime.Now;
+        //    conexiones.crearConexion();
+        //    conexiones.consulta = "ROP_TransportePRUEBA";
+        //    conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+        //    conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    conexiones.comando.CommandTimeout = 100000;
+        //    conexiones.comando.ExecuteNonQuery();
+        //    conexiones.conexion.Close();
+
+        //    horaTotal_2 = DateTime.Now.Subtract(horaTotal_1);
+        //    lbltiempo.Text = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
+
+        //    rellenarTransporteGeneral();
+        //    rellenarGridTransporte();
+        //}
+
+        protected void btnLimpiarTransporte_Click(object sender, EventArgs e)
+        {
+            cmbEmpresa.Text = "";
+            cmbDelegacion.Text = "";
+            txtDesde.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            txtHasta.Text = "";
+            txtMargen.Text = "";
+            cmbDistancia.Text = "";
+            txtPropuesto.Text = "";
+            txtPropuesto.Enabled = false;
+            txtValor.Text = "";
+            txtDesvio.Text = "";
+            cmbEmpresa.Enabled = true;
+            cmbDelegacion.Enabled = true;
+            cmbDistancia.Enabled = true;
+        }
+
+        protected void btnPropuesta_Click(object sender, EventArgs e)
+        {
+            txtPropuesto.Text = "0,00";
+
+            if (cmbEmpresa.Text == "" && cmbDistancia.Text == "")
+            {
+                lblTituloError.Text = "Calcular propuesta";
+                lblMensajeError.Text = "Debe indicar la empresa y la distancia para poder calcular la propuesta.";
+                mpeError.Show();
+                return;
+            }
+
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteCalcularProp";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
+            if (cmbEmpresa.Text != "")
+                parametroEmpresa.Value = cmbEmpresa.Text;
+            else
+                parametroEmpresa.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroEmpresa);
+            SqlParameter parametroDelegacion = new SqlParameter("@Delegacion", SqlDbType.VarChar, 10);
+            if (cmbDelegacion.Text != "")
+                parametroDelegacion.Value = cmbDelegacion.Text;
+            else
+                parametroDelegacion.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroDelegacion);
+
+            SqlParameter parametroDistancia = new SqlParameter("@Distancia", SqlDbType.VarChar, 10);
+            if (cmbDistancia.Text != "")
+                parametroDistancia.Value = cmbDistancia.Text;
+            else
+                parametroDistancia.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroDistancia);
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                txtPropuesto.Text = Convert.ToDecimal(dr["Prop"]).ToString("N6");
+                txtValor.Text = Convert.ToDecimal(dr["Prop"]).ToString("N6");
+            }
+            conexiones.conexion.Close();
+
+            cmbEmpresa.Enabled = false;
+            cmbDelegacion.Enabled = false;
+            cmbDistancia.Enabled = false;
+        }
+
+        protected void btnAgregarTransporte_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbEmpresa.Text != "" && txtMargen.Text != "" && txtValor.Text != "") // && txtDesvio.Text != "")
+                {
+                    conexiones.crearConexion();
+                    conexiones.consulta = "sp_ROP_ConfiguracionTransporteAgregar";
+                    conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                    conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                    SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
+                    if (cmbEmpresa.Text != "")
+                        parametroEmpresa.Value = cmbEmpresa.Text;
+                    else
+                        parametroEmpresa.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroEmpresa);
+                    SqlParameter parametroDelegacion = new SqlParameter("@Delegacion", SqlDbType.VarChar, 10);
+                    if (cmbDelegacion.Text != "")
+                        parametroDelegacion.Value = cmbDelegacion.Text;
+                    else
+                        parametroDelegacion.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroDelegacion);
+                    SqlParameter parametroMargen = new SqlParameter("@Margen", SqlDbType.Decimal);
+                    if (txtMargen.Text != "")
+                        parametroMargen.Value = Convert.ToDecimal(txtMargen.Text);
+                    else
+                        parametroMargen.Value = DBNull.Value;
+                    parametroMargen.Precision = 18;
+                    parametroMargen.Scale = 2;
+                    conexiones.comando.Parameters.Add(parametroMargen);
+                    SqlParameter parametroDesde = new SqlParameter("@Desde", SqlDbType.DateTime);
+                    if (txtDesde.Text != "")
+                        parametroDesde.Value = Convert.ToDateTime(txtDesde.Text);
+                    else
+                        parametroDesde.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroDesde);
+                    SqlParameter parametroHasta = new SqlParameter("@Hasta", SqlDbType.DateTime);
+                    if (txtHasta.Text != "")
+                        parametroHasta.Value = Convert.ToDateTime(txtHasta.Text);
+                    else
+                        parametroHasta.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroHasta);
+                    SqlParameter parametroDistancia = new SqlParameter("@Distancia", SqlDbType.VarChar, 10);
+                    if (cmbDistancia.Text != "")
+                        parametroDistancia.Value = cmbDistancia.Text;
+                    else
+                        parametroDistancia.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroDistancia);
+                    SqlParameter parametroProp = new SqlParameter("@Prop", SqlDbType.Decimal);
+                    if (txtValor.Text != "")
+                        parametroProp.Value = Convert.ToDecimal(txtPropuesto.Text);
+                    else
+                        parametroProp.Value = DBNull.Value;
+                    parametroProp.Precision = 36;
+                    parametroProp.Scale = 18;
+                    conexiones.comando.Parameters.Add(parametroProp);
+                    SqlParameter parametroValor = new SqlParameter("@Valor", SqlDbType.Decimal);
+                    if (txtValor.Text != "")
+                        parametroValor.Value = Convert.ToDecimal(txtValor.Text);
+                    else
+                        parametroValor.Value = DBNull.Value;
+                    parametroValor.Precision = 36;
+                    parametroValor.Scale = 18;
+                    conexiones.comando.Parameters.Add(parametroValor);
+                    conexiones.comando.ExecuteNonQuery();
+                    conexiones.conexion.Close();
+                }
+                else
+                {
+                    lblTituloError.Text = "Agregar transporte";
+                    lblMensajeError.Text = "Debe indicar la empresa/margen/valor y la distancia.";
+                    mpeError.Show();
+                }
+
+                cmbEmpresa.Text = "";
+                cmbDelegacion.Text = "";
+                txtDesde.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                txtHasta.Text = "";
+                txtMargen.Text = "";
+                cmbDistancia.Text = "";
+                txtPropuesto.Text = "";
+                txtPropuesto.Enabled = false;
+                txtValor.Text = "";
+                txtDesvio.Text = "";
+
+                cmbEmpresa.Enabled = true;
+                cmbDelegacion.Enabled = true;
+                cmbDistancia.Enabled = true;
+
+                rellenarGridTransporte();
+
+                //lblTituloError.Text = "Agregar transporte";
+                //lblMensajeError.Text = "Se creará el registro con los datos indicados. Es posible que se cierre algún registro con los datos actuales que ya no son válidos.";
+                //mpeError.Show();
+            }
+            catch (Exception ex)
+            {
+                lblTituloError.Text = "Agregar transporte";
+                lblMensajeError.Text = ex.Message;
+                mpeError.Show();
+            }
+        }
+
+        private void rellenarTransporteGeneral()
+        {
+            txtFechaActualizar.Text = "";
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteGeneralConsulta";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                transporsteID = dr.GetInt32(CAMPO_IDTransporte);
+                txtMeses.Text = dr.GetInt32(CAMPO_Meses).ToString("#,##0");
+                txtDesvioTransporte.Text = dr.GetDecimal(CAMPO_Desvio).ToString("N2");
+                txtFechaActualizar.Text = dr.GetDateTime(CAMPO_Fecha).ToString("dd/MM/yyyy");
+            }
+            conexiones.conexion.Close();
+            txtMeses.Enabled = false;
+            txtDesvioTransporte.Enabled = false;
+            btnEditarTransporteGeneral.Visible = true;
+            btnGuardarTransporteGeneral.Visible = false;
+            btnCancelarTransporteGeneral.Visible = false;
+        }
+
+        protected void CambioFiltroEmpresaTransporte(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroEmpresaTransporte = (DropDownList)sender;
+            ViewState["FiltroEmpresaTransporte"] = cmbFiltroEmpresaTransporte.SelectedValue;
+            this.rellenarGridTransporte();
+        }
+
+        private void rellenarFiltroEmpresaTransporte(DropDownList cmbFiltroEmpresa)
+        {
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionTransporteEmpresaConsulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (!chkBoxActivos.Checked)
+                conexiones.comando.Parameters.AddWithValue("@activos", false);
+            else
+                conexiones.comando.Parameters.AddWithValue("@activos", true); 
+            if (ViewState["FiltroEmpresaTransporte"].ToString() == "")
+                conexiones.comando.Parameters.AddWithValue("@empresa", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@empresa", ViewState["FiltroEmpresaTransporte"].ToString());
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroEmpresa.DataSource = dt;
+            cmbFiltroEmpresa.DataTextField = "Empresa";
+            cmbFiltroEmpresa.DataValueField = "Empresa";
+            cmbFiltroEmpresa.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroEmpresa.Items.FindByValue(ViewState["FiltroEmpresaTransporte"].ToString()).Selected = true;
+        }
+
+        protected void CambioFiltroDelegacionTransporte(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroDelegacionTransporte = (DropDownList)sender;
+            ViewState["FiltroDelegacionTransporte"] = cmbFiltroDelegacionTransporte.SelectedValue;
+            this.rellenarGridTransporte();
+        }
+
+        private void rellenarFiltroDelegacionTransporte(DropDownList cmbFiltroDelegacion)
+        {
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionTransporteDelegacionConsulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (!chkBoxActivos.Checked)
+                conexiones.comando.Parameters.AddWithValue("@activos", false);
+            else
+                conexiones.comando.Parameters.AddWithValue("@activos", true); 
+            if (ViewState["FiltroDelegacionTransporte"].ToString() == "")
+                conexiones.comando.Parameters.AddWithValue("@delegacion", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@delegacion", ViewState["FiltroDelegacionTransporte"].ToString());
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroDelegacion.DataSource = dt;
+            cmbFiltroDelegacion.DataTextField = "Delegacion";
+            cmbFiltroDelegacion.DataValueField = "Delegacion";
+            cmbFiltroDelegacion.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroDelegacion.Items.FindByValue(ViewState["FiltroDelegacionTransporte"].ToString()).Selected = true;
+        }
+
+        protected void CambioFiltroDesdeTransporte(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroDesdeTransporte = (DropDownList)sender;
+            ViewState["FiltroDesdeTransporte"] = cmbFiltroDesdeTransporte.SelectedValue;
+            this.rellenarGridTransporte();
+        }
+
+        private void rellenarFiltroDesdeTransporte(DropDownList cmbFiltroDesde)
+        {
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionTransporteDesdeConsulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (!chkBoxActivos.Checked)
+                conexiones.comando.Parameters.AddWithValue("@activos", false);
+            else
+                conexiones.comando.Parameters.AddWithValue("@activos", true); 
+            if (ViewState["FiltroDesdeTransporte"].ToString() == "")
+                conexiones.comando.Parameters.AddWithValue("@desde", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@desde", Convert.ToDateTime(ViewState["FiltroDesdeTransporte"].ToString()));
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroDesde.DataSource = dt;
+            cmbFiltroDesde.DataTextField = "Desde";
+            cmbFiltroDesde.DataValueField = "Desde";
+            cmbFiltroDesde.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroDesde.Items.FindByValue(ViewState["FiltroDesdeTransporte"].ToString()).Selected = true;
+        }
+
+        protected void CambioFiltroDistanciaTransporte(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroDistanciaTransporte = (DropDownList)sender;
+            ViewState["FiltroDistanciaTransporte"] = cmbFiltroDistanciaTransporte.SelectedValue;
+            this.rellenarGridTransporte();
+        }
+
+        private void rellenarFiltroDistanciaTransporte(DropDownList cmbFiltroDistancia)
+        {
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionTransporteDistanciaConsulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (!chkBoxActivos.Checked)
+                conexiones.comando.Parameters.AddWithValue("@activos", false);
+            else
+                conexiones.comando.Parameters.AddWithValue("@activos", true);
+            if (ViewState["FiltroDistanciaTransporte"].ToString() == "")
+                conexiones.comando.Parameters.AddWithValue("@distancia", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@distancia", ViewState["FiltroDistanciaTransporte"].ToString());
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroDistancia.DataSource = dt;
+            cmbFiltroDistancia.DataTextField = "Distancia";
+            cmbFiltroDistancia.DataValueField = "Distancia";
+            cmbFiltroDistancia.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroDistancia.Items.FindByValue(ViewState["FiltroDistanciaTransporte"].ToString()).Selected = true;
+        }
+
+
+        protected void chkBoxActivos_CheckedChanged(object sender, EventArgs e)
+        {
+            rellenarGridTransporte();
+        }
+
+        private void rellenarGridTransporte()
+        {
+            DropDownList cmbFiltro;
+
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteConsulta";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroActivos = new SqlParameter("@activos", SqlDbType.Bit);
+            if (!chkBoxActivos.Checked)
+                parametroActivos.Value = false;
+            else
+                parametroActivos.Value = true;
+            conexiones.comando.Parameters.Add(parametroActivos);
+            SqlParameter parametroEmpresa = new SqlParameter("@empresa", SqlDbType.NVarChar, 10);
+            if (ViewState["FiltroEmpresaTransporte"].ToString() == "")
+                parametroEmpresa.Value = null;
+            else
+                parametroEmpresa.Value = ViewState["FiltroEmpresaTransporte"].ToString();
+            conexiones.comando.Parameters.Add(parametroEmpresa);
+            SqlParameter parametroDelegacion = new SqlParameter("@delegacion", SqlDbType.NVarChar, 10);
+            if (ViewState["FiltroDelegacionTransporte"].ToString() == "")
+                parametroDelegacion.Value = null;
+            else
+                parametroDelegacion.Value = ViewState["FiltroDelegacionTransporte"].ToString();
+            conexiones.comando.Parameters.Add(parametroDelegacion);
+            SqlParameter parametroDesde = new SqlParameter("@desde", SqlDbType.DateTime);
+            if (ViewState["FiltroDesdeTransporte"].ToString() == "")
+                parametroDesde.Value = null;
+            else
+                parametroDesde.Value = ViewState["FiltroDesdeTransporte"].ToString();
+            conexiones.comando.Parameters.Add(parametroDesde);
+            SqlParameter parametroDistancia = new SqlParameter("@distancia", SqlDbType.NVarChar, 10);
+            if (ViewState["FiltroDistanciaTransporte"].ToString() == "")
+                parametroDistancia.Value = null;
+            else
+                parametroDistancia.Value = ViewState["FiltroDistanciaTransporte"].ToString();
+            conexiones.comando.Parameters.Add(parametroDistancia);
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            grvTransporte.DataSource = dr;
+            grvTransporte.DataBind();
+            conexiones.conexion.Close();
+
+            cmbFiltro = (DropDownList)grvTransporte.HeaderRow.FindControl("FiltroEmpresaTransporte");
+            this.rellenarFiltroEmpresaTransporte(cmbFiltro);
+
+            cmbFiltro = (DropDownList)grvTransporte.HeaderRow.FindControl("FiltroDelegacionTransporte");
+            this.rellenarFiltroDelegacionTransporte(cmbFiltro);
+
+            cmbFiltro = (DropDownList)grvTransporte.HeaderRow.FindControl("FiltroDesdeTransporte");
+            this.rellenarFiltroDesdeTransporte(cmbFiltro);
+
+            cmbFiltro = (DropDownList)grvTransporte.HeaderRow.FindControl("FiltroDistanciaTransporte");
+            this.rellenarFiltroDistanciaTransporte(cmbFiltro);
+        }
+
+        protected void grvTransporte_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            grvTransporte.EditIndex = e.NewEditIndex;
+            rellenarGridTransporte();
+        }
+
+        protected void grvTransporte_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList cmbEmpresa = (e.Row.FindControl("cmbEmpresa") as DropDownList);
+
+                cmbEmpresa.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_Empresas";
+                SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+                System.Data.DataTable dtEmpresa = new System.Data.DataTable();
+                adaptadorEmpresa.Fill(dtEmpresa);
+                cmbEmpresa.DataSource = dtEmpresa;
+                cmbEmpresa.DataTextField = "Empresa";
+                cmbEmpresa.DataValueField = "Empresa";
+                cmbEmpresa.DataBind();
+                conexiones.conexion.Close();
+                cmbEmpresa.Items.Insert(0, new ListItem(""));
+                string empresa = (e.Row.FindControl("lblEmpresa") as Label).Text;
+                cmbEmpresa.Items.FindByValue(empresa).Selected = true;
+                cmbEmpresa.Enabled = e.Row.RowIndex == grvTransporte.EditIndex;
+
+                DropDownList cmbDelegacion = (e.Row.FindControl("cmbDelegacion") as DropDownList);
+
+                cmbEmpresa.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "sp_ROP_Delegaciones";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                SqlParameter parametroEmpresa = new SqlParameter("@empresa", SqlDbType.VarChar, 5);
+                parametroEmpresa.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroEmpresa);
+                SqlDataAdapter adaptadorDelegacion = new SqlDataAdapter(conexiones.comando);
+                System.Data.DataTable dtDelegacion = new System.Data.DataTable();
+                adaptadorDelegacion.Fill(dtDelegacion);
+                cmbDelegacion.DataSource = dtDelegacion;
+                cmbDelegacion.DataTextField = "Delegacion";
+                cmbDelegacion.DataValueField = "Delegacion";
+                cmbDelegacion.DataBind();
+                adaptadorDelegacion.Dispose();
+                conexiones.comando.Dispose();
+                conexiones.conexion.Close();
+                conexiones.conexion.Dispose();
+
+                cmbDelegacion.Items.Insert(0, new ListItem(""));
+                string delegacion = (e.Row.FindControl("lblDelegacion") as Label).Text;
+                cmbDelegacion.Items.FindByValue(delegacion).Selected = true;
+                cmbDelegacion.Enabled = e.Row.RowIndex == grvTransporte.EditIndex;
+
+                DropDownList cmbDistancia = (e.Row.FindControl("cmbDistancia") as DropDownList);
+
+                cmbDistancia.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_transporteConsulta";
+                SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adaptador.Fill(dt);
+                cmbDistancia.DataSource = dt;
+                cmbDistancia.DataTextField = "CFGTRA_Distancia";
+                cmbDistancia.DataValueField = "CFGTRA_Distancia";
+                cmbDistancia.DataBind();
+                conexiones.conexion.Close();
+                cmbDistancia.Items.Insert(0, new ListItem(""));
+                string tipo = (e.Row.FindControl("lblDistancia") as Label).Text;
+                cmbDistancia.Items.FindByValue(tipo).Selected = true;
+                cmbDistancia.Enabled = e.Row.RowIndex == grvTransporte.EditIndex;
+
+                if (e.Row.Cells[COLGRID_Desvio].Text != "" && txtDesvio.Text != "")
+                    if (Convert.ToDecimal(e.Row.Cells[COLGRID_Desvio].Text) > Convert.ToDecimal(txtDesvio.Text))
+                        e.Row.Cells[COLGRID_Desvio].BackColor = System.Drawing.Color.LightCoral;
+
+                ((BoundField)grvTransporte.Columns[COLGRID_Prop]).ReadOnly = true;
+                ((BoundField)grvTransporte.Columns[COLGRID_Desvio]).ReadOnly = true;
+            }
+        }
+
+        protected void grvTransporte_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string ID = ((System.Web.UI.WebControls.TextBox)grvTransporte.Rows[e.RowIndex].Cells[COLGRID_CFGTRA_ID].Controls[0]).Text;
+            DropDownList cmbEmpresa = grvTransporte.Rows[e.RowIndex].FindControl("cmbEmpresa") as DropDownList;
+            string Empresa = Convert.ToString(cmbEmpresa.SelectedValue);
+            DropDownList cmbDelegacion = grvTransporte.Rows[e.RowIndex].FindControl("cmbDelegacion") as DropDownList;
+            string Delegacion = Convert.ToString(cmbDelegacion.SelectedValue);
+            string Margen = ((System.Web.UI.WebControls.TextBox)grvTransporte.Rows[e.RowIndex].Cells[COLGRID_Margen].Controls[0]).Text;
+            string Desde = ((System.Web.UI.WebControls.TextBox)grvTransporte.Rows[e.RowIndex].FindControl("txtDesde")).Text;
+            string Hasta = ((System.Web.UI.WebControls.TextBox)grvTransporte.Rows[e.RowIndex].FindControl("txtHasta")).Text;
+            DropDownList cmbDistancia = grvTransporte.Rows[e.RowIndex].FindControl("cmbDistancia") as DropDownList;
+            string Distancia = Convert.ToString(cmbDistancia.SelectedValue);
+            string Valor = ((System.Web.UI.WebControls.TextBox)grvTransporte.Rows[e.RowIndex].Cells[COLGRID_Valor].Controls[0]).Text;
+          
+            if (Empresa != "" && Margen != "" && Valor != "")
+            {
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_ConfiguracionTransporteModificar";
+                conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parametroID= new SqlParameter("@CFGTRA_ID", SqlDbType.Int);
+                parametroID.Value = Convert.ToInt32(ID);
+                conexiones.comando.Parameters.Add(parametroID);
+
+                SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
+                if (Empresa != "")
+                    parametroEmpresa.Value = Empresa;
+                else
+                    parametroEmpresa.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroEmpresa);
+                SqlParameter parametroDelegacion = new SqlParameter("@Delegacion", SqlDbType.VarChar, 10);
+                if (Delegacion != "")
+                    parametroDelegacion.Value = Delegacion;
+                else
+                    parametroDelegacion.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroDelegacion);
+                SqlParameter parametroMargen = new SqlParameter("@Margen", SqlDbType.Decimal);
+                if (Margen != "")
+                    parametroMargen.Value = Convert.ToDecimal(Margen);
+                else
+                    parametroMargen.Value = DBNull.Value;
+                parametroMargen.Precision = 18;
+                parametroMargen.Scale = 2;
+                conexiones.comando.Parameters.Add(parametroMargen);
+                SqlParameter parametroDesde = new SqlParameter("@Desde", SqlDbType.DateTime);
+                if (Desde != "")
+                    parametroDesde.Value = Convert.ToDateTime(Desde);
+                else
+                    parametroDesde.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroDesde);
+                SqlParameter parametroHasta = new SqlParameter("@Hasta", SqlDbType.DateTime);
+                if (Hasta!= "")
+                    parametroHasta.Value = Convert.ToDateTime(Hasta);
+                else
+                    parametroHasta.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroHasta);
+                SqlParameter parametroDistancia = new SqlParameter("@Distancia", SqlDbType.VarChar, 10);
+                if (Distancia != "")
+                    parametroDistancia.Value = Distancia;
+                else
+                    parametroDistancia.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroDistancia);
+                SqlParameter parametroValor = new SqlParameter("@Valor", SqlDbType.Decimal);
+                if (Valor != "")
+                    parametroValor.Value = Convert.ToDecimal(Valor);
+                else
+                    parametroValor.Value = DBNull.Value;
+                parametroValor.Precision = 36;
+                parametroValor.Scale = 18;
+                conexiones.comando.Parameters.Add(parametroValor);
+                conexiones.comando.ExecuteNonQuery();
+                conexiones.conexion.Close();
+    
+                grvTransporte.EditIndex = -1;
+                rellenarGridTransporte();
+            }
+            else
+            {
+                lblTituloError.Text = "Modificar transporte";
+                lblMensajeError.Text = "Debe indicar la empresa/margen/valor y la distancia.";
+                mpeError.Show();
+            }
+        }
+
+        protected void grvTransporte_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            grvTransporte.EditIndex = -1;
+            rellenarGridTransporte();
+        }
+
+        protected void grvTransporte_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string ID = grvTransporte.DataKeys[e.RowIndex].Values["CFGTRA_ID"].ToString();
+
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteEliminar";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parametroID = new SqlParameter("@CFGTRA_ID", SqlDbType.Int);
+            parametroID.Value = Convert.ToInt32(ID);
+            conexiones.comando.Parameters.Add(parametroID);
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            conexiones.conexion.Close();
+
+            rellenarGridTransporte();
+
+            //lblTituloError.Text = "Eliminar transporte";
+            //lblMensajeError.Text = "Se eliminará el registro indicado. Es posible que se actualice algún registro con los datos actuales.";
+            //mpeError.Show();
+        }
+        #endregion
+
 
         #region "Usuarios"
 
@@ -1891,6 +2973,7 @@ namespace ROP_Informe
             chkExportar.Checked = false;
             chkImportar.Checked = false;
             chkEliminar.Checked = false;
+            chkElegirVersion.Checked = false;
         }
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
@@ -1917,6 +3000,9 @@ namespace ROP_Informe
                 SqlParameter parametroEliminar = new SqlParameter("@USR_Eliminar", SqlDbType.Bit);
                 parametroEliminar.Value = chkEliminar.Checked;
                 conexiones.comando.Parameters.Add(parametroEliminar);
+                SqlParameter parametroElegir = new SqlParameter("@USR_ElegirVersion", SqlDbType.Bit);
+                parametroElegir.Value = chkElegirVersion.Checked;
+                conexiones.comando.Parameters.Add(parametroElegir);
 
                 SqlDataReader dr = conexiones.comando.ExecuteReader();
                 conexiones.conexion.Close();
@@ -1933,6 +3019,7 @@ namespace ROP_Informe
             chkExportar.Checked = false;
             chkImportar.Checked = false;
             chkEliminar.Checked = false;
+            chkElegirVersion.Checked = false;
             rellenarGridUsuarios();
         }
 
@@ -1966,6 +3053,8 @@ namespace ROP_Informe
             System.Web.UI.WebControls.CheckBox exportar = ((System.Web.UI.WebControls.CheckBox)grvUsuarios.Rows[e.RowIndex].Cells[COLGRID_USR_Exportar].Controls[0]);
             System.Web.UI.WebControls.CheckBox importar = ((System.Web.UI.WebControls.CheckBox)grvUsuarios.Rows[e.RowIndex].Cells[COLGRID_USR_Importar].Controls[0]);
             System.Web.UI.WebControls.CheckBox eliminar = ((System.Web.UI.WebControls.CheckBox)grvUsuarios.Rows[e.RowIndex].Cells[COLGRID_USR_Eliminar].Controls[0]);
+            System.Web.UI.WebControls.CheckBox elegir = ((System.Web.UI.WebControls.CheckBox)grvUsuarios.Rows[e.RowIndex].Cells[COLGRID_USR_Elegir].Controls[0]);
+
 
             conexiones.crearConexion();
             conexiones.consulta = "sp_ROP_ConfiguracionUsuarioActualizar";
@@ -1991,6 +3080,9 @@ namespace ROP_Informe
             SqlParameter parametroEliminar = new SqlParameter("@USR_Eliminar", SqlDbType.Bit);
             parametroEliminar.Value = eliminar.Checked;
             conexiones.comando.Parameters.Add(parametroEliminar);
+            SqlParameter parametroElegir = new SqlParameter("@USR_ElegirVersion", SqlDbType.Bit);
+            parametroElegir.Value = elegir.Checked;
+            conexiones.comando.Parameters.Add(parametroElegir);
             SqlDataReader dr = conexiones.comando.ExecuteReader();
             conexiones.conexion.Close();
 
@@ -2034,14 +3126,147 @@ namespace ROP_Informe
 
         #endregion
 
+        #region "Paneles"
+
+        //private void rellenarComboPaneles()
+        //{
+        //    cmbPaneles.Items.Clear();
+        //    cmbPaneles.Items.Add("");
+
+        //    conexiones.crearConexion();
+        //    conexiones.consulta = "sp_ROP_DatosPanelesCombo";
+        //    conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+        //    conexiones.comando.CommandType = CommandType.StoredProcmbPanelescedure;
+        //    SqlDataReader dr = conexiones.comando.ExecuteReader();
+        //    if (dr.HasRows)
+        //    {
+        //        while (dr.Read())
+        //        {
+        //            cmbPaneles.Items.Add(dr.GetString(0));
+        //        }
+        //    }
+        //    conexiones.conexion.Close();
+        //    cmbPaneles.Text = "";
+        //}
+
+        protected void btnIncluirPanel_Click(object sender, EventArgs e)
+        {
+            if (txtPanel.Text != "")
+            {
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_DatosPanelesActualizar";
+                conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parametroID = new SqlParameter("@ItemIdAsset", SqlDbType.VarChar, 70);
+                parametroID.Value = txtPanel.Text;
+                conexiones.comando.Parameters.Add(parametroID);
+                SqlParameter parametroEstandar = new SqlParameter("@Estandar", SqlDbType.Bit);
+                parametroEstandar.Value = true;
+                conexiones.comando.Parameters.Add(parametroEstandar);
+                SqlDataReader dr = conexiones.comando.ExecuteReader();
+                conexiones.conexion.Close();
+
+                rellenarGridPaneles();
+                //rellenarComboPaneles();
+            }
+            txtPanel.Text = "";
+        }
+
+        private void datosPaneles()
+        {
+            try
+            {
+                conexiones.crearConexionBI();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "ROP_BI_Paneles";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                conexiones.comando.ExecuteNonQuery();
+                conexiones.comando.Dispose();
+                conexiones.conexion.Close();
+                conexiones.conexion.Close();
+                conexiones.conexion.Dispose();
+            }
+            catch (Exception ex)
+            {
+                conexiones.conexion.Close();
+            }
+        }
+
+        private void rellenarGridPaneles()
+        {
+            conexiones.crearConexion();
+            conexiones.consulta = "ROP_DatosPaneles";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            grvPaneles.DataSource = dr;
+            grvPaneles.DataBind();
+            conexiones.conexion.Close();
+        }
+
+        protected void grvPaneles_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            grvPaneles.EditIndex = e.NewEditIndex;
+            rellenarGridPaneles();
+        }
+
+        protected void grvPaneles_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string ID = ((System.Web.UI.WebControls.TextBox)grvPaneles.Rows[e.RowIndex].Cells[COLGRID_PANEL_ID_Indice].Controls[0]).Text;
+            System.Web.UI.WebControls.CheckBox estandar = ((System.Web.UI.WebControls.CheckBox)grvPaneles.Rows[e.RowIndex].Cells[COLGRID_PANEL_Estandar].Controls[0]);
+
+            if (ID != "")
+            {
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_DatosPanelesActualizar";
+                conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parametroID = new SqlParameter("@ItemIdAsset", SqlDbType.VarChar, 70);
+                parametroID.Value = ID;
+                conexiones.comando.Parameters.Add(parametroID);
+                SqlParameter parametroEstandar = new SqlParameter("@Estandar", SqlDbType.Bit);
+                parametroEstandar.Value = estandar.Checked;
+                conexiones.comando.Parameters.Add(parametroEstandar);
+                SqlDataReader dr = conexiones.comando.ExecuteReader();
+                conexiones.conexion.Close();
+
+                grvPaneles.EditIndex = -1;
+                rellenarGridPaneles();
+                //rellenarComboPaneles();
+            }
+        }
+
+        protected void grvPaneles_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                ((BoundField)grvPaneles.Columns[COLGRID_PANEL_ID]).ReadOnly = true;
+                ((BoundField)grvPaneles.Columns[COLGRID_PANEL_Descripcion]).ReadOnly = true;
+
+                if (e.Row.RowIndex==0)
+                    e.Row.Cells[4].Controls.Clear();
+            }
+        }
+
+        protected void grvPaneles_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            grvPaneles.EditIndex = -1;
+            rellenarGridPaneles();
+        }
+
+        #endregion
+
         #region "Historico"
         private void rellenarGridHistorico()
         {
             conexiones.crearConexion();
-            if (rdbGFV.Checked == true)
-                conexiones.consulta = "sp_ROP_ConfiguracionGeneralHistorico";
-            else
-                conexiones.consulta = "sp_ROP_ConfiguracionHistorico";
+            //if (rdbGFV.Checked == true)
+            //    conexiones.consulta = "sp_ROP_ConfiguracionGeneralHistorico";
+            //else
+            conexiones.consulta = "sp_ROP_ConfiguracionHistorico";
             conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
             conexiones.comando.CommandType = CommandType.StoredProcedure;
 
@@ -2055,17 +3280,22 @@ namespace ROP_Informe
         {
             rellenarGridHistorico();
         }
-
         #endregion
 
         #region "Fijo"
+
+        protected void CambioFiltroVersionMovimientosGeneral(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroVersion = (DropDownList)sender;
+            ViewState["FiltroVersionMovimientosGeneral"] = cmbFiltroVersion.SelectedValue;
+            this.rellenarAjustesFechaMovimientos();
+        }
 
         private void rellenarFiltroAjustesFechaMovimientos(DropDownList cmbFiltroVersion)
         {
             cmbFiltroVersion.DataSource = null;
             conexiones.crearConexion();
             conexiones.consulta = "sp_ROP_MovimientosAjusteFecha";
-            //conexiones.comando.Parameters.AddWithValue("@selector", 0);
             SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
             System.Data.DataTable dt = new System.Data.DataTable();
             adaptador.Fill(dt);
@@ -2077,8 +3307,25 @@ namespace ROP_Informe
             cmbFiltroVersion.Items.FindByValue(ViewState["FiltroMovimiento"].ToString()).Selected = true;
         }
 
+        private void rellenarFiltroAjustesFechaVersionMovimientos(DropDownList cmbFiltroVersion)
+        {
+            cmbFiltroVersion.DataSource = null;
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_MovimientosAjusteFechaVersion";
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroVersion.DataSource = dt;
+            cmbFiltroVersion.DataTextField = "CFG_Version";
+            cmbFiltroVersion.DataValueField = "CFG_Version";
+            cmbFiltroVersion.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroVersion.Items.FindByValue(ViewState["FiltroVersionMovimientosGeneral"].ToString()).Selected = true;
+        }
+
         private void rellenarAjustesFechaMovimientos()
         {
+            DropDownList cmbFiltroVersion;
             DropDownList cmbFiltro;
 
             conexiones.crearConexion();
@@ -2086,6 +3333,12 @@ namespace ROP_Informe
             conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
             conexiones.comando.CommandType = CommandType.StoredProcedure;
 
+            SqlParameter parametroVersion = new SqlParameter("@version", SqlDbType.NVarChar, 10);
+            if (ViewState["FiltroVersionMovimientosGeneral"].ToString() == "")
+                parametroVersion.Value = null;
+            else
+                parametroVersion.Value = ViewState["FiltroVersionMovimientosGeneral"].ToString();
+            conexiones.comando.Parameters.Add(parametroVersion);
             SqlParameter parametroMovimiento = new SqlParameter("@movimiento", SqlDbType.NVarChar, 100);
             if (ViewState["FiltroMovimiento"].ToString() == "")
                 parametroMovimiento.Value = null;
@@ -2097,6 +3350,9 @@ namespace ROP_Informe
             grvAjusteFechasMovimientos.DataSource = dr;
             grvAjusteFechasMovimientos.DataBind();
             conexiones.conexion.Close();
+
+            cmbFiltroVersion = (DropDownList)grvAjusteFechasMovimientos.HeaderRow.FindControl("FiltroVersionMovimientosGeneral");
+            this.rellenarFiltroAjustesFechaVersionMovimientos(cmbFiltroVersion);
 
             cmbFiltro = (DropDownList)grvAjusteFechasMovimientos.HeaderRow.FindControl("FiltroMovimiento");
             this.rellenarFiltroAjustesFechaMovimientos(cmbFiltro);
@@ -2150,87 +3406,87 @@ namespace ROP_Informe
             rellenarAjustesFechaMovimientos();
         }
 
-        private void rellenarDatosFijos()
-        {
-            conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionFijaConsulta";
-            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            SqlDataReader dr = conexiones.comando.ExecuteReader();
-            if (dr.HasRows)
-            {
-                dr.Read();
-                txtDiasCalculo.Text= dr["COF_DiasCalculo"].ToString();
-                txtDiasFechaOfertaCapitulo.Text = dr["COF_OfertaDiasEntreFechaOfertaFechaCapitulo"].ToString();
-                txtDiasRetrocederOferta.Text = dr["COF_OfertaDiasRestarFechaCapítulo"].ToString();
-                txtDiasFechaOfertaPedido.Text = dr["COF_OfertaDiasEntreFechaOfertaFechaPedido"].ToString();
-                txtDiasRetrocederPedido.Text = dr["COF_OfertaDiasRestarFechaPedido"].ToString();
-            }
-            conexiones.conexion.Close();
+        //private void rellenarDatosFijos()
+        //{
+        //    conexiones.crearConexion();
+        //    conexiones.consulta = "sp_ROP_ConfiguracionFijaConsulta";
+        //    conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+        //    conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    SqlDataReader dr = conexiones.comando.ExecuteReader();
+        //    if (dr.HasRows)
+        //    {
+        //        dr.Read();
+        //        txtDiasCalculo.Text= dr["COF_DiasCalculo"].ToString();
+        //        txtDiasFechaOfertaCapitulo.Text = dr["COF_OfertaDiasEntreFechaOfertaFechaCapitulo"].ToString();
+        //        txtDiasRetrocederOferta.Text = dr["COF_OfertaDiasRestarFechaCapítulo"].ToString();
+        //        txtDiasFechaOfertaPedido.Text = dr["COF_OfertaDiasEntreFechaOfertaFechaPedido"].ToString();
+        //        txtDiasRetrocederPedido.Text = dr["COF_OfertaDiasRestarFechaPedido"].ToString();
+        //    }
+        //    conexiones.conexion.Close();
 
-            txtDiasCalculo.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
-            txtDiasFechaOfertaCapitulo.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
-            txtDiasRetrocederOferta.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
-            txtDiasFechaOfertaPedido.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
-            txtDiasRetrocederPedido.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
+        //    txtDiasCalculo.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
+        //    txtDiasFechaOfertaCapitulo.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
+        //    txtDiasRetrocederOferta.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
+        //    txtDiasFechaOfertaPedido.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
+        //    txtDiasRetrocederPedido.Attributes.CssStyle.Add("TEXT-ALIGN", "right");
 
-            txtDiasCalculo.Enabled = false;
-            txtDiasFechaOfertaCapitulo.Enabled = false;
-            txtDiasRetrocederOferta.Enabled = false;
-            txtDiasFechaOfertaPedido.Enabled = false;
-            txtDiasRetrocederPedido.Enabled = false;
-            btnEditarFijo.Visible = true;
-            btnGuardarFijo.Visible = false;
-            btnCancelarFijo.Visible = false;
-        }
+        //    txtDiasCalculo.Enabled = false;
+        //    txtDiasFechaOfertaCapitulo.Enabled = false;
+        //    txtDiasRetrocederOferta.Enabled = false;
+        //    txtDiasFechaOfertaPedido.Enabled = false;
+        //    txtDiasRetrocederPedido.Enabled = false;
+        //    btnEditarFijo.Visible = true;
+        //    btnGuardarFijo.Visible = false;
+        //    btnCancelarFijo.Visible = false;
+        //}
 
-        protected void btnEditarFijo_Click(object sender, EventArgs e)
-        {
-            txtDiasCalculo.Enabled = true;
-            txtDiasFechaOfertaCapitulo.Enabled  = true;
-            txtDiasRetrocederOferta.Enabled = true;
-            txtDiasFechaOfertaPedido.Enabled = true;
-            txtDiasRetrocederPedido.Enabled = true;
-            btnEditarFijo.Visible = false;
-            btnGuardarFijo.Visible = true;
-            btnCancelarFijo.Visible = true;
-        }
+        //protected void btnEditarFijo_Click(object sender, EventArgs e)
+        //{
+        //    txtDiasCalculo.Enabled = true;
+        //    txtDiasFechaOfertaCapitulo.Enabled  = true;
+        //    txtDiasRetrocederOferta.Enabled = true;
+        //    txtDiasFechaOfertaPedido.Enabled = true;
+        //    txtDiasRetrocederPedido.Enabled = true;
+        //    btnEditarFijo.Visible = false;
+        //    btnGuardarFijo.Visible = true;
+        //    btnCancelarFijo.Visible = true;
+        //}
 
-        protected void btnCancelarFijo_Click(object sender, EventArgs e)
-        {
-            txtDiasCalculo.Enabled = false;
-            txtDiasFechaOfertaCapitulo.Enabled = false;
-            txtDiasRetrocederOferta.Enabled = false;
-            txtDiasFechaOfertaPedido.Enabled = false;
-            txtDiasRetrocederPedido.Enabled = false;
-            btnEditarFijo.Visible = true;
-            btnGuardarFijo.Visible = false;
-            btnCancelarFijo.Visible = false;
-        }
+        //protected void btnCancelarFijo_Click(object sender, EventArgs e)
+        //{
+        //    txtDiasCalculo.Enabled = false;
+        //    txtDiasFechaOfertaCapitulo.Enabled = false;
+        //    txtDiasRetrocederOferta.Enabled = false;
+        //    txtDiasFechaOfertaPedido.Enabled = false;
+        //    txtDiasRetrocederPedido.Enabled = false;
+        //    btnEditarFijo.Visible = true;
+        //    btnGuardarFijo.Visible = false;
+        //    btnCancelarFijo.Visible = false;
+        //}
 
-        protected void btnGuardarFijo_Click(object sender, EventArgs e)
-        {
-            conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionFijaActualizar";
-            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
-            conexiones.comando.CommandType = CommandType.StoredProcedure;
-            conexiones.comando.Parameters.AddWithValue("@COF_DiasCalculo", Convert.ToInt32(txtDiasCalculo.Text));
-            conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasEntreFechaOfertaFechaCapitulo", Convert.ToInt32(txtDiasFechaOfertaCapitulo.Text));
-            conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasRestarFechaCapítulo", Convert.ToInt32(txtDiasRetrocederOferta.Text));
-            conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasEntreFechaOfertaFechaPedido", Convert.ToInt32(txtDiasFechaOfertaPedido.Text));
-            conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasRestarFechaPedido", Convert.ToInt32(txtDiasRetrocederPedido.Text));
-            conexiones.comando.ExecuteNonQuery();
-            conexiones.conexion.Close();
+        //protected void btnGuardarFijo_Click(object sender, EventArgs e)
+        //{
+        //    conexiones.crearConexion();
+        //    conexiones.consulta = "sp_ROP_ConfiguracionFijaActualizar";
+        //    conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+        //    conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //    conexiones.comando.Parameters.AddWithValue("@COF_DiasCalculo", Convert.ToInt32(txtDiasCalculo.Text));
+        //    conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasEntreFechaOfertaFechaCapitulo", Convert.ToInt32(txtDiasFechaOfertaCapitulo.Text));
+        //    conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasRestarFechaCapítulo", Convert.ToInt32(txtDiasRetrocederOferta.Text));
+        //    conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasEntreFechaOfertaFechaPedido", Convert.ToInt32(txtDiasFechaOfertaPedido.Text));
+        //    conexiones.comando.Parameters.AddWithValue("@COF_OfertaDiasRestarFechaPedido", Convert.ToInt32(txtDiasRetrocederPedido.Text));
+        //    conexiones.comando.ExecuteNonQuery();
+        //    conexiones.conexion.Close();
 
-            txtDiasCalculo.Enabled = false;
-            txtDiasFechaOfertaCapitulo.Enabled = false;
-            txtDiasRetrocederOferta.Enabled = false;
-            txtDiasFechaOfertaPedido.Enabled = false;
-            txtDiasRetrocederPedido.Enabled = false;
-            btnEditarFijo.Visible = true;
-            btnGuardarFijo.Visible = false;
-            btnCancelarFijo.Visible = false;
-        }
+        //    txtDiasCalculo.Enabled = false;
+        //    txtDiasFechaOfertaCapitulo.Enabled = false;
+        //    txtDiasRetrocederOferta.Enabled = false;
+        //    txtDiasFechaOfertaPedido.Enabled = false;
+        //    txtDiasRetrocederPedido.Enabled = false;
+        //    btnEditarFijo.Visible = true;
+        //    btnGuardarFijo.Visible = false;
+        //    btnCancelarFijo.Visible = false;
+        //}
         #endregion 
 
         public string letraExcel(int columna)

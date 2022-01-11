@@ -1126,76 +1126,34 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string dataSourceNameField;
+        private string fieldField;
         
-        private string fieldNameField;
-        
-        private Operator operatorField;
-        
-        private string value1Field;
-        
-        private string value2Field;
+        private string valueField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string DataSourceName {
+        public string Field {
             get {
-                return this.dataSourceNameField;
+                return this.fieldField;
             }
             set {
-                this.dataSourceNameField = value;
-                this.RaisePropertyChanged("DataSourceName");
+                this.fieldField = value;
+                this.RaisePropertyChanged("Field");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string FieldName {
+        public string Value {
             get {
-                return this.fieldNameField;
+                return this.valueField;
             }
             set {
-                this.fieldNameField = value;
-                this.RaisePropertyChanged("FieldName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Operator Operator {
-            get {
-                return this.operatorField;
-            }
-            set {
-                this.operatorField = value;
-                this.RaisePropertyChanged("Operator");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string Value1 {
-            get {
-                return this.value1Field;
-            }
-            set {
-                this.value1Field = value;
-                this.RaisePropertyChanged("Value1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Value2 {
-            get {
-                return this.value2Field;
-            }
-            set {
-                this.value2Field = value;
-                this.RaisePropertyChanged("Value2");
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
             }
         }
         
@@ -1212,50 +1170,23 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public enum Operator {
-        
-        /// <remarks/>
-        Equal,
-        
-        /// <remarks/>
-        NotEqual,
-        
-        /// <remarks/>
-        Greater,
-        
-        /// <remarks/>
-        GreaterOrEqual,
-        
-        /// <remarks/>
-        Less,
-        
-        /// <remarks/>
-        LessOrEqual,
-        
-        /// <remarks/>
-        Range,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private CriteriaElement[] criteriaElementField;
+        private KeyField[] keyDataField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
-        public CriteriaElement[] CriteriaElement {
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public KeyField[] KeyData {
             get {
-                return this.criteriaElementField;
+                return this.keyDataField;
             }
             set {
-                this.criteriaElementField = value;
-                this.RaisePropertyChanged("CriteriaElement");
+                this.keyDataField = value;
+                this.RaisePropertyChanged("KeyData");
             }
         }
         
@@ -1272,6 +1203,15 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaAlbaranesEntrega.CustPackingService")]
     public interface CustPackingService {
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (CustPackingServiceReadRequest) del mensaje CustPackingServiceReadRequest no coincide con el valor predeterminado (read)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustPackingService/read", ReplyAction="http://tempuri.org/CustPackingService/readResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaAlbaranesEntrega.AifFault), Action="http://tempuri.org/CustPackingService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse read(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustPackingService/read", ReplyAction="http://tempuri.org/CustPackingService/readResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse> readAsync(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (CustPackingServiceFindRequest) del mensaje CustPackingServiceFindRequest no coincide con el valor predeterminado (find)
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustPackingService/find", ReplyAction="http://tempuri.org/CustPackingService/findResponse")]
@@ -1290,15 +1230,6 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustPackingService/findKeys", ReplyAction="http://tempuri.org/CustPackingService/findKeysResponse")]
         System.Threading.Tasks.Task<ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceFindKeysRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (CustPackingServiceReadRequest) del mensaje CustPackingServiceReadRequest no coincide con el valor predeterminado (read)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustPackingService/read", ReplyAction="http://tempuri.org/CustPackingService/readResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaAlbaranesEntrega.AifFault), Action="http://tempuri.org/CustPackingService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse read(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CustPackingService/read", ReplyAction="http://tempuri.org/CustPackingService/readResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse> readAsync(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request);
     }
     
     /// <remarks/>
@@ -1453,6 +1384,196 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CustPackingServiceReadRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class CustPackingServiceReadRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
+        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
+        public ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList;
+        
+        public CustPackingServiceReadRequest() {
+        }
+        
+        public CustPackingServiceReadRequest(ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext, ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList) {
+            this.CallContext = CallContext;
+            this.EntityKeyList = EntityKeyList;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CustPackingServiceReadResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class CustPackingServiceReadResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/CustPacking", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/CustPacking")]
+        public ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking CustPacking;
+        
+        public CustPackingServiceReadResponse() {
+        }
+        
+        public CustPackingServiceReadResponse(ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking CustPacking) {
+            this.CustPacking = CustPacking;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CriteriaElement[] criteriaElementField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
+        public CriteriaElement[] CriteriaElement {
+            get {
+                return this.criteriaElementField;
+            }
+            set {
+                this.criteriaElementField = value;
+                this.RaisePropertyChanged("CriteriaElement");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dataSourceNameField;
+        
+        private string fieldNameField;
+        
+        private Operator operatorField;
+        
+        private string value1Field;
+        
+        private string value2Field;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string DataSourceName {
+            get {
+                return this.dataSourceNameField;
+            }
+            set {
+                this.dataSourceNameField = value;
+                this.RaisePropertyChanged("DataSourceName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string FieldName {
+            get {
+                return this.fieldNameField;
+            }
+            set {
+                this.fieldNameField = value;
+                this.RaisePropertyChanged("FieldName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Operator Operator {
+            get {
+                return this.operatorField;
+            }
+            set {
+                this.operatorField = value;
+                this.RaisePropertyChanged("Operator");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Value1 {
+            get {
+                return this.value1Field;
+            }
+            set {
+                this.value1Field = value;
+                this.RaisePropertyChanged("Value1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Value2 {
+            get {
+                return this.value2Field;
+            }
+            set {
+                this.value2Field = value;
+                this.RaisePropertyChanged("Value2");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public enum Operator {
+        
+        /// <remarks/>
+        Equal,
+        
+        /// <remarks/>
+        NotEqual,
+        
+        /// <remarks/>
+        Greater,
+        
+        /// <remarks/>
+        GreaterOrEqual,
+        
+        /// <remarks/>
+        Less,
+        
+        /// <remarks/>
+        LessOrEqual,
+        
+        /// <remarks/>
+        Range,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CustPackingServiceFindRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
     public partial class CustPackingServiceFindRequest {
         
@@ -1488,85 +1609,6 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
         
         public CustPackingServiceFindResponse(ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking CustPacking) {
             this.CustPacking = CustPacking;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private KeyField[] keyDataField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public KeyField[] KeyData {
-            get {
-                return this.keyDataField;
-            }
-            set {
-                this.keyDataField = value;
-                this.RaisePropertyChanged("KeyData");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string fieldField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Field {
-            get {
-                return this.fieldField;
-            }
-            set {
-                this.fieldField = value;
-                this.RaisePropertyChanged("Field");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
         }
     }
     
@@ -1612,48 +1654,6 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CustPackingServiceReadRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class CustPackingServiceReadRequest {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
-        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
-        public ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList;
-        
-        public CustPackingServiceReadRequest() {
-        }
-        
-        public CustPackingServiceReadRequest(ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext, ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList) {
-            this.CallContext = CallContext;
-            this.EntityKeyList = EntityKeyList;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CustPackingServiceReadResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class CustPackingServiceReadResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/CustPacking", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/CustPacking")]
-        public ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking CustPacking;
-        
-        public CustPackingServiceReadResponse() {
-        }
-        
-        public CustPackingServiceReadResponse(ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking CustPacking) {
-            this.CustPacking = CustPacking;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CustPackingServiceChannel : ROP_Informe.tablaAlbaranesEntrega.CustPackingService, System.ServiceModel.IClientChannel {
     }
@@ -1679,6 +1679,31 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
         
         public CustPackingServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse ROP_Informe.tablaAlbaranesEntrega.CustPackingService.read(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request) {
+            return base.Channel.read(request);
+        }
+        
+        public ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking read(ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext, ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList) {
+            ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest inValue = new ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest();
+            inValue.CallContext = CallContext;
+            inValue.EntityKeyList = EntityKeyList;
+            ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse retVal = ((ROP_Informe.tablaAlbaranesEntrega.CustPackingService)(this)).read(inValue);
+            return retVal.CustPacking;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse> ROP_Informe.tablaAlbaranesEntrega.CustPackingService.readAsync(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request) {
+            return base.Channel.readAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse> readAsync(ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext, ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList) {
+            ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest inValue = new ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest();
+            inValue.CallContext = CallContext;
+            inValue.EntityKeyList = EntityKeyList;
+            return ((ROP_Informe.tablaAlbaranesEntrega.CustPackingService)(this)).readAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1729,31 +1754,6 @@ namespace ROP_Informe.tablaAlbaranesEntrega {
             inValue.CallContext = CallContext;
             inValue.QueryCriteria = QueryCriteria;
             return ((ROP_Informe.tablaAlbaranesEntrega.CustPackingService)(this)).findKeysAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse ROP_Informe.tablaAlbaranesEntrega.CustPackingService.read(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request) {
-            return base.Channel.read(request);
-        }
-        
-        public ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking read(ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext, ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList) {
-            ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest inValue = new ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest();
-            inValue.CallContext = CallContext;
-            inValue.EntityKeyList = EntityKeyList;
-            ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse retVal = ((ROP_Informe.tablaAlbaranesEntrega.CustPackingService)(this)).read(inValue);
-            return retVal.CustPacking;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse> ROP_Informe.tablaAlbaranesEntrega.CustPackingService.readAsync(ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest request) {
-            return base.Channel.readAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadResponse> readAsync(ROP_Informe.tablaAlbaranesEntrega.CallContext CallContext, ROP_Informe.tablaAlbaranesEntrega.EntityKey[] EntityKeyList) {
-            ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest inValue = new ROP_Informe.tablaAlbaranesEntrega.CustPackingServiceReadRequest();
-            inValue.CallContext = CallContext;
-            inValue.EntityKeyList = EntityKeyList;
-            return ((ROP_Informe.tablaAlbaranesEntrega.CustPackingService)(this)).readAsync(inValue);
         }
     }
 }

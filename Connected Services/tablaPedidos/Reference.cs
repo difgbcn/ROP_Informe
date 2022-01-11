@@ -12,7 +12,7 @@ namespace ROP_Informe.tablaPedidos {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -115,7 +115,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -273,7 +273,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -319,7 +319,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -379,7 +379,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services")]
     public enum InfologMessageType {
@@ -395,7 +395,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -441,7 +441,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -474,7 +474,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -562,7 +562,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
     public enum Operator {
@@ -590,7 +590,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -634,15 +634,6 @@ namespace ROP_Informe.tablaPedidos {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalesOrdersService/findKeys", ReplyAction="http://tempuri.org/SalesOrdersService/findKeysResponse")]
         System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaPedidos.SalesOrdersServiceFindKeysRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (SalesOrdersServiceFindRequest) del mensaje SalesOrdersServiceFindRequest no coincide con el valor predeterminado (find)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalesOrdersService/find", ReplyAction="http://tempuri.org/SalesOrdersService/findResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaPedidos.AifFault), Action="http://tempuri.org/SalesOrdersService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse find(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalesOrdersService/find", ReplyAction="http://tempuri.org/SalesOrdersService/findResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse> findAsync(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (SalesOrdersServiceReadRequest) del mensaje SalesOrdersServiceReadRequest no coincide con el valor predeterminado (read)
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalesOrdersService/read", ReplyAction="http://tempuri.org/SalesOrdersService/readResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaPedidos.AifFault), Action="http://tempuri.org/SalesOrdersService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
@@ -651,10 +642,19 @@ namespace ROP_Informe.tablaPedidos {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalesOrdersService/read", ReplyAction="http://tempuri.org/SalesOrdersService/readResponse")]
         System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceReadResponse> readAsync(ROP_Informe.tablaPedidos.SalesOrdersServiceReadRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (SalesOrdersServiceFindRequest) del mensaje SalesOrdersServiceFindRequest no coincide con el valor predeterminado (find)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalesOrdersService/find", ReplyAction="http://tempuri.org/SalesOrdersService/findResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaPedidos.AifFault), Action="http://tempuri.org/SalesOrdersService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse find(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalesOrdersService/find", ReplyAction="http://tempuri.org/SalesOrdersService/findResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse> findAsync(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -757,7 +757,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -845,7 +845,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -947,7 +947,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_boolean {
@@ -960,7 +960,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_XMLDocPurpose {
@@ -976,7 +976,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7578,7 +7578,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_Approved {
@@ -7591,7 +7591,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_BankDocumentType {
@@ -7610,7 +7610,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_NoYes {
@@ -7623,7 +7623,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_RFIDCaseTagging {
@@ -7636,7 +7636,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_NoYesId {
@@ -7649,7 +7649,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_CommissionType {
@@ -7662,7 +7662,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_CustConsTarget_JP {
@@ -7675,7 +7675,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7684,6 +7684,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ModifiedDateTime))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VendBankAccountExpiryDate))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VendBankAccountActiveDate))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_TrvDateTime))]
@@ -7695,7 +7696,6 @@ namespace ROP_Informe.tablaPedidos {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VersioningTimeStamp))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_TransDateTime))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ActivationDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ModifiedDateTime))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentSeniorityDateTime))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentStartDateTime))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentTransitionDateTime))]
@@ -7725,7 +7725,7 @@ namespace ROP_Informe.tablaPedidos {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_InvoiceReleaseDate))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_EffectiveDateTime))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_UTCTimestamp))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7813,7 +7813,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_Timezone {
@@ -8135,106 +8135,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_VendBankAccountExpiryDate : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_VendBankAccountActiveDate : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_TrvDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_SMARepairFinishDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_SMASignOffDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_SMAPreferredServiceDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ApprovedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_PurchReqSubmittedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_VersioningTimeStamp : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_TransDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ActivationDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8243,7 +8144,106 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_VendBankAccountExpiryDate : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_VendBankAccountActiveDate : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_TrvDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_SMARepairFinishDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_SMASignOffDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_SMAPreferredServiceDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ApprovedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_PurchReqSubmittedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_VersioningTimeStamp : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_TransDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ActivationDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8252,7 +8252,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8261,7 +8261,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8270,7 +8270,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8279,7 +8279,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8288,7 +8288,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8297,7 +8297,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8306,7 +8306,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8315,7 +8315,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8324,7 +8324,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8333,7 +8333,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8342,7 +8342,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8351,7 +8351,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8360,7 +8360,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8369,7 +8369,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8378,7 +8378,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8387,7 +8387,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8396,7 +8396,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8405,7 +8405,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8414,7 +8414,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8423,7 +8423,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8432,7 +8432,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8441,7 +8441,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8450,7 +8450,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8459,7 +8459,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8468,7 +8468,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8477,7 +8477,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8486,7 +8486,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8495,7 +8495,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8528,7 +8528,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8574,7 +8574,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SalesDeliveryDateControlType {
@@ -8596,7 +8596,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8642,7 +8642,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_DocumentStatus {
@@ -8745,7 +8745,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8805,7 +8805,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TaxRegistrationType_IN {
@@ -8821,7 +8821,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TaxType_IN {
@@ -8849,7 +8849,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_EInvoiceLineSpecific {
@@ -8862,7 +8862,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_EXCEICL_GeneraGuiaDespacho {
@@ -8875,7 +8875,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EXCEICL_ReferenceCode {
@@ -8891,7 +8891,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_EXCEICL_ReferenciarAlbaran {
@@ -8904,7 +8904,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EXCEIPE_MetodoPago {
@@ -8926,7 +8926,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EXCEIPE_TipoDocumento {
@@ -8942,7 +8942,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ExcludeFrom394_RO {
@@ -8955,7 +8955,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ExcPE_DetractorType {
@@ -8968,7 +8968,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_FindPriceInObraType {
@@ -8984,7 +8984,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_PlFiscalDocType {
@@ -8997,7 +8997,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_CustFreightSlipType {
@@ -9010,7 +9010,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_GestionPorte {
@@ -9023,7 +9023,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PaymentStubInvoiceId {
@@ -9066,7 +9066,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_Grua {
@@ -9079,7 +9079,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InclTax {
@@ -9092,7 +9092,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InterCompanyAllowIndirectCreation {
@@ -9105,7 +9105,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InterCompanyAutoCreateOrders {
@@ -9118,7 +9118,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InterCompanyDirectDelivery {
@@ -9131,7 +9131,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InterCompanyCustomer {
@@ -9144,7 +9144,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LtInvoiceAutoNumbering {
@@ -9157,7 +9157,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_IsSelfInvoice_RO {
@@ -9170,7 +9170,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_IsStornoInvoice_RO {
@@ -9183,7 +9183,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_RFIDItemTagging {
@@ -9196,7 +9196,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ABC {
@@ -9215,7 +9215,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LATARUseGood {
@@ -9228,7 +9228,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_LATARVATPerceptLevel {
@@ -9244,7 +9244,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ListcodeId {
@@ -9278,7 +9278,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_NatureOfAssessee_IN {
@@ -9309,7 +9309,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_NeedApprove {
@@ -9325,7 +9325,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_OneTimeCustomer {
@@ -9338,7 +9338,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LtPackingSlipAutoNumbering {
@@ -9351,7 +9351,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_RFIDPalletTagging {
@@ -9364,7 +9364,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PdsBatchAttribAutoRes {
@@ -9377,7 +9377,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ItemReservation {
@@ -9393,7 +9393,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ReturnReplacementCreated {
@@ -9406,7 +9406,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ReturnStatusHeader {
@@ -9428,7 +9428,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SalesStatus {
@@ -9450,7 +9450,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SalesType {
@@ -9496,7 +9496,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_SalesSettlementType {
@@ -9512,7 +9512,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ShipCarrierBlindShipment {
@@ -9525,7 +9525,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ShipCarrierDlvType {
@@ -9544,7 +9544,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ShipCarrierExpeditedShipment {
@@ -9557,7 +9557,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ShipCarrierFuelSurcharge {
@@ -9570,7 +9570,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ShipCarrierResidentialDest {
@@ -9583,7 +9583,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TaxEntityType_RO {
@@ -9605,7 +9605,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TaxSimplifiedDocType_RO {
@@ -9633,7 +9633,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_TipoAlquiler {
@@ -9664,7 +9664,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TipoPorte {
@@ -9683,7 +9683,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TiposVentas {
@@ -9705,7 +9705,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_TipoVenta {
@@ -9727,7 +9727,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TransferApproveValidation {
@@ -9740,7 +9740,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_UnitedVATInvoice_LT {
@@ -9753,7 +9753,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10014,6 +10014,10 @@ namespace ROP_Informe.tablaPedidos {
         
         private bool linePercentFieldSpecified;
         
+        private System.Nullable<int> manualEntryChangepolicyField;
+        
+        private bool manualEntryChangepolicyFieldSpecified;
+        
         private System.Nullable<AxdEnum_NoYes> marcadoField;
         
         private bool marcadoFieldSpecified;
@@ -10141,6 +10145,10 @@ namespace ROP_Informe.tablaPedidos {
         private System.Nullable<decimal> priceDayField;
         
         private bool priceDayFieldSpecified;
+        
+        private System.Nullable<AxdEnum_PriceDiscUpdatePriceDisc> priceDiscUpdatePriceDiscField;
+        
+        private bool priceDiscUpdatePriceDiscFieldSpecified;
         
         private System.Nullable<decimal> priceM2Field;
         
@@ -10345,6 +10353,10 @@ namespace ROP_Informe.tablaPedidos {
         private bool statTriangularDealFieldSpecified;
         
         private string structureIdField;
+        
+        private System.Nullable<int> systemEntryChangePolicyField;
+        
+        private bool systemEntryChangePolicyFieldSpecified;
         
         private System.Nullable<decimal> tantoPorMilField;
         
@@ -11930,6 +11942,30 @@ namespace ROP_Informe.tablaPedidos {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=86)]
+        public System.Nullable<int> ManualEntryChangepolicy {
+            get {
+                return this.manualEntryChangepolicyField;
+            }
+            set {
+                this.manualEntryChangepolicyField = value;
+                this.RaisePropertyChanged("ManualEntryChangepolicy");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ManualEntryChangepolicySpecified {
+            get {
+                return this.manualEntryChangepolicyFieldSpecified;
+            }
+            set {
+                this.manualEntryChangepolicyFieldSpecified = value;
+                this.RaisePropertyChanged("ManualEntryChangepolicySpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=87)]
         public System.Nullable<AxdEnum_NoYes> Marcado {
             get {
                 return this.marcadoField;
@@ -11953,7 +11989,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=87)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=88)]
         public AxdEntityKey_AgreementLine MatchingAgreementLine {
             get {
                 return this.matchingAgreementLineField;
@@ -11965,7 +12001,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=88)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=89)]
         public System.Nullable<decimal> Meters {
             get {
                 return this.metersField;
@@ -11989,7 +12025,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=89)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=90)]
         public System.Nullable<decimal> Meters2 {
             get {
                 return this.meters2Field;
@@ -12013,7 +12049,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=90)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=91)]
         public System.Nullable<decimal> Meters3 {
             get {
                 return this.meters3Field;
@@ -12037,7 +12073,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=91)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=92)]
         public System.Nullable<AxdExtType_MetersInvoicing> MetersInvoicing {
             get {
                 return this.metersInvoicingField;
@@ -12061,7 +12097,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=92)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=93)]
         public System.Nullable<AxdExtType_NoYesId> MinSalesPrice {
             get {
                 return this.minSalesPriceField;
@@ -12085,7 +12121,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=93)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=94)]
         public System.Nullable<AxdExtType_NoYesId> ModDiscManual {
             get {
                 return this.modDiscManualField;
@@ -12109,7 +12145,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=94)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=95)]
         public System.Nullable<AxdExtType_NoYesId> ModPriceManual {
             get {
                 return this.modPriceManualField;
@@ -12133,7 +12169,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=95)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=96)]
         public System.Nullable<decimal> MultiLnDisc {
             get {
                 return this.multiLnDiscField;
@@ -12157,7 +12193,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=96)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=97)]
         public System.Nullable<decimal> MultiLnDiscSave {
             get {
                 return this.multiLnDiscSaveField;
@@ -12181,7 +12217,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=97)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=98)]
         public System.Nullable<decimal> MultiLnPercent {
             get {
                 return this.multiLnPercentField;
@@ -12205,7 +12241,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=98)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=99)]
         public string Name {
             get {
                 return this.nameField;
@@ -12217,7 +12253,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=99)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=100)]
         public System.Nullable<AxdEnum_NoYes> NeedPutInRentApprove {
             get {
                 return this.needPutInRentApproveField;
@@ -12241,7 +12277,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=100)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=101)]
         public string ObraId {
             get {
                 return this.obraIdField;
@@ -12253,7 +12289,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=101)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=102)]
         public System.Nullable<decimal> OverDeliveryPct {
             get {
                 return this.overDeliveryPctField;
@@ -12277,7 +12313,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=102)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=103)]
         public string PackingSlipId {
             get {
                 return this.packingSlipIdField;
@@ -12289,7 +12325,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=103)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=104)]
         public string PackingUnit {
             get {
                 return this.packingUnitField;
@@ -12301,7 +12337,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=104)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=105)]
         public System.Nullable<decimal> PackingUnitQty {
             get {
                 return this.packingUnitQtyField;
@@ -12325,7 +12361,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=105)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=106)]
         public System.Nullable<AxdExtType_RFIDPalletTagging> PalletTagging {
             get {
                 return this.palletTaggingField;
@@ -12349,7 +12385,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=106)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=107)]
         public System.Nullable<AxdExtType_PdsBatchAttribAutoRes> PdsBatchAttribAutoRes {
             get {
                 return this.pdsBatchAttribAutoResField;
@@ -12373,7 +12409,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=107)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=108)]
         public System.Nullable<decimal> PdsCWExpectedRetQty {
             get {
                 return this.pdsCWExpectedRetQtyField;
@@ -12397,7 +12433,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=108)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=109)]
         public System.Nullable<decimal> PdsCWInventDeliverNow {
             get {
                 return this.pdsCWInventDeliverNowField;
@@ -12421,7 +12457,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=109)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=110)]
         public System.Nullable<decimal> PdsCWQty {
             get {
                 return this.pdsCWQtyField;
@@ -12445,7 +12481,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=110)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=111)]
         public System.Nullable<decimal> PdsCWRemainInventFinancial {
             get {
                 return this.pdsCWRemainInventFinancialField;
@@ -12469,7 +12505,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=111)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=112)]
         public System.Nullable<decimal> PdsCWRemainInventPhysical {
             get {
                 return this.pdsCWRemainInventPhysicalField;
@@ -12493,7 +12529,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=112)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=113)]
         public System.Nullable<AxdExtType_PdsExcludeFromRebate> PdsExcludeFromRebate {
             get {
                 return this.pdsExcludeFromRebateField;
@@ -12517,7 +12553,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=113)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=114)]
         public string PdsItemRebateGroupId {
             get {
                 return this.pdsItemRebateGroupIdField;
@@ -12529,7 +12565,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=114)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=115)]
         public System.Nullable<AxdExtType_PdsSameLot> PdsSameLot {
             get {
                 return this.pdsSameLotField;
@@ -12553,7 +12589,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=115)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=116)]
         public string Port {
             get {
                 return this.portField;
@@ -12565,7 +12601,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=116)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=117)]
         public string PostingProfile_RU {
             get {
                 return this.postingProfile_RUField;
@@ -12577,7 +12613,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=117)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=118)]
         public System.Nullable<decimal> PrecioRepercusion {
             get {
                 return this.precioRepercusionField;
@@ -12601,7 +12637,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=118)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=119)]
         public System.Nullable<decimal> PrecioUnidadAgrupacion {
             get {
                 return this.precioUnidadAgrupacionField;
@@ -12625,7 +12661,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=119)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=120)]
         public System.Nullable<long> PrepaymentRecId {
             get {
                 return this.prepaymentRecIdField;
@@ -12649,7 +12685,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=120)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=121)]
         public System.Nullable<System.DateTime> PriceAgreementDate_RU {
             get {
                 return this.priceAgreementDate_RUField;
@@ -12673,7 +12709,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=121)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=122)]
         public System.Nullable<decimal> PriceDay {
             get {
                 return this.priceDayField;
@@ -12697,7 +12733,31 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=122)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=123)]
+        public System.Nullable<AxdEnum_PriceDiscUpdatePriceDisc> PriceDiscUpdatePriceDisc {
+            get {
+                return this.priceDiscUpdatePriceDiscField;
+            }
+            set {
+                this.priceDiscUpdatePriceDiscField = value;
+                this.RaisePropertyChanged("PriceDiscUpdatePriceDisc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PriceDiscUpdatePriceDiscSpecified {
+            get {
+                return this.priceDiscUpdatePriceDiscFieldSpecified;
+            }
+            set {
+                this.priceDiscUpdatePriceDiscFieldSpecified = value;
+                this.RaisePropertyChanged("PriceDiscUpdatePriceDiscSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=124)]
         public System.Nullable<decimal> PriceM2 {
             get {
                 return this.priceM2Field;
@@ -12721,7 +12781,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=123)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=125)]
         public System.Nullable<decimal> PriceRatio {
             get {
                 return this.priceRatioField;
@@ -12745,7 +12805,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=124)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=126)]
         public System.Nullable<decimal> PriceStandard {
             get {
                 return this.priceStandardField;
@@ -12769,7 +12829,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=125)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=127)]
         public System.Nullable<decimal> PriceUnit {
             get {
                 return this.priceUnitField;
@@ -12793,7 +12853,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=126)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=128)]
         public string ProjCategoryId {
             get {
                 return this.projCategoryIdField;
@@ -12805,7 +12865,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=127)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=129)]
         public string ProjId {
             get {
                 return this.projIdField;
@@ -12817,7 +12877,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=128)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=130)]
         public string ProjLinePropertyId {
             get {
                 return this.projLinePropertyIdField;
@@ -12829,7 +12889,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=129)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=131)]
         public string ProjTransId {
             get {
                 return this.projTransIdField;
@@ -12841,7 +12901,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=130)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=132)]
         public string PropertyNumber_MX {
             get {
                 return this.propertyNumber_MXField;
@@ -12853,7 +12913,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=131)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=133)]
         public string PropuestaId {
             get {
                 return this.propuestaIdField;
@@ -12865,7 +12925,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=132)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=134)]
         public string PSAContractLineNum {
             get {
                 return this.pSAContractLineNumField;
@@ -12877,7 +12937,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=133)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=135)]
         public System.Nullable<decimal> PSAProjProposalInventQty {
             get {
                 return this.pSAProjProposalInventQtyField;
@@ -12901,7 +12961,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=134)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=136)]
         public System.Nullable<decimal> PSAProjProposalQty {
             get {
                 return this.pSAProjProposalQtyField;
@@ -12925,7 +12985,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=135)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=137)]
         public string PurchorderFormNum {
             get {
                 return this.purchorderFormNumField;
@@ -12937,7 +12997,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=136)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=138)]
         public System.Nullable<decimal> QtyOrdered {
             get {
                 return this.qtyOrderedField;
@@ -12961,7 +13021,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=137)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=139)]
         public System.Nullable<System.DateTime> ReceiptDateConfirmed {
             get {
                 return this.receiptDateConfirmedField;
@@ -12985,7 +13045,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=138)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=140)]
         public System.Nullable<System.DateTime> ReceiptDateRequested {
             get {
                 return this.receiptDateRequestedField;
@@ -13009,7 +13069,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=139)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=141)]
         public System.Nullable<long> RecId {
             get {
                 return this.recIdField;
@@ -13033,7 +13093,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=140)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=142)]
         public System.Nullable<int> RecVersion {
             get {
                 return this.recVersionField;
@@ -13057,7 +13117,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=141)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=143)]
         public System.Nullable<decimal> RemainInventFinancial {
             get {
                 return this.remainInventFinancialField;
@@ -13081,7 +13141,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=142)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=144)]
         public System.Nullable<decimal> RemainInventPhysical {
             get {
                 return this.remainInventPhysicalField;
@@ -13105,7 +13165,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=143)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=145)]
         public System.Nullable<decimal> RemainSalesFinancial {
             get {
                 return this.remainSalesFinancialField;
@@ -13129,7 +13189,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=144)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=146)]
         public System.Nullable<decimal> RemainSalesPhysical {
             get {
                 return this.remainSalesPhysicalField;
@@ -13153,7 +13213,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=145)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=147)]
         public System.Nullable<AxdEnum_ItemReservation> Reservation {
             get {
                 return this.reservationField;
@@ -13177,7 +13237,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=146)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=148)]
         public System.Nullable<long> RetailCategory {
             get {
                 return this.retailCategoryField;
@@ -13201,7 +13261,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=147)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=149)]
         public string RetailVariantId {
             get {
                 return this.retailVariantIdField;
@@ -13213,7 +13273,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=148)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=150)]
         public System.Nullable<AxdExtType_ReturnAllowReservation> ReturnAllowReservation {
             get {
                 return this.returnAllowReservationField;
@@ -13237,7 +13297,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=149)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=151)]
         public System.Nullable<System.DateTime> ReturnArrivalDate {
             get {
                 return this.returnArrivalDateField;
@@ -13261,7 +13321,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=150)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=152)]
         public System.Nullable<System.DateTime> ReturnClosedDate {
             get {
                 return this.returnClosedDateField;
@@ -13285,7 +13345,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=151)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=153)]
         public System.Nullable<System.DateTime> ReturnDeadLine {
             get {
                 return this.returnDeadLineField;
@@ -13309,7 +13369,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=152)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=154)]
         public string ReturnDispositionCodeId {
             get {
                 return this.returnDispositionCodeIdField;
@@ -13321,7 +13381,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=153)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=155)]
         public System.Nullable<AxdEnum_ReturnStatusLine> ReturnStatus {
             get {
                 return this.returnStatusField;
@@ -13345,7 +13405,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=154)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=156)]
         public AxdEntityKey_EcoResCategory SalesCategory {
             get {
                 return this.salesCategoryField;
@@ -13357,7 +13417,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=155)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=157)]
         public System.Nullable<decimal> SalesDeliverNow {
             get {
                 return this.salesDeliverNowField;
@@ -13381,7 +13441,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=156)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=158)]
         public string SalesGroup {
             get {
                 return this.salesGroupField;
@@ -13393,7 +13453,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=157)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=159)]
         public string SalesId {
             get {
                 return this.salesIdField;
@@ -13405,7 +13465,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=158)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=160)]
         public System.Nullable<long> SalesLinePickingParentRecId {
             get {
                 return this.salesLinePickingParentRecIdField;
@@ -13429,7 +13489,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=159)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=161)]
         public System.Nullable<decimal> SalesMarkup {
             get {
                 return this.salesMarkupField;
@@ -13453,7 +13513,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=160)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=162)]
         public System.Nullable<decimal> SalesMarkupSave {
             get {
                 return this.salesMarkupSaveField;
@@ -13477,7 +13537,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=161)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=163)]
         public System.Nullable<decimal> SalesPrice {
             get {
                 return this.salesPriceField;
@@ -13501,7 +13561,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=162)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=164)]
         public System.Nullable<decimal> SalesPriceSave {
             get {
                 return this.salesPriceSaveField;
@@ -13525,7 +13585,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=163)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=165)]
         public System.Nullable<decimal> SalesQty {
             get {
                 return this.salesQtyField;
@@ -13549,7 +13609,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=164)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=166)]
         public System.Nullable<AxdEnum_SalesStatus> SalesStatus {
             get {
                 return this.salesStatusField;
@@ -13573,7 +13633,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=165)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=167)]
         public System.Nullable<AxdEnum_SalesStatus> SalesStatus1_del {
             get {
                 return this.salesStatus1_delField;
@@ -13597,7 +13657,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=166)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=168)]
         public System.Nullable<AxdEnum_SalesType> SalesType {
             get {
                 return this.salesTypeField;
@@ -13621,7 +13681,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=167)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=169)]
         public string SalesUnit {
             get {
                 return this.salesUnitField;
@@ -13633,7 +13693,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=168)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=170)]
         public string SATProductCode_MX {
             get {
                 return this.sATProductCode_MXField;
@@ -13645,7 +13705,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=169)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=171)]
         public string SATUnitCode_MX {
             get {
                 return this.sATUnitCode_MXField;
@@ -13657,7 +13717,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=170)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=172)]
         public System.Nullable<AxdEnum_NoYes> Scrap {
             get {
                 return this.scrapField;
@@ -13681,7 +13741,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=171)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=173)]
         public System.Nullable<AxdEnum_SalesServiceLineType> ServiceLineType {
             get {
                 return this.serviceLineTypeField;
@@ -13705,7 +13765,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=172)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=174)]
         public string ServiceOrderId {
             get {
                 return this.serviceOrderIdField;
@@ -13717,7 +13777,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=173)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=175)]
         public string ShipCarrierAccount {
             get {
                 return this.shipCarrierAccountField;
@@ -13729,7 +13789,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=174)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=176)]
         public string ShipCarrierAccountCode {
             get {
                 return this.shipCarrierAccountCodeField;
@@ -13741,7 +13801,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=175)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=177)]
         public System.Nullable<AxdEnum_ShipCarrierDlvType> ShipCarrierDlvType {
             get {
                 return this.shipCarrierDlvTypeField;
@@ -13765,7 +13825,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=176)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=178)]
         public string ShipCarrierId {
             get {
                 return this.shipCarrierIdField;
@@ -13777,7 +13837,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=177)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=179)]
         public string ShipCarrierName {
             get {
                 return this.shipCarrierNameField;
@@ -13789,7 +13849,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=178)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=180)]
         public AxdEntityKey_LogisticsPostalAddress ShipCarrierPostalAddress {
             get {
                 return this.shipCarrierPostalAddressField;
@@ -13801,7 +13861,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=179)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=181)]
         public System.Nullable<System.DateTime> ShippingDateConfirmed {
             get {
                 return this.shippingDateConfirmedField;
@@ -13825,7 +13885,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=180)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=182)]
         public System.Nullable<System.DateTime> ShippingDateRequested {
             get {
                 return this.shippingDateRequestedField;
@@ -13849,7 +13909,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=181)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=183)]
         public System.Nullable<decimal> StatisticValue_LT {
             get {
                 return this.statisticValue_LTField;
@@ -13873,7 +13933,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=182)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=184)]
         public string StatProcId {
             get {
                 return this.statProcIdField;
@@ -13885,7 +13945,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=183)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=185)]
         public System.Nullable<AxdExtType_IntrastatTriangularDeal> StatTriangularDeal {
             get {
                 return this.statTriangularDealField;
@@ -13909,7 +13969,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=184)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=186)]
         public string StructureId {
             get {
                 return this.structureIdField;
@@ -13921,7 +13981,31 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=185)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=187)]
+        public System.Nullable<int> SystemEntryChangePolicy {
+            get {
+                return this.systemEntryChangePolicyField;
+            }
+            set {
+                this.systemEntryChangePolicyField = value;
+                this.RaisePropertyChanged("SystemEntryChangePolicy");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SystemEntryChangePolicySpecified {
+            get {
+                return this.systemEntryChangePolicyFieldSpecified;
+            }
+            set {
+                this.systemEntryChangePolicyFieldSpecified = value;
+                this.RaisePropertyChanged("SystemEntryChangePolicySpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=188)]
         public System.Nullable<decimal> TantoPorMil {
             get {
                 return this.tantoPorMilField;
@@ -13945,7 +14029,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=186)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=189)]
         public string TariffFraction {
             get {
                 return this.tariffFractionField;
@@ -13957,7 +14041,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=187)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=190)]
         public string Tax394ItemCode_RO {
             get {
                 return this.tax394ItemCode_ROField;
@@ -13969,7 +14053,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=188)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=191)]
         public System.Nullable<AxdExtType_TaxAutoGenerated> TaxAutogenerated {
             get {
                 return this.taxAutogeneratedField;
@@ -13993,7 +14077,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=189)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=192)]
         public string TaxGroup {
             get {
                 return this.taxGroupField;
@@ -14005,7 +14089,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=190)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=193)]
         public string TaxItemGroup {
             get {
                 return this.taxItemGroupField;
@@ -14017,7 +14101,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=191)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=194)]
         public string TaxItemGroupDetractions {
             get {
                 return this.taxItemGroupDetractionsField;
@@ -14029,7 +14113,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=192)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=195)]
         public string TaxWithholdGroup {
             get {
                 return this.taxWithholdGroupField;
@@ -14041,7 +14125,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=193)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=196)]
         public string TaxWithholdItemGroupHeading_TH {
             get {
                 return this.taxWithholdItemGroupHeading_THField;
@@ -14053,7 +14137,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=194)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=197)]
         public System.Nullable<AxdExtType_TipoVenta> TipoVenta {
             get {
                 return this.tipoVentaField;
@@ -14077,7 +14161,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=195)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=198)]
         public string TransactionCode {
             get {
                 return this.transactionCodeField;
@@ -14089,7 +14173,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=196)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=199)]
         public System.Nullable<decimal> TransferQty {
             get {
                 return this.transferQtyField;
@@ -14113,7 +14197,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=197)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=200)]
         public string Transport {
             get {
                 return this.transportField;
@@ -14125,7 +14209,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=198)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=201)]
         public System.Nullable<decimal> UnderDeliveryPct {
             get {
                 return this.underDeliveryPctField;
@@ -14149,7 +14233,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=199)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=202)]
         public string UnitOfMeasureInternationalTrade {
             get {
                 return this.unitOfMeasureInternationalTradeField;
@@ -14161,7 +14245,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=200)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=203)]
         public string VersionId {
             get {
                 return this.versionIdField;
@@ -14173,7 +14257,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=201)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=204)]
         public System.Nullable<decimal> WeightVolume {
             get {
                 return this.weightVolumeField;
@@ -14197,7 +14281,7 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("InventTable", Order=202)]
+        [System.Xml.Serialization.XmlElementAttribute("InventTable", Order=205)]
         public AxdEntity_InventTable[] InventTable {
             get {
                 return this.inventTableField;
@@ -14255,7 +14339,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LineStopped {
@@ -14268,7 +14352,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LineComplete {
@@ -14281,7 +14365,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_CreditNoteAuthorization {
@@ -14294,7 +14378,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_TradeLineDlvTypeId {
@@ -14307,7 +14391,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_InventRefType {
@@ -14341,7 +14425,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ReturnItemReplaced {
@@ -14354,7 +14438,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14415,7 +14499,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_LineDeliveryType {
@@ -14431,7 +14515,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14463,7 +14547,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_MetersInvoicing {
@@ -14476,7 +14560,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PdsExcludeFromRebate {
@@ -14489,7 +14573,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PdsSameLot {
@@ -14502,7 +14586,23 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_PriceDiscUpdatePriceDisc {
+        
+        /// <remarks/>
+        UpdateAll,
+        
+        /// <remarks/>
+        KeepManualSystem,
+        
+        /// <remarks/>
+        UpdateIndividual,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ReturnAllowReservation {
@@ -14515,7 +14615,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ReturnStatusLine {
@@ -14543,7 +14643,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14589,7 +14689,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SalesServiceLineType {
@@ -14602,7 +14702,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_IntrastatTriangularDeal {
@@ -14615,7 +14715,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_TaxAutoGenerated {
@@ -14628,7 +14728,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -18668,7 +18768,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemAutoReportFinished {
@@ -18681,7 +18781,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_InventBatchMergeDateCalculationMethod {
@@ -18697,7 +18797,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemBOMManualReceipt {
@@ -18710,7 +18810,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemCostModel {
@@ -18723,7 +18823,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -18769,7 +18869,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_Direction_IN {
@@ -18782,7 +18882,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_EXCLATPE_Balance20 {
@@ -18795,7 +18895,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InventFiscalLIFOAvoidCalc {
@@ -18808,7 +18908,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_InventFiscalLIFONormalValueCalc {
@@ -18824,7 +18924,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ForecastDMPInclude {
@@ -18837,7 +18937,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ICMSonService_BR {
@@ -18850,7 +18950,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemDimCostPrice {
@@ -18863,7 +18963,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_RFIDItemTaggingLevel {
@@ -18879,7 +18979,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ItemType {
@@ -18901,7 +19001,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LATARGrossIncWHSubject {
@@ -18914,7 +19014,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_LATARSocChargeWHMethod {
@@ -18930,7 +19030,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_PurchMatchingPolicyWithNotSetOption {
@@ -18949,7 +19049,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PBAAutostart {
@@ -18962,7 +19062,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PBAHideApproval {
@@ -18975,7 +19075,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PBAHideDialog {
@@ -18988,7 +19088,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PBAItemAutoGenerated {
@@ -19001,7 +19101,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PBAMandatoryConfig {
@@ -19014,7 +19114,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_PDSPotencyAttribRecordingEnum {
@@ -19027,7 +19127,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_PdsVendorCheckItem {
@@ -19043,7 +19143,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemPhantom {
@@ -19056,7 +19156,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_PmfProductType {
@@ -19081,7 +19181,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ProdFlushingPrincipItem {
@@ -19097,7 +19197,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemPurchModel {
@@ -19110,7 +19210,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemSalesModel {
@@ -19126,7 +19226,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SalesPriceModelBasic {
@@ -19139,7 +19239,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ScaleIndicator_BR {
@@ -19152,7 +19252,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_SkipIntraCompanySync_RU {
@@ -19165,7 +19265,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_FITaxationOrigin_BR {
@@ -19199,7 +19299,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ItemUseAlternative {
@@ -19218,7 +19318,7 @@ namespace ROP_Informe.tablaPedidos {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdEntity_EcoResProduct_EcoResProductMaster))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdEntity_EcoResProduct_EcoResDistinctProduct))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdEntity_EcoResProduct_EcoResDistinctProductVariant))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -19898,7 +19998,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ItemTypeSecondary {
@@ -19929,7 +20029,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PdsCWProduct {
@@ -19942,7 +20042,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EcoResProductType {
@@ -19955,7 +20055,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SpecialItem {
@@ -19971,7 +20071,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_AxdEntityAction {
@@ -19990,7 +20090,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -20055,7 +20155,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EcoResVariantConfigurationTechnologyType {
@@ -20075,7 +20175,7 @@ namespace ROP_Informe.tablaPedidos {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdEntity_EcoResProduct_EcoResDistinctProductVariant))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -20084,7 +20184,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -20135,7 +20235,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -20997,7 +21097,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PriceAllocateMarkup {
@@ -21010,7 +21110,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InterCompanyBlocked {
@@ -21023,7 +21123,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ModuleInventPurchSales {
@@ -21039,7 +21139,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_TaxWithholdCalculate_TH {
@@ -21052,7 +21152,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -21914,7 +22014,7 @@ namespace ROP_Informe.tablaPedidos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -22778,47 +22878,6 @@ namespace ROP_Informe.tablaPedidos {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SalesOrdersServiceFindRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class SalesOrdersServiceFindRequest {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ROP_Informe.tablaPedidos.CallContext CallContext;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-        public ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria;
-        
-        public SalesOrdersServiceFindRequest() {
-        }
-        
-        public SalesOrdersServiceFindRequest(ROP_Informe.tablaPedidos.CallContext CallContext, ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria) {
-            this.CallContext = CallContext;
-            this.QueryCriteria = QueryCriteria;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SalesOrdersServiceFindResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class SalesOrdersServiceFindResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/SalesOrders", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/SalesOrders")]
-        public ROP_Informe.tablaPedidos.AxdSalesOrders SalesOrders;
-        
-        public SalesOrdersServiceFindResponse() {
-        }
-        
-        public SalesOrdersServiceFindResponse(ROP_Informe.tablaPedidos.AxdSalesOrders SalesOrders) {
-            this.SalesOrders = SalesOrders;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SalesOrdersServiceReadRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
     public partial class SalesOrdersServiceReadRequest {
         
@@ -22854,6 +22913,47 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         public SalesOrdersServiceReadResponse(ROP_Informe.tablaPedidos.AxdSalesOrders SalesOrders) {
+            this.SalesOrders = SalesOrders;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SalesOrdersServiceFindRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class SalesOrdersServiceFindRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ROP_Informe.tablaPedidos.CallContext CallContext;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+        public ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria;
+        
+        public SalesOrdersServiceFindRequest() {
+        }
+        
+        public SalesOrdersServiceFindRequest(ROP_Informe.tablaPedidos.CallContext CallContext, ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria) {
+            this.CallContext = CallContext;
+            this.QueryCriteria = QueryCriteria;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SalesOrdersServiceFindResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class SalesOrdersServiceFindResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/SalesOrders", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/SalesOrders")]
+        public ROP_Informe.tablaPedidos.AxdSalesOrders SalesOrders;
+        
+        public SalesOrdersServiceFindResponse() {
+        }
+        
+        public SalesOrdersServiceFindResponse(ROP_Informe.tablaPedidos.AxdSalesOrders SalesOrders) {
             this.SalesOrders = SalesOrders;
         }
     }
@@ -22911,31 +23011,6 @@ namespace ROP_Informe.tablaPedidos {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse ROP_Informe.tablaPedidos.SalesOrdersService.find(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request) {
-            return base.Channel.find(request);
-        }
-        
-        public ROP_Informe.tablaPedidos.AxdSalesOrders find(ROP_Informe.tablaPedidos.CallContext CallContext, ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest inValue = new ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest();
-            inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse retVal = ((ROP_Informe.tablaPedidos.SalesOrdersService)(this)).find(inValue);
-            return retVal.SalesOrders;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse> ROP_Informe.tablaPedidos.SalesOrdersService.findAsync(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request) {
-            return base.Channel.findAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse> findAsync(ROP_Informe.tablaPedidos.CallContext CallContext, ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest inValue = new ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest();
-            inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            return ((ROP_Informe.tablaPedidos.SalesOrdersService)(this)).findAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         ROP_Informe.tablaPedidos.SalesOrdersServiceReadResponse ROP_Informe.tablaPedidos.SalesOrdersService.read(ROP_Informe.tablaPedidos.SalesOrdersServiceReadRequest request) {
             return base.Channel.read(request);
         }
@@ -22958,6 +23033,31 @@ namespace ROP_Informe.tablaPedidos {
             inValue.CallContext = CallContext;
             inValue.EntityKeyList = EntityKeyList;
             return ((ROP_Informe.tablaPedidos.SalesOrdersService)(this)).readAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse ROP_Informe.tablaPedidos.SalesOrdersService.find(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request) {
+            return base.Channel.find(request);
+        }
+        
+        public ROP_Informe.tablaPedidos.AxdSalesOrders find(ROP_Informe.tablaPedidos.CallContext CallContext, ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest inValue = new ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest();
+            inValue.CallContext = CallContext;
+            inValue.QueryCriteria = QueryCriteria;
+            ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse retVal = ((ROP_Informe.tablaPedidos.SalesOrdersService)(this)).find(inValue);
+            return retVal.SalesOrders;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse> ROP_Informe.tablaPedidos.SalesOrdersService.findAsync(ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest request) {
+            return base.Channel.findAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ROP_Informe.tablaPedidos.SalesOrdersServiceFindResponse> findAsync(ROP_Informe.tablaPedidos.CallContext CallContext, ROP_Informe.tablaPedidos.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest inValue = new ROP_Informe.tablaPedidos.SalesOrdersServiceFindRequest();
+            inValue.CallContext = CallContext;
+            inValue.QueryCriteria = QueryCriteria;
+            return ((ROP_Informe.tablaPedidos.SalesOrdersService)(this)).findAsync(inValue);
         }
     }
 }

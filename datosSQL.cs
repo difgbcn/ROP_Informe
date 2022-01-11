@@ -46,5 +46,6 @@ namespace ROP_Informe
                 conexiones.conexion.Close();
             }
         }
+
     }
 }

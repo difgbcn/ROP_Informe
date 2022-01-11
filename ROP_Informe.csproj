@@ -148,44 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configuracion.aspx" />
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip.wsdl" />
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip1.wsdl" />
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip10.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip9.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Connected Services\tablaAlbaranesEntrega\ROP_Informe.tablaAlbaranesEntrega.AxdCustPacking.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -201,52 +163,128 @@
     <Content Include="Connected Services\tablaAlbaranesEntrega\ROP_Informe.tablaAlbaranesEntrega.EntityKey.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip121.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip1210.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip1211.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip122.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip123.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip124.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip125.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip126.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip127.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip128.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip129.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip2.wsdl" />
+    <None Include="Connected Services\tablaAlbaranesEntrega\CustPackingSlip21.wsdl" />
     <None Include="Connected Services\tablaInventario\configuration91.svcinfo" />
     <None Include="Connected Services\tablaInventario\configuration.svcinfo" />
-    <None Include="Connected Services\tablaInventario\InventTransService.wsdl" />
-    <None Include="Connected Services\tablaInventario\InventTransService.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService1.wsdl" />
-    <None Include="Connected Services\tablaInventario\InventTransService1.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService121.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService10.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService1210.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService11.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService1211.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService2.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService122.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService3.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService123.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService4.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService124.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService5.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService125.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService6.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService126.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService7.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService127.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService8.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService128.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaInventario\InventTransService9.xsd">
+    <None Include="Connected Services\tablaInventario\InventTransService129.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\tablaInventario\InventTransService2.wsdl" />
+    <None Include="Connected Services\tablaInventario\InventTransService21.wsdl" />
     <None Include="Connected Services\tablaInventario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Connected Services\tablaObras\configuration91.svcinfo" />
     <None Include="Connected Services\tablaObras\configuration.svcinfo" />
+    <None Include="Connected Services\tablaObras\ObraService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService121.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService1210.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService1211.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService122.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService123.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService124.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService125.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService126.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService127.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService128.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService129.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService2.wsdl" />
+    <None Include="Connected Services\tablaObras\ObraService21.wsdl" />
     <None Include="Connected Services\tablaObras\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -302,44 +340,6 @@
     <Content Include="Connected Services\tablaInventario\ROP_Informe.tablaInventario.InventTransOriginServiceReadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\tablaObras\ObraService.wsdl" />
-    <None Include="Connected Services\tablaObras\ObraService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService1.wsdl" />
-    <None Include="Connected Services\tablaObras\ObraService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService10.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService9.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Connected Services\tablaObras\ROP_Informe.tablaObras.AxdObras.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -349,55 +349,93 @@
     <Content Include="Connected Services\tablaObras\ROP_Informe.tablaObras.ObrasServiceReadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations121.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations1210.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations1211.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations122.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations123.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations124.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations125.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations126.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations127.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations128.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations129.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaOfertas\SalesQuotations2.wsdl" />
-    <None Include="Connected Services\tablaOfertas\SalesQuotations21.wsdl" />
     <None Include="Connected Services\tablaOfertas\configuration91.svcinfo" />
     <None Include="Connected Services\tablaOfertas\configuration.svcinfo" />
     <None Include="Connected Services\tablaOfertas\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations.wsdl" />
+    <None Include="Connected Services\tablaOfertas\SalesQuotations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations1.wsdl" />
+    <None Include="Connected Services\tablaOfertas\SalesQuotations1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaOfertas\SalesQuotations9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\tablaPedidos\configuration91.svcinfo" />
     <None Include="Connected Services\tablaPedidos\configuration.svcinfo" />
     <None Include="Connected Services\tablaPedidos\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders.wsdl" />
+    <None Include="Connected Services\tablaPedidos\SalesOrders.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders1.wsdl" />
+    <None Include="Connected Services\tablaPedidos\SalesOrders1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaPedidos\SalesOrders9.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\tablaValesTransporte\configuration91.svcinfo" />
     <None Include="Connected Services\tablaValesTransporte\configuration.svcinfo" />
@@ -436,44 +474,6 @@
     <Content Include="Img\filtrar.png" />
     <Content Include="Img\noEncontrada.png" />
     <Content Include="Img\principal.jpg" />
-    <None Include="Connected Services\tablaPedidos\SalesOrders12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders121.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders1210.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders1211.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders122.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders123.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders124.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders125.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders126.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders127.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders128.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders129.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaPedidos\SalesOrders2.wsdl" />
-    <None Include="Connected Services\tablaPedidos\SalesOrders21.wsdl" />
     <Content Include="Connected Services\tablaValesTransporte\ROP_Informe.tablaValesTransporte.AxdTransportTicket.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -489,44 +489,44 @@
     <Content Include="Connected Services\tablaValesTransporte\ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket.wsdl" />
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket1.wsdl" />
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket1.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket121.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket10.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket1210.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket11.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket1211.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket2.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket122.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket3.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket123.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket4.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket124.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket5.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket125.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket6.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket126.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket7.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket127.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket8.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket128.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\tablaValesTransporte\TransportTicket9.xsd">
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket129.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket2.wsdl" />
+    <None Include="Connected Services\tablaValesTransporte\TransportTicket21.wsdl" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

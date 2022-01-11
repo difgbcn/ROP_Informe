@@ -33,13 +33,67 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.Label lblpopup;
 
         /// <summary>
-        /// Control Label4.
+        /// Control lblVersion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblVersion;
+
+        /// <summary>
+        /// Control cmbVersion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbVersion;
+
+        /// <summary>
+        /// Control lblVersionUtilizada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVersionUtilizada;
+
+        /// <summary>
+        /// Control imgCatalonian.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCatalonian;
+
+        /// <summary>
+        /// Control imgEnglish.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgEnglish;
+
+        /// <summary>
+        /// Control imgSpain.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgSpain;
+
+        /// <summary>
+        /// Control lblConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConcepto;
 
         /// <summary>
         /// Control cmbConcepto.
@@ -51,13 +105,13 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.DropDownList cmbConcepto;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lblEmpresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblEmpresa;
 
         /// <summary>
         /// Control cmbEmpresa.
@@ -69,13 +123,13 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.DropDownList cmbEmpresa;
 
         /// <summary>
-        /// Control Label1.
+        /// Control lblNumero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblNumero;
 
         /// <summary>
         /// Control txtNumero.
@@ -105,22 +159,49 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.LinkButton btnAbrirExcel;
 
         /// <summary>
-        /// Control lblMensajeError.
+        /// Control chkBoxPortes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeError;
+        protected global::System.Web.UI.WebControls.CheckBox chkBoxPortes;
 
         /// <summary>
-        /// Control Label3.
+        /// Control lblPortes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblPortes;
+
+        /// <summary>
+        /// Control chkBoxFenolico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBoxFenolico;
+
+        /// <summary>
+        /// Control lblFenolico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFenolico;
+
+        /// <summary>
+        /// Control lblDatosGenerales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDatosGenerales;
 
         /// <summary>
         /// Control txtNombreOferta.
@@ -132,31 +213,13 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.TextBox txtNombreOferta;
 
         /// <summary>
-        /// Control imgSpain.
+        /// Control lblMensajeError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgSpain;
-
-        /// <summary>
-        /// Control imgCatalonian.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgCatalonian;
-
-        /// <summary>
-        /// Control imgEnglish.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgEnglish;
+        protected global::System.Web.UI.WebControls.Label lblMensajeError;
 
         /// <summary>
         /// Control dataTiempos.

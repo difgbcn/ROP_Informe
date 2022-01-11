@@ -399,108 +399,540 @@ namespace ROP_Informe.tablaInventario {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/InventTrans")]
-    public partial class AxdEntity_InventTransOrigin_1 : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string inventTransIdField;
+        private string fieldField;
         
-        private System.Nullable<AxdEnum_InventTransType> referenceCategoryField;
+        private string valueField;
         
-        private bool referenceCategoryFieldSpecified;
-        
-        private string referenceIdField;
-        
-        private string classField;
-        
-        private AxdEnum_AxdEntityAction actionField;
-        
-        private bool actionFieldSpecified;
-        
-        public AxdEntity_InventTransOrigin_1() {
-            this.classField = "entity";
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Field {
+            get {
+                return this.fieldField;
+            }
+            set {
+                this.fieldField = value;
+                this.RaisePropertyChanged("Field");
+            }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string InventTransId {
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Value {
             get {
-                return this.inventTransIdField;
+                return this.valueField;
             }
             set {
-                this.inventTransIdField = value;
-                this.RaisePropertyChanged("InventTransId");
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private KeyField[] keyDataField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public KeyField[] KeyData {
+            get {
+                return this.keyDataField;
+            }
+            set {
+                this.keyDataField = value;
+                this.RaisePropertyChanged("KeyData");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dataSourceNameField;
+        
+        private string fieldNameField;
+        
+        private Operator operatorField;
+        
+        private string value1Field;
+        
+        private string value2Field;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string DataSourceName {
+            get {
+                return this.dataSourceNameField;
+            }
+            set {
+                this.dataSourceNameField = value;
+                this.RaisePropertyChanged("DataSourceName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string FieldName {
+            get {
+                return this.fieldNameField;
+            }
+            set {
+                this.fieldNameField = value;
+                this.RaisePropertyChanged("FieldName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Operator Operator {
+            get {
+                return this.operatorField;
+            }
+            set {
+                this.operatorField = value;
+                this.RaisePropertyChanged("Operator");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Value1 {
+            get {
+                return this.value1Field;
+            }
+            set {
+                this.value1Field = value;
+                this.RaisePropertyChanged("Value1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Value2 {
+            get {
+                return this.value2Field;
+            }
+            set {
+                this.value2Field = value;
+                this.RaisePropertyChanged("Value2");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public enum Operator {
+        
+        /// <remarks/>
+        Equal,
+        
+        /// <remarks/>
+        NotEqual,
+        
+        /// <remarks/>
+        Greater,
+        
+        /// <remarks/>
+        GreaterOrEqual,
+        
+        /// <remarks/>
+        Less,
+        
+        /// <remarks/>
+        LessOrEqual,
+        
+        /// <remarks/>
+        Range,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CriteriaElement[] criteriaElementField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
+        public CriteriaElement[] CriteriaElement {
+            get {
+                return this.criteriaElementField;
+            }
+            set {
+                this.criteriaElementField = value;
+                this.RaisePropertyChanged("CriteriaElement");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaInventario.InventTransOriginService")]
+    public interface InventTransOriginService {
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (InventTransOriginServiceFindKeysRequest) del mensaje InventTransOriginServiceFindKeysRequest no coincide con el valor predeterminado (findKeys)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/findKeys", ReplyAction="http://tempuri.org/InventTransOriginService/findKeysResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaInventario.AifFault), Action="http://tempuri.org/InventTransOriginService/findKeysAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse findKeys(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/findKeys", ReplyAction="http://tempuri.org/InventTransOriginService/findKeysResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (InventTransOriginServiceReadRequest) del mensaje InventTransOriginServiceReadRequest no coincide con el valor predeterminado (read)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/read", ReplyAction="http://tempuri.org/InventTransOriginService/readResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaInventario.AifFault), Action="http://tempuri.org/InventTransOriginService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaInventario.InventTransOriginServiceReadResponse read(ROP_Informe.tablaInventario.InventTransOriginServiceReadRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/read", ReplyAction="http://tempuri.org/InventTransOriginService/readResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceReadResponse> readAsync(ROP_Informe.tablaInventario.InventTransOriginServiceReadRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (InventTransOriginServiceFindRequest) del mensaje InventTransOriginServiceFindRequest no coincide con el valor predeterminado (find)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/find", ReplyAction="http://tempuri.org/InventTransOriginService/findResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaInventario.AifFault), Action="http://tempuri.org/InventTransOriginService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaInventario.InventTransOriginServiceFindResponse find(ROP_Informe.tablaInventario.InventTransOriginServiceFindRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/find", ReplyAction="http://tempuri.org/InventTransOriginService/findResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindResponse> findAsync(ROP_Informe.tablaInventario.InventTransOriginServiceFindRequest request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+    public partial class CallContext : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string companyField;
+        
+        private string languageField;
+        
+        private string logonAsUserField;
+        
+        private string messageIdField;
+        
+        private string partitionKeyField;
+        
+        private ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] propertyBagField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string Company {
+            get {
+                return this.companyField;
+            }
+            set {
+                this.companyField = value;
+                this.RaisePropertyChanged("Company");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public System.Nullable<AxdEnum_InventTransType> ReferenceCategory {
+        public string Language {
             get {
-                return this.referenceCategoryField;
+                return this.languageField;
             }
             set {
-                this.referenceCategoryField = value;
-                this.RaisePropertyChanged("ReferenceCategory");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ReferenceCategorySpecified {
-            get {
-                return this.referenceCategoryFieldSpecified;
-            }
-            set {
-                this.referenceCategoryFieldSpecified = value;
-                this.RaisePropertyChanged("ReferenceCategorySpecified");
+                this.languageField = value;
+                this.RaisePropertyChanged("Language");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string ReferenceId {
+        public string LogonAsUser {
             get {
-                return this.referenceIdField;
+                return this.logonAsUserField;
             }
             set {
-                this.referenceIdField = value;
-                this.RaisePropertyChanged("ReferenceId");
+                this.logonAsUserField = value;
+                this.RaisePropertyChanged("LogonAsUser");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @class {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public string MessageId {
             get {
-                return this.classField;
+                return this.messageIdField;
             }
             set {
-                this.classField = value;
-                this.RaisePropertyChanged("class");
+                this.messageIdField = value;
+                this.RaisePropertyChanged("MessageId");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public AxdEnum_AxdEntityAction action {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        public string PartitionKey {
             get {
-                return this.actionField;
+                return this.partitionKeyField;
             }
             set {
-                this.actionField = value;
-                this.RaisePropertyChanged("action");
+                this.partitionKeyField = value;
+                this.RaisePropertyChanged("PartitionKey");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("KeyValueOfstringstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] PropertyBag {
+            get {
+                return this.propertyBagField;
+            }
+            set {
+                this.propertyBagField = value;
+                this.RaisePropertyChanged("PropertyBag");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
+    public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string keyField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="InventTransOriginServiceFindKeysRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class InventTransOriginServiceFindKeysRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ROP_Informe.tablaInventario.CallContext CallContext;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+        public ROP_Informe.tablaInventario.QueryCriteria QueryCriteria;
+        
+        public InventTransOriginServiceFindKeysRequest() {
+        }
+        
+        public InventTransOriginServiceFindKeysRequest(ROP_Informe.tablaInventario.CallContext CallContext, ROP_Informe.tablaInventario.QueryCriteria QueryCriteria) {
+            this.CallContext = CallContext;
+            this.QueryCriteria = QueryCriteria;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="InventTransOriginServiceFindKeysResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class InventTransOriginServiceFindKeysResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
+        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
+        public ROP_Informe.tablaInventario.EntityKey[] EntityKeyList;
+        
+        public InventTransOriginServiceFindKeysResponse() {
+        }
+        
+        public InventTransOriginServiceFindKeysResponse(ROP_Informe.tablaInventario.EntityKey[] EntityKeyList) {
+            this.EntityKeyList = EntityKeyList;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/InventTrans")]
+    public partial class AxdInventTrans : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private System.Nullable<AxdEnum_boolean> clearNilFieldsOnUpdateField;
+        
+        private bool clearNilFieldsOnUpdateFieldSpecified;
+        
+        private System.Nullable<AxdEnum_XMLDocPurpose> docPurposeField;
+        
+        private bool docPurposeFieldSpecified;
+        
+        private string senderIdField;
+        
+        private AxdEntity_InventTrans_1[] inventTrans_1Field;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public System.Nullable<AxdEnum_boolean> ClearNilFieldsOnUpdate {
+            get {
+                return this.clearNilFieldsOnUpdateField;
+            }
+            set {
+                this.clearNilFieldsOnUpdateField = value;
+                this.RaisePropertyChanged("ClearNilFieldsOnUpdate");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool actionSpecified {
+        public bool ClearNilFieldsOnUpdateSpecified {
             get {
-                return this.actionFieldSpecified;
+                return this.clearNilFieldsOnUpdateFieldSpecified;
             }
             set {
-                this.actionFieldSpecified = value;
-                this.RaisePropertyChanged("actionSpecified");
+                this.clearNilFieldsOnUpdateFieldSpecified = value;
+                this.RaisePropertyChanged("ClearNilFieldsOnUpdateSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public System.Nullable<AxdEnum_XMLDocPurpose> DocPurpose {
+            get {
+                return this.docPurposeField;
+            }
+            set {
+                this.docPurposeField = value;
+                this.RaisePropertyChanged("DocPurpose");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DocPurposeSpecified {
+            get {
+                return this.docPurposeFieldSpecified;
+            }
+            set {
+                this.docPurposeFieldSpecified = value;
+                this.RaisePropertyChanged("DocPurposeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string SenderId {
+            get {
+                return this.senderIdField;
+            }
+            set {
+                this.senderIdField = value;
+                this.RaisePropertyChanged("SenderId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("InventTrans_1", Order=3)]
+        public AxdEntity_InventTrans_1[] InventTrans_1 {
+            get {
+                return this.inventTrans_1Field;
+            }
+            set {
+                this.inventTrans_1Field = value;
+                this.RaisePropertyChanged("InventTrans_1");
             }
         }
         
@@ -518,125 +950,29 @@ namespace ROP_Informe.tablaInventario {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_InventTransType {
+    public enum AxdEnum_boolean {
         
         /// <remarks/>
-        Sales,
+        @false,
         
         /// <remarks/>
-        Production,
-        
-        /// <remarks/>
-        Purch,
-        
-        /// <remarks/>
-        InventTransaction,
-        
-        /// <remarks/>
-        InventLossProfit,
-        
-        /// <remarks/>
-        InventTransfer,
-        
-        /// <remarks/>
-        SummedUp,
-        
-        /// <remarks/>
-        ProdLine,
-        
-        /// <remarks/>
-        BOMLine,
-        
-        /// <remarks/>
-        BOMMain,
-        
-        /// <remarks/>
-        WMSOrder,
-        
-        /// <remarks/>
-        Project,
-        
-        /// <remarks/>
-        InventCounting,
-        
-        /// <remarks/>
-        WMSTransport,
-        
-        /// <remarks/>
-        QuarantineOrder,
-        
-        /// <remarks/>
-        Asset,
-        
-        /// <remarks/>
-        TransferOrderShip,
-        
-        /// <remarks/>
-        TransferOrderReceive,
-        
-        /// <remarks/>
-        TransferOrderScrap,
-        
-        /// <remarks/>
-        SalesQuotation,
-        
-        /// <remarks/>
-        QualityOrder,
-        
-        /// <remarks/>
-        Blocking,
-        
-        /// <remarks/>
-        KanbanJobProcess,
-        
-        /// <remarks/>
-        KanbanJobTransferReceipt,
-        
-        /// <remarks/>
-        KanbanJobTransferIssue,
-        
-        /// <remarks/>
-        KanbanJobPickingList,
-        
-        /// <remarks/>
-        KanbanJobWIP,
-        
-        /// <remarks/>
-        KanbanEmptied,
-        
-        /// <remarks/>
-        PmfProdCoBy,
-        
-        /// <remarks/>
-        ProdRelease_RU,
-        
-        /// <remarks/>
-        FixedAssets_RU,
-        
-        /// <remarks/>
-        Statement,
-        
-        /// <remarks/>
-        WorkPaperPalet,
+        @true,
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_AxdEntityAction {
+    public enum AxdEnum_XMLDocPurpose {
         
         /// <remarks/>
-        create,
+        Original,
         
         /// <remarks/>
-        update,
+        Duplicate,
         
         /// <remarks/>
-        replace,
-        
-        /// <remarks/>
-        delete,
+        Proforma,
     }
     
     /// <remarks/>
@@ -1203,89 +1539,107 @@ namespace ROP_Informe.tablaInventario {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/InventTrans")]
-    public partial class AxdInventTrans : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class AxdEntity_InventTransOrigin_1 : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private System.Nullable<AxdEnum_boolean> clearNilFieldsOnUpdateField;
+        private string inventTransIdField;
         
-        private bool clearNilFieldsOnUpdateFieldSpecified;
+        private System.Nullable<AxdEnum_InventTransType> referenceCategoryField;
         
-        private System.Nullable<AxdEnum_XMLDocPurpose> docPurposeField;
+        private bool referenceCategoryFieldSpecified;
         
-        private bool docPurposeFieldSpecified;
+        private string referenceIdField;
         
-        private string senderIdField;
+        private string classField;
         
-        private AxdEntity_InventTrans_1[] inventTrans_1Field;
+        private AxdEnum_AxdEntityAction actionField;
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public System.Nullable<AxdEnum_boolean> ClearNilFieldsOnUpdate {
-            get {
-                return this.clearNilFieldsOnUpdateField;
-            }
-            set {
-                this.clearNilFieldsOnUpdateField = value;
-                this.RaisePropertyChanged("ClearNilFieldsOnUpdate");
-            }
+        private bool actionFieldSpecified;
+        
+        public AxdEntity_InventTransOrigin_1() {
+            this.classField = "entity";
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ClearNilFieldsOnUpdateSpecified {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string InventTransId {
             get {
-                return this.clearNilFieldsOnUpdateFieldSpecified;
+                return this.inventTransIdField;
             }
             set {
-                this.clearNilFieldsOnUpdateFieldSpecified = value;
-                this.RaisePropertyChanged("ClearNilFieldsOnUpdateSpecified");
+                this.inventTransIdField = value;
+                this.RaisePropertyChanged("InventTransId");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public System.Nullable<AxdEnum_XMLDocPurpose> DocPurpose {
+        public System.Nullable<AxdEnum_InventTransType> ReferenceCategory {
             get {
-                return this.docPurposeField;
+                return this.referenceCategoryField;
             }
             set {
-                this.docPurposeField = value;
-                this.RaisePropertyChanged("DocPurpose");
+                this.referenceCategoryField = value;
+                this.RaisePropertyChanged("ReferenceCategory");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DocPurposeSpecified {
+        public bool ReferenceCategorySpecified {
             get {
-                return this.docPurposeFieldSpecified;
+                return this.referenceCategoryFieldSpecified;
             }
             set {
-                this.docPurposeFieldSpecified = value;
-                this.RaisePropertyChanged("DocPurposeSpecified");
+                this.referenceCategoryFieldSpecified = value;
+                this.RaisePropertyChanged("ReferenceCategorySpecified");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string SenderId {
+        public string ReferenceId {
             get {
-                return this.senderIdField;
+                return this.referenceIdField;
             }
             set {
-                this.senderIdField = value;
-                this.RaisePropertyChanged("SenderId");
+                this.referenceIdField = value;
+                this.RaisePropertyChanged("ReferenceId");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("InventTrans_1", Order=3)]
-        public AxdEntity_InventTrans_1[] InventTrans_1 {
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @class {
             get {
-                return this.inventTrans_1Field;
+                return this.classField;
             }
             set {
-                this.inventTrans_1Field = value;
-                this.RaisePropertyChanged("InventTrans_1");
+                this.classField = value;
+                this.RaisePropertyChanged("class");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public AxdEnum_AxdEntityAction action {
+            get {
+                return this.actionField;
+            }
+            set {
+                this.actionField = value;
+                this.RaisePropertyChanged("action");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool actionSpecified {
+            get {
+                return this.actionFieldSpecified;
+            }
+            set {
+                this.actionFieldSpecified = value;
+                this.RaisePropertyChanged("actionSpecified");
             }
         }
         
@@ -1303,289 +1657,125 @@ namespace ROP_Informe.tablaInventario {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_boolean {
+    public enum AxdEnum_InventTransType {
         
         /// <remarks/>
-        @false,
+        Sales,
         
         /// <remarks/>
-        @true,
+        Production,
+        
+        /// <remarks/>
+        Purch,
+        
+        /// <remarks/>
+        InventTransaction,
+        
+        /// <remarks/>
+        InventLossProfit,
+        
+        /// <remarks/>
+        InventTransfer,
+        
+        /// <remarks/>
+        SummedUp,
+        
+        /// <remarks/>
+        ProdLine,
+        
+        /// <remarks/>
+        BOMLine,
+        
+        /// <remarks/>
+        BOMMain,
+        
+        /// <remarks/>
+        WMSOrder,
+        
+        /// <remarks/>
+        Project,
+        
+        /// <remarks/>
+        InventCounting,
+        
+        /// <remarks/>
+        WMSTransport,
+        
+        /// <remarks/>
+        QuarantineOrder,
+        
+        /// <remarks/>
+        Asset,
+        
+        /// <remarks/>
+        TransferOrderShip,
+        
+        /// <remarks/>
+        TransferOrderReceive,
+        
+        /// <remarks/>
+        TransferOrderScrap,
+        
+        /// <remarks/>
+        SalesQuotation,
+        
+        /// <remarks/>
+        QualityOrder,
+        
+        /// <remarks/>
+        Blocking,
+        
+        /// <remarks/>
+        KanbanJobProcess,
+        
+        /// <remarks/>
+        KanbanJobTransferReceipt,
+        
+        /// <remarks/>
+        KanbanJobTransferIssue,
+        
+        /// <remarks/>
+        KanbanJobPickingList,
+        
+        /// <remarks/>
+        KanbanJobWIP,
+        
+        /// <remarks/>
+        KanbanEmptied,
+        
+        /// <remarks/>
+        PmfProdCoBy,
+        
+        /// <remarks/>
+        ProdRelease_RU,
+        
+        /// <remarks/>
+        FixedAssets_RU,
+        
+        /// <remarks/>
+        Statement,
+        
+        /// <remarks/>
+        WorkPaperPalet,
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_XMLDocPurpose {
+    public enum AxdEnum_AxdEntityAction {
         
         /// <remarks/>
-        Original,
+        create,
         
         /// <remarks/>
-        Duplicate,
+        update,
         
         /// <remarks/>
-        Proforma,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string fieldField;
-        
-        private string valueField;
+        replace,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Field {
-            get {
-                return this.fieldField;
-            }
-            set {
-                this.fieldField = value;
-                this.RaisePropertyChanged("Field");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private KeyField[] keyDataField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public KeyField[] KeyData {
-            get {
-                return this.keyDataField;
-            }
-            set {
-                this.keyDataField = value;
-                this.RaisePropertyChanged("KeyData");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaInventario.InventTransOriginService")]
-    public interface InventTransOriginService {
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (InventTransOriginServiceReadRequest) del mensaje InventTransOriginServiceReadRequest no coincide con el valor predeterminado (read)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/read", ReplyAction="http://tempuri.org/InventTransOriginService/readResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaInventario.AifFault), Action="http://tempuri.org/InventTransOriginService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaInventario.InventTransOriginServiceReadResponse read(ROP_Informe.tablaInventario.InventTransOriginServiceReadRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/read", ReplyAction="http://tempuri.org/InventTransOriginService/readResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceReadResponse> readAsync(ROP_Informe.tablaInventario.InventTransOriginServiceReadRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (InventTransOriginServiceFindRequest) del mensaje InventTransOriginServiceFindRequest no coincide con el valor predeterminado (find)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/find", ReplyAction="http://tempuri.org/InventTransOriginService/findResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaInventario.AifFault), Action="http://tempuri.org/InventTransOriginService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaInventario.InventTransOriginServiceFindResponse find(ROP_Informe.tablaInventario.InventTransOriginServiceFindRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/find", ReplyAction="http://tempuri.org/InventTransOriginService/findResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindResponse> findAsync(ROP_Informe.tablaInventario.InventTransOriginServiceFindRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (InventTransOriginServiceFindKeysRequest) del mensaje InventTransOriginServiceFindKeysRequest no coincide con el valor predeterminado (findKeys)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/findKeys", ReplyAction="http://tempuri.org/InventTransOriginService/findKeysResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaInventario.AifFault), Action="http://tempuri.org/InventTransOriginService/findKeysAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse findKeys(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InventTransOriginService/findKeys", ReplyAction="http://tempuri.org/InventTransOriginService/findKeysResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request);
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-    public partial class CallContext : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string companyField;
-        
-        private string languageField;
-        
-        private string logonAsUserField;
-        
-        private string messageIdField;
-        
-        private string partitionKeyField;
-        
-        private ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] propertyBagField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-                this.RaisePropertyChanged("Company");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Language {
-            get {
-                return this.languageField;
-            }
-            set {
-                this.languageField = value;
-                this.RaisePropertyChanged("Language");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string LogonAsUser {
-            get {
-                return this.logonAsUserField;
-            }
-            set {
-                this.logonAsUserField = value;
-                this.RaisePropertyChanged("LogonAsUser");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public string MessageId {
-            get {
-                return this.messageIdField;
-            }
-            set {
-                this.messageIdField = value;
-                this.RaisePropertyChanged("MessageId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
-        public string PartitionKey {
-            get {
-                return this.partitionKeyField;
-            }
-            set {
-                this.partitionKeyField = value;
-                this.RaisePropertyChanged("PartitionKey");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("KeyValueOfstringstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
-        public ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] PropertyBag {
-            get {
-                return this.propertyBagField;
-            }
-            set {
-                this.propertyBagField = value;
-                this.RaisePropertyChanged("PropertyBag");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
-    public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string keyField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
+        delete,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1630,154 +1820,6 @@ namespace ROP_Informe.tablaInventario {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private CriteriaElement[] criteriaElementField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
-        public CriteriaElement[] CriteriaElement {
-            get {
-                return this.criteriaElementField;
-            }
-            set {
-                this.criteriaElementField = value;
-                this.RaisePropertyChanged("CriteriaElement");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string dataSourceNameField;
-        
-        private string fieldNameField;
-        
-        private Operator operatorField;
-        
-        private string value1Field;
-        
-        private string value2Field;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string DataSourceName {
-            get {
-                return this.dataSourceNameField;
-            }
-            set {
-                this.dataSourceNameField = value;
-                this.RaisePropertyChanged("DataSourceName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string FieldName {
-            get {
-                return this.fieldNameField;
-            }
-            set {
-                this.fieldNameField = value;
-                this.RaisePropertyChanged("FieldName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Operator Operator {
-            get {
-                return this.operatorField;
-            }
-            set {
-                this.operatorField = value;
-                this.RaisePropertyChanged("Operator");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string Value1 {
-            get {
-                return this.value1Field;
-            }
-            set {
-                this.value1Field = value;
-                this.RaisePropertyChanged("Value1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Value2 {
-            get {
-                return this.value2Field;
-            }
-            set {
-                this.value2Field = value;
-                this.RaisePropertyChanged("Value2");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public enum Operator {
-        
-        /// <remarks/>
-        Equal,
-        
-        /// <remarks/>
-        NotEqual,
-        
-        /// <remarks/>
-        Greater,
-        
-        /// <remarks/>
-        GreaterOrEqual,
-        
-        /// <remarks/>
-        Less,
-        
-        /// <remarks/>
-        LessOrEqual,
-        
-        /// <remarks/>
-        Range,
-    }
-    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1819,48 +1861,6 @@ namespace ROP_Informe.tablaInventario {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="InventTransOriginServiceFindKeysRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class InventTransOriginServiceFindKeysRequest {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ROP_Informe.tablaInventario.CallContext CallContext;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-        public ROP_Informe.tablaInventario.QueryCriteria QueryCriteria;
-        
-        public InventTransOriginServiceFindKeysRequest() {
-        }
-        
-        public InventTransOriginServiceFindKeysRequest(ROP_Informe.tablaInventario.CallContext CallContext, ROP_Informe.tablaInventario.QueryCriteria QueryCriteria) {
-            this.CallContext = CallContext;
-            this.QueryCriteria = QueryCriteria;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="InventTransOriginServiceFindKeysResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class InventTransOriginServiceFindKeysResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
-        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
-        public ROP_Informe.tablaInventario.EntityKey[] EntityKeyList;
-        
-        public InventTransOriginServiceFindKeysResponse() {
-        }
-        
-        public InventTransOriginServiceFindKeysResponse(ROP_Informe.tablaInventario.EntityKey[] EntityKeyList) {
-            this.EntityKeyList = EntityKeyList;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface InventTransOriginServiceChannel : ROP_Informe.tablaInventario.InventTransOriginService, System.ServiceModel.IClientChannel {
     }
@@ -1886,6 +1886,31 @@ namespace ROP_Informe.tablaInventario {
         
         public InventTransOriginServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse ROP_Informe.tablaInventario.InventTransOriginService.findKeys(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request) {
+            return base.Channel.findKeys(request);
+        }
+        
+        public ROP_Informe.tablaInventario.EntityKey[] findKeys(ROP_Informe.tablaInventario.CallContext CallContext, ROP_Informe.tablaInventario.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest inValue = new ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest();
+            inValue.CallContext = CallContext;
+            inValue.QueryCriteria = QueryCriteria;
+            ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse retVal = ((ROP_Informe.tablaInventario.InventTransOriginService)(this)).findKeys(inValue);
+            return retVal.EntityKeyList;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse> ROP_Informe.tablaInventario.InventTransOriginService.findKeysAsync(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request) {
+            return base.Channel.findKeysAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaInventario.CallContext CallContext, ROP_Informe.tablaInventario.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest inValue = new ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest();
+            inValue.CallContext = CallContext;
+            inValue.QueryCriteria = QueryCriteria;
+            return ((ROP_Informe.tablaInventario.InventTransOriginService)(this)).findKeysAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1936,31 +1961,6 @@ namespace ROP_Informe.tablaInventario {
             inValue.CallContext = CallContext;
             inValue.QueryCriteria = QueryCriteria;
             return ((ROP_Informe.tablaInventario.InventTransOriginService)(this)).findAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse ROP_Informe.tablaInventario.InventTransOriginService.findKeys(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request) {
-            return base.Channel.findKeys(request);
-        }
-        
-        public ROP_Informe.tablaInventario.EntityKey[] findKeys(ROP_Informe.tablaInventario.CallContext CallContext, ROP_Informe.tablaInventario.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest inValue = new ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest();
-            inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse retVal = ((ROP_Informe.tablaInventario.InventTransOriginService)(this)).findKeys(inValue);
-            return retVal.EntityKeyList;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse> ROP_Informe.tablaInventario.InventTransOriginService.findKeysAsync(ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest request) {
-            return base.Channel.findKeysAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaInventario.CallContext CallContext, ROP_Informe.tablaInventario.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest inValue = new ROP_Informe.tablaInventario.InventTransOriginServiceFindKeysRequest();
-            inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            return ((ROP_Informe.tablaInventario.InventTransOriginService)(this)).findKeysAsync(inValue);
         }
     }
 }
