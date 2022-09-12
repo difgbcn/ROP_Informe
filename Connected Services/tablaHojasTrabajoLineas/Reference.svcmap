@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="68565053-0f95-407a-aa55-fb6ed1a60cea" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AXAOS2012PREP-NEW.alsina.red:8101/DynamicsAx/Services/WorkPaperLines " Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WorkPaperLines.wsdl" MetadataType="Wsdl" ID="fa315728-6179-4433-8e44-5154c9027cf3" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines" />
+    <MetadataFile FileName="WorkPaperLines.xsd" MetadataType="Schema" ID="4488d59d-cf43-4e35-ba18-d0f2bcfeec2e" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd2" />
+    <MetadataFile FileName="WorkPaperLines1.xsd" MetadataType="Schema" ID="a18c9f60-4d1d-4873-a8a2-caba2535217d" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd4" />
+    <MetadataFile FileName="WorkPaperLines2.xsd" MetadataType="Schema" ID="bbc0f98a-7efc-458e-8e5b-632ea0b3916a" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd6" />
+    <MetadataFile FileName="WorkPaperLines3.xsd" MetadataType="Schema" ID="7f8acedc-d355-4581-b2c9-567f93985ef0" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd8" />
+    <MetadataFile FileName="WorkPaperLines1.wsdl" MetadataType="Wsdl" ID="a92e8302-73ad-43e1-a44f-1372ba1b9e4f" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?wsdl=wsdl0" />
+    <MetadataFile FileName="WorkPaperLines4.xsd" MetadataType="Schema" ID="e73eb01e-95e5-4752-a801-76357311b8d8" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd1" />
+    <MetadataFile FileName="WorkPaperLines5.xsd" MetadataType="Schema" ID="83a80fd6-90f7-420c-8fe3-b8883ebfe793" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd11" />
+    <MetadataFile FileName="WorkPaperLines6.xsd" MetadataType="Schema" ID="edd12596-05d5-4436-846a-5781c4c079b2" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd10" />
+    <MetadataFile FileName="WorkPaperLines7.xsd" MetadataType="Schema" ID="3f73734c-a8d1-4632-8b16-2f7a0230fb2a" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd3" />
+    <MetadataFile FileName="WorkPaperLines8.xsd" MetadataType="Schema" ID="01541a06-2a0d-46a2-b671-7833c375c844" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd5" />
+    <MetadataFile FileName="WorkPaperLines9.xsd" MetadataType="Schema" ID="c4fb389c-f89e-4f2d-9fa1-d15813a186f5" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd0" />
+    <MetadataFile FileName="WorkPaperLines10.xsd" MetadataType="Schema" ID="9ca2c5b8-c78b-4bc9-82a9-a06e64ef2c80" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd7" />
+    <MetadataFile FileName="WorkPaperLines11.xsd" MetadataType="Schema" ID="27c1b692-7305-4758-b456-21ff0119177b" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd9" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

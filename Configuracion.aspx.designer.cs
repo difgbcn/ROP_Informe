@@ -312,6 +312,60 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.TextBox txtFechaActualizar;
 
         /// <summary>
+        /// Control btnLimpiarTransporteCodigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnLimpiarTransporteCodigos;
+
+        /// <summary>
+        /// Control cmbEmpresaCodigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbEmpresaCodigos;
+
+        /// <summary>
+        /// Control cmbDelegacionCodigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbDelegacionCodigos;
+
+        /// <summary>
+        /// Control txtCodigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCodigos;
+
+        /// <summary>
+        /// Control btnAgregarTransporteCodigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAgregarTransporteCodigos;
+
+        /// <summary>
+        /// Control grvTransporteCodigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvTransporteCodigos;
+
+        /// <summary>
         /// Control btnLimpiarTransporte.
         /// </summary>
         /// <remarks>
@@ -616,6 +670,15 @@ namespace ROP_Informe
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvUsuarios;
+
+        /// <summary>
+        /// Control grvBU.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvBU;
 
         /// <summary>
         /// Control grvHistorico.

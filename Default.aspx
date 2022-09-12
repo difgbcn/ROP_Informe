@@ -51,18 +51,29 @@
     <asp:Label ID="lblpopup" runat="server" Font-Bold="True" Font-Size="Large" Height="25px" Display="None" Text="no mostrar" Style="margin-left: 0px"></asp:Label>
     <br />
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h2>INFORME ROP</h2>
         </div>
-         <div class="col-md-1">
+        <%-- <div class="col-md-1">
             <asp:Label ID="lblVersion" runat="server" Text="Versión" Style="margin-right: 0px"></asp:Label>
-         </div>
+         </div>--%>
          <div class="col-md-2">
+            <asp:Label ID="lblVersion" runat="server" Text="Versión" Style="margin-right: 0px"></asp:Label>
             <asp:DropDownList ID="cmbVersion" runat="server" CssClass="form-control" OnSelectedIndexChanged="CambioVersionSeleccion" AutoPostBack="true"></asp:DropDownList>
         </div>
         <div class="col-md-2">
             <asp:Label ID="lblVersionUtilizada" runat="server" Text="" ForeColor="Red" Font-Size="Small"></asp:Label>
-         </div>
+        </div>
+        <div class="col-md-2">
+            <asp:Label ID="lblFecha" runat="server" Text="Fecha" Style="margin-right: 0px"></asp:Label>
+            <asp:TextBox ID="txtFecha" runat="server"  AutoPostBack="False" Width="150px"  autocomplete="off"  MaxLength="10" textmode="Date" value=null CssClass="form-control"></asp:TextBox>
+        </div>
+       <%-- <div class="col-2 align-self-left">
+            <div class="input-append date" id="datetimepickerFecha" data-date-format="dd-mm-yyyy">
+                <asp:TextBox runat="server" class="span2" size="16" type="text" ReadOnly="" ID="txtFecha"></asp:TextBox>
+                <span class="add-on"><i class="icon-th"></i></span>
+            </div>
+        </div>--%>
         <div class="col-md-3">
              &nbsp;&nbsp;
             <asp:ImageButton id="imgCatalonian" runat="server" ImageAlign="right" ImageUrl="Img/catalonia.png" OnClick="imgCatalonia_Click"/>
@@ -117,15 +128,62 @@
                 <asp:CheckBox ID="chkBoxFenolico" runat="server" Checked="false" Font-Bold="True"/>
                 <asp:Label ID="lblFenolico" runat="server" Font-Size="Medium" Text="Con fenólico"></asp:Label>
             </div>
+           <%-- <div class="col-md-1">
+                <asp:Label ID="lblItem" runat="server" Text="Ítem" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:TextBox ID="txtItem" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>--%>
         </div> 
         <hr />
-        <div class="row">
+        <%--<div class="row">
             <div class="col-md-1">
-                <%--<span>Datos generales</span>--%>
                 <asp:Label ID="lblDatosGenerales" runat="server" Text="Datos generales" Style="margin-left: 0px"></asp:Label>
             </div>
             <div class="col-md-11">
                  <asp:TextBox ID="txtNombreOferta" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>--%>
+        <div class="row">
+            <div class="col-md-1">
+                <asp:Label ID="lblObra" runat="server" Text="Obra/Pedido" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:TextBox ID="txtObra" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="col-md-1">
+                <asp:Label ID="lblNombreObra" runat="server" Text="Nombre obra/pedido" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-5">
+                <asp:TextBox ID="txtNombreObra" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="col-md-1">
+                <asp:Label ID="lblCuentaCliente" runat="server" Text="Código cliente" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:TextBox ID="txtCuentaCliente" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <asp:Label ID="lblMasterObra" runat="server" Text="Master obra" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:TextBox ID="txtMasterObra" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="col-md-1">
+                <asp:Label ID="lblCentroCoste" runat="server" Text="Centro coste" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:TextBox ID="txtCentroCoste" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-1">
+                <asp:Label ID="lblMoneda" runat="server" Text="Moneda" Style="margin-left: 0px"></asp:Label>
+            </div>
+            <div class="col-md-2">
+                <asp:TextBox ID="txtMoneda" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
         </div>
         <hr />
@@ -152,30 +210,13 @@
     <address>
         <div class="row">
             <div class="col-md-12">
-                <asp:Label ID="lblMensajeError" runat="server" BackColor="Black" BorderStyle="None" Font-Bold="False" Font-Size="Medium" ForeColor="#FFFF66" Text="..." Width="100%" Style="text-align: center"></asp:Label>
+                <asp:Image ID="imgWarning" runat="server" ImageUrl="~/Img/warning.png" AlternateText="" />
+                &nbsp;
+                <asp:Label ID="lblMensajeError" runat="server" BackColor="#FF9900" BorderStyle="Groove" BorderColor="DarkGray" Font-Bold="False" Font-Size="Medium" Text="..." Width="96%" Style="text-align: center" ForeColor="Black"></asp:Label>
+                <%--<asp:Label ID="lblMensajeError" runat="server" BackColor="Black" BorderStyle="None" Font-Bold="False" Font-Size="Medium" ForeColor="#FFFF66" Text="..." Width="96%" Style="text-align: center"></asp:Label>--%>
             </div>
         </div>
     </address>
-<%--   <address>
-         <div class="row">
-            <div class="col-md-1">
-                <span>Datos generales</span>
-            </div>
-            <div class="col-md-11">
-                 <asp:TextBox ID="txtNombreOferta" runat="server" CssClass="form-control"></asp:TextBox>
-            </div>--%>
-        <%--&nbsp;<asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="Small" Height="18px" Text="Datos generales" Style="margin-left: 0px" Width="133px"></asp:Label>
-        &nbsp;&nbsp;
-        <asp:TextBox ID="txtNombreOferta" runat="server" Height="20px" Width="100%" Font-Names="Arial" Font-Size="Small"></asp:TextBox>--%>
-<%--        </div>
-    </address>--%>
-  <%--  &nbsp;&nbsp;
-    <asp:ImageButton id="imgSpain" runat="server" ImageAlign="left" ImageUrl="Img/spain.png" OnClick="imgSpain_Click"/>
-     &nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:ImageButton id="imgCatalonian" runat="server" ImageAlign="left" ImageUrl="Img/catalonia.png" OnClick="imgCatalonia_Click"/>
-     &nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:ImageButton id="imgEnglish" runat="server" ImageAlign="left" ImageUrl="Img/unitedKingdom.png" OnClick="imgUnited_Click"/>--%>
- <%--   <br />--%>
     <br />
   
     <table id="table" data-detail-view="true" class="table table-striped table-borderless">
@@ -194,11 +235,34 @@
     <hr />
     <br />
     <br />
+     <address>
+         <div class="row">
+            <div class="col-md-6">
+                <asp:Label ID="lblInformacionVisualizar" runat="server" Text="INFORMACION VISUALIZAR" Style="margin-left: 0px"></asp:Label>
+                <asp:DropDownList ID="cmbFichaCalculos" runat="server" CssClass="form-control" OnSelectedIndexChanged="cambioFichaDesplegableOpcion" AutoPostBack="true"></asp:DropDownList>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <asp:GridView ID="dataInformacion" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small"></asp:GridView>
+            </div>
+        </div>
+    </address>
+     <br />
     <asp:GridView ID="dataTiempos" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small">
     </asp:GridView>
     <br />
-    <asp:GridView ID="dataDatos" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small">
+    <asp:GridView ID="dataMovimientos" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small">
     </asp:GridView>
+    <br />
+    <asp:GridView ID="dataPatio" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small">
+    </asp:GridView>
+    <br />
+  <%--  <asp:GridView ID="dataMovimientosTradicionales" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small">
+    </asp:GridView>
+    <br />
+    <asp:GridView ID="dataDatos" runat="server" AutoGenerateColumns="True" Style="width: 875px; overflow: auto; height: 125px;" ViewStateMode="Enabled" AllowPaging="False" Font-Names="Arial" Font-Size="Small">
+    </asp:GridView>--%>
 
    <ajax:ModalPopupExtender ID="mpeInformacion" PopupControlID="PanelInformacion"  TargetControlID="lblpopup" CancelControlID="btnCerrarInformacion" PopupDragHandleControlID="headerdivInformacion" runat="server"></ajax:ModalPopupExtender>
     <asp:Panel ID="PanelInformacion"  Style="Display:none;" CssClass="modalPopupInformacion" runat="server">
@@ -215,6 +279,12 @@
             <asp:Button ID="btnCerrarInformacion" runat="server" Text="Cerrar" class="buttonInformacion" HorizontalAlign="Center"/>
         </div>
     </asp:Panel>
+
+ <%--  <script type="text/javascript">
+          $(function () {
+              $('#datetimepickerFecha').datepicker();
+          });
+    </script>--%>
 
     <script>
         var myTituloConcepto = '<%=tituloConcepto%>';
@@ -350,5 +420,7 @@
         //        })
         //    })
         //})
+
+
     </script>
 </asp:Content>

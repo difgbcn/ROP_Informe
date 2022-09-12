@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e0349502-a1ab-4c9e-96c4-c9591a35f64b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CustInvoiceService.xsd" MetadataType="Schema" ID="e9ac006c-bf79-4aa7-9048-18f5d95386dc" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd10" />
+    <MetadataFile FileName="CustInvoiceService1.xsd" MetadataType="Schema" ID="bad5e382-cc76-4de3-84ac-b7071c1c900a" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd11" />
+    <MetadataFile FileName="CustInvoiceService2.xsd" MetadataType="Schema" ID="dba25665-4f58-4f2d-9211-e19c6cfd9e55" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd2" />
+    <MetadataFile FileName="CustInvoiceService3.xsd" MetadataType="Schema" ID="f28d7a39-0416-4c65-97d3-f538d7908acc" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd4" />
+    <MetadataFile FileName="CustInvoiceService4.xsd" MetadataType="Schema" ID="3efdf35b-9b09-421c-ad2d-cd0849319150" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd6" />
+    <MetadataFile FileName="CustInvoiceService5.xsd" MetadataType="Schema" ID="78263c34-1960-45d3-91b8-47ba82844546" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd8" />
+    <MetadataFile FileName="CustInvoiceService6.xsd" MetadataType="Schema" ID="5786a6dd-e637-4256-8ffe-36321a40f717" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd3" />
+    <MetadataFile FileName="CustInvoiceService7.xsd" MetadataType="Schema" ID="42828e95-54c7-49df-97f3-50e6fb527bd9" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd1" />
+    <MetadataFile FileName="CustInvoiceService.wsdl" MetadataType="Wsdl" ID="37639102-70af-4f70-8b77-4806e35d5efb" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?wsdl=wsdl0" />
+    <MetadataFile FileName="CustInvoiceService8.xsd" MetadataType="Schema" ID="e9bf1787-208c-43ce-9d20-8ce0c99bea21" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd0" />
+    <MetadataFile FileName="CustInvoiceService1.wsdl" MetadataType="Wsdl" ID="85af0244-f1bb-4ea9-b255-1fa41a2c6616" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService" />
+    <MetadataFile FileName="CustInvoiceService9.xsd" MetadataType="Schema" ID="4aa23c9b-d164-4ab8-807b-eb1dfe84a47a" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd5" />
+    <MetadataFile FileName="CustInvoiceService10.xsd" MetadataType="Schema" ID="56f11967-f828-48a1-8f63-2d7c61bbac13" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd7" />
+    <MetadataFile FileName="CustInvoiceService11.xsd" MetadataType="Schema" ID="682de295-9318-4226-a718-5baaff108b76" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd9" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

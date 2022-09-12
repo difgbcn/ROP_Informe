@@ -227,57 +227,18 @@
         <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="4"?"active":"" %>" id="nav-profile-tab-transporte" custom="4" data-toggle="tab" href="#nav-profile_transporte" role="tab" aria-controls="nav-profile_transporte" aria-selected="false">Transporte</a></li>
         <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="5"?"active":"" %>" id="nav-profile-tab-panel" custom="5" data-toggle="tab" href="#nav-profile_panel" role="tab" aria-controls="nav-profile_panel" aria-selected="false">Paneles</a></li>
         <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="6"?"active":"" %>" id="nav-profile-tab-usuario" custom="6" data-toggle="tab" href="#nav-profile_usuario" role="tab" aria-controls="nav-profile_usuario" aria-selected="false">Usuarios</a></li>
-        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="7"?"active":"" %>" id="nav-profile-tab-historico" custom="7" data-toggle="tab" href="#nav-profile_historico" role="tab" aria-controls="nav-profile_historico" aria-selected="false">Control de cambios</a></li>
+        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="7"?"active":"" %>" id="nav-profile-tab-bu" custom="7" data-toggle="tab" href="#nav-profile_bu" role="tab" aria-controls="nav-profile_bu" aria-selected="false">BU</a></li>
+        <li><a class="nav-item nav-justified nav-link <%=hidTAB.Value=="8"?"active":"" %>" id="nav-profile-tab-historico" custom="7" data-toggle="tab" href="#nav-profile_historico" role="tab" aria-controls="nav-profile_historico" aria-selected="false">Control de cambios</a></li>
     </ul>
     <div class="tab-content" id="nav-tabContent" style="border: 1px solid #d5d3d3; border-top: none; padding: 10px">
         <div class="tab-pane fade <%=hidTAB.Value==""||hidTAB.Value=="0"?"show active":"" %>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <br />
-            <%--<div class="row">
-                <div class="col-md-2">
-                    <asp:DropDownList ID="cmbVersionExportar" runat="server" CssClass="form-control"></asp:DropDownList>
-                </div>
-                <div class="col-md-1">
-                    <asp:LinkButton ID="btnExcel" usesubmitbehavior="false" OnClientClick="return ponerSpinner()" CssClass="btn btn-info" runat="server" OnClick="btnExportar_Click"><span class="glyphicon glyphicon-cog">Exportar excel</span></asp:LinkButton>
-                </div>
-                <div class="col-md-1">
-                    <asp:LinkButton ID="btnAbrirExcel" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnAbrirExcel_Click"><span class="glyphicon glyphicon-cog">Abrir/Bajar excel</span></asp:LinkButton>
-                </div>
-                <div class="col-md-1">
-                </div>
-                <div class="col-md-2">
-                    <asp:DropDownList ID="cmbVersionEliminar" runat="server" CssClass="form-control"></asp:DropDownList>
-                </div>
-                <div class="col-md-1">
-                    <asp:LinkButton ID="btnExcelEliminar" usesubmitbehavior="false" OnClientClick="return ponerSpinnerEliminar()" CssClass="btn btn-danger" runat="server" OnClick="btnEliminar_Click"><span class="glyphicon glyphicon-cog">Eliminar versión</span></asp:LinkButton>
-                </div>
-                <div class="col-md-2">
-                    <asp:DropDownList ID="cmbVersionPruebas" runat="server" CssClass="form-control"></asp:DropDownList>
-                </div>
-                <div class="col-md-1">
-                    <asp:LinkButton ID="btnVersionReal" usesubmitbehavior="false" CssClass="btn btn-success" runat="server" OnClick="btnReal_Click"><span class="glyphicon glyphicon-cog">Pasar operativo</span></asp:LinkButton>
-                </div>
-            </div>
-            <hr />--%>
-  <%--          <div class="row">
-                <div class="col-md-6">
-                    <asp:FileUpload ID="ficheroSeleccionado" CssClass="form-control" runat="server" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></asp:FileUpload>
-                </div>
-                <div class="col-md-3">
-                    <asp:RadioButton ID="rdbOperativo" runat="server" GroupName="TipoExportacion" Text="Operativo" AutoPostBack="true" style="text-align: center"/>
-                    &nbsp;&nbsp;
-                    <asp:RadioButton ID="rdbPrueba" runat="server" GroupName="TipoExportacion" Text="Prueba" AutoPostBack="true" style="text-align: center"/>
-                 </div>
-                <div class="col-md-3">
-                    <asp:LinkButton ID="btnImportarExcel" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnSubirExcel_Click"><span class="glyphicon glyphicon-cog">Importar excel</span></asp:LinkButton>
-                </div>
-            </div>
-            <hr />--%>
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView ID="grvDatos" runat="server" CssClass="table table-hover" AutoGenerateColumns="False">
+                        <asp:GridView ID="grvDatos" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" Font-Size="Small">
                             <Columns>
-                                <asp:TemplateField  HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60">
+                                <asp:TemplateField  HeaderStyle-Width="40" ItemStyle-Width="40" ControlStyle-Width="40">
                                     <HeaderTemplate>
                                         Versión
                                         <asp:DropDownList ID="FiltroVersion" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroVersion" AutoPostBack="true" AppendDataBoundItems="true">
@@ -288,9 +249,9 @@
                                         <%# Eval("Version") %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Desde" DataFormatString="{0:yyyy-MM-dd}" HeaderText="Fecha Desde" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="65" ItemStyle-Width="65" ControlStyle-Width="65" />
-                                <asp:BoundField DataField="Hasta" DataFormatString="{0:yyyy-MM-dd}" HeaderText="Fecha Hasta" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="65" ItemStyle-Width="65" ControlStyle-Width="65" />
-                                <asp:TemplateField  HeaderStyle-Width="65" ItemStyle-Width="65" ControlStyle-Width="65" Visible="false">
+                                <asp:BoundField DataField="Desde" DataFormatString="{0:yyyy-MM-dd}" HeaderText="Fecha Desde" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="45" ItemStyle-Width="45" ControlStyle-Width="45" />
+                                <asp:BoundField DataField="Hasta" DataFormatString="{0:yyyy-MM-dd}" HeaderText="Fecha Hasta" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="45" ItemStyle-Width="45" ControlStyle-Width="45" />
+                                <asp:TemplateField  HeaderStyle-Width="0" ItemStyle-Width="0" ControlStyle-Width="0" Visible="false">
                                     <HeaderTemplate>
                                         Actualiz.
                                         <asp:DropDownList ID="FiltroConcepto" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroConcepto" AutoPostBack="true" AppendDataBoundItems="true">
@@ -302,7 +263,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Subgrupo" HeaderText="Grupo"  HeaderStyle-Width="0" ItemStyle-Width="0" ControlStyle-Width="0" Visible="false"/>
-                                <asp:TemplateField  HeaderStyle-Width="85" ItemStyle-Width="85" ControlStyle-Width="85">
+                                <asp:TemplateField  HeaderStyle-Width="40" ItemStyle-Width="40" ControlStyle-Width="40">
                                     <HeaderTemplate>
                                         Concepto
                                             <asp:DropDownList ID="FiltroConceptoValor" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroConceptoValor" AutoPostBack="true" AppendDataBoundItems="true">
@@ -313,13 +274,15 @@
                                         <%# Eval("Concepto") %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Empresa" HeaderText="Empresa" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50" ItemStyle-Width="50" ControlStyle-Width="50" />
-                                <asp:BoundField DataField="Familia" HeaderText="Familia" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50" ItemStyle-Width="50" ControlStyle-Width="50" />
-                                <asp:BoundField DataField="Subfamilia" HeaderText="Subfamilia" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
-                                <asp:BoundField DataField="Articulo" HeaderText="Artículo" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="5" ItemStyle-Width="55" ControlStyle-Width="55" />
-                                <asp:BoundField DataField="ValDesde" HeaderText="Desde" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
-                                <asp:BoundField DataField="ValHasta" HeaderText="Hasta" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
-                                <asp:BoundField DataField="Valor" DataFormatString="{0:n2}" HeaderText="Valor" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
+                                <asp:BoundField DataField="BU" HeaderText="BU" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="30" />
+                                <asp:BoundField DataField="Empresa" HeaderText="Emp." ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="30" />
+                                <asp:BoundField DataField="Familia" HeaderText="Fam." ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="30" />
+                                <asp:BoundField DataField="Subfamilia" HeaderText="Subf." ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="30" />
+                                <asp:BoundField DataField="Articulo" HeaderText="Artículo" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="30" />
+                                <asp:BoundField DataField="ValDesde" HeaderText="Desde" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="35" ItemStyle-Width="35" ControlStyle-Width="35" />
+                                <asp:BoundField DataField="ValHasta" HeaderText="Hasta" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="35" ItemStyle-Width="35" ControlStyle-Width="35" />
+                                <asp:BoundField DataField="Valor" DataFormatString="{0:n2}" HeaderText="Valor" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="30" />
+                                <asp:BoundField DataField="Moneda" HeaderText="Mon" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="20" ItemStyle-Width="20" ControlStyle-Width="20" />
                             </Columns>
                             <HeaderStyle BackColor="#17a2b8" ForeColor="white" />
                             <%--<FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
@@ -378,7 +341,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView ID="grvDatosGenerales" runat="server" CssClass="table table-hover" AutoGenerateColumns="False">
+                        <asp:GridView ID="grvDatosGenerales" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" Font-Size="Small">
                             <Columns>
                                 <asp:CheckBoxField DataField="Prueba" HeaderText="Prueba" ItemStyle-HorizontalAlign="Center" ReadOnly="True" HeaderStyle-Width="100" Visible="false"/>
                                 <asp:TemplateField HeaderStyle-Width="200">
@@ -403,6 +366,17 @@
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <%# Eval("Concepto") %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderStyle-Width="30">
+                                    <HeaderTemplate>
+                                        BU
+                                        <asp:DropDownList ID="FiltroBUGeneral" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroBUGeneral" AutoPostBack="true" AppendDataBoundItems="true" HeaderStyle-Width="30%">
+                                            <asp:ListItem Text="" Value=""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <%# Eval("BU") %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderStyle-Width="250">
@@ -435,7 +409,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView ID="grvAjusteFechasMovimientos" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="ID" OnRowEditing="grvAjusteFechasMovimientos_RowEditing" OnRowCancelingEdit="grvAjusteFechasMovimientos_RowCancelingEdit" OnRowUpdating="grvAjusteFechasMovimientos_RowUpdating">
+                        <asp:GridView ID="grvAjusteFechasMovimientos" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="ID" OnRowEditing="grvAjusteFechasMovimientos_RowEditing" OnRowCancelingEdit="grvAjusteFechasMovimientos_RowCancelingEdit" OnRowUpdating="grvAjusteFechasMovimientos_RowUpdating" Font-Size="Small">
                             <Columns>
                                 <asp:TemplateField HeaderStyle-Width="200">
                                     <HeaderTemplate>
@@ -516,7 +490,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView ID="grvServicios" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="CFGSERV_ID" OnRowDeleting="grvServicios_RowDeleting" OnRowEditing="grvServicios_RowEditing" OnRowCancelingEdit="grvServicios_RowCancelingEdit" OnRowUpdating="grvServicios_RowUpdating" OnRowDataBound="grvServicios_RowDataBound">
+                        <asp:GridView ID="grvServicios" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" DataKeyNames="CFGSERV_ID" OnRowDeleting="grvServicios_RowDeleting" OnRowEditing="grvServicios_RowEditing" OnRowCancelingEdit="grvServicios_RowCancelingEdit" OnRowUpdating="grvServicios_RowUpdating" OnRowDataBound="grvServicios_RowDataBound" Font-Size="Small">
                             <Columns>
                                 <asp:BoundField DataField="CFGSERV_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="1" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
                                 <asp:BoundField DataField="Familia" HeaderText="Familia" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="25%" />
@@ -585,6 +559,71 @@
                 </div>
             </div>
             <hr />
+
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:LinkButton ID="btnLimpiarTransporteCodigos" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnLimpiarTransporteCodigos_Click"><span class="glyphicon glyphicon-cog">Inicializar</span></asp:LinkButton>
+                </div>
+                 <div class="col-md-1">
+                    <span>Empresa</span>
+                </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="cmbEmpresaCodigos" runat="server" AutoPostBack = true CssClass="form-control" OnSelectedIndexChanged="cmbEmpresaCodigos_SelectedIndexChanged"></asp:DropDownList>
+                </div>
+                <div class="col-md-1">
+                    <span>Delegacion</span>
+                </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="cmbDelegacionCodigos" runat="server" AutoPostBack = true usesubmitbehavior="false" CssClass="form-control"></asp:DropDownList>&nbsp;
+                </div>
+                 <div class="col-md-1">
+                    <span>Códigos</span>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtCodigos" runat="server" CssClass="form-control" AutoComplete="off" Enabled="true" style="font-size:x-small" Width="80px" ForeColor="#cc0000"></asp:TextBox>
+                </div>
+                <div class="col-md-1">
+                    <asp:LinkButton ID="btnAgregarTransporteCodigos" usesubmitbehavior="false" CssClass="btn btn-success"  Width="100px" runat="server" OnClick="btnAgregarTransporteCodigos_Click"><span class="glyphicon glyphicon-cog">Agregar</span></asp:LinkButton>
+                </div>
+           </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <asp:GridView CssClass="table table-hover" ID="grvTransporteCodigos" Font-Size="Small" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="CFGTCO_ID" OnRowDeleting="grvTransporteCodigos_RowDeleting" OnRowEditing="grvTransporteCodigos_RowEditing" OnRowCancelingEdit="grvTransporteCodigos_RowCancelingEdit" OnRowUpdating="grvTransporteCodigos_RowUpdating" OnRowDataBound="grvTransporteCodigos_RowDataBound">
+                            <Columns>
+                                <asp:BoundField DataField="CFGTCO_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="1" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
+                                <asp:TemplateField HeaderText="BU">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblBU" runat="server" Text='<%# Eval("BU") %>' Visible="false" />
+                                        <asp:DropDownList ID="cmbBU" runat="server">
+                                        </asp:DropDownList>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Empresa">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblEmpresa" runat="server" Text='<%# Eval("Empresa") %>' Visible="false" />
+                                        <asp:DropDownList ID="cmbEmpresa" runat="server">
+                                        </asp:DropDownList>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                 <asp:TemplateField HeaderText="Delegación">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblDelegacion" runat="server" Text='<%# Eval("Delegacion") %>' Visible="false" />
+                                        <asp:DropDownList ID="cmbDelegacion" runat="server">
+                                        </asp:DropDownList>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Codigo" HeaderText="Códigos" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
+                                <asp:CommandField HeaderText="Editar" ShowEditButton="true" ButtonType="Image" EditImageUrl="~/Img/edicion.png" CancelImageUrl="~/Img/cancelar.png" UpdateImageUrl="~/Img/actualizar.png" HeaderStyle-Width="10%" />
+                                <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="true" ButtonType="Image" DeleteImageUrl="~/Img/eliminar.png" DeleteText="Borrar" HeaderStyle-Width="10%" />
+                            </Columns>
+                             <HeaderStyle BackColor="#17a2b8" ForeColor="white" />
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+            <hr />
+
             <div class="row">
                 <div class="col-md-1">
                     <asp:LinkButton ID="btnLimpiarTransporte" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnLimpiarTransporte_Click"><span class="glyphicon glyphicon-cog">Inicializar</span></asp:LinkButton>
@@ -662,7 +701,17 @@
                         <asp:GridView CssClass="table table-hover" ID="grvTransporte" Font-Size="Small" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="CFGTRA_ID" OnRowDeleting="grvTransporte_RowDeleting" OnRowEditing="grvTransporte_RowEditing" OnRowCancelingEdit="grvTransporte_RowCancelingEdit" OnRowUpdating="grvTransporte_RowUpdating" OnRowDataBound="grvTransporte_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="CFGTRA_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="1" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
-                                <asp:TemplateField HeaderStyle-Width="45" ItemStyle-Width="45" ControlStyle-Width="45">
+                                <asp:TemplateField HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="30">
+                                    <HeaderTemplate>
+                                        BU
+                                    </HeaderTemplate>
+                                     <ItemTemplate>
+                                        <asp:Label ID="lblBU" runat="server" Text='<%# Eval("BU") %>' Visible="false" />
+                                        <asp:DropDownList ID="cmbBU" runat="server">
+                                        </asp:DropDownList>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderStyle-Width="40" ItemStyle-Width="40" ControlStyle-Width="40">
                                     <HeaderTemplate>
                                         Empresa
                                         <asp:DropDownList ID="FiltroEmpresaTransporte" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroEmpresaTransporte" AutoPostBack="true" AppendDataBoundItems="true">
@@ -675,7 +724,7 @@
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderStyle-Width="50" ItemStyle-Width="50" ControlStyle-Width="50">
+                                <asp:TemplateField HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60">
                                     <HeaderTemplate>
                                         Delegación
                                         <asp:DropDownList ID="FiltroDelegacionTransporte" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroDelegacionTransporte" AutoPostBack="true" AppendDataBoundItems="true">
@@ -689,7 +738,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Margen" HeaderText="Margen" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:n4}" ApplyFormatInEditMode="true" HeaderStyle-Width="30" ItemStyle-Width="30" ControlStyle-Width="60"/>
-                                <asp:TemplateField  HeaderStyle-Width="130" ItemStyle-Width="130" ControlStyle-Width="130">
+                                <asp:TemplateField  HeaderStyle-Width="120" ItemStyle-Width="120" ControlStyle-Width="120">
                                     <HeaderTemplate>
                                         Desde
                                         <asp:DropDownList ID="FiltroDesdeTransporte" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroDesdeTransporte" AutoPostBack="true" AppendDataBoundItems="true">
@@ -703,7 +752,7 @@
                                         <asp:Label  ID="lblDesde" runat="server" Text='<%# (String.IsNullOrEmpty(Eval("Desde").ToString())) ? "" : Eval("Desde", "{0:dd/MM/yyyy}") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Hasta" HeaderStyle-Width="130" ItemStyle-Width="130" ControlStyle-Width="130">
+                                <asp:TemplateField HeaderText="Hasta" HeaderStyle-Width="120" ItemStyle-Width="120" ControlStyle-Width="120">
                                     <EditItemTemplate>
                                          <asp:TextBox ID="txtHasta" runat="server" Text='<%# Bind("Hasta","{0:yyyy-MM-dd}") %>' TextMode="Date" />
                                     </EditItemTemplate>
@@ -711,7 +760,7 @@
                                         <asp:Label  ID="lblHasta" runat="server" Text='<%# (String.IsNullOrEmpty(Eval("Hasta").ToString())) ? "" : Eval("Hasta", "{0:dd/MM/yyyy}") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderStyle-Width="65" ItemStyle-Width="65" ControlStyle-Width="65">
+                                <asp:TemplateField HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60">
                                     <HeaderTemplate>
                                         Distancia
                                         <asp:DropDownList ID="FiltroDistanciaTransporte" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroDistanciaTransporte" AutoPostBack="true" AppendDataBoundItems="true">
@@ -724,9 +773,9 @@
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Prop" HeaderText="Prop" ItemStyle-HorizontalAlign="Right"  DataFormatString="{0:n6}" ApplyFormatInEditMode="true" HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
-                                <asp:BoundField DataField="Valor" HeaderText="Valor" ItemStyle-HorizontalAlign="Right"  DataFormatString="{0:n6}" ApplyFormatInEditMode="true" HeaderStyle-Width="70" ItemStyle-Width="70" ControlStyle-Width="70" />
-                                <asp:BoundField DataField="Desvio" HeaderText="Desvío" ItemStyle-HorizontalAlign="Right"  DataFormatString="{0:P2}" ApplyFormatInEditMode="true"  HeaderStyle-Width="65"  ItemStyle-Width="65" ControlStyle-Width="65"/>
+                                <asp:BoundField DataField="Prop" HeaderText="Prop" ItemStyle-HorizontalAlign="Right"  DataFormatString="{0:n6}" ApplyFormatInEditMode="true" HeaderStyle-Width="50" ItemStyle-Width="50" ControlStyle-Width="50" />
+                                <asp:BoundField DataField="Valor" HeaderText="Valor" ItemStyle-HorizontalAlign="Right"  DataFormatString="{0:n6}" ApplyFormatInEditMode="true" HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
+                                <asp:BoundField DataField="Desvio" HeaderText="Desvío" ItemStyle-HorizontalAlign="Right"  DataFormatString="{0:P2}" ApplyFormatInEditMode="true"  HeaderStyle-Width="60"  ItemStyle-Width="60" ControlStyle-Width="60"/>
                                 <asp:CommandField HeaderText="Editar" ShowEditButton="true" ButtonType="Image" EditImageUrl="~/Img/edicion.png" CancelImageUrl="~/Img/cancelar.png" UpdateImageUrl="~/Img/actualizar.png" HeaderStyle-Width="10" />
                                 <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="true" ButtonType="Image" DeleteImageUrl="~/Img/eliminar.png" DeleteText="Borrar" HeaderStyle-Width="5" />
                             </Columns>
@@ -764,7 +813,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView ID="grvPaneles" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="IDAsset" OnRowEditing="grvPaneles_RowEditing" OnRowCancelingEdit="grvPaneles_RowCancelingEdit" OnRowUpdating="grvPaneles_RowUpdating" OnRowDataBound="grvPaneles_RowDataBound">
+                        <asp:GridView ID="grvPaneles" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="IDAsset" OnRowEditing="grvPaneles_RowEditing" OnRowCancelingEdit="grvPaneles_RowCancelingEdit" OnRowUpdating="grvPaneles_RowUpdating" OnRowDataBound="grvPaneles_RowDataBound" Font-Size="Small">
                        <%-- <asp:GridView ID="grvPaneles" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="IDAsset" OnRowDataBound="grvPaneles_RowDataBound">--%>
                             <Columns>
                                <%-- <asp:BoundField DataField="ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="1" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
@@ -817,7 +866,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView ID="grvUsuarios" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="USR_ID, USR_UsuarioRed" OnRowDeleting="grvUsuarios_RowDeleting" OnRowEditing="grvUsuarios_RowEditing" OnRowCancelingEdit="grvUsuarios_RowCancelingEdit" OnRowUpdating="grvUsuarios_RowUpdating">
+                        <asp:GridView ID="grvUsuarios" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="USR_ID, USR_UsuarioRed" OnRowDeleting="grvUsuarios_RowDeleting" OnRowEditing="grvUsuarios_RowEditing" OnRowCancelingEdit="grvUsuarios_RowCancelingEdit" OnRowUpdating="grvUsuarios_RowUpdating" Font-Size="Small">
                             <Columns>
                                 <asp:BoundField DataField="USR_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
                                 <asp:BoundField DataField="USR_UsuarioRed" HeaderText="Usuario" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="15%" />
@@ -841,7 +890,38 @@
             </div>
         </div>
 
-        <div class="tab-pane fade <%=hidTAB.Value=="7"?"show active":"" %>" id="nav-profile_historico" role="tabpanel" aria-labelledby="nav-profile_historico-tab">
+      <div class="tab-pane fade <%=hidTAB.Value=="7"?"show active":"" %>" id="nav-profile_bu" role="tabpanel" aria-labelledby="nav-profile_bu-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <asp:GridView ID="grvBU" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" Font-Size="Small">
+                            <Columns>
+                                <asp:CheckBoxField DataField="Prueba" HeaderText="Prueba" ItemStyle-HorizontalAlign="Center" ReadOnly="True" HeaderStyle-Width="100" Visible="false"/>
+                                <asp:TemplateField HeaderStyle-Width="200">
+                                    <HeaderTemplate>
+                                        Versión
+                                            <asp:DropDownList ID="FiltroVersionBU" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroVersionBU" AutoPostBack="true" AppendDataBoundItems="true">
+                                                <asp:ListItem Text="" Value=""></asp:ListItem>
+                                            </asp:DropDownList>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <%# Eval("Version") %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Desde" DataFormatString="{0:d}" HeaderText="Desde" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="125" />
+                                <asp:BoundField DataField="Hasta" DataFormatString="{0:d}" HeaderText="Hasta" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="125" />
+                                <asp:BoundField DataField="BU"  HeaderText="BU" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="125" />
+                                <asp:BoundField DataField="Empresa"  HeaderText="Empresa" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="125" />
+                            </Columns>
+                            <HeaderStyle BackColor="#17a2b8" ForeColor="white" />
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade <%=hidTAB.Value=="8"?"show active":"" %>" id="nav-profile_historico" role="tabpanel" aria-labelledby="nav-profile_historico-tab">
             <br />
             <%--<asp:RadioButton ID="rdbGFV" runat="server" GroupName="TipoHistorico" Text="GFV" AutoPostBack="true" OnCheckedChanged="rbtn_CheckedChanged" />
             &nbsp;
@@ -849,7 +929,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView ID="grvHistorico" runat="server" CssClass="table table-hover" AutoGenerateColumns="False">
+                        <asp:GridView ID="grvHistorico" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" Font-Size="Small">
                             <Columns>
                                 <%--<asp:BoundField DataField="Tipo" HeaderText="Tipo" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="115" />--%>
                                 <asp:BoundField DataField="ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50" />

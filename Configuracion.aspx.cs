@@ -28,7 +28,7 @@ namespace ROP_Informe
         int COLGRID_Familia = 1;
         int COLGRID_Subfamilia = 2;
         int COLGRID_ART_ID = 3;
-        int COLGRID_CFGSERV_Tipo = 4;
+        //int COLGRID_CFGSERV_Tipo = 4;
         int COLGRID_SER_btnEditar = 5;
         int COLGRID_SER_btnEliminar = 6;
 
@@ -40,17 +40,23 @@ namespace ROP_Informe
         int CAMPO_Fecha = 3;
 
         int COLGRID_CFGTRA_ID = 0;
-        int COLGRID_Empresa = 1;
-        int COLGRID_Delegacion = 2;
-        int COLGRID_Margen = 3;
-        int COLGRID_Desde = 4;
-        int COLGRID_Hasta = 5;
-        int COLGRID_Distancia = 6;
-        int COLGRID_Prop = 7;
-        int COLGRID_Valor = 8;
-        int COLGRID_Desvio = 9;
-        int COLGRID_TRA_btnEditar = 10;
-        int COLGRID_TRA_btnEliminar = 11;
+        //int COLGRID_BU = 1;
+        //int COLGRID_Empresa = 2;
+        //int COLGRID_Delegacion = 3;
+        int COLGRID_Margen = 4;
+        //int COLGRID_Desde = 5;
+        //int COLGRID_Hasta = 6;
+        //int COLGRID_Distancia = 7;
+        int COLGRID_Prop = 8;
+        int COLGRID_Valor = 9;
+        int COLGRID_Desvio = 10;
+        int COLGRID_TRA_btnEditar = 11;
+        int COLGRID_TRA_btnEliminar = 12;
+
+        int COLGRID_TRANS_ID = 0;
+        int COLGRID_TRANS_Codigo = 4;
+        int COLGRID_TRANS_btnEditar = 5;
+        int COLGRID_TRANS_btnEliminar=6;
 
         int COLGRID_MOV_ID = 0;
         int COLGRID_MOV_Signo = 3;
@@ -95,43 +101,43 @@ namespace ROP_Informe
         int COL_AAFPaneles = 0;
         int COL_EstandarPaneles = 1;
 
-        int COL_Version_ID = 0;
-        int COL_Version_Version = 1;
-        int COL_Version_Prueba = 2;
-        int COL_Version_Desde = 3;
-        int COL_Version_Hasta = 4;
-        int COL_Version_Grupo = 5;
-        int COL_Version_Subgrupo = 6;
-        int COL_Version_Concepto = 7;
-        int COL_Version_Empresa = 8;
-        int COL_Version_Familia = 9;
-        int COL_Version_Subfamilia = 10;
-        int COL_Version_Articulo = 11;
-        int COL_Version_Valor = 12;
+        //int COL_Version_ID = 0;
+        //int COL_Version_Version = 1;
+        //int COL_Version_Prueba = 2;
+        //int COL_Version_Desde = 3;
+        //int COL_Version_Hasta = 4;
+        //int COL_Version_Grupo = 5;
+        //int COL_Version_Subgrupo = 6;
+        //int COL_Version_Concepto = 7;
+        //int COL_Version_Empresa = 8;
+        //int COL_Version_Familia = 9;
+        //int COL_Version_Subfamilia = 10;
+        //int COL_Version_Articulo = 11;
+        //int COL_Version_Valor = 12;
 
-        int COL_GeneralID = 0;
-        int COL_GeneralPrueba = 1;
-        int COL_GeneralVersion = 2;
-        int COL_GeneralDesde = 3;
-        int COL_GeneralHasta = 4;
-        int COL_GeneralConcepto = 5;
-        int COL_GeneralEmpresa = 6;
-        int COL_GeneralValor = 7;
+        //int COL_GeneralID = 0;
+        //int COL_GeneralPrueba = 1;
+        //int COL_GeneralVersion = 2;
+        //int COL_GeneralDesde = 3;
+        //int COL_GeneralHasta = 4;
+        //int COL_GeneralConcepto = 5;
+        //int COL_GeneralEmpresa = 6;
+        //int COL_GeneralValor = 7;
 
-        int COL_FicheroGeneralConcepto = 1;
-        int COL_FicheroGeneralEmpresa = 2;
-        int COL_FicheroGeneralValor = 3;
+        //int COL_FicheroGeneralConcepto = 1;
+        //int COL_FicheroGeneralEmpresa = 2;
+        //int COL_FicheroGeneralValor = 3;
 
-        int FILA_GENERAL_TITULO = 1;
-        int FILA_GENERAL_IDVERSION = 3;
-        int FILA_GENERAL_VERSION = 4;
-        int FILA_GENERAL_FECHA_DESDE = 5;
-        int FILA_GENERAL_FECHA_HASTA = 6;
-        int FILA_GENERAL_DATOS = 9;
+        //int FILA_GENERAL_TITULO = 1;
+        //int FILA_GENERAL_IDVERSION = 3;
+        //int FILA_GENERAL_VERSION = 4;
+        //int FILA_GENERAL_FECHA_DESDE = 5;
+        //int FILA_GENERAL_FECHA_HASTA = 6;
+        //int FILA_GENERAL_DATOS = 9;
 
         // Usuarios
-        int CAMPO_USR_ID = 0;
-        int CAMPO_USR_UsuarioRed = 1;
+        //int CAMPO_USR_ID = 0;
+        //int CAMPO_USR_UsuarioRed = 1;
         int CAMPO_USR_Visualizar = 2;
         int CAMPO_USR_Exportar = 3;
         int CAMPO_USR_Importar = 4;
@@ -161,6 +167,7 @@ namespace ROP_Informe
                 ViewState["FiltroConceptoValor"] = "";
                 ViewState["FiltroVersionGeneral"] = "";
                 ViewState["FiltroConceptoGeneral"] = "";
+                ViewState["FiltroBUGeneral"] = "";
                 ViewState["FiltroEmpresaGeneral"] = "";
                 ViewState["FiltroVersionMovimientosGeneral"]="";
                 ViewState["FiltroMovimiento"] = "";
@@ -168,6 +175,7 @@ namespace ROP_Informe
                 ViewState["FiltroDelegacionTransporte"] = "";
                 ViewState["FiltroDesdeTransporte"] = "";
                 ViewState["FiltroDistanciaTransporte"] = "";
+                ViewState["FiltroVersionBU"] = "";
                 rdbOperativo.Checked = true;
                 rellenarGridGeneral();
                 rellenarGrid();
@@ -177,9 +185,11 @@ namespace ROP_Informe
                 rellenarEmpresa();
                 rellenarDelegacion();
                 rellenarGridTransporte();
+                rellenarGridTransporteCodigos();
+                rellenarGridBU();
                 rellenarTransporte();
                 rellenarTransporteGeneral();
-                datosPaneles();
+                //datosPaneles();
                 rellenarGridPaneles();
                 rellenarGridUsuarios();
                 validarAccionUsuario();
@@ -280,6 +290,23 @@ namespace ROP_Informe
                     }
                 }
 
+                btnLimpiarTransporteCodigos.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnAgregarTransporteCodigos.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+
+                foreach (GridViewRow myRow in grvTransporteCodigos.Rows)
+                {
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRANS_btnEditar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                    }
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRANS_btnEliminar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                    }
+                }
+
                 //btnEditarFijo.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
                 //btnGuardarFijo.Visible = false;
                 //btnCancelarFijo.Visible = false;
@@ -374,6 +401,22 @@ namespace ROP_Informe
                     }
                 }
 
+                btnLimpiarTransporteCodigos.Visible = false;
+                btnAgregarTransporteCodigos.Visible = false;
+                foreach (GridViewRow myRow in grvTransporteCodigos.Rows)
+                {
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRANS_btnEditar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = false;
+                    }
+                    imgBoton = (ImageButton)myRow.Cells[COLGRID_TRANS_btnEliminar].Controls[0];
+                    if (imgBoton != null)
+                    {
+                        imgBoton.Visible = false;
+                    }
+                }
+
                 //btnEditarFijo.Visible = false;
                 //btnGuardarFijo.Visible = false;
                 //btnCancelarFijo.Visible = false;
@@ -410,7 +453,7 @@ namespace ROP_Informe
             this.rellenarGridGeneral();
         }
 
-           private void rellenarFiltroVersionGeneral(DropDownList cmbFiltroVersion)
+        private void rellenarFiltroVersionGeneral(DropDownList cmbFiltroVersion)
         {
             cmbFiltroVersion.DataSource = null;
             conexiones.crearConexion();
@@ -482,6 +525,34 @@ namespace ROP_Informe
             cmbFiltroEmpresa.Items.FindByValue(ViewState["FiltroEmpresaGeneral"].ToString()).Selected = true;
         }
 
+        protected void CambioFiltroBUGeneral(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroBU = (DropDownList)sender;
+            ViewState["FiltroBUGeneral"] = cmbFiltroBU.SelectedValue;
+            this.rellenarGridGeneral();
+        }
+
+        private void rellenarFiltroBUGeneral(DropDownList cmbFiltroEmpresa)
+        {
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_ConfiguracionGeneralBUConsulta";
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            if (ViewState["FiltroBUGeneral"].ToString() == "")
+                conexiones.comando.Parameters.AddWithValue("@BU", DBNull.Value);
+            else
+                conexiones.comando.Parameters.AddWithValue("@BU", ViewState["FiltroBUGeneral"].ToString());
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroEmpresa.DataSource = dt;
+            cmbFiltroEmpresa.DataTextField = "BU";
+            cmbFiltroEmpresa.DataValueField = "BU";
+            cmbFiltroEmpresa.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroEmpresa.Items.FindByValue(ViewState["FiltroBUGeneral"].ToString()).Selected = true;
+        }
+
         private void rellenarGridGeneral()
         {
             DropDownList cmbFiltro;
@@ -505,6 +576,13 @@ namespace ROP_Informe
                 parametroConcepto.Value = ViewState["FiltroConceptoGeneral"].ToString();
             conexiones.comando.Parameters.Add(parametroConcepto);
 
+            SqlParameter parametroBU = new SqlParameter("@BU", SqlDbType.NVarChar, 10);
+            if (ViewState["FiltroBUGeneral"].ToString() == "")
+                parametroBU.Value = null;
+            else
+                parametroBU.Value = ViewState["FiltroBUGeneral"].ToString();
+            conexiones.comando.Parameters.Add(parametroBU);
+
             SqlParameter parametroEmpresa = new SqlParameter("@empresa", SqlDbType.NVarChar, 5);
             if (ViewState["FiltroEmpresaGeneral"].ToString() == "")
                 parametroEmpresa.Value = null;
@@ -525,6 +603,9 @@ namespace ROP_Informe
 
             cmbFiltro = (DropDownList)grvDatosGenerales.HeaderRow.FindControl("FiltroEmpresaGeneral");
             this.rellenarFiltroEmpresaGeneral(cmbFiltro);
+
+            cmbFiltro = (DropDownList)grvDatosGenerales.HeaderRow.FindControl("FiltroBUGeneral");
+            this.rellenarFiltroBUGeneral(cmbFiltro);
         }
 
         //private void procesarExcelGeneral(string fichero)
@@ -2196,15 +2277,30 @@ namespace ROP_Informe
             cmbEmpresa.DataSource = null;
             cmbEmpresa.DataBind();
 
+            cmbEmpresaCodigos.Items.Clear();
+            cmbEmpresaCodigos.DataSource = null;
+            cmbEmpresaCodigos.DataBind();
+
             conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_Empresas";
-            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_Empresas";
+            conexiones.comando.CommandTimeout = 240000;
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroBU = new SqlParameter("@BU", SqlDbType.VarChar, 10);
+            parametroBU.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroBU);
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
             System.Data.DataTable dt = new System.Data.DataTable();
             adaptador.Fill(dt);
             cmbEmpresa.DataSource = dt;
             cmbEmpresa.DataTextField = "Empresa";
             cmbEmpresa.DataValueField = "Empresa";
             cmbEmpresa.DataBind();
+
+            cmbEmpresaCodigos.DataSource = dt;
+            cmbEmpresaCodigos.DataTextField = "Empresa";
+            cmbEmpresaCodigos.DataValueField = "Empresa";
+            cmbEmpresaCodigos.DataBind();
             conexiones.conexion.Close();
         }
 
@@ -2213,6 +2309,10 @@ namespace ROP_Informe
             cmbDelegacion.Items.Clear();
             cmbDelegacion.DataSource = null;
             cmbDelegacion.DataBind();
+
+            cmbDelegacionCodigos.Items.Clear();
+            cmbDelegacionCodigos.DataSource = null;
+            cmbDelegacionCodigos.DataBind();
 
             conexiones.crearConexion();
             conexiones.comando = conexiones.conexion.CreateCommand();
@@ -2229,6 +2329,11 @@ namespace ROP_Informe
             cmbDelegacion.DataTextField = "Delegacion";
             cmbDelegacion.DataValueField = "Delegacion";
             cmbDelegacion.DataBind();
+
+            cmbDelegacionCodigos.DataSource = dt;
+            cmbDelegacionCodigos.DataTextField = "Delegacion";
+            cmbDelegacionCodigos.DataValueField = "Delegacion";
+            cmbDelegacionCodigos.DataBind();
 
             adaptador.Dispose();
             conexiones.comando.Dispose();
@@ -2358,6 +2463,40 @@ namespace ROP_Informe
             rellenarTransporteGeneral();
             rellenarGridTransporte();
         }
+
+        protected void cmbEmpresaCodigos_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            DropDownList dropEmpresa = (DropDownList)sender;
+            string selectedEmpresa = (string)dropEmpresa.SelectedValue;
+
+            if (selectedEmpresa != "")
+            {
+                cmbDelegacionCodigos.Items.Clear();
+                cmbDelegacionCodigos.DataSource = null;
+                cmbDelegacionCodigos.DataBind();
+
+                conexiones.crearConexion();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "sp_ROP_Delegaciones";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                SqlParameter parametroEmpresa = new SqlParameter("@empresa", SqlDbType.VarChar, 5);
+                parametroEmpresa.Value = selectedEmpresa.ToString();
+                conexiones.comando.Parameters.Add(parametroEmpresa);
+                SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adaptador.Fill(dt);
+                cmbDelegacionCodigos.DataSource = dt;
+                cmbDelegacionCodigos.DataTextField = "Delegacion";
+                cmbDelegacionCodigos.DataValueField = "Delegacion";
+                cmbDelegacionCodigos.DataBind();
+                adaptador.Dispose();
+                conexiones.comando.Dispose();
+                conexiones.conexion.Close();
+                conexiones.conexion.Dispose();
+            }
+        }
+
 
         //protected void btnActualizarTransporteGeneralPRUEBA_Click(object sender, EventArgs e)
         //{
@@ -2552,6 +2691,70 @@ namespace ROP_Informe
             }
         }
 
+        protected void btnLimpiarTransporteCodigos_Click(object sender, EventArgs e)
+        {
+            cmbEmpresaCodigos.Text = "";
+            cmbDelegacionCodigos.Text = "";
+            txtCodigos.Text = "";
+        }
+
+        protected void btnAgregarTransporteCodigos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtCodigos.Text != "") 
+                {
+                    conexiones.crearConexion();
+                    conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigosAgregar";
+                    conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                    conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                    SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
+                    if (cmbEmpresaCodigos.Text != "")
+                        parametroEmpresa.Value = cmbEmpresaCodigos.Text;
+                    else
+                        parametroEmpresa.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroEmpresa);
+                    SqlParameter parametroDelegacion = new SqlParameter("@Delegacion", SqlDbType.VarChar, 10);
+                    if (cmbDelegacionCodigos.Text != "")
+                        parametroDelegacion.Value = cmbDelegacionCodigos.Text;
+                    else
+                        parametroDelegacion.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroDelegacion);
+                    SqlParameter parametroCodigos = new SqlParameter("@Codigos", SqlDbType.VarChar, 50);
+                    if (txtCodigos.Text != "")
+                        parametroCodigos.Value = txtCodigos.Text;
+                    else
+                        parametroCodigos.Value = DBNull.Value;
+                    conexiones.comando.Parameters.Add(parametroCodigos);
+                    conexiones.comando.ExecuteNonQuery();
+                    conexiones.conexion.Close();
+                }
+                else
+                {
+                    lblTituloError.Text = "Agregar códigos transporte";
+                    lblMensajeError.Text = "Debe indicar los códigos.";
+                    mpeError.Show();
+                }
+
+                cmbEmpresaCodigos.Text = "";
+                cmbDelegacionCodigos.Text = "";
+                txtCodigos.Text = "";
+               
+                cmbEmpresaCodigos.Enabled = true;
+                cmbDelegacionCodigos.Enabled = true;
+                txtCodigos.Enabled = true;
+
+                rellenarGridTransporteCodigos();
+            }
+            catch (Exception ex)
+            {
+                lblTituloError.Text = "Agregar transporte códigos";
+                lblMensajeError.Text = ex.Message;
+                mpeError.Show();
+            }
+        }
+
         private void rellenarTransporteGeneral()
         {
             txtFechaActualizar.Text = "";
@@ -2710,6 +2913,185 @@ namespace ROP_Informe
             rellenarGridTransporte();
         }
 
+        private void rellenarGridTransporteCodigos()
+        {
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigos";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            grvTransporteCodigos.DataSource = dr;
+            grvTransporteCodigos.DataBind();
+            conexiones.conexion.Close();
+        }
+
+
+        protected void grvTransporteCodigos_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            grvTransporteCodigos.EditIndex = e.NewEditIndex;
+            rellenarGridTransporteCodigos();
+        }
+
+        protected void grvTransporteCodigos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList cmbBU = (e.Row.FindControl("cmbBU") as DropDownList);
+
+                cmbBU.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_BUs";
+                SqlDataAdapter adaptadorBU= new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+                System.Data.DataTable dtBU = new System.Data.DataTable();
+                adaptadorBU.Fill(dtBU);
+                cmbBU.DataSource = dtBU;
+                cmbBU.DataTextField = "BU";
+                cmbBU.DataValueField = "BU";
+                cmbBU.DataBind();
+                conexiones.conexion.Close();
+               
+                //cmbBU.Items.Insert(0, new ListItem(""));
+                string BU = (e.Row.FindControl("lblBU") as Label).Text;
+                cmbBU.Items.FindByValue(BU).Selected = true;
+                cmbBU.Enabled = e.Row.RowIndex == grvTransporteCodigos.EditIndex;
+
+                DropDownList cmbEmpresa = (e.Row.FindControl("cmbEmpresa") as DropDownList);
+
+                cmbEmpresa.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "sp_ROP_Empresas";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                SqlParameter parametroBU = new SqlParameter("@BU", SqlDbType.VarChar, 10);
+                parametroBU.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroBU);
+                SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.comando);
+                System.Data.DataTable dtEmpresa = new System.Data.DataTable();
+                adaptadorEmpresa.Fill(dtEmpresa);
+                cmbEmpresa.DataSource = dtEmpresa;
+                cmbEmpresa.DataTextField = "Empresa";
+                cmbEmpresa.DataValueField = "Empresa";
+                cmbEmpresa.DataBind();
+                conexiones.conexion.Close();
+                //cmbEmpresa.Items.Insert(0, new ListItem(""));
+                string empresa = (e.Row.FindControl("lblEmpresa") as Label).Text;
+                cmbEmpresa.Items.FindByValue(empresa).Selected = true;
+                cmbEmpresa.Enabled = e.Row.RowIndex == grvTransporteCodigos.EditIndex;
+
+                DropDownList cmbDelegacion = (e.Row.FindControl("cmbDelegacion") as DropDownList);
+
+                cmbEmpresa.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "sp_ROP_Delegaciones";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                SqlParameter parametroEmpresa = new SqlParameter("@empresa", SqlDbType.VarChar, 5);
+                parametroEmpresa.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroEmpresa);
+                SqlDataAdapter adaptadorDelegacion = new SqlDataAdapter(conexiones.comando);
+                System.Data.DataTable dtDelegacion = new System.Data.DataTable();
+                adaptadorDelegacion.Fill(dtDelegacion);
+                cmbDelegacion.DataSource = dtDelegacion;
+                cmbDelegacion.DataTextField = "Delegacion";
+                cmbDelegacion.DataValueField = "Delegacion";
+                cmbDelegacion.DataBind();
+                adaptadorDelegacion.Dispose();
+                conexiones.comando.Dispose();
+                conexiones.conexion.Close();
+                conexiones.conexion.Dispose();
+
+                //cmbDelegacion.Items.Insert(0, new ListItem(""));
+                string delegacion = (e.Row.FindControl("lblDelegacion") as Label).Text;
+                cmbDelegacion.Items.FindByValue(delegacion).Selected = true;
+                cmbDelegacion.Enabled = e.Row.RowIndex == grvTransporteCodigos.EditIndex;
+            }
+        }
+
+        protected void grvTransporteCodigos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string ID = ((System.Web.UI.WebControls.TextBox)grvTransporteCodigos.Rows[e.RowIndex].Cells[COLGRID_TRANS_ID].Controls[0]).Text;
+            DropDownList cmbBU = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbBU") as DropDownList;
+            string BU = Convert.ToString(cmbBU.SelectedValue);
+            DropDownList cmbEmpresa = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbEmpresa") as DropDownList;
+            string Empresa = Convert.ToString(cmbEmpresa.SelectedValue);
+            DropDownList cmbDelegacion = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbDelegacion") as DropDownList;
+            string Delegacion = Convert.ToString(cmbDelegacion.SelectedValue);
+            string Codigo = ((System.Web.UI.WebControls.TextBox)grvTransporteCodigos.Rows[e.RowIndex].Cells[COLGRID_TRANS_Codigo].Controls[0]).Text;
+           
+            if (Codigo != "")
+            {
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigoModificar";
+                conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parametroID = new SqlParameter("@CFGTCO_ID", SqlDbType.Int);
+                parametroID.Value = Convert.ToInt32(ID);
+                conexiones.comando.Parameters.Add(parametroID);
+                SqlParameter parametroBU= new SqlParameter("@BU", SqlDbType.VarChar, 10);
+                if (Empresa != "")
+                    parametroBU.Value = BU;
+                else
+                    parametroBU.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroBU);
+                SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
+                if (Empresa != "")
+                    parametroEmpresa.Value = Empresa;
+                else
+                    parametroEmpresa.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroEmpresa);
+                SqlParameter parametroDelegacion = new SqlParameter("@Delegacion", SqlDbType.VarChar, 10);
+                if (Delegacion != "")
+                    parametroDelegacion.Value = Delegacion;
+                else
+                    parametroDelegacion.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroDelegacion);
+                SqlParameter parametroCodigo = new SqlParameter("@Codigo", SqlDbType.VarChar, 10);
+                if (Codigo != "")
+                    parametroCodigo.Value = Codigo;
+                else
+                    parametroCodigo.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroCodigo);
+                conexiones.comando.ExecuteNonQuery();
+                conexiones.conexion.Close();
+
+                grvTransporteCodigos.EditIndex = -1;
+                rellenarGridTransporte();
+            }
+            else
+            {
+                lblTituloError.Text = "Modificar códigos transporte";
+                lblMensajeError.Text = "Debe indicar el código de transporte.";
+                mpeError.Show();
+            }
+        }
+
+        protected void grvTransporteCodigos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            grvTransporteCodigos.EditIndex = -1;
+            rellenarGridTransporteCodigos();
+        }
+
+        protected void grvTransporteCodigos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string ID = grvTransporteCodigos.DataKeys[e.RowIndex].Values["CFGTCO_ID"].ToString();
+
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigoEliminar";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parametroID = new SqlParameter("@CFGTCO_ID", SqlDbType.Int);
+            parametroID.Value = Convert.ToInt32(ID);
+            conexiones.comando.Parameters.Add(parametroID);
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            conexiones.conexion.Close();
+
+            rellenarGridTransporteCodigos();
+        }
+
         private void rellenarGridTransporte()
         {
             DropDownList cmbFiltro;
@@ -2776,12 +3158,37 @@ namespace ROP_Informe
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                DropDownList cmbBU = (e.Row.FindControl("cmbBU") as DropDownList);
+
+                cmbBU.DataSource = null;
+                conexiones.crearConexion();
+                conexiones.consulta = "sp_ROP_BUs";
+                SqlDataAdapter adaptadorBU = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+                System.Data.DataTable dtBU = new System.Data.DataTable();
+                adaptadorBU.Fill(dtBU);
+                cmbBU.DataSource = dtBU;
+                cmbBU.DataTextField = "BU";
+                cmbBU.DataValueField = "BU";
+                cmbBU.DataBind();
+                conexiones.conexion.Close();
+
+                //cmbBU.Items.Insert(0, new ListItem(""));
+                string BU = (e.Row.FindControl("lblBU") as Label).Text;
+                cmbBU.Items.FindByValue(BU).Selected = true;
+                cmbBU.Enabled = e.Row.RowIndex == grvTransporte.EditIndex;
+
                 DropDownList cmbEmpresa = (e.Row.FindControl("cmbEmpresa") as DropDownList);
 
                 cmbEmpresa.DataSource = null;
                 conexiones.crearConexion();
-                conexiones.consulta = "sp_ROP_Empresas";
-                SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "sp_ROP_Empresas";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                SqlParameter parametroBU = new SqlParameter("@BU", SqlDbType.VarChar, 10);
+                parametroBU.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroBU);
+                SqlDataAdapter adaptadorEmpresa = new SqlDataAdapter(conexiones.comando);
                 System.Data.DataTable dtEmpresa = new System.Data.DataTable();
                 adaptadorEmpresa.Fill(dtEmpresa);
                 cmbEmpresa.DataSource = dtEmpresa;
@@ -2789,7 +3196,7 @@ namespace ROP_Informe
                 cmbEmpresa.DataValueField = "Empresa";
                 cmbEmpresa.DataBind();
                 conexiones.conexion.Close();
-                cmbEmpresa.Items.Insert(0, new ListItem(""));
+                //cmbEmpresa.Items.Insert(0, new ListItem(""));
                 string empresa = (e.Row.FindControl("lblEmpresa") as Label).Text;
                 cmbEmpresa.Items.FindByValue(empresa).Selected = true;
                 cmbEmpresa.Enabled = e.Row.RowIndex == grvTransporte.EditIndex;
@@ -2817,7 +3224,7 @@ namespace ROP_Informe
                 conexiones.conexion.Close();
                 conexiones.conexion.Dispose();
 
-                cmbDelegacion.Items.Insert(0, new ListItem(""));
+                //cmbDelegacion.Items.Insert(0, new ListItem(""));
                 string delegacion = (e.Row.FindControl("lblDelegacion") as Label).Text;
                 cmbDelegacion.Items.FindByValue(delegacion).Selected = true;
                 cmbDelegacion.Enabled = e.Row.RowIndex == grvTransporte.EditIndex;
@@ -2852,6 +3259,8 @@ namespace ROP_Informe
         protected void grvTransporte_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             string ID = ((System.Web.UI.WebControls.TextBox)grvTransporte.Rows[e.RowIndex].Cells[COLGRID_CFGTRA_ID].Controls[0]).Text;
+            DropDownList cmbBU = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbBU") as DropDownList;
+            string BU = Convert.ToString(cmbBU.SelectedValue);
             DropDownList cmbEmpresa = grvTransporte.Rows[e.RowIndex].FindControl("cmbEmpresa") as DropDownList;
             string Empresa = Convert.ToString(cmbEmpresa.SelectedValue);
             DropDownList cmbDelegacion = grvTransporte.Rows[e.RowIndex].FindControl("cmbDelegacion") as DropDownList;
@@ -2873,7 +3282,12 @@ namespace ROP_Informe
                 SqlParameter parametroID= new SqlParameter("@CFGTRA_ID", SqlDbType.Int);
                 parametroID.Value = Convert.ToInt32(ID);
                 conexiones.comando.Parameters.Add(parametroID);
-
+                SqlParameter parametroBU = new SqlParameter("@BU", SqlDbType.VarChar, 10);
+                if (Empresa != "")
+                    parametroBU.Value = BU;
+                else
+                    parametroBU.Value = DBNull.Value;
+                conexiones.comando.Parameters.Add(parametroBU);
                 SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
                 if (Empresa != "")
                     parametroEmpresa.Value = Empresa;
@@ -2963,6 +3377,54 @@ namespace ROP_Informe
         }
         #endregion
 
+        #region "BU"
+        private void rellenarGridBU()
+        {
+            DropDownList cmbFiltro;
+
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionBU";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroVersion = new SqlParameter("@version", SqlDbType.NVarChar, 10);
+            if (ViewState["FiltroVersionBU"].ToString() == "")
+                parametroVersion.Value = null;
+            else
+                parametroVersion.Value = ViewState["FiltroVersionBU"].ToString();
+            conexiones.comando.Parameters.Add(parametroVersion);
+
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            grvBU.DataSource = dr;
+            grvBU.DataBind();
+            conexiones.conexion.Close();
+
+            cmbFiltro = (DropDownList)grvBU.HeaderRow.FindControl("FiltroVersionBU");
+            this.rellenarFiltroVersionBU(cmbFiltro);
+        }
+
+        private void rellenarFiltroVersionBU(DropDownList cmbFiltroVersion)
+        {
+            cmbFiltroVersion.DataSource = null;
+            conexiones.crearConexion();
+            conexiones.consulta = "sp_ROP_ConfiguracionBUVersionConsulta";
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.consulta, conexiones.conexion);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbFiltroVersion.DataSource = dt;
+            cmbFiltroVersion.DataTextField = "CFG_Version";
+            cmbFiltroVersion.DataValueField = "CFG_Version";
+            cmbFiltroVersion.DataBind();
+            conexiones.conexion.Close();
+            cmbFiltroVersion.Items.FindByValue(ViewState["FiltroVersionBU"].ToString()).Selected = true;
+        }
+
+        protected void CambioFiltroVersionBU(object sender, EventArgs e)
+        {
+            DropDownList cmbFiltroVersion = (DropDownList)sender;
+            ViewState["FiltroVersionBU"] = cmbFiltroVersion.SelectedValue;
+            this.rellenarGridBU();
+        }
+        #endregion
 
         #region "Usuarios"
 
@@ -3173,26 +3635,26 @@ namespace ROP_Informe
             txtPanel.Text = "";
         }
 
-        private void datosPaneles()
-        {
-            try
-            {
-                conexiones.crearConexionBI();
-                conexiones.comando = conexiones.conexion.CreateCommand();
-                conexiones.comando.CommandText = "ROP_BI_Paneles";
-                conexiones.comando.CommandTimeout = 240000;
-                conexiones.comando.CommandType = CommandType.StoredProcedure;
-                conexiones.comando.ExecuteNonQuery();
-                conexiones.comando.Dispose();
-                conexiones.conexion.Close();
-                conexiones.conexion.Close();
-                conexiones.conexion.Dispose();
-            }
-            catch (Exception ex)
-            {
-                conexiones.conexion.Close();
-            }
-        }
+        //private void datosPaneles()
+        //{
+        //    try
+        //    {
+        //        conexiones.crearConexionBI();
+        //        conexiones.comando = conexiones.conexion.CreateCommand();
+        //        conexiones.comando.CommandText = "ROP_BI_Paneles";
+        //        conexiones.comando.CommandTimeout = 240000;
+        //        conexiones.comando.CommandType = CommandType.StoredProcedure;
+        //        conexiones.comando.ExecuteNonQuery();
+        //        conexiones.comando.Dispose();
+        //        conexiones.conexion.Close();
+        //        conexiones.conexion.Close();
+        //        conexiones.conexion.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        conexiones.conexion.Close();
+        //    }
+        //}
 
         private void rellenarGridPaneles()
         {
