@@ -15,10 +15,9 @@ namespace ROP_Informe
             Response.Redirect("default.aspx");
         }
 
-            protected void btnLogin_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Session.Add("usuario", "pepepep");
-            //Session.Add(txtUsuario.Text, txtPassword.Text);
+            Session.Add(txtUsuario.Text, txtPassword.Text);
             Response.Redirect("default.aspx");
         }
     }

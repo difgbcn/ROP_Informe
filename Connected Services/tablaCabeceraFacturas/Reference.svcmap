@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d098bc72-a9ad-42b6-b12b-c003b1698e74" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AXAOS2012PREP-NEW.ALSINA.RED:8101/DynamicsAx/Services/DiarioFacturas" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DiarioFacturas.xsd" MetadataType="Schema" ID="37432c4b-c96a-4601-8cbb-6def1db5ed98" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd9" />
+    <MetadataFile FileName="DiarioFacturas1.xsd" MetadataType="Schema" ID="261e3fef-7b1b-44ea-a038-103454ad34a3" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd4" />
+    <MetadataFile FileName="DiarioFacturas2.xsd" MetadataType="Schema" ID="9108054e-024c-461c-9b9e-07545096eb0e" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd5" />
+    <MetadataFile FileName="DiarioFacturas3.xsd" MetadataType="Schema" ID="e3f6b49e-5889-4223-b2cd-91de0b0c8b90" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd6" />
+    <MetadataFile FileName="DiarioFacturas4.xsd" MetadataType="Schema" ID="0e952d2a-637a-4bf7-856c-645214b5196d" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd0" />
+    <MetadataFile FileName="DiarioFacturas5.xsd" MetadataType="Schema" ID="99c30088-5040-4340-bbd2-7e8bab2c5d57" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd2" />
+    <MetadataFile FileName="DiarioFacturas6.xsd" MetadataType="Schema" ID="80afe713-22ff-4c00-ab59-339500f78a53" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd11" />
+    <MetadataFile FileName="DiarioFacturas.wsdl" MetadataType="Wsdl" ID="dc257d8c-0861-4269-a45b-ac7a1b455054" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas" />
+    <MetadataFile FileName="DiarioFacturas7.xsd" MetadataType="Schema" ID="8e9e630c-7f2b-4c18-81a0-f1bdb5345475" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd8" />
+    <MetadataFile FileName="DiarioFacturas1.wsdl" MetadataType="Wsdl" ID="a9062df0-b60d-4f40-98cd-3b930c0caf48" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?wsdl=wsdl0" />
+    <MetadataFile FileName="DiarioFacturas8.xsd" MetadataType="Schema" ID="befe9b1f-9aa4-482e-9e53-7cc77c6dc149" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd10" />
+    <MetadataFile FileName="DiarioFacturas9.xsd" MetadataType="Schema" ID="fd4f2469-2b63-4f6b-b70f-c41e86772aae" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd7" />
+    <MetadataFile FileName="DiarioFacturas10.xsd" MetadataType="Schema" ID="5d18230f-331e-41a7-ab66-76182c497ba6" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd1" />
+    <MetadataFile FileName="DiarioFacturas11.xsd" MetadataType="Schema" ID="25fe516a-86fb-4e68-bc0b-9ce63b7c679f" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/DiarioFacturas?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

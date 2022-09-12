@@ -19,23 +19,23 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://AXAOS2012TEST.alsina.red:8101/DynamicsAx/Services/TransportTicket" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://AXAOS2012PREP-NEW.ALSINA.RED:8101/DynamicsAx/Services/TransportTicket" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TransportTicket.xsd" MetadataType="Schema" ID="3711fa86-53ca-406e-abfc-7af502184e06" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd10" />
-    <MetadataFile FileName="TransportTicket1.xsd" MetadataType="Schema" ID="e7f231ce-efba-4f63-a769-01115d347b15" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd1" />
-    <MetadataFile FileName="TransportTicket2.xsd" MetadataType="Schema" ID="a9b370e1-ae13-4781-a0a9-e2e110f8ee7f" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd9" />
-    <MetadataFile FileName="TransportTicket3.xsd" MetadataType="Schema" ID="6c684238-7cfe-41d4-b199-797014d2b3ca" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd8" />
-    <MetadataFile FileName="TransportTicket4.xsd" MetadataType="Schema" ID="4f6d8ca4-21fa-40e9-871e-0206a84c3c29" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd7" />
-    <MetadataFile FileName="TransportTicket5.xsd" MetadataType="Schema" ID="fd3d263d-2a29-44f7-b15f-6f3931ce82c4" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd6" />
-    <MetadataFile FileName="TransportTicket6.xsd" MetadataType="Schema" ID="46dd7303-fb2e-4d80-bdcb-4917d9ceae6c" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd5" />
-    <MetadataFile FileName="TransportTicket7.xsd" MetadataType="Schema" ID="c86832e8-a552-4e53-9d55-b7bf98e8c3a0" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd11" />
-    <MetadataFile FileName="TransportTicket8.xsd" MetadataType="Schema" ID="a58544cf-9679-4f5f-a6d7-8fa3698749b5" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd3" />
-    <MetadataFile FileName="TransportTicket9.xsd" MetadataType="Schema" ID="3afe8ad5-2fbf-44df-b907-8573fc1b0ea6" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd2" />
-    <MetadataFile FileName="TransportTicket.wsdl" MetadataType="Wsdl" ID="0b2cec3d-d5eb-4ed9-9416-911ac4fb565a" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?wsdl=wsdl0" />
-    <MetadataFile FileName="TransportTicket10.xsd" MetadataType="Schema" ID="8056d507-0c68-426f-98ce-9142629c6e9e" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd0" />
-    <MetadataFile FileName="TransportTicket11.xsd" MetadataType="Schema" ID="98165bf8-8ac5-4a41-9217-b998bda206c0" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd4" />
-    <MetadataFile FileName="TransportTicket1.wsdl" MetadataType="Wsdl" ID="9d426ed6-b987-4ec3-8020-7541b7bc7faf" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/TransportTicket" />
+    <MetadataFile FileName="TransportTicket12.xsd" MetadataType="Schema" ID="c5d99a1c-9ce6-4e7b-b3a8-e87ae5996031" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd1" />
+    <MetadataFile FileName="TransportTicket121.xsd" MetadataType="Schema" ID="aadfabf6-14f7-41f1-95bf-312fb6a5545b" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd0" />
+    <MetadataFile FileName="TransportTicket122.xsd" MetadataType="Schema" ID="9bc7c7c4-b21e-4860-b51c-e5d2dbe9d30a" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd3" />
+    <MetadataFile FileName="TransportTicket123.xsd" MetadataType="Schema" ID="03b2bfa6-b97c-4d90-a7eb-e7c72dd25c0e" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd2" />
+    <MetadataFile FileName="TransportTicket124.xsd" MetadataType="Schema" ID="68aa838c-1ff7-43c0-b8b7-c6e860bbccab" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd9" />
+    <MetadataFile FileName="TransportTicket125.xsd" MetadataType="Schema" ID="972a86cf-9f64-449f-8dfa-fefae13e344c" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd8" />
+    <MetadataFile FileName="TransportTicket126.xsd" MetadataType="Schema" ID="999a0c72-4d40-404c-bed6-0aab5d7daf8e" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd10" />
+    <MetadataFile FileName="TransportTicket2.wsdl" MetadataType="Wsdl" ID="3ab33691-07aa-4752-8c0f-56b167906a19" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?wsdl=wsdl0" />
+    <MetadataFile FileName="TransportTicket127.xsd" MetadataType="Schema" ID="8efc073a-b62c-445d-a2be-44315ef684ed" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd11" />
+    <MetadataFile FileName="TransportTicket21.wsdl" MetadataType="Wsdl" ID="b5cb0cbe-d9c5-4ef3-977d-ed70957acebf" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket" />
+    <MetadataFile FileName="TransportTicket128.xsd" MetadataType="Schema" ID="fc38acb5-bf4b-45a5-b6c0-bdd8a7d87017" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd5" />
+    <MetadataFile FileName="TransportTicket129.xsd" MetadataType="Schema" ID="2b3b3c67-5e83-4575-823a-3318935b4881" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd4" />
+    <MetadataFile FileName="TransportTicket1210.xsd" MetadataType="Schema" ID="2f307fa2-2560-4cea-821b-9821bfcb3349" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd7" />
+    <MetadataFile FileName="TransportTicket1211.xsd" MetadataType="Schema" ID="4f0e3ca0-e16b-4675-8f21-4dfe84c55451" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd6" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd7" namespace="http://tempuri.org" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd8" namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd10" namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd1" namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd2" namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd3" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd4" namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd5" namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/CustInvoiceTrans" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd6" namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd9" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/CustInvoiceService?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CustInvoiceTransServiceReadRequest">
+    <wsdl:part name="parameters" element="tns:CustInvoiceTransServiceReadRequest" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceReadRequest_Headers">
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceReadResponse">
+    <wsdl:part name="parameters" element="tns:CustInvoiceTransServiceReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransService_read_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceFindKeysRequest">
+    <wsdl:part name="parameters" element="tns:CustInvoiceTransServiceFindKeysRequest" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceFindKeysRequest_Headers">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceFindKeysResponse">
+    <wsdl:part name="parameters" element="tns:CustInvoiceTransServiceFindKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransService_findKeys_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q4:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceFindRequest">
+    <wsdl:part name="parameters" element="tns:CustInvoiceTransServiceFindRequest" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceFindRequest_Headers">
+    <wsdl:part xmlns:q5="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q5:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransServiceFindResponse">
+    <wsdl:part name="parameters" element="tns:CustInvoiceTransServiceFindResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustInvoiceTransService_find_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q6:AifFault" />
+  </wsdl:message>
+  <wsdl:portType name="CustInvoiceTransService">
+    <wsdl:operation name="read">
+      <wsdl:input wsaw:Action="http://tempuri.org/CustInvoiceTransService/read" name="CustInvoiceTransServiceReadRequest" message="tns:CustInvoiceTransServiceReadRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CustInvoiceTransService/readResponse" name="CustInvoiceTransServiceReadResponse" message="tns:CustInvoiceTransServiceReadResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/CustInvoiceTransService/readAifFaultFault" name="AifFaultFault" message="tns:CustInvoiceTransService_read_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findKeys">
+      <wsdl:input wsaw:Action="http://tempuri.org/CustInvoiceTransService/findKeys" name="CustInvoiceTransServiceFindKeysRequest" message="tns:CustInvoiceTransServiceFindKeysRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CustInvoiceTransService/findKeysResponse" name="CustInvoiceTransServiceFindKeysResponse" message="tns:CustInvoiceTransServiceFindKeysResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/CustInvoiceTransService/findKeysAifFaultFault" name="AifFaultFault" message="tns:CustInvoiceTransService_findKeys_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <wsdl:input wsaw:Action="http://tempuri.org/CustInvoiceTransService/find" name="CustInvoiceTransServiceFindRequest" message="tns:CustInvoiceTransServiceFindRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CustInvoiceTransService/findResponse" name="CustInvoiceTransServiceFindResponse" message="tns:CustInvoiceTransServiceFindResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/CustInvoiceTransService/findAifFaultFault" name="AifFaultFault" message="tns:CustInvoiceTransService_find_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

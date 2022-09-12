@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/dynamics/2008/01/documents/WorkPaperLines" xmlns:st="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/dynamics/2008/01/documents/WorkPaperLines" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd6" namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes" />
+  <xs:element name="WorkPaperLines" type="tns:AxdWorkPaperLines" />
+  <xs:complexType name="AxdWorkPaperLines">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClearNilFieldsOnUpdate" nillable="true" type="st:AxdEnum_boolean" />
+      <xs:element minOccurs="0" name="DocPurpose" nillable="true" type="st:AxdEnum_XMLDocPurpose" />
+      <xs:element minOccurs="0" name="SenderId" nillable="true" type="st:AxdExtType_DataAreaId" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkPaperPaletTable" type="tns:AxdEntity_WorkPaperPaletTable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_WorkPaperPaletTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_DocumentHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BOM" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="st:AxdExtType_BusinessUnit" />
+      <xs:element minOccurs="0" name="Compensation" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="CostCenter" nillable="true" type="st:AxdExtType_CostCenter" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="Delegation" nillable="true" type="st:AxdExtType_Delegation" />
+      <xs:element minOccurs="0" name="DocumentNum" nillable="true" type="st:AxdExtType_DocumentNum" />
+      <xs:element minOccurs="0" name="EffectivenessNotValid" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="1" name="HcmPersonnelNumberId" type="st:AxdExtType_HcmPersonnelNumberId" />
+      <xs:element minOccurs="0" name="Hours" nillable="true" type="st:AxdExtType_Hours" />
+      <xs:element minOccurs="0" name="HoursRegistered" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="InventLocationId" nillable="true" type="st:AxdExtType_InventLocationId" />
+      <xs:element minOccurs="0" name="Locked" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="Migration" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="Obraid" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="1" name="OprId" type="st:AxdExtType_RouteOprId" />
+      <xs:element minOccurs="0" name="PackingSlipDevolutionId" nillable="true" type="st:AxdExtType_PackingSlipDevolutionId" />
+      <xs:element minOccurs="0" name="Posted" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="PostedProduction" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="ProjId" nillable="true" type="st:AxdExtType_ProjId" />
+      <xs:element minOccurs="0" name="RealHours" nillable="true" type="st:AxdExtType_RealHours" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="1" name="SeccionId" type="st:AxdExtType_SeccionId" />
+      <xs:element minOccurs="0" name="SiteId" nillable="true" type="st:AxdUnion_AxdType_Str_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="TablillaId" nillable="true" type="st:AxdExtType_TablillaId" />
+      <xs:element minOccurs="0" name="TheoreticalHours" nillable="true" type="st:AxdExtType_TheoreticalHours" />
+      <xs:element minOccurs="0" name="TheoreticalHoursDate" nillable="true" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="TimeEnd" nillable="true" type="st:AxdExtType_TimeEnd" />
+      <xs:element minOccurs="0" name="TimeStart" nillable="true" type="st:AxdExtType_TimeStart" />
+      <xs:element minOccurs="1" name="TransDate" type="st:AxdExtType_TransDate" />
+      <xs:element minOccurs="0" name="WeightVolume" nillable="true" type="st:AxdExtType_WeightVolume" />
+      <xs:element minOccurs="0" name="WorkPaperPaletId" nillable="true" type="st:AxdExtType_WorkPaperPaletId" />
+      <xs:element minOccurs="0" name="WorkRegisterType" nillable="true" type="st:AxdEnum_WorkRegisterType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkPaperPaletLines" type="tns:AxdEntity_WorkPaperPaletLines" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+  <xs:complexType name="AxdEntity_WorkPaperPaletLines">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BOMId" nillable="true" type="st:AxdExtType_BOMId" />
+      <xs:element minOccurs="0" name="CustMisuse" nillable="true" type="st:AxdExtType_NoYesId" />
+      <xs:element minOccurs="0" name="DefaultDimension" nillable="true" type="st:AxdType_DimensionAttributeValueSet" />
+      <xs:element minOccurs="0" name="InventDimId" nillable="true" type="st:AxdExtType_InventDimId" />
+      <xs:element minOccurs="0" name="InventLocationId" nillable="true" type="st:AxdExtType_InventLocationId" />
+      <xs:element minOccurs="0" name="ItemDevolutionType" nillable="true" type="st:AxdEnum_ItemDevolutionType" />
+      <xs:element minOccurs="1" name="ItemId" type="st:AxdUnion_AxdExtType_ItemId_AxdType_ExtCodeValue" />
+      <xs:element minOccurs="0" name="JournalId" nillable="true" type="st:AxdExtType_ProdJournalId" />
+      <xs:element minOccurs="0" name="LineNum" nillable="true" type="st:AxdExtType_LineNum" />
+      <xs:element minOccurs="0" name="ObraId" nillable="true" type="st:AxdExtType_ObraId" />
+      <xs:element minOccurs="0" name="PackingSlipDevolutionId" nillable="true" type="st:AxdExtType_PackingSlipDevolutionId" />
+      <xs:element minOccurs="0" name="PmfTotalCostAllocation" nillable="true" type="st:AxdExtType_PmfTotalCostAllocation" />
+      <xs:element minOccurs="0" name="ProdId" nillable="true" type="st:AxdExtType_ProdId" />
+      <xs:element minOccurs="1" name="Qty" type="st:AxdExtType_Qty" />
+      <xs:element minOccurs="0" name="RecId" nillable="true" type="st:AxdExtType_RecId" />
+      <xs:element minOccurs="0" name="RecVersion" nillable="true" type="st:AxdExtType_RecVersion" />
+      <xs:element minOccurs="0" name="TheoreticalHours" nillable="true" type="st:AxdExtType_TheoreticalHours" />
+      <xs:element minOccurs="0" name="WeightVolume" nillable="true" type="st:AxdExtType_WeightVolume" />
+      <xs:element minOccurs="0" name="WMSPalletId" nillable="true" type="st:AxdExtType_WMSPalletId" />
+      <xs:element minOccurs="1" name="WorkPaperPaletId" type="st:AxdExtType_WorkPaperPaletId" />
+    </xs:sequence>
+    <xs:attribute fixed="entity" name="class" use="required" />
+    <xs:attribute name="action" type="st:AxdEnum_AxdEntityAction" />
+  </xs:complexType>
+</xs:schema>

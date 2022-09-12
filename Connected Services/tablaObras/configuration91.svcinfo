@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="d3axrr6kuIfKzSZbi5o8ZQwsT3M=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="+FoLKuabS7YH7Zd3p01wK4TI2Bk=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ObrasService">
       <properties>
@@ -121,10 +121,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_ObrasService" contract="tablaObras.ObrasService" bindingType="netTcpBinding" address="net.tcp://axaos2012test.alsina.red:8201/DynamicsAx/Services/ObraService" bindingConfiguration="NetTcpBinding_ObrasService">
+    <endpoint name="NetTcpBinding_ObrasService" contract="tablaObras.ObrasService" bindingType="netTcpBinding" address="net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/ObraService" bindingConfiguration="NetTcpBinding_ObrasService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://axaos2012test.alsina.red:8201/DynamicsAx/Services/ObraService</serializedValue>
+          <serializedValue>net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/ObraService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

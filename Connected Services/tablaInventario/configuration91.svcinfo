@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="cmgbSRwwWjq5vU++cTo3GyWbCUU=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="atjcRxG3ZXqIfLBI1bLR53jFeNo=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_InventTransOriginService">
       <properties>
@@ -121,10 +121,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_InventTransOriginService" contract="tablaInventario.InventTransOriginService" bindingType="netTcpBinding" address="net.tcp://axaos2012test.alsina.red:8201/DynamicsAx/Services/InventTransService" bindingConfiguration="NetTcpBinding_InventTransOriginService">
+    <endpoint name="NetTcpBinding_InventTransOriginService" contract="tablaInventario.InventTransOriginService" bindingType="netTcpBinding" address="net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/InventTransService" bindingConfiguration="NetTcpBinding_InventTransOriginService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://axaos2012test.alsina.red:8201/DynamicsAx/Services/InventTransService</serializedValue>
+          <serializedValue>net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/InventTransService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

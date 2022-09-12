@@ -1911,34 +1911,76 @@ namespace ROP_Informe.tablaValesTransporte {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string fieldField;
+        private string dataSourceNameField;
         
-        private string valueField;
+        private string fieldNameField;
+        
+        private Operator operatorField;
+        
+        private string value1Field;
+        
+        private string value2Field;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Field {
+        public string DataSourceName {
             get {
-                return this.fieldField;
+                return this.dataSourceNameField;
             }
             set {
-                this.fieldField = value;
-                this.RaisePropertyChanged("Field");
+                this.dataSourceNameField = value;
+                this.RaisePropertyChanged("DataSourceName");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Value {
+        public string FieldName {
             get {
-                return this.valueField;
+                return this.fieldNameField;
             }
             set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
+                this.fieldNameField = value;
+                this.RaisePropertyChanged("FieldName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Operator Operator {
+            get {
+                return this.operatorField;
+            }
+            set {
+                this.operatorField = value;
+                this.RaisePropertyChanged("Operator");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Value1 {
+            get {
+                return this.value1Field;
+            }
+            set {
+                this.value1Field = value;
+                this.RaisePropertyChanged("Value1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Value2 {
+            get {
+                return this.value2Field;
+            }
+            set {
+                this.value2Field = value;
+                this.RaisePropertyChanged("Value2");
             }
         }
         
@@ -1955,23 +1997,50 @@ namespace ROP_Informe.tablaValesTransporte {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private KeyField[] keyDataField;
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public enum Operator {
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public KeyField[] KeyData {
+        Equal,
+        
+        /// <remarks/>
+        NotEqual,
+        
+        /// <remarks/>
+        Greater,
+        
+        /// <remarks/>
+        GreaterOrEqual,
+        
+        /// <remarks/>
+        Less,
+        
+        /// <remarks/>
+        LessOrEqual,
+        
+        /// <remarks/>
+        Range,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CriteriaElement[] criteriaElementField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
+        public CriteriaElement[] CriteriaElement {
             get {
-                return this.keyDataField;
+                return this.criteriaElementField;
             }
             set {
-                this.keyDataField = value;
-                this.RaisePropertyChanged("KeyData");
+                this.criteriaElementField = value;
+                this.RaisePropertyChanged("CriteriaElement");
             }
         }
         
@@ -1989,14 +2058,14 @@ namespace ROP_Informe.tablaValesTransporte {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaValesTransporte.TransportTicketService")]
     public interface TransportTicketService {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (TransportTicketServiceReadRequest) del mensaje TransportTicketServiceReadRequest no coincide con el valor predeterminado (read)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/read", ReplyAction="http://tempuri.org/TransportTicketService/readResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaValesTransporte.AifFault), Action="http://tempuri.org/TransportTicketService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (TransportTicketServiceFindRequest) del mensaje TransportTicketServiceFindRequest no coincide con el valor predeterminado (find)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/find", ReplyAction="http://tempuri.org/TransportTicketService/findResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaValesTransporte.AifFault), Action="http://tempuri.org/TransportTicketService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse read(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request);
+        ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse find(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/read", ReplyAction="http://tempuri.org/TransportTicketService/readResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse> readAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/find", ReplyAction="http://tempuri.org/TransportTicketService/findResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse> findAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (TransportTicketServiceFindKeysRequest) del mensaje TransportTicketServiceFindKeysRequest no coincide con el valor predeterminado (findKeys)
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/findKeys", ReplyAction="http://tempuri.org/TransportTicketService/findKeysResponse")]
@@ -2007,14 +2076,14 @@ namespace ROP_Informe.tablaValesTransporte {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/findKeys", ReplyAction="http://tempuri.org/TransportTicketService/findKeysResponse")]
         System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindKeysRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (TransportTicketServiceFindRequest) del mensaje TransportTicketServiceFindRequest no coincide con el valor predeterminado (find)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/find", ReplyAction="http://tempuri.org/TransportTicketService/findResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaValesTransporte.AifFault), Action="http://tempuri.org/TransportTicketService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (TransportTicketServiceReadRequest) del mensaje TransportTicketServiceReadRequest no coincide con el valor predeterminado (read)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/read", ReplyAction="http://tempuri.org/TransportTicketService/readResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaValesTransporte.AifFault), Action="http://tempuri.org/TransportTicketService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse find(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request);
+        ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse read(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/find", ReplyAction="http://tempuri.org/TransportTicketService/findResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse> findAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TransportTicketService/read", ReplyAction="http://tempuri.org/TransportTicketService/readResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse> readAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request);
     }
     
     /// <remarks/>
@@ -2169,41 +2238,40 @@ namespace ROP_Informe.tablaValesTransporte {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceReadRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class TransportTicketServiceReadRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceFindRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class TransportTicketServiceFindRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public ROP_Informe.tablaValesTransporte.CallContext CallContext;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
-        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
-        public ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+        public ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria;
         
-        public TransportTicketServiceReadRequest() {
+        public TransportTicketServiceFindRequest() {
         }
         
-        public TransportTicketServiceReadRequest(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList) {
+        public TransportTicketServiceFindRequest(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria) {
             this.CallContext = CallContext;
-            this.EntityKeyList = EntityKeyList;
+            this.QueryCriteria = QueryCriteria;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceReadResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class TransportTicketServiceReadResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceFindResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class TransportTicketServiceFindResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/TransportTicket", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/TransportTicket")]
         public ROP_Informe.tablaValesTransporte.AxdTransportTicket TransportTicket;
         
-        public TransportTicketServiceReadResponse() {
+        public TransportTicketServiceFindResponse() {
         }
         
-        public TransportTicketServiceReadResponse(ROP_Informe.tablaValesTransporte.AxdTransportTicket TransportTicket) {
+        public TransportTicketServiceFindResponse(ROP_Informe.tablaValesTransporte.AxdTransportTicket TransportTicket) {
             this.TransportTicket = TransportTicket;
         }
     }
@@ -2213,20 +2281,21 @@ namespace ROP_Informe.tablaValesTransporte {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private CriteriaElement[] criteriaElementField;
+        private KeyField[] keyDataField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
-        public CriteriaElement[] CriteriaElement {
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public KeyField[] KeyData {
             get {
-                return this.criteriaElementField;
+                return this.keyDataField;
             }
             set {
-                this.criteriaElementField = value;
-                this.RaisePropertyChanged("CriteriaElement");
+                this.keyDataField = value;
+                this.RaisePropertyChanged("KeyData");
             }
         }
         
@@ -2245,76 +2314,34 @@ namespace ROP_Informe.tablaValesTransporte {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string dataSourceNameField;
+        private string fieldField;
         
-        private string fieldNameField;
-        
-        private Operator operatorField;
-        
-        private string value1Field;
-        
-        private string value2Field;
+        private string valueField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string DataSourceName {
+        public string Field {
             get {
-                return this.dataSourceNameField;
+                return this.fieldField;
             }
             set {
-                this.dataSourceNameField = value;
-                this.RaisePropertyChanged("DataSourceName");
+                this.fieldField = value;
+                this.RaisePropertyChanged("Field");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string FieldName {
+        public string Value {
             get {
-                return this.fieldNameField;
+                return this.valueField;
             }
             set {
-                this.fieldNameField = value;
-                this.RaisePropertyChanged("FieldName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Operator Operator {
-            get {
-                return this.operatorField;
-            }
-            set {
-                this.operatorField = value;
-                this.RaisePropertyChanged("Operator");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string Value1 {
-            get {
-                return this.value1Field;
-            }
-            set {
-                this.value1Field = value;
-                this.RaisePropertyChanged("Value1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Value2 {
-            get {
-                return this.value2Field;
-            }
-            set {
-                this.value2Field = value;
-                this.RaisePropertyChanged("Value2");
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
             }
         }
         
@@ -2326,34 +2353,6 @@ namespace ROP_Informe.tablaValesTransporte {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public enum Operator {
-        
-        /// <remarks/>
-        Equal,
-        
-        /// <remarks/>
-        NotEqual,
-        
-        /// <remarks/>
-        Greater,
-        
-        /// <remarks/>
-        GreaterOrEqual,
-        
-        /// <remarks/>
-        Less,
-        
-        /// <remarks/>
-        LessOrEqual,
-        
-        /// <remarks/>
-        Range,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2401,40 +2400,41 @@ namespace ROP_Informe.tablaValesTransporte {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceFindRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class TransportTicketServiceFindRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceReadRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class TransportTicketServiceReadRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public ROP_Informe.tablaValesTransporte.CallContext CallContext;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-        public ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
+        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
+        public ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList;
         
-        public TransportTicketServiceFindRequest() {
+        public TransportTicketServiceReadRequest() {
         }
         
-        public TransportTicketServiceFindRequest(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria) {
+        public TransportTicketServiceReadRequest(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList) {
             this.CallContext = CallContext;
-            this.QueryCriteria = QueryCriteria;
+            this.EntityKeyList = EntityKeyList;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceFindResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class TransportTicketServiceFindResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TransportTicketServiceReadResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class TransportTicketServiceReadResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/TransportTicket", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/TransportTicket")]
         public ROP_Informe.tablaValesTransporte.AxdTransportTicket TransportTicket;
         
-        public TransportTicketServiceFindResponse() {
+        public TransportTicketServiceReadResponse() {
         }
         
-        public TransportTicketServiceFindResponse(ROP_Informe.tablaValesTransporte.AxdTransportTicket TransportTicket) {
+        public TransportTicketServiceReadResponse(ROP_Informe.tablaValesTransporte.AxdTransportTicket TransportTicket) {
             this.TransportTicket = TransportTicket;
         }
     }
@@ -2467,28 +2467,28 @@ namespace ROP_Informe.tablaValesTransporte {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse ROP_Informe.tablaValesTransporte.TransportTicketService.read(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request) {
-            return base.Channel.read(request);
+        ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse ROP_Informe.tablaValesTransporte.TransportTicketService.find(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request) {
+            return base.Channel.find(request);
         }
         
-        public ROP_Informe.tablaValesTransporte.AxdTransportTicket read(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList) {
-            ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest();
+        public ROP_Informe.tablaValesTransporte.AxdTransportTicket find(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest();
             inValue.CallContext = CallContext;
-            inValue.EntityKeyList = EntityKeyList;
-            ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse retVal = ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).read(inValue);
+            inValue.QueryCriteria = QueryCriteria;
+            ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse retVal = ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).find(inValue);
             return retVal.TransportTicket;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse> ROP_Informe.tablaValesTransporte.TransportTicketService.readAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request) {
-            return base.Channel.readAsync(request);
+        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse> ROP_Informe.tablaValesTransporte.TransportTicketService.findAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request) {
+            return base.Channel.findAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse> readAsync(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList) {
-            ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest();
+        public System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse> findAsync(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest();
             inValue.CallContext = CallContext;
-            inValue.EntityKeyList = EntityKeyList;
-            return ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).readAsync(inValue);
+            inValue.QueryCriteria = QueryCriteria;
+            return ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).findAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2517,28 +2517,28 @@ namespace ROP_Informe.tablaValesTransporte {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse ROP_Informe.tablaValesTransporte.TransportTicketService.find(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request) {
-            return base.Channel.find(request);
+        ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse ROP_Informe.tablaValesTransporte.TransportTicketService.read(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request) {
+            return base.Channel.read(request);
         }
         
-        public ROP_Informe.tablaValesTransporte.AxdTransportTicket find(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest();
+        public ROP_Informe.tablaValesTransporte.AxdTransportTicket read(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList) {
+            ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest();
             inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse retVal = ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).find(inValue);
+            inValue.EntityKeyList = EntityKeyList;
+            ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse retVal = ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).read(inValue);
             return retVal.TransportTicket;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse> ROP_Informe.tablaValesTransporte.TransportTicketService.findAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest request) {
-            return base.Channel.findAsync(request);
+        System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse> ROP_Informe.tablaValesTransporte.TransportTicketService.readAsync(ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest request) {
+            return base.Channel.readAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceFindResponse> findAsync(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceFindRequest();
+        public System.Threading.Tasks.Task<ROP_Informe.tablaValesTransporte.TransportTicketServiceReadResponse> readAsync(ROP_Informe.tablaValesTransporte.CallContext CallContext, ROP_Informe.tablaValesTransporte.EntityKey[] EntityKeyList) {
+            ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest inValue = new ROP_Informe.tablaValesTransporte.TransportTicketServiceReadRequest();
             inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            return ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).findAsync(inValue);
+            inValue.EntityKeyList = EntityKeyList;
+            return ((ROP_Informe.tablaValesTransporte.TransportTicketService)(this)).readAsync(inValue);
         }
     }
 }

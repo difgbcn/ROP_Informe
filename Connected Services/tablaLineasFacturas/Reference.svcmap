@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d0d4858c-ec39-423a-944c-6925777e8332" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AXAOS2012PREP-NEW.ALSINA.RED:8101/DynamicsAx/Services/LineasFacturas" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LineasFacturas.xsd" MetadataType="Schema" ID="e3c7468c-8254-4b77-ab1c-d30e3a09b44d" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd5" />
+    <MetadataFile FileName="LineasFacturas1.xsd" MetadataType="Schema" ID="3cfd1308-5aba-4d96-b505-e0d363bcb826" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd3" />
+    <MetadataFile FileName="LineasFacturas2.xsd" MetadataType="Schema" ID="2a6cea48-d886-411b-a7e4-722eecb9feda" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd1" />
+    <MetadataFile FileName="LineasFacturas3.xsd" MetadataType="Schema" ID="e3263023-9b93-48e8-8e3d-e087e25f2d92" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd10" />
+    <MetadataFile FileName="LineasFacturas4.xsd" MetadataType="Schema" ID="e1aaba75-6b29-452e-966e-264da61ecd6b" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd8" />
+    <MetadataFile FileName="LineasFacturas5.xsd" MetadataType="Schema" ID="02b1e8ef-47f1-47d5-98ed-d05852e29782" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd6" />
+    <MetadataFile FileName="LineasFacturas6.xsd" MetadataType="Schema" ID="cda6c938-a984-441f-9dc3-cb7390b452d9" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd4" />
+    <MetadataFile FileName="LineasFacturas7.xsd" MetadataType="Schema" ID="8823baa6-f037-4fed-986a-2f5454bdef2e" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd11" />
+    <MetadataFile FileName="LineasFacturas8.xsd" MetadataType="Schema" ID="5f513a1d-6b71-4ce0-ac5a-497be438216c" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd2" />
+    <MetadataFile FileName="LineasFacturas9.xsd" MetadataType="Schema" ID="af29c65c-6c69-4c79-b215-a245ecb8dc0a" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd0" />
+    <MetadataFile FileName="LineasFacturas.wsdl" MetadataType="Wsdl" ID="21f0da0c-936b-46ac-acd8-87962515e647" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?wsdl=wsdl0" />
+    <MetadataFile FileName="LineasFacturas1.wsdl" MetadataType="Wsdl" ID="fd59e51a-1552-4006-90db-826d2ddecb7f" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas" />
+    <MetadataFile FileName="LineasFacturas10.xsd" MetadataType="Schema" ID="da4578d6-e519-41ce-a885-68d919a6719b" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd9" />
+    <MetadataFile FileName="LineasFacturas11.xsd" MetadataType="Schema" ID="f45010c6-1fc8-4065-8d30-47569420b42b" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/LineasFacturas?xsd=xsd7" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

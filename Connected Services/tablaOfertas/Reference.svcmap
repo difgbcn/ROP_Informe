@@ -19,23 +19,23 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address=" http://AXAOS2012TEST.alsina.red:8101/DynamicsAx/Services/SalesQuotations" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://AXAOS2012PREP-NEW.ALSINA.RED:8101/DynamicsAx/Services/SalesQuotations" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SalesQuotations2.wsdl" MetadataType="Wsdl" ID="6b425165-af83-4551-9d5e-154b59ff7bb3" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations" />
-    <MetadataFile FileName="SalesQuotations12.xsd" MetadataType="Schema" ID="12221509-efdf-4852-9312-f077eeed7d0a" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd7" />
-    <MetadataFile FileName="SalesQuotations121.xsd" MetadataType="Schema" ID="bd4504f8-d65d-41f2-a1b4-60740eeff715" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd6" />
-    <MetadataFile FileName="SalesQuotations122.xsd" MetadataType="Schema" ID="a50cfe7f-6bd2-4aaa-82ca-aa7864273a69" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd5" />
-    <MetadataFile FileName="SalesQuotations123.xsd" MetadataType="Schema" ID="f993fc67-db91-48eb-988a-ba980d1c71e6" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd4" />
-    <MetadataFile FileName="SalesQuotations124.xsd" MetadataType="Schema" ID="4bd694ac-0be4-4c17-9ac0-89437d399761" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd3" />
-    <MetadataFile FileName="SalesQuotations125.xsd" MetadataType="Schema" ID="33bd6932-3313-448b-85e7-7bf963fcaca9" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd2" />
-    <MetadataFile FileName="SalesQuotations126.xsd" MetadataType="Schema" ID="e9c9d90c-70d5-4827-b091-b7b2cbdc61c9" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd1" />
-    <MetadataFile FileName="SalesQuotations127.xsd" MetadataType="Schema" ID="c33c26c5-2882-416d-ba28-2f2fe3cfedd2" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd0" />
-    <MetadataFile FileName="SalesQuotations128.xsd" MetadataType="Schema" ID="73e4e96b-074a-404d-94ea-234c09c80782" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd10" />
-    <MetadataFile FileName="SalesQuotations129.xsd" MetadataType="Schema" ID="00ac72ad-e762-410b-95c8-59c4ae853d48" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd9" />
-    <MetadataFile FileName="SalesQuotations1210.xsd" MetadataType="Schema" ID="e3607515-051f-4711-af17-0c6d90c7d08a" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd8" />
-    <MetadataFile FileName="SalesQuotations1211.xsd" MetadataType="Schema" ID="467736bd-2989-4be7-9315-3cd18b6b409f" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd11" />
-    <MetadataFile FileName="SalesQuotations21.wsdl" MetadataType="Wsdl" ID="f04376cf-e3b0-4d49-b70c-5f30e3b60b61" SourceId="1" SourceUrl="http://axaos2012test.alsina.red:8101/DynamicsAx/Services/SalesQuotations?wsdl=wsdl0" />
+    <MetadataFile FileName="SalesQuotations.xsd" MetadataType="Schema" ID="690ac2b9-5198-44b6-a9a8-3880234169a8" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd0" />
+    <MetadataFile FileName="SalesQuotations1.xsd" MetadataType="Schema" ID="da6d2bf7-bf4e-416c-b320-2c5795cc934a" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd10" />
+    <MetadataFile FileName="SalesQuotations.wsdl" MetadataType="Wsdl" ID="d21a9b22-2359-4d3e-8176-ae7232b7b345" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations" />
+    <MetadataFile FileName="SalesQuotations2.xsd" MetadataType="Schema" ID="e460e4ac-722a-42d5-93d9-1f3af01d25d5" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd11" />
+    <MetadataFile FileName="SalesQuotations1.wsdl" MetadataType="Wsdl" ID="de613eb2-35f1-45ab-9daa-d15e1fddfb96" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?wsdl=wsdl0" />
+    <MetadataFile FileName="SalesQuotations3.xsd" MetadataType="Schema" ID="2fd0e4e9-6639-4463-a2a8-00bba93d8d51" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd9" />
+    <MetadataFile FileName="SalesQuotations4.xsd" MetadataType="Schema" ID="4a25ae27-f4d4-4153-aef8-48efe0e9d5c1" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd8" />
+    <MetadataFile FileName="SalesQuotations5.xsd" MetadataType="Schema" ID="f1a149f0-721a-49bf-9c1a-cbb0b3be55ac" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd7" />
+    <MetadataFile FileName="SalesQuotations6.xsd" MetadataType="Schema" ID="8b670c9b-e960-4674-bb92-2b22f17a93b4" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd6" />
+    <MetadataFile FileName="SalesQuotations7.xsd" MetadataType="Schema" ID="33ba9c9b-9016-4dae-a47e-0a6d89ea6f6e" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd5" />
+    <MetadataFile FileName="SalesQuotations8.xsd" MetadataType="Schema" ID="4065facf-bdfd-49e2-94cb-ef7f7dd88823" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd4" />
+    <MetadataFile FileName="SalesQuotations9.xsd" MetadataType="Schema" ID="9c6e7f81-a0c8-4291-9d66-e307ca4a0d46" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd3" />
+    <MetadataFile FileName="SalesQuotations10.xsd" MetadataType="Schema" ID="d2ae9044-54f0-4ede-9536-a2e75d0047e0" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd2" />
+    <MetadataFile FileName="SalesQuotations11.xsd" MetadataType="Schema" ID="fc16f7e0-0da4-415e-bdc5-a154e310952e" SourceId="1" SourceUrl="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesQuotations?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
