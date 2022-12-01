@@ -425,7 +425,6 @@
       <xs:element minOccurs="0" name="LineHeader" nillable="true" type="st:AxdExtType_LineHeader" />
       <xs:element minOccurs="0" name="LineNum" nillable="true" type="st:AxdExtType_LineNum" />
       <xs:element minOccurs="0" name="LinePercent" nillable="true" type="st:AxdExtType_SalesLinePercent" />
-      <xs:element minOccurs="0" name="ManualEntryChangepolicy" nillable="true" type="st:AxdExtType_Integer" />
       <xs:element minOccurs="0" name="Marcado" nillable="true" type="st:AxdEnum_NoYes" />
       <xs:element minOccurs="0" name="MatchingAgreementLine" nillable="true" type="st:AxdEntityKey_AgreementLine" />
       <xs:element minOccurs="0" name="Meters" nillable="true" type="st:AxdExtType_Meters" />
@@ -522,11 +521,11 @@
       <xs:element minOccurs="0" name="ShipCarrierPostalAddress" nillable="true" type="st:AxdEntityKey_LogisticsPostalAddress" />
       <xs:element minOccurs="0" name="ShippingDateConfirmed" nillable="true" type="st:AxdExtType_SalesShippingDateConfirmed" />
       <xs:element minOccurs="0" name="ShippingDateRequested" nillable="true" type="st:AxdExtType_SalesShippingDateRequested" />
+      <xs:element minOccurs="0" name="SourceDocumentLine" nillable="true" type="st:AxdExtType_SourceDocumentLineRecId" />
       <xs:element minOccurs="0" name="StatisticValue_LT" nillable="true" type="st:AxdExtType_LtIntrastatStatisticValue" />
       <xs:element minOccurs="0" name="StatProcId" nillable="true" type="st:AxdExtType_IntrastatProcId" />
       <xs:element minOccurs="0" name="StatTriangularDeal" nillable="true" type="st:AxdExtType_IntrastatTriangularDeal" />
       <xs:element minOccurs="0" name="StructureId" nillable="true" type="st:AxdUnion_AxdExtType_StructureId_AxdType_ExtCodeValue" />
-      <xs:element minOccurs="0" name="SystemEntryChangePolicy" nillable="true" type="st:AxdExtType_Integer" />
       <xs:element minOccurs="0" name="TantoPorMil" nillable="true" type="st:AxdExtType_TantoPorMil" />
       <xs:element minOccurs="0" name="TariffFraction" nillable="true" type="st:AxdExtType_EInvoiceExtCodeId_MX" />
       <xs:element minOccurs="0" name="Tax394ItemCode_RO" nillable="true" type="st:AxdExtType_Tax394ItemCode_RO" />

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Ww3DLUvxp8aq/LkAkThawvC5ihA=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="8khreieR9EkazYJl3SHdIvWAqKA0PyPHQBv4PyDXfAE=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_DiarioFacturasService">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_DiarioFacturasService1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_DiarioFacturasService</serializedValue>
+          <serializedValue>NetTcpBinding_DiarioFacturasService1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -121,7 +121,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_DiarioFacturasService" contract="tablaCabeceraFacturas.DiarioFacturasService" bindingType="netTcpBinding" address="net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/DiarioFacturas" bindingConfiguration="NetTcpBinding_DiarioFacturasService">
+    <endpoint name="NetTcpBinding_DiarioFacturasService1" contract="tablaCabeceraFacturas.DiarioFacturasService" bindingType="netTcpBinding" address="net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/DiarioFacturas" bindingConfiguration="NetTcpBinding_DiarioFacturasService1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/DiarioFacturas</serializedValue>
@@ -133,7 +133,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_DiarioFacturasService</serializedValue>
+          <serializedValue>NetTcpBinding_DiarioFacturasService1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>tablaCabeceraFacturas.DiarioFacturasService</serializedValue>
@@ -196,7 +196,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_DiarioFacturasService</serializedValue>
+          <serializedValue>NetTcpBinding_DiarioFacturasService1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

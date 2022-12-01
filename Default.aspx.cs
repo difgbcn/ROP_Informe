@@ -15,39 +15,39 @@ namespace ROP_Informe
 {
     public partial class Default : System.Web.UI.Page
     {
-        public static string WSDominio = "";
-        public static string WSUsuario = "";
-        public static string WSContrasena = "";
+        private static string WSDominio = "";
+        private static string WSUsuario = "";
+        private static string WSContrasena = "";
 
-        public static DataTable dtIdiomas = new DataTable();
+        private static DataTable dtIdiomas = new DataTable();
         public string tituloConcepto = "Concepto";
         public string tituloImporte = "Importe";
 
-        public static string usuario = "";  //User.Identity.Name.ToString(); // Environment.UserName + "_" + DateTime.Now.ToString("hh_mm");
-        public static string idioma = "";
+        private static string usuario = "";  //User.Identity.Name.ToString(); // Environment.UserName + "_" + DateTime.Now.ToString("hh_mm");
+        private static string idioma = "";
         string nombreFicha = "";
         string delegacion = "";
         string articulosLiquidacion = "";
 
-        public static string codigosTransporte = "";
+        private static string codigosTransporte = "";
 
         List<int> listaBonificacionesDesde = new List<int>();
         List<int> listaBonificacionesHasta = new List<int>();
         List<decimal> listaBonificacionesValor = new List<decimal>();
 
-        public static DataSet[] dsTaxConsumible = new DataSet[1];
-        public static DataTable dtPedidos = new DataTable();
-        public static List<string> listaItemTaxConsumible = new List<string>();
+        private static DataSet[] dsTaxConsumible = new DataSet[1];
+        private static DataTable dtPedidos = new DataTable();
+        private static List<string> listaItemTaxConsumible = new List<string>();
 
-        public static DataTable dtTax = new DataTable();
+        private static DataTable dtTax = new DataTable();
 
-        public static DataTable dtGastosPatio = new DataTable();
-        public static DataTable dtCalculoTax = new DataTable();
-        public static DataTable dtValesTransporte = new DataTable();
-        public static DataTable dtAbonoMPO = new DataTable();
-        public static DataTable dtBuenTrato = new DataTable();
-        public static DataTable dtChatarra = new DataTable();
-        public static DataTable dtDevoluciones = new DataTable();
+        private static DataTable dtGastosPatio = new DataTable();
+        private static DataTable dtCalculoTax = new DataTable();
+        private static DataTable dtValesTransporte = new DataTable();
+        private static DataTable dtAbonoMPO = new DataTable();
+        private static DataTable dtBuenTrato = new DataTable();
+        private static DataTable dtChatarra = new DataTable();
+        private static DataTable dtDevoluciones = new DataTable();
 
         int COL_DATA_FECHA_DOC = 0;
         int COL_DATA_FECHA_CAPITULO = 1;
@@ -121,37 +121,35 @@ namespace ROP_Informe
 
         string nombreInforme;
         DataTable dtTaximetro = new DataTable();
-        //DataTable dtTaximetroInforme = new DataTable();
         DataTable dtArticulosPaneles;
-
-        //DataTable dtCapitulosPeso = new DataTable();
-
+      
         List<string> listaArticulosSinFicha = new List<string>();
         List<string> listaArticulosPedido = new List<string>();
         List<DateTime> listaFechasPedido = new List<DateTime>();
         List<string> listaOfertas = new List<string>();
         List<DateTime> listaFechasOferta = new List<DateTime>();
 
-        DateTime horaTotal_1 = default(DateTime);
-        TimeSpan horaTotal_2 = default(TimeSpan);
-        DateTime horaLlamada_1 = default(DateTime);
-        TimeSpan horaLlamada_2 = default(TimeSpan);
-        DateTime horaFechaBase_1 = default(DateTime);
-        TimeSpan horaFechaBase_2 = default(TimeSpan);
-        DateTime horaPrecios_1 = default(DateTime);
-        TimeSpan horaPrecios_2 = default(TimeSpan);
-        DateTime horaDatosConfigurados_1 = default(DateTime);
-        TimeSpan horaDatosConfigurados_2 = default(TimeSpan);
-        DateTime horaDatosConfigurados_3 = default(DateTime);
-        TimeSpan horaDatosConfigurados_4 = default(TimeSpan);
-        DateTime horaDatosPase1_1 = default(DateTime);
-        TimeSpan horaDatosPase1_2 = default(TimeSpan);
-        DateTime horaDatosPase2_1 = default(DateTime);
-        TimeSpan horaDatosPase2_2 = default(TimeSpan);
-        DateTime horaFechaOferta_1 = default(DateTime);
-        TimeSpan horaFechaOferta_2 = default(TimeSpan);
+        private static DateTime horaProcesar = default(DateTime);
+        private static DateTime horaTotal_1 = default(DateTime);
+        private static TimeSpan horaTotal_2 = default(TimeSpan);
+        private static DateTime horaLlamada_1 = default(DateTime);
+        private static TimeSpan horaLlamada_2 = default(TimeSpan);
+        private static DateTime horaFechaBase_1 = default(DateTime);
+        private static TimeSpan horaFechaBase_2 = default(TimeSpan);
+        private static DateTime horaPrecios_1 = default(DateTime);
+        private static TimeSpan horaPrecios_2 = default(TimeSpan);
+        private static DateTime horaDatosConfigurados_1 = default(DateTime);
+        private static TimeSpan horaDatosConfigurados_2 = default(TimeSpan);
+        private static DateTime horaDatosConfigurados_3 = default(DateTime);
+        private static TimeSpan horaDatosConfigurados_4 = default(TimeSpan);
+        private static DateTime horaDatosPase1_1 = default(DateTime);
+        private static TimeSpan horaDatosPase1_2 = default(TimeSpan);
+        private static DateTime horaDatosPase2_1 = default(DateTime);
+        private static TimeSpan horaDatosPase2_2 = default(TimeSpan);
+        private static DateTime horaFechaOferta_1 = default(DateTime);
+        private static TimeSpan horaFechaOferta_2 = default(TimeSpan);
 
-        public static string datosGenerales = "";
+        private static string datosGenerales = "";
         string moneda = "";
 
         decimal pesoArticulo = 0;
@@ -340,12 +338,12 @@ namespace ROP_Informe
         public int COL_ARBOL_ETIQUETA_DESPLEGABLE = 4;
         public int COL_ARBOL_ETIQUETA_TOTAL = 5;
 
-        public static decimal totalFacturacion = 0;
-        public static decimal importe_Facturacion = 0;
-        public static bool totalesCalculados = false;
+        private static decimal totalFacturacion = 0;
+        private static decimal importe_Facturacion = 0;
+        private static bool totalesCalculados = false;
 
         // estructura para manejar los valores del árbol
-        public static System.Data.DataTable dtValores;
+        private static System.Data.DataTable dtValores;
 
         public int dtValores_ETIQUETA = 0;
         public int dtValores_CONCEPTO = 1;
@@ -1001,7 +999,7 @@ namespace ROP_Informe
 
                     // COSTES: TOTAL TAXIMETROS
                     total = dtValores.AsEnumerable()
-                   .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_TAXIMETRO_NO_CONSUMIBLE" || y.Field<string>("ETIQUETA") == "TOTAL_TAXIMETRO_CONSUMIBLE" )
+                   .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_TAXIMETRO_ABONO_NO_CONSUMIBLE" || y.Field<string>("ETIQUETA") == "TOTAL_TAXIMETRO_CONSUMIBLE")
                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     filaValores = dtValores.NewRow();
@@ -1030,10 +1028,10 @@ namespace ROP_Informe
 
                     // FACTURACIÓN: TOTAL VENTAS
                     //total = dtValores.AsEnumerable()
-                    //.Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
+                    //.Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "SVP_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
                     //.Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
                     total = dtValores.AsEnumerable()
-                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
+                    .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "SVP_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
                     .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     importe_Facturacion = total;
@@ -1067,7 +1065,7 @@ namespace ROP_Informe
                     //.Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MARGEN_MONTAJES" || y.Field<string>("ETIQUETA") == "MARGEN_DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "MARGEN_FENOLICO_NUEVO" || y.Field<string>("ETIQUETA") == "MARGEN_UNE_CIF" || y.Field<string>("ETIQUETA") == "MARGEN_OTROS_SERVICIOS")
                     //.Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
                     total = dtValores.AsEnumerable()
-                  .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MARGEN_MONTAJES" || y.Field<string>("ETIQUETA") == "MARGEN_DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "MARGEN_FENOLICO_NUEVO" || y.Field<string>("ETIQUETA") == "MARGEN_UNE_CIF" || y.Field<string>("ETIQUETA") == "MARGEN_OTROS_SERVICIOS")
+                  .Where(y => y.Field<string>("ETIQUETA") == "TOTAL_VENTAS" || y.Field<string>("ETIQUETA") == "TOTAL_COSTE_DE_VENTAS")
                   .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     filaValores = dtValores.NewRow();
@@ -1144,9 +1142,6 @@ namespace ROP_Informe
                     filaValores = null;
 
                     // COSTES: TOTAL COSTE PRODUCTOS
-                    //total = dtValores.AsEnumerable()
-                    //.Where(y => y.Field<string>("ETIQUETA") == "COSTE_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "COSTE_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "COSTE_MPO" || y.Field<string>("ETIQUETA") == "COSTE_CHATARRA")
-                    //.Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
                     total = dtValores.AsEnumerable()
                     .Where(y => y.Field<string>("ETIQUETA") == "COSTE_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "COSTE_MATERIAL_ALQUILADO_Y_VENDIDO" || y.Field<string>("ETIQUETA") == "COSTE_MPO" || y.Field<string>("ETIQUETA") == "COSTE_CHATARRA")
                     .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
@@ -1161,9 +1156,6 @@ namespace ROP_Informe
                     filaValores = null;
 
                     // MARGEN: TOTAL MARGEN PRODUCTOS
-                    //total = dtValores.AsEnumerable()
-                    //.Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_LIQUIDACIONES")
-                    //.Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
                     total = dtValores.AsEnumerable()
                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES")
                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
@@ -1209,9 +1201,6 @@ namespace ROP_Informe
                     filaValores = null;
 
                     // MARGEN: TOTAL MARGEN VENTAS MATERIAL ALQUILADO Y LIQUIDACIONES
-                    //total = dtValores.AsEnumerable()
-                    //.Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_LIQUIDACIONES")
-                    //.Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
                     total = dtValores.AsEnumerable()
                    .Where(y => y.Field<string>("ETIQUETA") == "MARGEN_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES")
                    .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
@@ -1479,9 +1468,9 @@ namespace ROP_Informe
                     dtValores.Rows.Add(filaValores);
                     filaValores = null;
 
-                    // FACTURACIÓN: TOTAL UNE/CIF
+                    // FACTURACIÓN: TOTAL SVP/CIF
                     total = dtValores.AsEnumerable()
-                    .Where(y => y.Field<string>("ETIQUETA") == "UNE_CIF")
+                    .Where(y => y.Field<string>("ETIQUETA") == "SVP_CIF")
                     .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     importe_Facturacion = total;
@@ -1569,7 +1558,7 @@ namespace ROP_Informe
 
                     // FACTURACIÓN: TOTAL SERVICIOS
                     total = dtValores.AsEnumerable()
-                    .Where(y => y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
+                    .Where(y => y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "SVP_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
                     .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     importe_Facturacion = total;
@@ -1818,7 +1807,7 @@ namespace ROP_Informe
                     // dtValores.Rows.Add(filaValores);
                     // filaValores = null;
 
-                    // // TOTAL GASTOS VARIABLES VARIABLES UNE/CIF
+                    // // TOTAL GASTOS VARIABLES VARIABLES SVP/CIF
                     // total = dtValores.AsEnumerable()
                     // .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_VARIABLES_UNE_CIF")
                     // .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
@@ -2079,7 +2068,7 @@ namespace ROP_Informe
                     dtValores.Rows.Add(filaValores);
                     filaValores = null;
 
-                    // TOTAL GASTOS FIJOS BU VARIABLES UNE/CIF
+                    // TOTAL GASTOS FIJOS BU VARIABLES SVP/CIF
                     total = dtValores.AsEnumerable()
                     .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_BU_UNE_CIF")
                     .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
@@ -2262,7 +2251,7 @@ namespace ROP_Informe
                     dtValores.Rows.Add(filaValores);
                     filaValores = null;
 
-                    // TOTAL GASTOS FIJOS CENTRALES VARIABLES UNE/CIF
+                    // TOTAL GASTOS FIJOS CENTRALES VARIABLES SVP/CIF
                     total = dtValores.AsEnumerable()
                     .Where(y => y.Field<string>("ETIQUETA") == "GASTOS_FIJOS_CENTRALES_UNE_CIF")
                     .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
@@ -2874,11 +2863,11 @@ namespace ROP_Informe
                 conexiones.conexion.Dispose();
                 return dtGastosOficina;
             }
-            catch
+            catch (Exception ex)
             {
                 imgWarning.Visible = true;
                 lblMensajeError.Visible = true;
-                lblMensajeError.Text = "ERROR gastos oficina";
+                lblMensajeError.Text = "ERROR gastos oficina // " + ex.Message;
                 return dtGastosOficina;
             }
         }
@@ -2912,11 +2901,11 @@ namespace ROP_Informe
                 conexiones.conexion.Dispose();
                 return dtGastosFijos;
             }
-            catch
+            catch (Exception ex)
             {
                 imgWarning.Visible = true;
                 lblMensajeError.Visible = true;
-                lblMensajeError.Text = "ERROR gastos fijos";
+                lblMensajeError.Text = "ERROR gastos fijos // " + ex.Message;
                 return dtGastosFijos;
             }
         }
@@ -3364,18 +3353,30 @@ namespace ROP_Informe
             }
         }
 
-        protected void calcularCodigosTransporte()
+        protected void calcularCodigosTransporte(string empresa, string delegacion)
         {
             conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigos";
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteSubfamilia";
             conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
             conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
+            if (empresa != "")
+                parametroEmpresa.Value = empresa;
+            else
+                parametroEmpresa.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroEmpresa);
+            SqlParameter parametroDelegacion = new SqlParameter("@Delegacion", SqlDbType.VarChar, 10);
+            if (delegacion != "")
+                parametroDelegacion.Value = delegacion;
+            else
+                parametroDelegacion.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroDelegacion);
             SqlDataReader dr = conexiones.comando.ExecuteReader();
             if (dr.HasRows)
             {
                 while (dr.Read())
                 {
-                    codigosTransporte = dr["Codigo"].ToString();
+                    codigosTransporte = codigosTransporte + dr["ProductId"].ToString() + "|";
                 }
             }
             dr.Close();
@@ -4699,6 +4700,11 @@ namespace ROP_Informe
                 SqlDataAdapter adaptadorDatosConfiguracion;
                 System.Data.DataTable dtDatosConfiguracion;
 
+                DataTable dtTiempos = new DataTable();
+                DataRow oItemTiempo;
+                dtTiempos.Columns.Add("CONCEPTO");
+                dtTiempos.Columns.Add("TIEMPO");
+
                 decimal kilometros = 0;
                 decimal cambio = 1;
                 bool hayTR001 = false;
@@ -4964,6 +4970,7 @@ namespace ROP_Informe
 
                 horaTotal_1 = DateTime.Now;
                 horaLlamada_1 = DateTime.Now;
+                horaProcesar = DateTime.Now;
 
                 System.Collections.IEnumerator enumerator_1;
 
@@ -4999,11 +5006,21 @@ namespace ROP_Informe
                 proxy_1.ClientCredentials.Windows.ClientCredential.Domain = WSDominio;
                 proxy_1.ClientCredentials.Windows.ClientCredential.UserName = WSUsuario;
                 proxy_1.ClientCredentials.Windows.ClientCredential.Password = WSContrasena;
-
                 tablaOfertas.AxdSalesQuotations axdTablaOfertas_1 = proxy_1.find(contexto_1, criterio_1);
+
+                horaTotal_2 = DateTime.Now.Subtract(horaLlamada_1);
+                oItemTiempo = dtTiempos.NewRow();
+                oItemTiempo[0] = "TIEMPO tablaOefrtas";
+                oItemTiempo[1] = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
+                dtTiempos.Rows.Add(oItemTiempo);
+                horaProcesar = DateTime.Now;
                 if (axdTablaOfertas_1.SalesQuotationMasterTable is null)
                 {
                     proxy_1.Close();
+                    imgWarning.Visible = true;
+                    lblMensajeError.Visible = true;
+                    lblMensajeError.Text = "NO se ha encontrado la oferta indicada";
+                    return;
                 }
                 else
                 {
@@ -5012,6 +5029,7 @@ namespace ROP_Informe
                     dtGastosPatio = new System.Data.DataTable();
                     horaLlamada_2 = DateTime.Now.Subtract(horaLlamada_1);
 
+                    
                     while (enumerator_1.MoveNext())
                     {
                         dondeVa = "Oferta";
@@ -5024,6 +5042,9 @@ namespace ROP_Informe
                         txtMasterObra.Text = axdEntity_SalesQuotationMasterTable.MasterObrasId;
                         txtCentroCoste.Text = axdEntity_SalesQuotationMasterTable.CostCenter;
                         txtMoneda.Text = axdEntity_SalesQuotationMasterTable.CurrencyCode;
+
+                        codigosTransporte = "";
+                        calcularCodigosTransporte(cmbEmpresa.SelectedItem.ToString(), axdEntity_SalesQuotationMasterTable.Delegation);
 
                         moneda = axdEntity_SalesQuotationMasterTable.CurrencyCode;
                         tituloImporte = "Importe (" + moneda + ")";
@@ -5188,7 +5209,6 @@ namespace ROP_Informe
                             {
                                 dondeVa = "recorrer capitulos " + capitulo.ToString();
                                 axdEntity_SalesQuotationTable = axdEntity_SalesQuotationTables[capitulo];
-
                                 axdEntity_SalesQuotationLines = axdEntity_SalesQuotationTable.SalesQuotationLine;
 
                                 if (axdEntity_SalesQuotationLines is null)
@@ -5805,7 +5825,7 @@ namespace ROP_Informe
                                                         // Gastos fijos centrales
                                                         importeGastosFijosCentralesVentaFenolicoNuevoCapitulos = importeGastosFijosCentralesVentaFenolicoNuevoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount) * gastosFijosCentralesVenta);
                                                     }
-                                                    // UNE/CIF
+                                                    // SVP/CIF
                                                     else if (axdEntity_SalesQuotationLine.CanonImport.HasValue && axdEntity_SalesQuotationLine.CanonImport != 0)
                                                     {
                                                         importeFacturacionVentaUneCifCapitulos = importeFacturacionVentaUneCifCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationLine.LineAmount);
@@ -5862,7 +5882,7 @@ namespace ROP_Informe
 
                                         if (axdEntity_SalesQuotationTable.SalesRental.ToString().ToUpper() == "RENTAL")
                                         {
-                                            // UNE/CIF
+                                            // SVP/CIF
                                             if (axdEntity_SalesQuotationLine.CanonImport.HasValue && axdEntity_SalesQuotationLine.CanonImport != 0)
                                                 importeFacturacionVentaUneCifCapitulos = importeFacturacionVentaUneCifCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesPrice) * Convert.ToDecimal(axdEntity_SalesQuotationLine.Canon)) / 100);
 
@@ -6030,9 +6050,9 @@ namespace ROP_Informe
                                             oItemTaximetro[COL_DATA_IMPORTE_NO_TAX_DIAS_HASTA] = diasHastaTaxNoConsumible.ToString();
                                             oItemTaximetro[COL_DATA_IMPORTE_TAX] = ((Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroConsumible * taximetroConsumible * Convert.ToDecimal(axdEntity_SalesQuotationLine.DuracionEstimada)) / diasxMes).ToString("#,##0.00");
 
-                                            if (Convert.ToInt32(axdEntity_SalesQuotationTable.DuracionEstimada) <= diasHastaTaxNoConsumible)
-                                                diasTaximetroNoConsumibleCalcular = Convert.ToInt32(axdEntity_SalesQuotationTable.DuracionEstimada) - diasDesdeTaxNoConsumible;
-                                            if (Convert.ToInt32(axdEntity_SalesQuotationTable.DuracionEstimada) >= diasHastaTaxNoConsumible)
+                                            if (Convert.ToInt32(axdEntity_SalesQuotationLine.DuracionEstimada) <= diasHastaTaxNoConsumible)
+                                                diasTaximetroNoConsumibleCalcular = Convert.ToInt32(axdEntity_SalesQuotationLine.DuracionEstimada) - diasDesdeTaxNoConsumible;
+                                            if (Convert.ToInt32(axdEntity_SalesQuotationLine.DuracionEstimada) >= diasHastaTaxNoConsumible)
                                                 diasTaximetroNoConsumibleCalcular = diasHastaTaxNoConsumible - diasDesdeTaxNoConsumible;
 
                                             importeCosteTaximetroNoConsumible = importeCosteTaximetroNoConsumible + (Convert.ToDecimal(axdEntity_SalesQuotationLine.SalesQty) * precioTaximetroNoConsumible * taximetroNoConsumible * diasTaximetroNoConsumibleCalcular) / diasxMes;
@@ -6452,7 +6472,7 @@ namespace ROP_Informe
                                     if (importeFacturacionVentaUneCifCapitulos != 0)
                                     {
                                         filaValores = dtValores.NewRow();
-                                        filaValores[dtValores_ETIQUETA] = "UNE_CIF";
+                                        filaValores[dtValores_ETIQUETA] = "SVP_CIF";
                                         filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationTable.QuotationId.ToString() + tituloCapitulo;
                                         filaValores[dtValores_IMPORTE] = importeFacturacionVentaUneCifCapitulos.ToString("#,##0.00");
                                         filaValores[dtValores_PORCENTAJE] = "0.00";
@@ -6848,11 +6868,11 @@ namespace ROP_Informe
                             .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     //totalVenta = dtValores.AsEnumerable()
-                    //       .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
+                    //       .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "SVP_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
                     //       .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     totalVenta = dtValores.AsEnumerable()
-                          .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
+                          .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "SVP_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
                           .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                     totalPortes = dtValores.AsEnumerable()
@@ -7030,9 +7050,31 @@ namespace ROP_Informe
                 conexiones.conexion.Close();
                 conexiones.conexion.Dispose();
 
+                oItemTiempo = dtTiempos.NewRow();
+                oItemTiempo[0] = "TIEMPO fecha base";
+                oItemTiempo[1] = horaFechaBase_2.Minutes.ToString("00") + ":" + horaFechaBase_2.Seconds.ToString("00") + ":" + horaFechaBase_2.Milliseconds.ToString("00");
+                dtTiempos.Rows.Add(oItemTiempo);
+
+                oItemTiempo = dtTiempos.NewRow();
+                oItemTiempo[0] = "TIEMPO fecha oferta";
+                oItemTiempo[1] = horaFechaOferta_2.Minutes.ToString("00") + ":" + horaFechaOferta_2.Seconds.ToString("00") + ":" + horaFechaOferta_2.Milliseconds.ToString("00");
+                dtTiempos.Rows.Add(oItemTiempo);
+                
+                horaTotal_2 = DateTime.Now.Subtract(horaProcesar);
+                oItemTiempo = dtTiempos.NewRow();
+                oItemTiempo[0] = "TIEMPO procesar";
+                oItemTiempo[1] = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
+                dtTiempos.Rows.Add(oItemTiempo);
+              
+                horaTotal_2 = DateTime.Now.Subtract(horaTotal_1);
+                oItemTiempo = dtTiempos.NewRow();
+                oItemTiempo[0] = "TIEMPO TOTAL";
+                oItemTiempo[1] = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
+                dtTiempos.Rows.Add(oItemTiempo);
+
                 dataTiempos.DataSource = null;
                 dataTiempos.Columns.Clear();
-                dataTiempos.DataSource = dtGastosOficina;
+                dataTiempos.DataSource = dtTiempos;
                 dataTiempos.DataBind();
                 dataTiempos.Visible = true;
 
@@ -7422,6 +7464,10 @@ namespace ROP_Informe
                 if (axdtablaPedidos_1.SalesTable is null)
                 {
                     proxy_1.Close();
+                    imgWarning.Visible = true;
+                    lblMensajeError.Visible = true;
+                    lblMensajeError.Text = "NO se ha encontrado el pedido indicado";
+                    return;
                 }
                 else
                 {
@@ -7449,6 +7495,9 @@ namespace ROP_Informe
                         txtCentroCoste.Text = axdEntity_SalesQuotationMasterTable.CostCenter;
                         txtMoneda.Text = axdEntity_SalesQuotationMasterTable.CurrencyCode;
                         moneda = axdEntity_SalesQuotationMasterTable.CurrencyCode;
+
+                        codigosTransporte = "";
+                        calcularCodigosTransporte(cmbEmpresa.SelectedItem.ToString(), axdEntity_SalesQuotationMasterTable.Delegation);
 
                         //if (axdEntity_SalesQuotationMasterTable.CreatedDateTime.Value.ToString().Length > 0)
                         //    cambio = localizarCambio(Convert.ToDateTime(axdEntity_SalesQuotationMasterTable.CreatedDateTime.Value), moneda);
@@ -7666,6 +7715,38 @@ namespace ROP_Informe
                                 }
                             }
                             horaDatosPase1_2 = DateTime.Now.Subtract(horaDatosPase1_1);
+
+
+                            // RECUPERAR LOS DATOS DE CONFIGURACIÓN: TAXIMETRO - GASTOS - AJUSTES
+                            dtDatosConfiguracion = new System.Data.DataTable();
+                            horaTotal_SQL = DateTime.Now;
+                            conexiones.crearConexion();
+                            conexiones.comando = conexiones.conexion.CreateCommand();
+                            conexiones.comando.CommandText = "ROP_DatosConfiguracion";
+                            conexiones.comando.CommandTimeout = 240000;
+                            conexiones.comando.CommandType = CommandType.StoredProcedure;
+                            conexiones.comando.Parameters.AddWithValue("@empresa", cmbEmpresa.SelectedItem.ToString());
+                            conexiones.comando.Parameters.AddWithValue("@usuario", usuario); // Environment.UserName);
+                            if (cmbVersion.SelectedValue == "")
+                                conexiones.comando.Parameters.AddWithValue("@CFG_ID", null);
+                            else if (Convert.ToInt32(cmbVersion.SelectedValue) == -1)
+                                conexiones.comando.Parameters.AddWithValue("@CFG_ID", null);
+                            else
+                                conexiones.comando.Parameters.AddWithValue("@CFG_ID", Convert.ToInt32(cmbVersion.SelectedValue));
+                            conexiones.comando.Parameters.AddWithValue("@fecha", Convert.ToDateTime(axdEntity_SalesQuotationMasterTable.CreatedDateTime.Value));
+                            conexiones.comando.Parameters.AddWithValue("@moneda", moneda);
+                            conexiones.comando.Parameters.AddWithValue("@articulos", articulosConfiguracion);
+                            adaptadorDatosConfiguracion = new SqlDataAdapter(conexiones.comando);
+                            adaptadorDatosConfiguracion.Fill(dtDatosConfiguracion);
+                            adaptadorDatosConfiguracion.Dispose();
+                            conexiones.comando.Dispose();
+                            conexiones.conexion.Close();
+                            conexiones.conexion.Dispose();
+                            horaTotal_2 = DateTime.Now.Subtract(horaTotal_SQL);
+                            oItemTiempo = dtTiempos.NewRow();
+                            oItemTiempo[0] = "TIEMPO ROP_DatosConfiguracion";
+                            oItemTiempo[1] = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
+                            dtTiempos.Rows.Add(oItemTiempo);
 
                             // Calculo de la fecha a utilizar
                             //o   ¿La oferta está asociada a una ficha ?
@@ -7885,36 +7966,36 @@ namespace ROP_Informe
                                     articulosLiquidacion = articulosLiquidacion + axdEntity_SalesQuotationTable.ItemId.ToString() + "|";
                                 }
 
-                                // RECUPERAR LOS DATOS DE CONFIGURACIÓN: TAXIMETRO - GASTOS - AJUSTES
-                                dtDatosConfiguracion = new System.Data.DataTable();
-                                horaTotal_SQL = DateTime.Now;
-                                conexiones.crearConexion();
-                                conexiones.comando = conexiones.conexion.CreateCommand();
-                                conexiones.comando.CommandText = "ROP_DatosConfiguracion";
-                                conexiones.comando.CommandTimeout = 240000;
-                                conexiones.comando.CommandType = CommandType.StoredProcedure;
-                                conexiones.comando.Parameters.AddWithValue("@empresa", cmbEmpresa.SelectedItem.ToString());
-                                conexiones.comando.Parameters.AddWithValue("@usuario", usuario); // Environment.UserName);
-                                if (cmbVersion.SelectedValue == "")
-                                    conexiones.comando.Parameters.AddWithValue("@CFG_ID", null);
-                                else if (Convert.ToInt32(cmbVersion.SelectedValue) == -1)
-                                    conexiones.comando.Parameters.AddWithValue("@CFG_ID", null);
-                                else
-                                    conexiones.comando.Parameters.AddWithValue("@CFG_ID", Convert.ToInt32(cmbVersion.SelectedValue));
-                                conexiones.comando.Parameters.AddWithValue("@fecha", Convert.ToDateTime(axdEntity_SalesQuotationMasterTable.CreatedDateTime.Value));
-                                conexiones.comando.Parameters.AddWithValue("@moneda", moneda);
-                                conexiones.comando.Parameters.AddWithValue("@articulos", articulosConfiguracion);
-                                adaptadorDatosConfiguracion = new SqlDataAdapter(conexiones.comando);
-                                adaptadorDatosConfiguracion.Fill(dtDatosConfiguracion);
-                                adaptadorDatosConfiguracion.Dispose();
-                                conexiones.comando.Dispose();
-                                conexiones.conexion.Close();
-                                conexiones.conexion.Dispose();
-                                horaTotal_2 = DateTime.Now.Subtract(horaTotal_SQL);
-                                oItemTiempo = dtTiempos.NewRow();
-                                oItemTiempo[0] = "TIEMPO ROP_DatosConfiguracion";
-                                oItemTiempo[1] = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
-                                dtTiempos.Rows.Add(oItemTiempo);
+                                //// RECUPERAR LOS DATOS DE CONFIGURACIÓN: TAXIMETRO - GASTOS - AJUSTES
+                                //dtDatosConfiguracion = new System.Data.DataTable();
+                                //horaTotal_SQL = DateTime.Now;
+                                //conexiones.crearConexion();
+                                //conexiones.comando = conexiones.conexion.CreateCommand();
+                                //conexiones.comando.CommandText = "ROP_DatosConfiguracion";
+                                //conexiones.comando.CommandTimeout = 240000;
+                                //conexiones.comando.CommandType = CommandType.StoredProcedure;
+                                //conexiones.comando.Parameters.AddWithValue("@empresa", cmbEmpresa.SelectedItem.ToString());
+                                //conexiones.comando.Parameters.AddWithValue("@usuario", usuario); // Environment.UserName);
+                                //if (cmbVersion.SelectedValue == "")
+                                //    conexiones.comando.Parameters.AddWithValue("@CFG_ID", null);
+                                //else if (Convert.ToInt32(cmbVersion.SelectedValue) == -1)
+                                //    conexiones.comando.Parameters.AddWithValue("@CFG_ID", null);
+                                //else
+                                //    conexiones.comando.Parameters.AddWithValue("@CFG_ID", Convert.ToInt32(cmbVersion.SelectedValue));
+                                //conexiones.comando.Parameters.AddWithValue("@fecha", Convert.ToDateTime(axdEntity_SalesQuotationMasterTable.CreatedDateTime.Value));
+                                //conexiones.comando.Parameters.AddWithValue("@moneda", moneda);
+                                //conexiones.comando.Parameters.AddWithValue("@articulos", articulosConfiguracion);
+                                //adaptadorDatosConfiguracion = new SqlDataAdapter(conexiones.comando);
+                                //adaptadorDatosConfiguracion.Fill(dtDatosConfiguracion);
+                                //adaptadorDatosConfiguracion.Dispose();
+                                //conexiones.comando.Dispose();
+                                //conexiones.conexion.Close();
+                                //conexiones.conexion.Dispose();
+                                //horaTotal_2 = DateTime.Now.Subtract(horaTotal_SQL);
+                                //oItemTiempo = dtTiempos.NewRow();
+                                //oItemTiempo[0] = "TIEMPO ROP_DatosConfiguracion";
+                                //oItemTiempo[1] = horaTotal_2.Minutes.ToString("00") + ":" + horaTotal_2.Seconds.ToString("00") + ":" + horaTotal_2.Milliseconds.ToString("00");
+                                //dtTiempos.Rows.Add(oItemTiempo);
 
                                 pesoCapitulo = 0;
                                 importePorte_TR001 = 0;
@@ -8243,7 +8324,7 @@ namespace ROP_Informe
                                                 // Gastos fijos centrales
                                                 importeGastosFijosCentralesVentaFenolicoNuevoCapitulos = importeGastosFijosCentralesVentaFenolicoNuevoCapitulos + (Convert.ToDecimal(axdEntity_SalesQuotationTable.LineAmount) * gastosFijosCentralesVenta);
                                             }
-                                            // UNE/CIF
+                                            // SVP/CIF
                                             else if (axdEntity_SalesQuotationTable.CanonImport.HasValue && axdEntity_SalesQuotationTable.CanonImport != 0)
                                             {
                                                 importeFacturacionVentaUneCifCapitulos = importeFacturacionVentaUneCifCapitulos + Convert.ToDecimal(axdEntity_SalesQuotationTable.LineAmount);
@@ -8353,7 +8434,7 @@ namespace ROP_Informe
                                     oItemTaximetro[COL_DATA_ALQUILER_REPARAR_INDIRECTO] = (Convert.ToDecimal(axdEntity_SalesQuotationTable.SalesQty) * repararIndirecto).ToString("##0.00");
                                     oItemTaximetro[COL_DATA_ALQUILER_GASTOS_PATIO] = (importeGastosPatioEntregaDevolucionAlquiler + importeGastosPatioClasificacionReparacionAlquiler).ToString("##0.00");
 
-                                    // UNE/CIF
+                                    // SVP/CIF
                                     if (axdEntity_SalesQuotationTable.CanonImport.HasValue && axdEntity_SalesQuotationTable.CanonImport != 0)
                                         importeFacturacionVentaUneCifCapitulos = importeFacturacionVentaUneCifCapitulos + ((Convert.ToDecimal(axdEntity_SalesQuotationTable.SalesQty) * Convert.ToDecimal(axdEntity_SalesQuotationTable.SalesPrice) * Convert.ToDecimal(axdEntity_SalesQuotationTable.Canon)) / 100);
 
@@ -8901,7 +8982,7 @@ namespace ROP_Informe
                             if (importeFacturacionVentaUneCifCapitulos != 0)
                             {
                                 filaValores = dtValores.NewRow();
-                                filaValores[dtValores_ETIQUETA] = "UNE_CIF";
+                                filaValores[dtValores_ETIQUETA] = "SVP_CIF";
                                 filaValores[dtValores_CONCEPTO] = axdEntity_SalesQuotationMasterTable.SalesId.ToString() + tituloCapitulo;
                                 filaValores[dtValores_IMPORTE] = importeFacturacionVentaUneCifCapitulos.ToString("#,##0.00");
                                 filaValores[dtValores_PORCENTAJE] = "0.00";
@@ -9745,7 +9826,7 @@ namespace ROP_Informe
                         filaValores = dtValores.NewRow();
                         filaValores[dtValores_ETIQUETA] = "COSTE_MATERIAL_ALQUILADO_Y_VENDIDO"; // "COSTE_VENTAS_MATERIAL_ALQUILADO";
                         filaValores[dtValores_CONCEPTO] = idCapitulo + tituloCapitulo + " - MIXTO";
-                        filaValores[dtValores_IMPORTE] = dec_importeCosteMPOMixto.ToString("#,##0.00");
+                        filaValores[dtValores_IMPORTE] = ((-1) * Math.Abs(dec_importeCosteMPOMixto)).ToString("#,##0.00");
                         filaValores[dtValores_PORCENTAJE] = "0.00";
                         dtValores.Rows.Add(filaValores);
                         filaValores = null;
@@ -9753,7 +9834,7 @@ namespace ROP_Informe
                         filaValores = dtValores.NewRow();
                         filaValores[dtValores_ETIQUETA] = "COSTE_MATERIAL_ALQUILADO_Y_VENDIDO"; //"COSTE_VENTAS_MATERIAL_ALQUILADO";
                         filaValores[dtValores_CONCEPTO] = idCapitulo + tituloCapitulo + " - NUEVO";
-                        filaValores[dtValores_IMPORTE] = dec_importeCosteMPONuevo.ToString("#,##0.00");
+                        filaValores[dtValores_IMPORTE] = ((-1) * Math.Abs(dec_importeCosteMPONuevo)).ToString("#,##0.00");
                         filaValores[dtValores_PORCENTAJE] = "0.00";
                         dtValores.Rows.Add(filaValores);
                         filaValores = null;
@@ -9761,7 +9842,7 @@ namespace ROP_Informe
                         filaValores = dtValores.NewRow();
                         filaValores[dtValores_ETIQUETA] = "COSTE_MATERIAL_ALQUILADO_Y_VENDIDO"; //"COSTE_VENTAS_MATERIAL_ALQUILADO";
                         filaValores[dtValores_CONCEPTO] = idCapitulo + tituloCapitulo + " - USADO";
-                        filaValores[dtValores_IMPORTE] = dec_importeCosteMPOUsado.ToString("#,##0.00");
+                        filaValores[dtValores_IMPORTE] = ((-1) * Math.Abs(dec_importeCosteMPOUsado)).ToString("#,##0.00");
                         filaValores[dtValores_PORCENTAJE] = "0.00";
                         dtValores.Rows.Add(filaValores);
                         filaValores = null;
@@ -9798,7 +9879,7 @@ namespace ROP_Informe
                         filaValores = dtValores.NewRow();
                         filaValores[dtValores_ETIQUETA] = "COSTE_MPO";
                         filaValores[dtValores_CONCEPTO] = idCapitulo + tituloCapitulo + " - MIXTO";
-                        filaValores[dtValores_IMPORTE] = dec_importeCosteMPOMixto.ToString("#,##0.00");
+                        filaValores[dtValores_IMPORTE] = ((-1) * Math.Abs(dec_importeCosteMPOMixto)).ToString("#,##0.00");
                         filaValores[dtValores_PORCENTAJE] = "0.00";
                         dtValores.Rows.Add(filaValores);
                         filaValores = null;
@@ -9806,7 +9887,7 @@ namespace ROP_Informe
                         filaValores = dtValores.NewRow();
                         filaValores[dtValores_ETIQUETA] = "COSTE_MPO";
                         filaValores[dtValores_CONCEPTO] = idCapitulo + tituloCapitulo + " - NUEVO";
-                        filaValores[dtValores_IMPORTE] = dec_importeCosteMPONuevo.ToString("#,##0.00");
+                        filaValores[dtValores_IMPORTE] = ((-1) * Math.Abs(dec_importeCosteMPONuevo)).ToString("#,##0.00");
                         filaValores[dtValores_PORCENTAJE] = "0.00";
                         dtValores.Rows.Add(filaValores);
                         filaValores = null;
@@ -9814,7 +9895,7 @@ namespace ROP_Informe
                         filaValores = dtValores.NewRow();
                         filaValores[dtValores_ETIQUETA] = "COSTE_MPO";
                         filaValores[dtValores_CONCEPTO] = idCapitulo + tituloCapitulo + " - USADO";
-                        filaValores[dtValores_IMPORTE] = dec_importeCosteMPOUsado.ToString("#,##0.00");
+                        filaValores[dtValores_IMPORTE] = ((-1) * Math.Abs(dec_importeCosteMPOUsado)).ToString("#,##0.00");
                         filaValores[dtValores_PORCENTAJE] = "0.00";
                         dtValores.Rows.Add(filaValores);
                         filaValores = null;
@@ -9893,10 +9974,10 @@ namespace ROP_Informe
                         .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                 //totalVenta = dtValores.AsEnumerable()
-                //       .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
+                //       .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO" || y.Field<string>("ETIQUETA") == "VENTAS_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "SVP_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
                 //       .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
                 totalVenta = dtValores.AsEnumerable()
-                       .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "UNE_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
+                       .Where(y => y.Field<string>("ETIQUETA") == "VENTAS_DIRECTAS" || y.Field<string>("ETIQUETA") == "VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES" || y.Field<string>("ETIQUETA") == "MONTAJES" || y.Field<string>("ETIQUETA") == "DEPARTAMENTO_TECNICO" || y.Field<string>("ETIQUETA") == "FENÓLICO_NUEVO" || y.Field<string>("ETIQUETA") == "SVP_CIF" || y.Field<string>("ETIQUETA") == "OTROS_SERVICIOS")
                        .Sum(x => Convert.ToDecimal(x.Field<string>("IMPORTE")));
 
                 totalPortes = dtValores.AsEnumerable()
@@ -10097,6 +10178,7 @@ namespace ROP_Informe
         protected void calcularFicha()
         {
             //string mensaje = "";
+            string gastospatioparametros = "";
 
             DateTime fechaFinal = default(DateTime);
             DateTime fechaFinObra = default(DateTime);
@@ -10125,6 +10207,13 @@ namespace ROP_Informe
             DataTable dtMovimientosLiquidacion = new DataTable();
             DataTable dtPedidosAlquiler = new DataTable();
             DataTable dtAlbaranes = new DataTable();
+            dondeVa = "Crear dtAlbaranes";
+            dtAlbaranes.Columns.Add("FECHA");
+            dtAlbaranes.Columns.Add("AAF");
+            dtAlbaranes.Columns.Add("ItemId");
+            dtAlbaranes.Columns.Add("Qty");
+            dtAlbaranes.Columns.Add("Estado");
+
             DataTable dtAlbaranesAgrupado = new DataTable();
             //DataTable dtGastosPatio = new DataTable();
             //DataTable dtCalculoTax = new DataTable();
@@ -10267,12 +10356,6 @@ namespace ROP_Informe
             const int dtPedidosAgrupados_usado = 5;
             const int dtPedidosAgrupados_mixto = 6;
             const int dtPedidosAgrupados_nuevo = 7;
-
-            const int dtAlbaranes_fecha = 0;
-            const int dtAlbaranes_aaf = 1;
-            const int dtAlbaranes_itemID = 2;
-            const int dtAlbaranes_cantidad = 3;
-            const int dtAlbaranes_estado = 4;
 
             // fenolico // departamento técnico / servicios
             decimal porcentajeCosteMaterialNuevo = 0;
@@ -10421,6 +10504,7 @@ namespace ROP_Informe
                 hora_1 = DateTime.Now;
                 horaTotal_1 = DateTime.Now;
 
+                dec_importeTotalCosteLIQUsado = 0;
                 listaArticulosBuenTrato.Clear();
                 listaChatarra.Clear();
                 txtObra.Text = "";
@@ -10523,6 +10607,8 @@ namespace ROP_Informe
               
                 delegacion = "";
                 nombreFicha = "";
+                codigosTransporte = "";
+                calcularCodigosTransporte(cmbEmpresa.SelectedItem.ToString(), "");
 
                 dondeVa = "WS FICHA";
                 horaTotal_1 = DateTime.Now;
@@ -10556,6 +10642,10 @@ namespace ROP_Informe
                 if (axdtablaObras_1.ObraTable_1 is null)
                 {
                     proxy_Obra.Close();
+                    imgWarning.Visible = true;
+                    lblMensajeError.Visible = true;
+                    lblMensajeError.Text = "NO se ha encontrado la ficha indicada";
+                    return;
                 }
                 else
                 {
@@ -10657,7 +10747,12 @@ namespace ROP_Informe
                             else
                                 limitarAbonoTaxMPO = true;
                         }
-                        
+
+                        if (Convert.ToString(dr["Concepto"]).ToUpper() == "PORCENTAJE MPO ABONO TAX")
+                            porcentajeAbonoTaxMPO = Convert.ToDecimal(dr["Valor"]);
+                        if (Convert.ToString(dr["Concepto"]).ToUpper() == "PORCENTAJE MÁXIMO MPO ABONO TAX")
+                            porcentajeMaxAbonoTaxMPO = Convert.ToDecimal(dr["Valor"]);
+
                         if (Convert.ToString(dr["Concepto"]).ToUpper() == "COEFICIENTE DE GASTOS FIJOS ALQUILER / VENTA")
                             coeficienteGastosFijosAlquilerVenta = Convert.ToDecimal(Convert.ToDecimal(dr["Valor"]) / 100);
                     }
@@ -10840,7 +10935,6 @@ namespace ROP_Informe
                 criterio_inventario.CriteriaElement[0].FieldName = "obraid";
                 criterio_inventario.CriteriaElement[0].Operator = tablaInventario.Operator.Equal;
                 criterio_inventario.CriteriaElement[0].Value1 = txtNumero.Text;
-
 
                 tablaInventario.InventTransOriginServiceClient proxy_inventario = new tablaInventario.InventTransOriginServiceClient();
                 proxy_inventario.ClientCredentials.Windows.ClientCredential.Domain = "ALSINA";
@@ -11057,6 +11151,7 @@ namespace ROP_Informe
                 }
 
                 // RECUPERAR LOS DATOS DE CONFIGURACIÓN: TAXIMETRO - GASTOS - AJUSTES
+                dondeVa = "ROP_DatosConfiguracion";
                 horaTotal_1 = DateTime.Now;
 
                 dtDatosConfiguracion = new System.Data.DataTable();
@@ -11094,6 +11189,7 @@ namespace ROP_Informe
                 dtTiempos.Rows.Add(oItemTiempo);
 
                 // RECORRER Y CALCULAR POR ITEM
+                dondeVa = "Recorrer listaArticulosPedido";
                 for (linea = 0; linea <= listaArticulosPedido.Count - 1; linea++)
                 {
                     item = listaArticulosPedido.ElementAt(linea);
@@ -11575,7 +11671,7 @@ namespace ROP_Informe
                 contexto_Pedido.Company = cmbEmpresa.SelectedItem.ToString();
 
                 tablaPedidos.QueryCriteria criterio_Pedido = new tablaPedidos.QueryCriteria();
-                criterio_Pedido.CriteriaElement = new tablaPedidos.CriteriaElement[2];
+                criterio_Pedido.CriteriaElement = new tablaPedidos.CriteriaElement[1];
 
                 criterio_Pedido.CriteriaElement[0] = new tablaPedidos.CriteriaElement();
                 criterio_Pedido.CriteriaElement[0].DataSourceName = "SalesTable";
@@ -11600,14 +11696,7 @@ namespace ROP_Informe
                 }
                 else
                 {
-                    dondeVa = "Crear dtAlbaranes";
-                    dtAlbaranes.Columns.Add("FECHA");
-                    dtAlbaranes.Columns.Add("AAF");
-                    dtAlbaranes.Columns.Add("ItemId");
-                    dtAlbaranes.Columns.Add("Qty");
-                    dtAlbaranes.Columns.Add("Estado");
-
-                    enumerator_Pedido = axdtablaPedidos_Pedido.SalesTable.GetEnumerator();
+                   enumerator_Pedido = axdtablaPedidos_Pedido.SalesTable.GetEnumerator();
                     horaTotal_2 = DateTime.Now.Subtract(horaTotal_1);
                     oItemTiempo = dtTiempos.NewRow();
                     oItemTiempo[0] = "TIEMPO tablaPedidos";
@@ -11714,7 +11803,7 @@ namespace ROP_Informe
                                             // Fenólico
                                             if (axdEntity_SalesQuotationTable.CanonFenolico.HasValue && axdEntity_SalesQuotationTable.CanonFenolico != 0)
                                                 dondeVa = "VENTAS: Fenólico";
-                                            // UNE/CIF
+                                            // SVP/CIF
                                             else if (axdEntity_SalesQuotationTable.CanonImport.HasValue && axdEntity_SalesQuotationTable.CanonImport != 0)
                                                 importeCosteVentaUneCif = importeCosteVentaUneCif + ((Convert.ToDecimal(axdEntity_SalesQuotationTable.SalesQty) * precioCoste) * (Convert.ToDecimal(axdEntity_SalesQuotationTable.Canon) / 100));
                                             // OTROS SERVICIOS
@@ -11875,11 +11964,6 @@ namespace ROP_Informe
                                         }
                                 }
 
-                                if (Convert.ToString(filaTax["Concepto"]) == "Porcentaje MPO abono TAX")
-                                    porcentajeAbonoTaxMPO = Convert.ToDecimal(filaTax["Valor"]);
-                                if (Convert.ToString(filaTax["Concepto"]) == "Porcentaje Máximo MPO abono TAX")
-                                    porcentajeMaxAbonoTaxMPO = Convert.ToDecimal(filaTax["Valor"]);
-
                                 if (Convert.ToString(filaTax["Concepto"]) == "Taxímetro no consumible" && (calcularPorSuperficie || taximetroConsumible == 0))
                                 {
                                     taximetroNoConsumible = Convert.ToDecimal(filaTax["Valor"]) / 100;
@@ -12010,6 +12094,7 @@ namespace ROP_Informe
                     dondeVa = "Datos gastos patio";
                     dtGastosPatio = new System.Data.DataTable();
                     dtGastosPatio = gastosPatio(articulos, fechaPrecios, txtMoneda.Text, usuario);
+                    gastospatioparametros = " (1) Articulos: " + articulos.ToString() + " // fechaPrecios: " + fechaPrecios.ToString() + " // Moneda: " + txtMoneda.Text + " // usuario: " + usuario;
                     // Buscar estado de los artículos 
                     dondeVa = "Datos estado artículos";
                     dtArticulosLiquidacion = localizarEstadoArticulos(usuario, articulos + articulosLiquidacion + articulosConfiguracion);
@@ -12098,11 +12183,11 @@ namespace ROP_Informe
                                     tipoArticulo = Convert.ToString(filaTipo["TipoArticulo"]).ToUpper().Trim();
                                     AAF = Convert.ToString(filaTipo["AAF"]);
                                     filaAlbaranes = dtAlbaranes.NewRow();
-                                    filaAlbaranes[dtAlbaranes_fecha] = Convert.ToString(AxdEntity_CustPackingSlipTrans.DeliveryDate.ToString("yyyyMMdd"));
-                                    filaAlbaranes[dtAlbaranes_aaf] = AAF;
-                                    filaAlbaranes[dtAlbaranes_itemID] = Convert.ToString(AxdEntity_CustPackingSlipTrans.ItemId.ToString());
-                                    filaAlbaranes[dtAlbaranes_cantidad] = Convert.ToDecimal(AxdEntity_CustPackingSlipTrans.Qty.ToString());
-                                    filaAlbaranes[dtAlbaranes_estado] = tipoArticulo;
+                                    filaAlbaranes["AAF"] = AAF;
+                                    filaAlbaranes["FECHA"] = Convert.ToString(AxdEntity_CustPackingSlipTrans.DeliveryDate.ToString("yyyyMMdd"));
+                                    filaAlbaranes["ItemId"] = Convert.ToString(AxdEntity_CustPackingSlipTrans.ItemId.ToString());
+                                    filaAlbaranes["Qty"] = Convert.ToDecimal(AxdEntity_CustPackingSlipTrans.Qty.ToString());
+                                    filaAlbaranes["Estado"] = tipoArticulo;
                                     dtAlbaranes.Rows.Add(filaAlbaranes);
                                     filaAlbaranes = null;
                                     break;
@@ -12408,11 +12493,6 @@ namespace ROP_Informe
                                         coeficienteUsado = Convert.ToDecimal(filaTax["Valor"]);
                                         coeficienteMixto = Convert.ToDecimal(filaTax["Valor"]);
                                     }
-
-                                    if (Convert.ToString(filaTax["Concepto"]) == "Porcentaje MPO abono TAX")
-                                        porcentajeAbonoTaxMPO = Convert.ToDecimal(filaTax["Valor"]);
-                                    if (Convert.ToString(filaTax["Concepto"]) == "Porcentaje Máximo MPO abono TAX")
-                                        porcentajeMaxAbonoTaxMPO = Convert.ToDecimal(filaTax["Valor"]);
                                 }
 
                                 precioCoste = 0;
@@ -12949,7 +13029,7 @@ namespace ROP_Informe
                 dtTiempos.Rows.Add(oItemTiempo);
 
                 // FACTURACION
-                dondeVa = "Facturación";
+                dondeVa = "Facturación cabecera WS";
                 horaTotal_1 = DateTime.Now;
                 System.Collections.IEnumerator enumerator_facturas;
 
@@ -12971,23 +13051,30 @@ namespace ROP_Informe
                 proxy_facturasCabacera.ClientCredentials.Windows.ClientCredential.UserName = WSUsuario;
                 proxy_facturasCabacera.ClientCredentials.Windows.ClientCredential.Password = WSContrasena;
 
+                dondeVa = "Facturación cabecera proxy";
                 tablaCabeceraFacturas.AxdDiarioFacturas axdtablaCabeceraFacturas_1 = proxy_facturasCabacera.find(contexto_facturasCabecera, criterio_facturasCabecera);
+                dondeVa = "proxy_facturasCabacera.find";
                 if (axdtablaCabeceraFacturas_1.CustInvoiceJour is null)
                 {
                     proxy_facturasCabacera.Close();
                 }
                 else
                 {
+                    dondeVa = "enumerator_facturas";
                     enumerator_facturas = axdtablaCabeceraFacturas_1.CustInvoiceJour.GetEnumerator();
                     while (enumerator_facturas.MoveNext())
                     {
+                        dondeVa = "Procesar datos ws facturación";
                         tablaCabeceraFacturas.AxdEntity_CustInvoiceJour AxdEntity_CustInvoiceTrans = (tablaCabeceraFacturas.AxdEntity_CustInvoiceJour)enumerator_facturas.Current;
                         if (AxdEntity_CustInvoiceTrans.RentCanon.ToString().ToUpper() == tablaCabeceraFacturas.AxdEnum_RentCanon.Canon.ToString().ToUpper() || AxdEntity_CustInvoiceTrans.RentCanon.ToString().ToUpper() == tablaCabeceraFacturas.AxdEnum_RentCanon.CanonFenolico.ToString().ToUpper())
                         {
                             oItemFacturaCanon = dtFacturasCanon.NewRow();
                             oItemFacturaCanon["TIPO"] = AxdEntity_CustInvoiceTrans.RentCanon.ToString().ToUpper();
                             oItemFacturaCanon["FACTURA"] = AxdEntity_CustInvoiceTrans.InvoiceId.ToString();
-                            oItemFacturaCanon["IMPORTE"] = AxdEntity_CustInvoiceTrans.InvoiceAmount;
+                            if (AxdEntity_CustInvoiceTrans.InvoiceAmount is null)
+                                oItemFacturaCanon["IMPORTE"] = 0;
+                            else
+                                oItemFacturaCanon["IMPORTE"] = AxdEntity_CustInvoiceTrans.InvoiceAmount;
                             dtFacturasCanon.Rows.Add(oItemFacturaCanon);
                         }
                         else
@@ -12997,7 +13084,10 @@ namespace ROP_Informe
                                 oItemFacturaCanon = dtFacturasCanon.NewRow();
                                 oItemFacturaCanon["TIPO"] = AxdEntity_CustInvoiceTrans.TipoVenta.ToString().ToUpper();
                                 oItemFacturaCanon["FACTURA"] = AxdEntity_CustInvoiceTrans.InvoiceId.ToString();
-                                oItemFacturaCanon["IMPORTE"] = AxdEntity_CustInvoiceTrans.InvoiceAmount;
+                                if (AxdEntity_CustInvoiceTrans.InvoiceAmount is null)
+                                    oItemFacturaCanon["IMPORTE"] = 0;
+                                else
+                                    oItemFacturaCanon["IMPORTE"] = AxdEntity_CustInvoiceTrans.InvoiceAmount;
                                 dtFacturasCanon.Rows.Add(oItemFacturaCanon);
                             }
                             // Es liquidación
@@ -13006,7 +13096,10 @@ namespace ROP_Informe
                                 oItemFacturaCanon = dtFacturasCanon.NewRow();
                                 oItemFacturaCanon["TIPO"] = tablaCabeceraFacturas.AxdEnum_TiposVentas.Liquidacion.ToString().ToUpper();
                                 oItemFacturaCanon["FACTURA"] = AxdEntity_CustInvoiceTrans.InvoiceId.ToString();
-                                oItemFacturaCanon["IMPORTE"] = AxdEntity_CustInvoiceTrans.InvoiceAmount;
+                                if (AxdEntity_CustInvoiceTrans.InvoiceAmount is null)
+                                    oItemFacturaCanon["IMPORTE"] = 0;
+                                else
+                                    oItemFacturaCanon["IMPORTE"] = AxdEntity_CustInvoiceTrans.InvoiceAmount;
                                 dtFacturasCanon.Rows.Add(oItemFacturaCanon);
                             }
                         }
@@ -13015,6 +13108,8 @@ namespace ROP_Informe
                 proxy_facturasCabacera.Close();
 
                 // LINEAS
+                dondeVa = "Líneas facturación";
+
                 tablaLineasFacturas.CallContext contexto_facturas = new tablaLineasFacturas.CallContext();
                 contexto_facturas.Company = cmbEmpresa.SelectedItem.ToString();
 
@@ -13158,6 +13253,14 @@ namespace ROP_Informe
                 }
                 proxy_facturas.Close();
 
+                dondeVa = "Datos gastos patio";
+                if (dtGastosPatio.Rows.Count == 0)
+                {
+                    dtGastosPatio = new System.Data.DataTable();
+                    dtGastosPatio = gastosPatio(articulos, fechaPrecios, txtMoneda.Text, usuario);
+                    gastospatioparametros = " (2) Articulos: " + articulos.ToString() + " // fechaPrecios: " + fechaPrecios.ToString() + " // Moneda: " + txtMoneda.Text + " // usuario: " + usuario;
+                }
+
                 // HOJAS DE TRABAJO: BUEN TRATO TABLERO
                 // 0: None  Usado
                 // 1: Repair  Usado
@@ -13168,7 +13271,7 @@ namespace ROP_Informe
                 // Para abono buen trato tablero Mal estado != Chatarra
                 if (fichaCerrada)
                 {
-                    dondeVa = "Hojas de trabajo";
+                    dondeVa = "Hojas de trabajo // " + gastospatioparametros;
                     horaTotal_1 = DateTime.Now;
                     System.Collections.IEnumerator enumerator_HojasTrabajoLineas;
                     tablaHojasTrabajoLineas.CallContext contexto_HojasTrabajoLineas = new tablaHojasTrabajoLineas.CallContext();
@@ -14343,8 +14446,6 @@ namespace ROP_Informe
                 decimal totalVenta = 0;
                 decimal totalPortes = 0;
                 decimal costeDTPorratear = 0;
-                decimal totalPortesLinea = 0;
-                //decimal totalGastosOficinaDToCapitulo = 0;
                 decimal totalGastosOficinaAdministrativoCapitulo = 0;
                 decimal totalGastosOficinaComercialCapitulo = 0;
 
@@ -14695,7 +14796,7 @@ namespace ROP_Informe
                 if (importeFacturacionVentaUneCif != 0)
                 {
                     filaValores = dtValores.NewRow();
-                    filaValores[dtValores_ETIQUETA] = "UNE_CIF";
+                    filaValores[dtValores_ETIQUETA] = "SVP_CIF";
                     filaValores[dtValores_CONCEPTO] = txtNumero.Text + " / " + nombreFicha;
                     filaValores[dtValores_IMPORTE] = importeFacturacionVentaUneCif.ToString("#,##0.00");
                     filaValores[dtValores_PORCENTAJE] = "0.00";
@@ -14796,6 +14897,7 @@ namespace ROP_Informe
                     filaValores = null;
                 }
 
+       
                 if (dec_importeCosteChatarra != 0)
                 {
                     filaValores = dtValores.NewRow();
@@ -14950,11 +15052,11 @@ namespace ROP_Informe
                     filaValores = dtValores.NewRow();
                     filaValores[dtValores_ETIQUETA] = "MARGEN_ALQUILER";
                     filaValores[dtValores_CONCEPTO] = txtNumero.Text + " / " + nombreFicha;
-                    filaValores[dtValores_IMPORTE] = (importeFacturacionAlquiler - importeCosteTaximetroNoConsumible - importeCosteTaximetroConsumible + importeCosteBonificacionTaximetroConsumible).ToString("#,##0.00");
+                    filaValores[dtValores_IMPORTE] = (importeFacturacionAlquiler - importeCosteTaximetroNoConsumible - importeCosteTaximetroConsumible + importeCosteBonificacionTaximetroConsumible + abonoMPOTNC).ToString("#,##0.00");
                     if (importeFacturacionAlquiler == 0)
                         filaValores[dtValores_PORCENTAJE] = "0.00";
                     else
-                        filaValores[dtValores_PORCENTAJE] = (((importeFacturacionAlquiler - importeCosteTaximetroNoConsumible - importeCosteTaximetroConsumible + importeCosteBonificacionTaximetroConsumible) / importeFacturacionAlquiler) * 100).ToString("#,##0.00");
+                        filaValores[dtValores_PORCENTAJE] = (((importeFacturacionAlquiler - importeCosteTaximetroNoConsumible - importeCosteTaximetroConsumible + importeCosteBonificacionTaximetroConsumible + abonoMPOTNC) / importeFacturacionAlquiler) * 100).ToString("#,##0.00");
                     dtValores.Rows.Add(filaValores);
                     filaValores = null;
                 }
@@ -15030,21 +15132,18 @@ namespace ROP_Informe
                 //    filaValores = null;
                 //}
 
-                if (importeFacturacionVentaProducto != 0)
-                {
-                    dondeVa = "Importes/cantidades venta 3";
-                    filaValores = dtValores.NewRow();
-                    filaValores[dtValores_ETIQUETA] = "MARGEN_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES"; //"MARGEN_VENTAS_LIQUIDACIONES";
-                    filaValores[dtValores_CONCEPTO] = txtNumero.Text + " / " + nombreFicha;
-                    filaValores[dtValores_IMPORTE] = (importeFacturacionVentaProducto - dec_importeCosteMPONuevo - dec_importeCosteMPO).ToString("#,##0.00");
-                    if (importeFacturacionVentaProducto == 0)
-                        filaValores[dtValores_PORCENTAJE] = "0.00";
-                    else
-                        filaValores[dtValores_PORCENTAJE] = (((importeFacturacionVentaProducto - dec_importeCosteMPONuevo - dec_importeCosteMPO) / importeFacturacionVentaProducto) * 100).ToString("#,##0.00");
-                    dtValores.Rows.Add(filaValores);
-                    filaValores = null;
-                }
-
+                dondeVa = "Importes/cantidades venta 3";
+                filaValores = dtValores.NewRow();
+                filaValores[dtValores_ETIQUETA] = "MARGEN_VENTAS_MATERIAL_ALQUILADO_LIQUIDACIONES"; //"MARGEN_VENTAS_LIQUIDACIONES";
+                filaValores[dtValores_CONCEPTO] = txtNumero.Text + " / " + nombreFicha;
+                filaValores[dtValores_IMPORTE] = (importeFacturacionVentaProducto - dec_importeTotalCosteMPOUsado - dec_importeCosteChatarra).ToString("#,##0.00");
+                if (importeFacturacionVentaProducto == 0)
+                    filaValores[dtValores_PORCENTAJE] = "0.00";
+                else
+                    filaValores[dtValores_PORCENTAJE] = (((importeFacturacionVentaProducto - dec_importeTotalCosteMPOUsado - dec_importeCosteChatarra) / importeFacturacionVentaProducto) * 100).ToString("#,##0.00");
+                dtValores.Rows.Add(filaValores);
+                filaValores = null;
+                
                 datosGenerales = txtNumero.Text + " / " + fechaFicha.ToString("dd/MM/yyyy") + " / " + nombreFicha + " / " + moneda + " / " + delegacion;
                 nombreInforme = Server.MapPath("~/Ficheros excel/" + cmbConcepto.Text + "_" + txtNumero.Text + "_" + DateTime.Now.ToString("yyyy_MM_dd") + ".xlsx");
                 SLDocument sl = new SLDocument();
@@ -15080,7 +15179,7 @@ namespace ROP_Informe
 
                 dataMovimientos.DataSource = null;
                 dataMovimientos.Columns.Clear();
-                dataMovimientos.DataSource = dtGastosPatioCalculo; // dtPedidosAgrupado; // dtPedidos;//  dtPedidosAgrupado; // dtGastosPatioCalculo;
+                dataMovimientos.DataSource = dtPedidosAgrupado; // dtGastosPatioCalculo; // dtPedidosAgrupado; // dtPedidos;//  dtPedidosAgrupado; // dtGastosPatioCalculo;
                 dataMovimientos.DataBind();
                 dataMovimientos.Visible = true;
 
@@ -15204,7 +15303,6 @@ namespace ROP_Informe
                 }
                 else
                 {
-                    calcularCodigosTransporte();
                     if (cmbConcepto.SelectedItem.ToString() == "Oferta")
                         calcularOferta();
                     else if (cmbConcepto.SelectedItem.ToString() == "Pedido")

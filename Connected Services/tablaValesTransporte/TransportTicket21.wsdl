@@ -34,13 +34,13 @@
   <wsdl:binding name="NetTcpBinding_TransportTicketService" type="i0:TransportTicketService">
     <wsp:PolicyReference URI="#NetTcpBinding_TransportTicketService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="find">
-      <soap12:operation soapAction="http://tempuri.org/TransportTicketService/find" style="document" />
-      <wsdl:input name="TransportTicketServiceFindRequest">
-        <soap12:header message="i0:TransportTicketServiceFindRequest_Headers" part="context" use="literal" />
+    <wsdl:operation name="read">
+      <soap12:operation soapAction="http://tempuri.org/TransportTicketService/read" style="document" />
+      <wsdl:input name="TransportTicketServiceReadRequest">
+        <soap12:header message="i0:TransportTicketServiceReadRequest_Headers" part="context" use="literal" />
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="TransportTicketServiceFindResponse">
+      <wsdl:output name="TransportTicketServiceReadResponse">
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="AifFaultFault">
@@ -60,13 +60,13 @@
         <soap12:fault use="literal" name="AifFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="read">
-      <soap12:operation soapAction="http://tempuri.org/TransportTicketService/read" style="document" />
-      <wsdl:input name="TransportTicketServiceReadRequest">
-        <soap12:header message="i0:TransportTicketServiceReadRequest_Headers" part="context" use="literal" />
+    <wsdl:operation name="find">
+      <soap12:operation soapAction="http://tempuri.org/TransportTicketService/find" style="document" />
+      <wsdl:input name="TransportTicketServiceFindRequest">
+        <soap12:header message="i0:TransportTicketServiceFindRequest_Headers" part="context" use="literal" />
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="TransportTicketServiceReadResponse">
+      <wsdl:output name="TransportTicketServiceFindResponse">
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="AifFaultFault">

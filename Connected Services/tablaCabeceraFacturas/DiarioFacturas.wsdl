@@ -34,19 +34,6 @@
   <wsdl:binding name="NetTcpBinding_DiarioFacturasService" type="i0:DiarioFacturasService">
     <wsp:PolicyReference URI="#NetTcpBinding_DiarioFacturasService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="findKeys">
-      <soap12:operation soapAction="http://tempuri.org/DiarioFacturasService/findKeys" style="document" />
-      <wsdl:input name="DiarioFacturasServiceFindKeysRequest">
-        <soap12:header message="i0:DiarioFacturasServiceFindKeysRequest_Headers" part="context" use="literal" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="DiarioFacturasServiceFindKeysResponse">
-        <soap12:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="AifFaultFault">
-        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
     <wsdl:operation name="find">
       <soap12:operation soapAction="http://tempuri.org/DiarioFacturasService/find" style="document" />
       <wsdl:input name="DiarioFacturasServiceFindRequest">
@@ -54,6 +41,19 @@
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output name="DiarioFacturasServiceFindResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AifFaultFault">
+        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findKeys">
+      <soap12:operation soapAction="http://tempuri.org/DiarioFacturasService/findKeys" style="document" />
+      <wsdl:input name="DiarioFacturasServiceFindKeysRequest">
+        <soap12:header message="i0:DiarioFacturasServiceFindKeysRequest_Headers" part="context" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DiarioFacturasServiceFindKeysResponse">
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="AifFaultFault">

@@ -16,28 +16,28 @@
       <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/WorkPaperLines?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="WorkPaperLinesServiceReadRequest">
-    <wsdl:part name="parameters" element="tns:WorkPaperLinesServiceReadRequest" />
-  </wsdl:message>
-  <wsdl:message name="WorkPaperLinesServiceReadRequest_Headers">
-    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
-  </wsdl:message>
-  <wsdl:message name="WorkPaperLinesServiceReadResponse">
-    <wsdl:part name="parameters" element="tns:WorkPaperLinesServiceReadResponse" />
-  </wsdl:message>
-  <wsdl:message name="WorkPaperLinesService_read_AifFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
-  </wsdl:message>
   <wsdl:message name="WorkPaperLinesServiceFindKeysRequest">
     <wsdl:part name="parameters" element="tns:WorkPaperLinesServiceFindKeysRequest" />
   </wsdl:message>
   <wsdl:message name="WorkPaperLinesServiceFindKeysRequest_Headers">
-    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
   </wsdl:message>
   <wsdl:message name="WorkPaperLinesServiceFindKeysResponse">
     <wsdl:part name="parameters" element="tns:WorkPaperLinesServiceFindKeysResponse" />
   </wsdl:message>
   <wsdl:message name="WorkPaperLinesService_findKeys_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="WorkPaperLinesServiceReadRequest">
+    <wsdl:part name="parameters" element="tns:WorkPaperLinesServiceReadRequest" />
+  </wsdl:message>
+  <wsdl:message name="WorkPaperLinesServiceReadRequest_Headers">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="WorkPaperLinesServiceReadResponse">
+    <wsdl:part name="parameters" element="tns:WorkPaperLinesServiceReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="WorkPaperLinesService_read_AifFaultFault_FaultMessage">
     <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q4:AifFault" />
   </wsdl:message>
   <wsdl:message name="WorkPaperLinesServiceFindRequest">
@@ -53,15 +53,15 @@
     <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q6:AifFault" />
   </wsdl:message>
   <wsdl:portType name="WorkPaperLinesService">
-    <wsdl:operation name="read">
-      <wsdl:input wsaw:Action="http://tempuri.org/WorkPaperLinesService/read" name="WorkPaperLinesServiceReadRequest" message="tns:WorkPaperLinesServiceReadRequest" />
-      <wsdl:output wsaw:Action="http://tempuri.org/WorkPaperLinesService/readResponse" name="WorkPaperLinesServiceReadResponse" message="tns:WorkPaperLinesServiceReadResponse" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/WorkPaperLinesService/readAifFaultFault" name="AifFaultFault" message="tns:WorkPaperLinesService_read_AifFaultFault_FaultMessage" />
-    </wsdl:operation>
     <wsdl:operation name="findKeys">
       <wsdl:input wsaw:Action="http://tempuri.org/WorkPaperLinesService/findKeys" name="WorkPaperLinesServiceFindKeysRequest" message="tns:WorkPaperLinesServiceFindKeysRequest" />
       <wsdl:output wsaw:Action="http://tempuri.org/WorkPaperLinesService/findKeysResponse" name="WorkPaperLinesServiceFindKeysResponse" message="tns:WorkPaperLinesServiceFindKeysResponse" />
       <wsdl:fault wsaw:Action="http://tempuri.org/WorkPaperLinesService/findKeysAifFaultFault" name="AifFaultFault" message="tns:WorkPaperLinesService_findKeys_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <wsdl:input wsaw:Action="http://tempuri.org/WorkPaperLinesService/read" name="WorkPaperLinesServiceReadRequest" message="tns:WorkPaperLinesServiceReadRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/WorkPaperLinesService/readResponse" name="WorkPaperLinesServiceReadResponse" message="tns:WorkPaperLinesServiceReadResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/WorkPaperLinesService/readAifFaultFault" name="AifFaultFault" message="tns:WorkPaperLinesService_read_AifFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="find">
       <wsdl:input wsaw:Action="http://tempuri.org/WorkPaperLinesService/find" name="WorkPaperLinesServiceFindRequest" message="tns:WorkPaperLinesServiceFindRequest" />

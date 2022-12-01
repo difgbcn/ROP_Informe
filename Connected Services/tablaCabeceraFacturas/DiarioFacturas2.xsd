@@ -255,8 +255,9 @@
       <xs:element minOccurs="0" name="ElectronicMessageStatus" nillable="true" type="st:AxdExtType_ElectronicMessageStatus" />
       <xs:element minOccurs="0" name="EInvocieItaly_DocumentTypeId" nillable="true" type="st:AxdExtType_EInvocieItaly_DocumentTypeId" />
       <xs:element minOccurs="0" name="ExcPE_Tasting" nillable="true" type="st:AxdEnum_NoYes" />
-      <xs:element minOccurs="0" name="ExcPECustRelatedDocType" nillable="true" type="st:AxdEnum_boolean" />
+      <xs:element minOccurs="0" name="ExcPECustRelatedDocType" nillable="true" type="st:AxdEnum_ABC" />
       <xs:element minOccurs="0" name="PriceGroupId" nillable="true" type="st:AxdExtType_CustPriceGroup" />
+      <xs:element minOccurs="0" name="ARQ_ConfirmDocNum" nillable="true" type="st:AxdExtType_CustConfirmDocNum" />
       <xs:element minOccurs="0" name="CreditNoteReason" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CreditNoteTypeId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ElectronicDocumentTypeId" nillable="true" type="xs:string" />
@@ -264,6 +265,7 @@
       <xs:element minOccurs="0" name="EXCEIPE_CodeTipoAfectacionIGV" nillable="true" type="st:AxdExtType_EXCEIPE_CodeTipoAfectacionIGV" />
       <xs:element minOccurs="0" name="EXCEIPE_ConceptsOtherTributeId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EXCEIPE_DownLoadCDR" nillable="true" type="st:AxdEnum_NoYes" />
+      <xs:element minOccurs="0" name="EXCEIPE_FEFechaCertificada1" nillable="true" type="st:AxdExtType_TransDate" />
       <xs:element minOccurs="0" name="EXCEIPE_FEUUID" nillable="true" type="st:AxdExtType_Str1260" />
       <xs:element minOccurs="0" name="EXCEIPE_IsPaymentAdvance" nillable="true" type="st:AxdEnum_NoYes" />
       <xs:element minOccurs="0" name="EXCEIPE_MethodOfPayment" nillable="true" type="st:AxdExtType_EXCEIPE_MethodOfPayment" />

@@ -561,8 +561,19 @@
             <hr />
 
             <div class="row">
-                <div class="col-md-1">
-                    <asp:LinkButton ID="btnLimpiarTransporteCodigos" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnLimpiarTransporteCodigos_Click"><span class="glyphicon glyphicon-cog">Inicializar</span></asp:LinkButton>
+                <div class="col-md-2">
+                    <asp:LinkButton ID="btnLimpiarTransporteSubfamilias" usesubmitbehavior="false" CssClass="btn btn-info" runat="server" OnClick="btnLimpiarTransporteSubfamilias_Click"><span class="glyphicon glyphicon-cog">Inicializar</span></asp:LinkButton>
+                </div>
+                <div class="col-md-2">
+                    <asp:LinkButton ID="btnAgregarTransporteSubfamilias" usesubmitbehavior="false" CssClass="btn btn-success"  Width="100px" runat="server" OnClick="btnAgregarTransporteSubfamilias_Click"><span class="glyphicon glyphicon-cog">Agregar</span></asp:LinkButton>
+                </div>
+            </div>
+            <div class="row">
+                 <div class="col-md-1">
+                    <span>BU</span>
+                </div>
+                <div class="col-md-2">
+                    <asp:DropDownList ID="cmbBUCodigos" runat="server" AutoPostBack = true CssClass="form-control" OnSelectedIndexChanged="cmbBUCodigos_SelectedIndexChanged"></asp:DropDownList>
                 </div>
                  <div class="col-md-1">
                     <span>Empresa</span>
@@ -577,19 +588,16 @@
                     <asp:DropDownList ID="cmbDelegacionCodigos" runat="server" AutoPostBack = true usesubmitbehavior="false" CssClass="form-control"></asp:DropDownList>&nbsp;
                 </div>
                  <div class="col-md-1">
-                    <span>Códigos</span>
+                    <span>Subfamilia</span>
                 </div>
                 <div class="col-md-2">
-                    <asp:TextBox ID="txtCodigos" runat="server" CssClass="form-control" AutoComplete="off" Enabled="true" style="font-size:x-small" Width="80px" ForeColor="#cc0000"></asp:TextBox>
+                    <asp:TextBox ID="txtSubfamillia" runat="server" CssClass="form-control" AutoComplete="off" Enabled="true" style="font-size:x-small" Width="80px" ForeColor="#cc0000"></asp:TextBox>
                 </div>
-                <div class="col-md-1">
-                    <asp:LinkButton ID="btnAgregarTransporteCodigos" usesubmitbehavior="false" CssClass="btn btn-success"  Width="100px" runat="server" OnClick="btnAgregarTransporteCodigos_Click"><span class="glyphicon glyphicon-cog">Agregar</span></asp:LinkButton>
-                </div>
-           </div>
+             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <asp:GridView CssClass="table table-hover" ID="grvTransporteCodigos" Font-Size="Small" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="CFGTCO_ID" OnRowDeleting="grvTransporteCodigos_RowDeleting" OnRowEditing="grvTransporteCodigos_RowEditing" OnRowCancelingEdit="grvTransporteCodigos_RowCancelingEdit" OnRowUpdating="grvTransporteCodigos_RowUpdating" OnRowDataBound="grvTransporteCodigos_RowDataBound">
+                        <asp:GridView CssClass="table table-hover" ID="grvTransporteSubfamilias" Font-Size="Small" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both" AutoGenerateColumns="False" Height="100%" Width="100%" AlternatingRowStyle-BackColor="#999999" HeaderStyle-BackColor="#284775" HeaderStyle-ForeColor="white" DataKeyNames="CFGTCO_ID" OnRowDeleting="grvTransporteSubfamilias_RowDeleting" OnRowEditing="grvTransporteSubfamilias_RowEditing" OnRowCancelingEdit="grvTransporteSubfamilias_RowCancelingEdit" OnRowUpdating="grvTransporteSubfamilias_RowUpdating" OnRowDataBound="grvTransporteSubfamilias_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="CFGTCO_ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="1" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
                                 <asp:TemplateField HeaderText="BU">
@@ -613,7 +621,7 @@
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Codigo" HeaderText="Códigos" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
+                                <asp:BoundField DataField="Subfamilia" HeaderText="Subfamilia" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60" />
                                 <asp:CommandField HeaderText="Editar" ShowEditButton="true" ButtonType="Image" EditImageUrl="~/Img/edicion.png" CancelImageUrl="~/Img/cancelar.png" UpdateImageUrl="~/Img/actualizar.png" HeaderStyle-Width="10%" />
                                 <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="true" ButtonType="Image" DeleteImageUrl="~/Img/eliminar.png" DeleteText="Borrar" HeaderStyle-Width="10%" />
                             </Columns>
@@ -760,7 +768,7 @@
                                         <asp:Label  ID="lblHasta" runat="server" Text='<%# (String.IsNullOrEmpty(Eval("Hasta").ToString())) ? "" : Eval("Hasta", "{0:dd/MM/yyyy}") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderStyle-Width="60" ItemStyle-Width="60" ControlStyle-Width="60">
+                                <asp:TemplateField HeaderStyle-Width="65" ItemStyle-Width="70" ControlStyle-Width="70">
                                     <HeaderTemplate>
                                         Distancia
                                         <asp:DropDownList ID="FiltroDistanciaTransporte" runat="server" Font-Size="X-Small" OnSelectedIndexChanged="CambioFiltroDistanciaTransporte" AutoPostBack="true" AppendDataBoundItems="true">

@@ -254,65 +254,12 @@
     <Content Include="Connected Services\tablaCabeceraFacturas\ROP_Informe.tablaCabeceraFacturas.EntityKey.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService.wsdl" />
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService1.wsdl" />
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService10.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaFacturas\CustInvoiceService9.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\tablaCabeceraFacturas\configuration91.svcinfo" />
     <None Include="Connected Services\tablaCabeceraFacturas\configuration.svcinfo" />
     <None Include="Connected Services\tablaCabeceraFacturas\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\tablaFacturas\ROP_Informe.tablaFacturas.AxdCustInvoiceTrans.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\tablaFacturas\ROP_Informe.tablaFacturas.CustInvoiceTransServiceFindKeysResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\tablaFacturas\ROP_Informe.tablaFacturas.CustInvoiceTransServiceFindResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\tablaFacturas\ROP_Informe.tablaFacturas.CustInvoiceTransServiceReadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\tablaFacturas\ROP_Informe.tablaFacturas.EntityKey.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\tablaHojasTrabajoLineas\ROP_Informe.tablaHojasTrabajoLineas.AxdWorkPaperLines.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -463,59 +410,9 @@
     <Content Include="Connected Services\tablaLineasFacturas\ROP_Informe.tablaLineasFacturas.LineasFacturasServiceReadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\tablaObras\configuration91.svcinfo" />
-    <None Include="Connected Services\tablaObras\configuration.svcinfo" />
-    <None Include="Connected Services\tablaObras\ObraService12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService121.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService1210.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService1211.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService122.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService123.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService124.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService125.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService126.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService127.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService128.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService129.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\tablaObras\ObraService2.wsdl" />
-    <None Include="Connected Services\tablaObras\ObraService21.wsdl" />
-    <None Include="Connected Services\tablaObras\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\tablaAlbaranesEntrega\configuration91.svcinfo" />
     <None Include="Connected Services\tablaAlbaranesEntrega\configuration.svcinfo" />
     <None Include="Connected Services\tablaAlbaranesEntrega\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Connected Services\tablaFacturas\configuration91.svcinfo" />
-    <None Include="Connected Services\tablaFacturas\configuration.svcinfo" />
-    <None Include="Connected Services\tablaFacturas\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -528,6 +425,12 @@
     <None Include="Connected Services\tablaLineasFacturas\configuration91.svcinfo" />
     <None Include="Connected Services\tablaLineasFacturas\configuration.svcinfo" />
     <None Include="Connected Services\tablaLineasFacturas\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\tablaObras\configuration91.svcinfo" />
+    <None Include="Connected Services\tablaObras\configuration.svcinfo" />
+    <None Include="Connected Services\tablaObras\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -576,6 +479,44 @@
     <Content Include="Connected Services\tablaInventario\ROP_Informe.tablaInventario.InventTransOriginServiceReadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\tablaObras\ObraService.wsdl" />
+    <None Include="Connected Services\tablaObras\ObraService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService1.wsdl" />
+    <None Include="Connected Services\tablaObras\ObraService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\tablaObras\ObraService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Connected Services\tablaObras\ROP_Informe.tablaObras.AxdObras.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -679,11 +620,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="css\jquery.treegrid.css" />
     <Content Include="Default.aspx" />
     <Content Include="ErrorPage.aspx" />
@@ -694,10 +630,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Img\actualizar.png" />
     <Content Include="Img\cancelar.png" />
     <Content Include="Img\catalonia.png" />
@@ -778,6 +710,7 @@
     <Content Include="js\jquery.treegrid.js" />
     <Content Include="js\jquery.treegrid.min.js" />
     <Content Include="login.aspx" />
+    <Content Include="Pruebas.aspx" />
     <Content Include="Scripts\bootbox.all.js" />
     <Content Include="Scripts\bootbox.all.min.js" />
     <Content Include="Scripts\bootbox.js" />
@@ -838,11 +771,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\tablaFacturas\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\tablaHojasTrabajoLineas\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -878,7 +806,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="datosSQL.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -896,7 +823,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Impersonator .cs" />
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -904,13 +830,20 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\OfertaListaResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="recuperarDatos.cs" />
+    <Compile Include="Pruebas.aspx.cs">
+      <DependentUpon>Pruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pruebas.aspx.designer.cs">
+      <DependentUpon>Pruebas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -940,7 +873,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\tablaAlbaranesEntrega\" />
     <WCFMetadataStorage Include="Connected Services\tablaCabeceraFacturas\" />
-    <WCFMetadataStorage Include="Connected Services\tablaFacturas\" />
     <WCFMetadataStorage Include="Connected Services\tablaHojasTrabajoLineas\" />
     <WCFMetadataStorage Include="Connected Services\tablaInventario\" />
     <WCFMetadataStorage Include="Connected Services\tablaLineasFacturas\" />

@@ -19,7 +19,7 @@ namespace ROP_Informe
         int COLGRID_USR_Visualizar = 2;
         int COLGRID_USR_Exportar = 3;
         int COLGRID_USR_Importar = 4;
-        int COLGRID_USR_Eliminar = 5;
+        int COLGRID_USR_Eliminar;
         int COLGRID_USR_Elegir = 6;
         int COLGRID_USR_btnEditar = 7;
         int COLGRID_USR_btnEliminar = 8;
@@ -54,7 +54,7 @@ namespace ROP_Informe
         int COLGRID_TRA_btnEliminar = 12;
 
         int COLGRID_TRANS_ID = 0;
-        int COLGRID_TRANS_Codigo = 4;
+        int COLGRID_TRANS_Subfamilia = 4;
         int COLGRID_TRANS_btnEditar = 5;
         int COLGRID_TRANS_btnEliminar=6;
 
@@ -182,6 +182,7 @@ namespace ROP_Informe
                 rellenarCombosVersion();
                 rellenarGridServicios();
                 rellenarServicio();
+                rellenarBU();
                 rellenarEmpresa();
                 rellenarDelegacion();
                 rellenarGridTransporte();
@@ -290,10 +291,10 @@ namespace ROP_Informe
                     }
                 }
 
-                btnLimpiarTransporteCodigos.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
-                btnAgregarTransporteCodigos.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnLimpiarTransporteSubfamilias.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
+                btnAgregarTransporteSubfamilias.Visible = dr.GetBoolean(CAMPO_USR_Visualizar);
 
-                foreach (GridViewRow myRow in grvTransporteCodigos.Rows)
+                foreach (GridViewRow myRow in grvTransporteSubfamilias.Rows)
                 {
                     imgBoton = (ImageButton)myRow.Cells[COLGRID_TRANS_btnEditar].Controls[0];
                     if (imgBoton != null)
@@ -401,9 +402,9 @@ namespace ROP_Informe
                     }
                 }
 
-                btnLimpiarTransporteCodigos.Visible = false;
-                btnAgregarTransporteCodigos.Visible = false;
-                foreach (GridViewRow myRow in grvTransporteCodigos.Rows)
+                btnLimpiarTransporteSubfamilias.Visible = false;
+                btnAgregarTransporteSubfamilias.Visible = false;
+                foreach (GridViewRow myRow in grvTransporteSubfamilias.Rows)
                 {
                     imgBoton = (ImageButton)myRow.Cells[COLGRID_TRANS_btnEditar].Controls[0];
                     if (imgBoton != null)
@@ -2271,6 +2272,27 @@ namespace ROP_Informe
             txtValor.Text = numero.ToString("N6");
         }
 
+        protected void rellenarBU()
+        {
+            cmbBUCodigos.Items.Clear();
+            cmbBUCodigos.DataSource = null;
+            cmbBUCodigos.DataBind();
+
+            conexiones.crearConexion();
+            conexiones.comando = conexiones.conexion.CreateCommand();
+            conexiones.comando.CommandText = "sp_ROP_BUs";
+            conexiones.comando.CommandTimeout = 240000;
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            adaptador.Fill(dt);
+            cmbBUCodigos.DataSource = dt;
+            cmbBUCodigos.DataTextField = "BU";
+            cmbBUCodigos.DataValueField = "BU";
+            cmbBUCodigos.DataBind();
+            conexiones.conexion.Close();
+        }
+
         protected void rellenarEmpresa()
         {
             cmbEmpresa.Items.Clear();
@@ -2462,6 +2484,39 @@ namespace ROP_Informe
 
             rellenarTransporteGeneral();
             rellenarGridTransporte();
+        }
+
+        protected void cmbBUCodigos_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            DropDownList dropBU = (DropDownList)sender;
+            string selectedBU = (string)dropBU.SelectedValue;
+
+            if (selectedBU != "")
+            {
+                cmbEmpresaCodigos.Items.Clear();
+                cmbEmpresaCodigos.DataSource = null;
+                cmbEmpresaCodigos.DataBind();
+
+                conexiones.crearConexion();
+                conexiones.comando = conexiones.conexion.CreateCommand();
+                conexiones.comando.CommandText = "sp_ROP_Delegaciones";
+                conexiones.comando.CommandTimeout = 240000;
+                conexiones.comando.CommandType = CommandType.StoredProcedure;
+                SqlParameter parametroBU= new SqlParameter("@BU", SqlDbType.VarChar, 5);
+                parametroBU.Value = selectedBU.ToString();
+                conexiones.comando.Parameters.Add(parametroBU);
+                SqlDataAdapter adaptador = new SqlDataAdapter(conexiones.comando);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adaptador.Fill(dt);
+                cmbEmpresaCodigos.DataSource = dt;
+                cmbEmpresaCodigos.DataTextField = "Empresa";
+                cmbEmpresaCodigos.DataValueField = "Empresa";
+                cmbEmpresaCodigos.DataBind();
+                adaptador.Dispose();
+                conexiones.comando.Dispose();
+                conexiones.conexion.Close();
+                conexiones.conexion.Dispose();
+            }
         }
 
         protected void cmbEmpresaCodigos_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -2691,24 +2746,29 @@ namespace ROP_Informe
             }
         }
 
-        protected void btnLimpiarTransporteCodigos_Click(object sender, EventArgs e)
+        protected void btnLimpiarTransporteSubfamilias_Click(object sender, EventArgs e)
         {
+            cmbBUCodigos.Text = "";
             cmbEmpresaCodigos.Text = "";
             cmbDelegacionCodigos.Text = "";
-            txtCodigos.Text = "";
+            txtSubfamillia.Text = "";
         }
 
-        protected void btnAgregarTransporteCodigos_Click(object sender, EventArgs e)
+        protected void btnAgregarTransporteSubfamilias_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtCodigos.Text != "") 
+                if (txtSubfamillia.Text != "") 
                 {
                     conexiones.crearConexion();
-                    conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigosAgregar";
+                    conexiones.consulta = "sp_ROP_ConfiguracionTransporteSubfamiliaAgregar";
                     conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
                     conexiones.comando.CommandType = CommandType.StoredProcedure;
-
+                    SqlParameter parametroBU = new SqlParameter("@BU", SqlDbType.VarChar, 10);
+                    if (cmbBUCodigos.Text != "")
+                        parametroBU.Value = cmbBUCodigos.Text;
+                    else
+                        parametroBU.Value = DBNull.Value;
                     SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
                     if (cmbEmpresaCodigos.Text != "")
                         parametroEmpresa.Value = cmbEmpresaCodigos.Text;
@@ -2721,9 +2781,9 @@ namespace ROP_Informe
                     else
                         parametroDelegacion.Value = DBNull.Value;
                     conexiones.comando.Parameters.Add(parametroDelegacion);
-                    SqlParameter parametroCodigos = new SqlParameter("@Codigos", SqlDbType.VarChar, 50);
-                    if (txtCodigos.Text != "")
-                        parametroCodigos.Value = txtCodigos.Text;
+                    SqlParameter parametroCodigos = new SqlParameter("@Subfamilia", SqlDbType.VarChar, 50);
+                    if (txtSubfamillia.Text != "")
+                        parametroCodigos.Value = txtSubfamillia.Text;
                     else
                         parametroCodigos.Value = DBNull.Value;
                     conexiones.comando.Parameters.Add(parametroCodigos);
@@ -2737,13 +2797,15 @@ namespace ROP_Informe
                     mpeError.Show();
                 }
 
+                cmbBUCodigos.Text = "";
                 cmbEmpresaCodigos.Text = "";
                 cmbDelegacionCodigos.Text = "";
-                txtCodigos.Text = "";
-               
+                txtSubfamilia.Text = "";
+                
+                cmbBUCodigos.Enabled=true;
                 cmbEmpresaCodigos.Enabled = true;
                 cmbDelegacionCodigos.Enabled = true;
-                txtCodigos.Enabled = true;
+                txtSubfamilia.Enabled = true;
 
                 rellenarGridTransporteCodigos();
             }
@@ -2916,23 +2978,29 @@ namespace ROP_Informe
         private void rellenarGridTransporteCodigos()
         {
             conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigos";
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteSubfamilia";
             conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
             conexiones.comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroEmpresa = new SqlParameter("@Empresa", SqlDbType.VarChar, 10);
+            parametroEmpresa.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroEmpresa);
+            SqlParameter parametroDelegacion = new SqlParameter("@Delegacion", SqlDbType.VarChar, 10);
+            parametroDelegacion.Value = DBNull.Value;
+            conexiones.comando.Parameters.Add(parametroDelegacion);
             SqlDataReader dr = conexiones.comando.ExecuteReader();
-            grvTransporteCodigos.DataSource = dr;
-            grvTransporteCodigos.DataBind();
+            grvTransporteSubfamilias.DataSource = dr;
+            grvTransporteSubfamilias.DataBind();
             conexiones.conexion.Close();
         }
 
 
-        protected void grvTransporteCodigos_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void grvTransporteSubfamilias_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            grvTransporteCodigos.EditIndex = e.NewEditIndex;
+            grvTransporteSubfamilias.EditIndex = e.NewEditIndex;
             rellenarGridTransporteCodigos();
         }
 
-        protected void grvTransporteCodigos_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void grvTransporteSubfamilias_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -2953,7 +3021,7 @@ namespace ROP_Informe
                 //cmbBU.Items.Insert(0, new ListItem(""));
                 string BU = (e.Row.FindControl("lblBU") as Label).Text;
                 cmbBU.Items.FindByValue(BU).Selected = true;
-                cmbBU.Enabled = e.Row.RowIndex == grvTransporteCodigos.EditIndex;
+                cmbBU.Enabled = e.Row.RowIndex == grvTransporteSubfamilias.EditIndex;
 
                 DropDownList cmbEmpresa = (e.Row.FindControl("cmbEmpresa") as DropDownList);
 
@@ -2977,7 +3045,7 @@ namespace ROP_Informe
                 //cmbEmpresa.Items.Insert(0, new ListItem(""));
                 string empresa = (e.Row.FindControl("lblEmpresa") as Label).Text;
                 cmbEmpresa.Items.FindByValue(empresa).Selected = true;
-                cmbEmpresa.Enabled = e.Row.RowIndex == grvTransporteCodigos.EditIndex;
+                cmbEmpresa.Enabled = e.Row.RowIndex == grvTransporteSubfamilias.EditIndex;
 
                 DropDownList cmbDelegacion = (e.Row.FindControl("cmbDelegacion") as DropDownList);
 
@@ -3005,25 +3073,25 @@ namespace ROP_Informe
                 //cmbDelegacion.Items.Insert(0, new ListItem(""));
                 string delegacion = (e.Row.FindControl("lblDelegacion") as Label).Text;
                 cmbDelegacion.Items.FindByValue(delegacion).Selected = true;
-                cmbDelegacion.Enabled = e.Row.RowIndex == grvTransporteCodigos.EditIndex;
+                cmbDelegacion.Enabled = e.Row.RowIndex == grvTransporteSubfamilias.EditIndex;
             }
         }
 
-        protected void grvTransporteCodigos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void grvTransporteSubfamilias_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            string ID = ((System.Web.UI.WebControls.TextBox)grvTransporteCodigos.Rows[e.RowIndex].Cells[COLGRID_TRANS_ID].Controls[0]).Text;
-            DropDownList cmbBU = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbBU") as DropDownList;
+            string ID = ((System.Web.UI.WebControls.TextBox)grvTransporteSubfamilias.Rows[e.RowIndex].Cells[COLGRID_TRANS_ID].Controls[0]).Text;
+            DropDownList cmbBU = grvTransporteSubfamilias.Rows[e.RowIndex].FindControl("cmbBU") as DropDownList;
             string BU = Convert.ToString(cmbBU.SelectedValue);
-            DropDownList cmbEmpresa = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbEmpresa") as DropDownList;
+            DropDownList cmbEmpresa = grvTransporteSubfamilias.Rows[e.RowIndex].FindControl("cmbEmpresa") as DropDownList;
             string Empresa = Convert.ToString(cmbEmpresa.SelectedValue);
-            DropDownList cmbDelegacion = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbDelegacion") as DropDownList;
+            DropDownList cmbDelegacion = grvTransporteSubfamilias.Rows[e.RowIndex].FindControl("cmbDelegacion") as DropDownList;
             string Delegacion = Convert.ToString(cmbDelegacion.SelectedValue);
-            string Codigo = ((System.Web.UI.WebControls.TextBox)grvTransporteCodigos.Rows[e.RowIndex].Cells[COLGRID_TRANS_Codigo].Controls[0]).Text;
+            string Subfamilia = ((System.Web.UI.WebControls.TextBox)grvTransporteSubfamilias.Rows[e.RowIndex].Cells[COLGRID_TRANS_Subfamilia].Controls[0]).Text;
            
-            if (Codigo != "")
+            if (Subfamilia != "")
             {
                 conexiones.crearConexion();
-                conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigoModificar";
+                conexiones.consulta = "sp_ROP_ConfiguracionTransporteSubfamiliaModificar";
                 conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
                 conexiones.comando.CommandType = CommandType.StoredProcedure;
 
@@ -3048,16 +3116,16 @@ namespace ROP_Informe
                 else
                     parametroDelegacion.Value = DBNull.Value;
                 conexiones.comando.Parameters.Add(parametroDelegacion);
-                SqlParameter parametroCodigo = new SqlParameter("@Codigo", SqlDbType.VarChar, 10);
-                if (Codigo != "")
-                    parametroCodigo.Value = Codigo;
+                SqlParameter parametroCodigo = new SqlParameter("@Subfamilia", SqlDbType.VarChar, 10);
+                if (Subfamilia != "")
+                    parametroCodigo.Value = Subfamilia;
                 else
                     parametroCodigo.Value = DBNull.Value;
                 conexiones.comando.Parameters.Add(parametroCodigo);
                 conexiones.comando.ExecuteNonQuery();
                 conexiones.conexion.Close();
 
-                grvTransporteCodigos.EditIndex = -1;
+                grvTransporteSubfamilias.EditIndex = -1;
                 rellenarGridTransporte();
             }
             else
@@ -3068,18 +3136,18 @@ namespace ROP_Informe
             }
         }
 
-        protected void grvTransporteCodigos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void grvTransporteSubfamilias_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            grvTransporteCodigos.EditIndex = -1;
+            grvTransporteSubfamilias.EditIndex = -1;
             rellenarGridTransporteCodigos();
         }
 
-        protected void grvTransporteCodigos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void grvTransporteSubfamilias_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            string ID = grvTransporteCodigos.DataKeys[e.RowIndex].Values["CFGTCO_ID"].ToString();
+            string ID = grvTransporteSubfamilias.DataKeys[e.RowIndex].Values["CFGTCO_ID"].ToString();
 
             conexiones.crearConexion();
-            conexiones.consulta = "sp_ROP_ConfiguracionTransporteCodigoEliminar";
+            conexiones.consulta = "sp_ROP_ConfiguracionTransporteSubfamiliaEliminar";
             conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
             conexiones.comando.CommandType = CommandType.StoredProcedure;
 
@@ -3259,7 +3327,7 @@ namespace ROP_Informe
         protected void grvTransporte_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             string ID = ((System.Web.UI.WebControls.TextBox)grvTransporte.Rows[e.RowIndex].Cells[COLGRID_CFGTRA_ID].Controls[0]).Text;
-            DropDownList cmbBU = grvTransporteCodigos.Rows[e.RowIndex].FindControl("cmbBU") as DropDownList;
+            DropDownList cmbBU = grvTransporteSubfamilias.Rows[e.RowIndex].FindControl("cmbBU") as DropDownList;
             string BU = Convert.ToString(cmbBU.SelectedValue);
             DropDownList cmbEmpresa = grvTransporte.Rows[e.RowIndex].FindControl("cmbEmpresa") as DropDownList;
             string Empresa = Convert.ToString(cmbEmpresa.SelectedValue);
@@ -3634,27 +3702,6 @@ namespace ROP_Informe
             }
             txtPanel.Text = "";
         }
-
-        //private void datosPaneles()
-        //{
-        //    try
-        //    {
-        //        conexiones.crearConexionBI();
-        //        conexiones.comando = conexiones.conexion.CreateCommand();
-        //        conexiones.comando.CommandText = "ROP_BI_Paneles";
-        //        conexiones.comando.CommandTimeout = 240000;
-        //        conexiones.comando.CommandType = CommandType.StoredProcedure;
-        //        conexiones.comando.ExecuteNonQuery();
-        //        conexiones.comando.Dispose();
-        //        conexiones.conexion.Close();
-        //        conexiones.conexion.Close();
-        //        conexiones.conexion.Dispose();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        conexiones.conexion.Close();
-        //    }
-        //}
 
         private void rellenarGridPaneles()
         {

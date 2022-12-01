@@ -34,19 +34,6 @@
   <wsdl:binding name="NetTcpBinding_WorkPaperLinesService" type="i0:WorkPaperLinesService">
     <wsp:PolicyReference URI="#NetTcpBinding_WorkPaperLinesService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="read">
-      <soap12:operation soapAction="http://tempuri.org/WorkPaperLinesService/read" style="document" />
-      <wsdl:input name="WorkPaperLinesServiceReadRequest">
-        <soap12:header message="i0:WorkPaperLinesServiceReadRequest_Headers" part="context" use="literal" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="WorkPaperLinesServiceReadResponse">
-        <soap12:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="AifFaultFault">
-        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
     <wsdl:operation name="findKeys">
       <soap12:operation soapAction="http://tempuri.org/WorkPaperLinesService/findKeys" style="document" />
       <wsdl:input name="WorkPaperLinesServiceFindKeysRequest">
@@ -54,6 +41,19 @@
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output name="WorkPaperLinesServiceFindKeysResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AifFaultFault">
+        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <soap12:operation soapAction="http://tempuri.org/WorkPaperLinesService/read" style="document" />
+      <wsdl:input name="WorkPaperLinesServiceReadRequest">
+        <soap12:header message="i0:WorkPaperLinesServiceReadRequest_Headers" part="context" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WorkPaperLinesServiceReadResponse">
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="AifFaultFault">

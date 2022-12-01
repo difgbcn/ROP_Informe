@@ -312,13 +312,31 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.TextBox txtFechaActualizar;
 
         /// <summary>
-        /// Control btnLimpiarTransporteCodigos.
+        /// Control btnLimpiarTransporteSubfamilias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLimpiarTransporteCodigos;
+        protected global::System.Web.UI.WebControls.LinkButton btnLimpiarTransporteSubfamilias;
+
+        /// <summary>
+        /// Control btnAgregarTransporteSubfamilias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAgregarTransporteSubfamilias;
+
+        /// <summary>
+        /// Control cmbBUCodigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbBUCodigos;
 
         /// <summary>
         /// Control cmbEmpresaCodigos.
@@ -339,31 +357,22 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.DropDownList cmbDelegacionCodigos;
 
         /// <summary>
-        /// Control txtCodigos.
+        /// Control txtSubfamillia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigos;
+        protected global::System.Web.UI.WebControls.TextBox txtSubfamillia;
 
         /// <summary>
-        /// Control btnAgregarTransporteCodigos.
+        /// Control grvTransporteSubfamilias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAgregarTransporteCodigos;
-
-        /// <summary>
-        /// Control grvTransporteCodigos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvTransporteCodigos;
+        protected global::System.Web.UI.WebControls.GridView grvTransporteSubfamilias;
 
         /// <summary>
         /// Control btnLimpiarTransporte.

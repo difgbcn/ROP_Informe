@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="5tAARWwoNt4G9CTYCha1T7g/So0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="zp1y0WkvLc9kl+InURw2CwMMC0x/n79BG9FsTguLxtQ=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_SalesOrdersService">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_SalesOrdersService1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_SalesOrdersService</serializedValue>
+          <serializedValue>NetTcpBinding_SalesOrdersService1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -121,7 +121,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_SalesOrdersService" contract="tablaPedidos.SalesOrdersService" bindingType="netTcpBinding" address="net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/SalesOrders" bindingConfiguration="NetTcpBinding_SalesOrdersService">
+    <endpoint name="NetTcpBinding_SalesOrdersService1" contract="tablaPedidos.SalesOrdersService" bindingType="netTcpBinding" address="net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/SalesOrders" bindingConfiguration="NetTcpBinding_SalesOrdersService1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://axaos2012prep-new.alsina.red:8201/DynamicsAx/Services/SalesOrders</serializedValue>
@@ -133,7 +133,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_SalesOrdersService</serializedValue>
+          <serializedValue>NetTcpBinding_SalesOrdersService1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>tablaPedidos.SalesOrdersService</serializedValue>
@@ -196,7 +196,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_SalesOrdersService</serializedValue>
+          <serializedValue>NetTcpBinding_SalesOrdersService1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

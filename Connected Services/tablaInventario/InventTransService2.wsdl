@@ -34,19 +34,6 @@
   <wsdl:binding name="NetTcpBinding_InventTransOriginService" type="i0:InventTransOriginService">
     <wsp:PolicyReference URI="#NetTcpBinding_InventTransOriginService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="findKeys">
-      <soap12:operation soapAction="http://tempuri.org/InventTransOriginService/findKeys" style="document" />
-      <wsdl:input name="InventTransOriginServiceFindKeysRequest">
-        <soap12:header message="i0:InventTransOriginServiceFindKeysRequest_Headers" part="context" use="literal" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="InventTransOriginServiceFindKeysResponse">
-        <soap12:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="AifFaultFault">
-        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
     <wsdl:operation name="read">
       <soap12:operation soapAction="http://tempuri.org/InventTransOriginService/read" style="document" />
       <wsdl:input name="InventTransOriginServiceReadRequest">
@@ -54,6 +41,19 @@
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output name="InventTransOriginServiceReadResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AifFaultFault">
+        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findKeys">
+      <soap12:operation soapAction="http://tempuri.org/InventTransOriginService/findKeys" style="document" />
+      <wsdl:input name="InventTransOriginServiceFindKeysRequest">
+        <soap12:header message="i0:InventTransOriginServiceFindKeysRequest_Headers" part="context" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="InventTransOriginServiceFindKeysResponse">
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="AifFaultFault">

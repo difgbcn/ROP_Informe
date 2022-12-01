@@ -22,12 +22,5 @@ namespace ROP_Informe
             conexion = new SqlConnection(strConexion);
             conexion.Open();
         }
-
-        public static void crearConexionBI()
-        {
-            strConexion = ConfigurationManager.ConnectionStrings["SQL_ROP_BI"].ToString();
-            conexion = new SqlConnection(strConexion);
-            conexion.Open();
-        }
     }
 }

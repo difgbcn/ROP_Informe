@@ -16,16 +16,16 @@
       <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/TransportTicket?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="TransportTicketServiceFindRequest">
-    <wsdl:part name="parameters" element="tns:TransportTicketServiceFindRequest" />
+  <wsdl:message name="TransportTicketServiceReadRequest">
+    <wsdl:part name="parameters" element="tns:TransportTicketServiceReadRequest" />
   </wsdl:message>
-  <wsdl:message name="TransportTicketServiceFindRequest_Headers">
+  <wsdl:message name="TransportTicketServiceReadRequest_Headers">
     <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
   </wsdl:message>
-  <wsdl:message name="TransportTicketServiceFindResponse">
-    <wsdl:part name="parameters" element="tns:TransportTicketServiceFindResponse" />
+  <wsdl:message name="TransportTicketServiceReadResponse">
+    <wsdl:part name="parameters" element="tns:TransportTicketServiceReadResponse" />
   </wsdl:message>
-  <wsdl:message name="TransportTicketService_find_AifFaultFault_FaultMessage">
+  <wsdl:message name="TransportTicketService_read_AifFaultFault_FaultMessage">
     <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
   </wsdl:message>
   <wsdl:message name="TransportTicketServiceFindKeysRequest">
@@ -40,33 +40,33 @@
   <wsdl:message name="TransportTicketService_findKeys_AifFaultFault_FaultMessage">
     <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q4:AifFault" />
   </wsdl:message>
-  <wsdl:message name="TransportTicketServiceReadRequest">
-    <wsdl:part name="parameters" element="tns:TransportTicketServiceReadRequest" />
+  <wsdl:message name="TransportTicketServiceFindRequest">
+    <wsdl:part name="parameters" element="tns:TransportTicketServiceFindRequest" />
   </wsdl:message>
-  <wsdl:message name="TransportTicketServiceReadRequest_Headers">
+  <wsdl:message name="TransportTicketServiceFindRequest_Headers">
     <wsdl:part xmlns:q5="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q5:CallContext" />
   </wsdl:message>
-  <wsdl:message name="TransportTicketServiceReadResponse">
-    <wsdl:part name="parameters" element="tns:TransportTicketServiceReadResponse" />
+  <wsdl:message name="TransportTicketServiceFindResponse">
+    <wsdl:part name="parameters" element="tns:TransportTicketServiceFindResponse" />
   </wsdl:message>
-  <wsdl:message name="TransportTicketService_read_AifFaultFault_FaultMessage">
+  <wsdl:message name="TransportTicketService_find_AifFaultFault_FaultMessage">
     <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q6:AifFault" />
   </wsdl:message>
   <wsdl:portType name="TransportTicketService">
-    <wsdl:operation name="find">
-      <wsdl:input wsaw:Action="http://tempuri.org/TransportTicketService/find" name="TransportTicketServiceFindRequest" message="tns:TransportTicketServiceFindRequest" />
-      <wsdl:output wsaw:Action="http://tempuri.org/TransportTicketService/findResponse" name="TransportTicketServiceFindResponse" message="tns:TransportTicketServiceFindResponse" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/TransportTicketService/findAifFaultFault" name="AifFaultFault" message="tns:TransportTicketService_find_AifFaultFault_FaultMessage" />
+    <wsdl:operation name="read">
+      <wsdl:input wsaw:Action="http://tempuri.org/TransportTicketService/read" name="TransportTicketServiceReadRequest" message="tns:TransportTicketServiceReadRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TransportTicketService/readResponse" name="TransportTicketServiceReadResponse" message="tns:TransportTicketServiceReadResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/TransportTicketService/readAifFaultFault" name="AifFaultFault" message="tns:TransportTicketService_read_AifFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="findKeys">
       <wsdl:input wsaw:Action="http://tempuri.org/TransportTicketService/findKeys" name="TransportTicketServiceFindKeysRequest" message="tns:TransportTicketServiceFindKeysRequest" />
       <wsdl:output wsaw:Action="http://tempuri.org/TransportTicketService/findKeysResponse" name="TransportTicketServiceFindKeysResponse" message="tns:TransportTicketServiceFindKeysResponse" />
       <wsdl:fault wsaw:Action="http://tempuri.org/TransportTicketService/findKeysAifFaultFault" name="AifFaultFault" message="tns:TransportTicketService_findKeys_AifFaultFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="read">
-      <wsdl:input wsaw:Action="http://tempuri.org/TransportTicketService/read" name="TransportTicketServiceReadRequest" message="tns:TransportTicketServiceReadRequest" />
-      <wsdl:output wsaw:Action="http://tempuri.org/TransportTicketService/readResponse" name="TransportTicketServiceReadResponse" message="tns:TransportTicketServiceReadResponse" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/TransportTicketService/readAifFaultFault" name="AifFaultFault" message="tns:TransportTicketService_read_AifFaultFault_FaultMessage" />
+    <wsdl:operation name="find">
+      <wsdl:input wsaw:Action="http://tempuri.org/TransportTicketService/find" name="TransportTicketServiceFindRequest" message="tns:TransportTicketServiceFindRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TransportTicketService/findResponse" name="TransportTicketServiceFindResponse" message="tns:TransportTicketServiceFindResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/TransportTicketService/findAifFaultFault" name="AifFaultFault" message="tns:TransportTicketService_find_AifFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

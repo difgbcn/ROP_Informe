@@ -16,28 +16,28 @@
       <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/SalesOrders?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="SalesOrdersServiceFindKeysRequest">
-    <wsdl:part name="parameters" element="tns:SalesOrdersServiceFindKeysRequest" />
-  </wsdl:message>
-  <wsdl:message name="SalesOrdersServiceFindKeysRequest_Headers">
-    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
-  </wsdl:message>
-  <wsdl:message name="SalesOrdersServiceFindKeysResponse">
-    <wsdl:part name="parameters" element="tns:SalesOrdersServiceFindKeysResponse" />
-  </wsdl:message>
-  <wsdl:message name="SalesOrdersService_findKeys_AifFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
-  </wsdl:message>
   <wsdl:message name="SalesOrdersServiceReadRequest">
     <wsdl:part name="parameters" element="tns:SalesOrdersServiceReadRequest" />
   </wsdl:message>
   <wsdl:message name="SalesOrdersServiceReadRequest_Headers">
-    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
   </wsdl:message>
   <wsdl:message name="SalesOrdersServiceReadResponse">
     <wsdl:part name="parameters" element="tns:SalesOrdersServiceReadResponse" />
   </wsdl:message>
   <wsdl:message name="SalesOrdersService_read_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="SalesOrdersServiceFindKeysRequest">
+    <wsdl:part name="parameters" element="tns:SalesOrdersServiceFindKeysRequest" />
+  </wsdl:message>
+  <wsdl:message name="SalesOrdersServiceFindKeysRequest_Headers">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="SalesOrdersServiceFindKeysResponse">
+    <wsdl:part name="parameters" element="tns:SalesOrdersServiceFindKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalesOrdersService_findKeys_AifFaultFault_FaultMessage">
     <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q4:AifFault" />
   </wsdl:message>
   <wsdl:message name="SalesOrdersServiceFindRequest">
@@ -53,15 +53,15 @@
     <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q6:AifFault" />
   </wsdl:message>
   <wsdl:portType name="SalesOrdersService">
-    <wsdl:operation name="findKeys">
-      <wsdl:input wsaw:Action="http://tempuri.org/SalesOrdersService/findKeys" name="SalesOrdersServiceFindKeysRequest" message="tns:SalesOrdersServiceFindKeysRequest" />
-      <wsdl:output wsaw:Action="http://tempuri.org/SalesOrdersService/findKeysResponse" name="SalesOrdersServiceFindKeysResponse" message="tns:SalesOrdersServiceFindKeysResponse" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/SalesOrdersService/findKeysAifFaultFault" name="AifFaultFault" message="tns:SalesOrdersService_findKeys_AifFaultFault_FaultMessage" />
-    </wsdl:operation>
     <wsdl:operation name="read">
       <wsdl:input wsaw:Action="http://tempuri.org/SalesOrdersService/read" name="SalesOrdersServiceReadRequest" message="tns:SalesOrdersServiceReadRequest" />
       <wsdl:output wsaw:Action="http://tempuri.org/SalesOrdersService/readResponse" name="SalesOrdersServiceReadResponse" message="tns:SalesOrdersServiceReadResponse" />
       <wsdl:fault wsaw:Action="http://tempuri.org/SalesOrdersService/readAifFaultFault" name="AifFaultFault" message="tns:SalesOrdersService_read_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findKeys">
+      <wsdl:input wsaw:Action="http://tempuri.org/SalesOrdersService/findKeys" name="SalesOrdersServiceFindKeysRequest" message="tns:SalesOrdersServiceFindKeysRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/SalesOrdersService/findKeysResponse" name="SalesOrdersServiceFindKeysResponse" message="tns:SalesOrdersServiceFindKeysResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/SalesOrdersService/findKeysAifFaultFault" name="AifFaultFault" message="tns:SalesOrdersService_findKeys_AifFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="find">
       <wsdl:input wsaw:Action="http://tempuri.org/SalesOrdersService/find" name="SalesOrdersServiceFindRequest" message="tns:SalesOrdersServiceFindRequest" />

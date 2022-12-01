@@ -12,7 +12,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -115,7 +115,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -273,7 +273,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -319,7 +319,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -379,7 +379,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services")]
     public enum InfologMessageType {
@@ -395,32 +395,147 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdEntityKey_BankLCExportLine : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string fieldField;
-        
-        private string valueField;
+        private int lineNumField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Field {
+        public int LineNum {
             get {
-                return this.fieldField;
+                return this.lineNumField;
             }
             set {
-                this.fieldField = value;
-                this.RaisePropertyChanged("Field");
+                this.lineNumField = value;
+                this.RaisePropertyChanged("LineNum");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VendBankAccountExpiryDate))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VendBankAccountActiveDate))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_TrvDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMARepairFinishDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMASignOffDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMAPreferredServiceDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ApprovedDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_PurchReqSubmittedDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VersioningTimeStamp))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ActivationDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_TransDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentSeniorityDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentStartDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentTransitionDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentLastWorkedDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentAdjStartDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ValidFromDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ValidToDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ToDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_FromDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_DateTimeExecuted))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_DOCommonLastSyncDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_StartDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_EndDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_smmDateTimeLastEdit))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_JournalSessionLoginDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_JournalPostedDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_PostReleaseDate))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentValidTo))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentValidFrom))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ExpirationDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ModifiedDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_CreatedDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_AttributeValueDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMALatestCompletionDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ClosedDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_BankStatementBookingDate))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_BankStmtISODateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_InvoiceReleaseDate))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_EffectiveDateTime))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_UTCTimestamp))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdType_DateTime : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private System.DateTime localDateTimeField;
+        
+        private bool localDateTimeFieldSpecified;
+        
+        private AxdEnum_Timezone timezoneField;
+        
+        private bool timezoneFieldSpecified;
+        
+        private System.DateTime valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public System.DateTime localDateTime {
+            get {
+                return this.localDateTimeField;
+            }
+            set {
+                this.localDateTimeField = value;
+                this.RaisePropertyChanged("localDateTime");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Value {
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool localDateTimeSpecified {
+            get {
+                return this.localDateTimeFieldSpecified;
+            }
+            set {
+                this.localDateTimeFieldSpecified = value;
+                this.RaisePropertyChanged("localDateTimeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public AxdEnum_Timezone timezone {
+            get {
+                return this.timezoneField;
+            }
+            set {
+                this.timezoneField = value;
+                this.RaisePropertyChanged("timezone");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool timezoneSpecified {
+            get {
+                return this.timezoneFieldSpecified;
+            }
+            set {
+                this.timezoneFieldSpecified = value;
+                this.RaisePropertyChanged("timezoneSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public System.DateTime Value {
             get {
                 return this.valueField;
             }
@@ -441,113 +556,729 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private KeyField[] keyDataField;
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_Timezone {
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public KeyField[] KeyData {
-            get {
-                return this.keyDataField;
-            }
-            set {
-                this.keyDataField = value;
-                this.RaisePropertyChanged("KeyData");
-            }
-        }
+        GMTMINUS1200INTERNATIONALDATELINEWEST,
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        /// <remarks/>
+        GMTMINUS1100COORDINATEDUNIVERSALTIME,
         
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
+        /// <remarks/>
+        GMTMINUS1000HAWAII,
+        
+        /// <remarks/>
+        GMTMINUS0900ALASKA,
+        
+        /// <remarks/>
+        GMTMINUS0800PACIFICTIME,
+        
+        /// <remarks/>
+        GMTMINUS0800TIJUANA_BAJACALIFORNIA,
+        
+        /// <remarks/>
+        GMTMINUS0700ARIZONA,
+        
+        /// <remarks/>
+        GMTMINUS0700MOUNTAINTIME,
+        
+        /// <remarks/>
+        GMTMINUS0700CHIHUAHUA_LAPAZ_MAZATLAN,
+        
+        /// <remarks/>
+        GMTMINUS0600CENTRALAMERICA,
+        
+        /// <remarks/>
+        GMTMINUS0600CENTRALTIME,
+        
+        /// <remarks/>
+        GMTMINUS0600GUADALAJARA_MEXICOCITY,
+        
+        /// <remarks/>
+        GMTMINUS0600SASKATCHEWAN,
+        
+        /// <remarks/>
+        GMTMINUS0500BOGOTA_LIMA_QUITO_RIOBRANCO,
+        
+        /// <remarks/>
+        GMTMINUS0500EASTERNTIME_MEXICO,
+        
+        /// <remarks/>
+        GMTMINUS0500EASTERNTIME,
+        
+        /// <remarks/>
+        GMTMINUS0500INDIANA,
+        
+        /// <remarks/>
+        GMTMINUS0430CARACAS,
+        
+        /// <remarks/>
+        GMTMINUS0400ASUNCION,
+        
+        /// <remarks/>
+        GMTMINUS0400ATLANTICTIME,
+        
+        /// <remarks/>
+        GMTMINUS0400LAPAZ,
+        
+        /// <remarks/>
+        GMTMINUS0400MANAUS,
+        
+        /// <remarks/>
+        GMTMINUS0330NEWFOUNDLAND,
+        
+        /// <remarks/>
+        GMTMINUS0300BRASILIA,
+        
+        /// <remarks/>
+        GMTMINUS0300BUENOSAIRES,
+        
+        /// <remarks/>
+        GMTMINUS0300BUENOSAIRES_GEORGETOWN,
+        
+        /// <remarks/>
+        GMTMINUS0300GREENLAND,
+        
+        /// <remarks/>
+        GMTMINUS0300MONTEVIDEO,
+        
+        /// <remarks/>
+        GMTMINUS0300_SALVADOR,
+        
+        /// <remarks/>
+        GMTMINUS0300SANTIAGO,
+        
+        /// <remarks/>
+        GMTMINUS0200MIDATLANTIC,
+        
+        /// <remarks/>
+        GMTMINUS0100AZORES,
+        
+        /// <remarks/>
+        GMTMINUS0100CAPEVERDIS,
+        
+        /// <remarks/>
+        GMT_CASABLANCA,
+        
+        /// <remarks/>
+        GMT_COORDINATEDUNIVERSALTIME,
+        
+        /// <remarks/>
+        GMT_CASABLANCA_MONTROVIA_REYKJAVIK,
+        
+        /// <remarks/>
+        GMT_DUBLIN_EDINBURGH_LISBON_LONDON,
+        
+        /// <remarks/>
+        GMTPLUS0100_AMSTERDAM_BERLIN_BERN_ROME,
+        
+        /// <remarks/>
+        GMTPLUS0100BELGRADE_BRATISLAVA_BUDAPEST,
+        
+        /// <remarks/>
+        GMTPLUS0100BRUSSELS_COPENHAGEN_MADRID,
+        
+        /// <remarks/>
+        GMTPLUS0100SARAJEVO_SKOPJE_WARSAW_ZAGREB,
+        
+        /// <remarks/>
+        GMTPLUS0100TRIPOLI,
+        
+        /// <remarks/>
+        GMTPLUS0100WESTCENTRALAFRICA,
+        
+        /// <remarks/>
+        GMTPLUS0200AMMAN,
+        
+        /// <remarks/>
+        GMTPLUS0200ATHENS_BUCHAREST_ISTANBUL,
+        
+        /// <remarks/>
+        GMTPLUS0200BEIRUT,
+        
+        /// <remarks/>
+        GMTPLUS0200MINSK,
+        
+        /// <remarks/>
+        GMTPLUS0200CAIRO,
+        
+        /// <remarks/>
+        GMTPLUS0200_DAMASCUS,
+        
+        /// <remarks/>
+        GMTPLUS0200HARARE_PRETORIA,
+        
+        /// <remarks/>
+        GMTPLUS0200HELSINKI_KYIV_RIGA_VILNIUS,
+        
+        /// <remarks/>
+        GMTPLUS0200JERUSALEM,
+        
+        /// <remarks/>
+        GMTPLUS0200WINDHOEK,
+        
+        /// <remarks/>
+        GMTPLUS0300ISTANBUL,
+        
+        /// <remarks/>
+        GMT_PLUS0300KALININGRAD_MINSK,
+        
+        /// <remarks/>
+        GMTPLUS0300BAGHDAD,
+        
+        /// <remarks/>
+        GMTPLUS0300KUWAIT_RIYADH,
+        
+        /// <remarks/>
+        GMTPLUS0300MOSCOW_STPETERSBURG_VOLGOGRAD,
+        
+        /// <remarks/>
+        GMTPLUS0400PORTLOUIS,
+        
+        /// <remarks/>
+        GMTPLUS0300NAIROBI,
+        
+        /// <remarks/>
+        GMTPLUS0300TBILISI,
+        
+        /// <remarks/>
+        GMTPLUS0330TEHRAN,
+        
+        /// <remarks/>
+        GMTPLUS0400ABUDHABI_MUSCAT,
+        
+        /// <remarks/>
+        GMTPLUS0400BAKU,
+        
+        /// <remarks/>
+        GMTPLUS0400IZHEVSK_SAMARA,
+        
+        /// <remarks/>
+        GMTPLUS0400CAUCASUSSTANDARDTIME,
+        
+        /// <remarks/>
+        GMTPLUS0400YEREVAN,
+        
+        /// <remarks/>
+        GMTPLUS0430KABUL,
+        
+        /// <remarks/>
+        GMTPLUS0500EKATERINBURG,
+        
+        /// <remarks/>
+        GMTPLUS0500ISLAMABAD_KARACHI,
+        
+        /// <remarks/>
+        GMTPLUS0500ISLAMABAD_KARACHI_TASHKENT,
+        
+        /// <remarks/>
+        GMTPLUS0530CHENNAI_KOLKATA_MUMBAI,
+        
+        /// <remarks/>
+        GMTPLUS0530SRIJAYAWARDENEPURA,
+        
+        /// <remarks/>
+        GMTPLUS0545KATHMANDU,
+        
+        /// <remarks/>
+        GMTPLUS0600ASTANA_DHAKA,
+        
+        /// <remarks/>
+        GMTPLUS0600DHAKA,
+        
+        /// <remarks/>
+        GMTPLUS0600ALMATY_NOVOSIBIRSK,
+        
+        /// <remarks/>
+        GMTPLUS0630_YANGON,
+        
+        /// <remarks/>
+        GMTPLUS0700_BANGKOK_HANOI_JAKARTA,
+        
+        /// <remarks/>
+        GMTPLUS0700KRASNOYARSK,
+        
+        /// <remarks/>
+        GMTPLUS0800BEIJING_CHONGQING_HONGKONG,
+        
+        /// <remarks/>
+        GMTPLUS0800IRKUTSK_ULAANBATAAR,
+        
+        /// <remarks/>
+        GMTPLUS0800_ULAANBAATAR,
+        
+        /// <remarks/>
+        GMTPLUS0800KUALALUMPUR_SINGAPORE,
+        
+        /// <remarks/>
+        GMTPLUS0800PERTH,
+        
+        /// <remarks/>
+        GMTPLUS0800TAIPEI,
+        
+        /// <remarks/>
+        GMTPLUS0900OSAKA_SAPPORO_TOKYO,
+        
+        /// <remarks/>
+        GMTPLUS0900SEOUL,
+        
+        /// <remarks/>
+        GMTPLUS0900YAKUTSK,
+        
+        /// <remarks/>
+        GMTPLUS0930ADELAIDE,
+        
+        /// <remarks/>
+        GMTPLUS0930DARWIN,
+        
+        /// <remarks/>
+        GMTPLUS1000BRISBANE,
+        
+        /// <remarks/>
+        GMTPLUS1000CANBERRA_MELBOURNE_SYDNEY,
+        
+        /// <remarks/>
+        GMTPLUS1000GUAM_PORTMORESBY,
+        
+        /// <remarks/>
+        GMTPLUS1000HOBART,
+        
+        /// <remarks/>
+        GMTPLUS1000VLADIVOSTOK,
+        
+        /// <remarks/>
+        GMTPLUS1100CHOKURDAKH,
+        
+        /// <remarks/>
+        GMTPLUS1100MAGADAN_SOLOMONIS,
+        
+        /// <remarks/>
+        GMTPLUS0600MAGADAN,
+        
+        /// <remarks/>
+        GMTPLUS1200ANADYR_PETRO_KAMCHATSKY,
+        
+        /// <remarks/>
+        GMTPLUS1200AUCKLAND_WELLINGTON,
+        
+        /// <remarks/>
+        GMTPLUS1200COORDINATEDUNIVERSALTIME,
+        
+        /// <remarks/>
+        GMTPLUS1200FIJI_KAMCHATKA_MARSHALLIS,
+        
+        /// <remarks/>
+        GMTMINUS1100MIDWAYISLAND_SAMOA,
+        
+        /// <remarks/>
+        GMTPLUS1300NUKU_ALOFA,
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_VendBankAccountExpiryDate : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_VendBankAccountActiveDate : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_TrvDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_SMARepairFinishDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_SMASignOffDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_SMAPreferredServiceDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ApprovedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_PurchReqSubmittedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_VersioningTimeStamp : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ActivationDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_TransDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_HcmEmploymentSeniorityDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_HcmEmploymentStartDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_HcmEmploymentTransitionDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_HcmEmploymentLastWorkedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_HcmEmploymentAdjStartDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ValidFromDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ValidToDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ToDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_FromDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_DateTimeExecuted : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_DOCommonLastSyncDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_StartDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_EndDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_smmDateTimeLastEdit : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_JournalSessionLoginDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_JournalPostedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_PostReleaseDate : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_HcmEmploymentValidTo : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_HcmEmploymentValidFrom : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ExpirationDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ModifiedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_CreatedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_AttributeValueDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_SMALatestCompletionDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_ClosedDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_BankStatementBookingDate : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_BankStmtISODateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_InvoiceReleaseDate : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_EffectiveDateTime : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdExtType_UTCTimestamp : AxdType_DateTime {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdEntityKey_LogisticsPostalAddress : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string dataSourceNameField;
+        private string location_LocationIdField;
         
-        private string fieldNameField;
-        
-        private Operator operatorField;
-        
-        private string value1Field;
-        
-        private string value2Field;
+        private AxdExtType_EffectiveDateTime validFromField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string DataSourceName {
+        public string Location_LocationId {
             get {
-                return this.dataSourceNameField;
+                return this.location_LocationIdField;
             }
             set {
-                this.dataSourceNameField = value;
-                this.RaisePropertyChanged("DataSourceName");
+                this.location_LocationIdField = value;
+                this.RaisePropertyChanged("Location_LocationId");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string FieldName {
+        public AxdExtType_EffectiveDateTime ValidFrom {
             get {
-                return this.fieldNameField;
+                return this.validFromField;
             }
             set {
-                this.fieldNameField = value;
-                this.RaisePropertyChanged("FieldName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Operator Operator {
-            get {
-                return this.operatorField;
-            }
-            set {
-                this.operatorField = value;
-                this.RaisePropertyChanged("Operator");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string Value1 {
-            get {
-                return this.value1Field;
-            }
-            set {
-                this.value1Field = value;
-                this.RaisePropertyChanged("Value1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Value2 {
-            get {
-                return this.value2Field;
-            }
-            set {
-                this.value2Field = value;
-                this.RaisePropertyChanged("Value2");
+                this.validFromField = value;
+                this.RaisePropertyChanged("ValidFrom");
             }
         }
         
@@ -562,421 +1293,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public enum Operator {
-        
-        /// <remarks/>
-        Equal,
-        
-        /// <remarks/>
-        NotEqual,
-        
-        /// <remarks/>
-        Greater,
-        
-        /// <remarks/>
-        GreaterOrEqual,
-        
-        /// <remarks/>
-        Less,
-        
-        /// <remarks/>
-        LessOrEqual,
-        
-        /// <remarks/>
-        Range,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private CriteriaElement[] criteriaElementField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
-        public CriteriaElement[] CriteriaElement {
-            get {
-                return this.criteriaElementField;
-            }
-            set {
-                this.criteriaElementField = value;
-                this.RaisePropertyChanged("CriteriaElement");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaCabeceraFacturas.DiarioFacturasService")]
-    public interface DiarioFacturasService {
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (DiarioFacturasServiceFindKeysRequest) del mensaje DiarioFacturasServiceFindKeysRequest no coincide con el valor predeterminado (findKeys)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/findKeys", ReplyAction="http://tempuri.org/DiarioFacturasService/findKeysResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaCabeceraFacturas.AifFault), Action="http://tempuri.org/DiarioFacturasService/findKeysAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse findKeys(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/findKeys", ReplyAction="http://tempuri.org/DiarioFacturasService/findKeysResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (DiarioFacturasServiceFindRequest) del mensaje DiarioFacturasServiceFindRequest no coincide con el valor predeterminado (find)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/find", ReplyAction="http://tempuri.org/DiarioFacturasService/findResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaCabeceraFacturas.AifFault), Action="http://tempuri.org/DiarioFacturasService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindResponse find(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/find", ReplyAction="http://tempuri.org/DiarioFacturasService/findResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindResponse> findAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (DiarioFacturasServiceReadRequest) del mensaje DiarioFacturasServiceReadRequest no coincide con el valor predeterminado (read)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/read", ReplyAction="http://tempuri.org/DiarioFacturasService/readResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaCabeceraFacturas.AifFault), Action="http://tempuri.org/DiarioFacturasService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadResponse read(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/read", ReplyAction="http://tempuri.org/DiarioFacturasService/readResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadResponse> readAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadRequest request);
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-    public partial class CallContext : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string companyField;
-        
-        private string languageField;
-        
-        private string logonAsUserField;
-        
-        private string messageIdField;
-        
-        private string partitionKeyField;
-        
-        private ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] propertyBagField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-                this.RaisePropertyChanged("Company");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Language {
-            get {
-                return this.languageField;
-            }
-            set {
-                this.languageField = value;
-                this.RaisePropertyChanged("Language");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string LogonAsUser {
-            get {
-                return this.logonAsUserField;
-            }
-            set {
-                this.logonAsUserField = value;
-                this.RaisePropertyChanged("LogonAsUser");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public string MessageId {
-            get {
-                return this.messageIdField;
-            }
-            set {
-                this.messageIdField = value;
-                this.RaisePropertyChanged("MessageId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
-        public string PartitionKey {
-            get {
-                return this.partitionKeyField;
-            }
-            set {
-                this.partitionKeyField = value;
-                this.RaisePropertyChanged("PartitionKey");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("KeyValueOfstringstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
-        public ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] PropertyBag {
-            get {
-                return this.propertyBagField;
-            }
-            set {
-                this.propertyBagField = value;
-                this.RaisePropertyChanged("PropertyBag");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
-    public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string keyField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DiarioFacturasServiceFindKeysRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class DiarioFacturasServiceFindKeysRequest {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ROP_Informe.tablaCabeceraFacturas.CallContext CallContext;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-        public ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria;
-        
-        public DiarioFacturasServiceFindKeysRequest() {
-        }
-        
-        public DiarioFacturasServiceFindKeysRequest(ROP_Informe.tablaCabeceraFacturas.CallContext CallContext, ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria) {
-            this.CallContext = CallContext;
-            this.QueryCriteria = QueryCriteria;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="DiarioFacturasServiceFindKeysResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class DiarioFacturasServiceFindKeysResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
-        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
-        public ROP_Informe.tablaCabeceraFacturas.EntityKey[] EntityKeyList;
-        
-        public DiarioFacturasServiceFindKeysResponse() {
-        }
-        
-        public DiarioFacturasServiceFindKeysResponse(ROP_Informe.tablaCabeceraFacturas.EntityKey[] EntityKeyList) {
-            this.EntityKeyList = EntityKeyList;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/DiarioFacturas")]
-    public partial class AxdDiarioFacturas : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.Nullable<AxdEnum_boolean> clearNilFieldsOnUpdateField;
-        
-        private bool clearNilFieldsOnUpdateFieldSpecified;
-        
-        private System.Nullable<AxdEnum_XMLDocPurpose> docPurposeField;
-        
-        private bool docPurposeFieldSpecified;
-        
-        private string senderIdField;
-        
-        private AxdEntity_CustInvoiceJour[] custInvoiceJourField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public System.Nullable<AxdEnum_boolean> ClearNilFieldsOnUpdate {
-            get {
-                return this.clearNilFieldsOnUpdateField;
-            }
-            set {
-                this.clearNilFieldsOnUpdateField = value;
-                this.RaisePropertyChanged("ClearNilFieldsOnUpdate");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ClearNilFieldsOnUpdateSpecified {
-            get {
-                return this.clearNilFieldsOnUpdateFieldSpecified;
-            }
-            set {
-                this.clearNilFieldsOnUpdateFieldSpecified = value;
-                this.RaisePropertyChanged("ClearNilFieldsOnUpdateSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public System.Nullable<AxdEnum_XMLDocPurpose> DocPurpose {
-            get {
-                return this.docPurposeField;
-            }
-            set {
-                this.docPurposeField = value;
-                this.RaisePropertyChanged("DocPurpose");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DocPurposeSpecified {
-            get {
-                return this.docPurposeFieldSpecified;
-            }
-            set {
-                this.docPurposeFieldSpecified = value;
-                this.RaisePropertyChanged("DocPurposeSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string SenderId {
-            get {
-                return this.senderIdField;
-            }
-            set {
-                this.senderIdField = value;
-                this.RaisePropertyChanged("SenderId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CustInvoiceJour", Order=3)]
-        public AxdEntity_CustInvoiceJour[] CustInvoiceJour {
-            get {
-                return this.custInvoiceJourField;
-            }
-            set {
-                this.custInvoiceJourField = value;
-                this.RaisePropertyChanged("CustInvoiceJour");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_boolean {
-        
-        /// <remarks/>
-        @false,
-        
-        /// <remarks/>
-        @true,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_XMLDocPurpose {
-        
-        /// <remarks/>
-        Original,
-        
-        /// <remarks/>
-        Duplicate,
-        
-        /// <remarks/>
-        Proforma,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1735,11 +2052,13 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         
         private bool excPE_TastingFieldSpecified;
         
-        private System.Nullable<AxdEnum_boolean> excPECustRelatedDocTypeField;
+        private System.Nullable<AxdEnum_ABC> excPECustRelatedDocTypeField;
         
         private bool excPECustRelatedDocTypeFieldSpecified;
         
         private string priceGroupIdField;
+        
+        private string aRQ_ConfirmDocNumField;
         
         private string creditNoteReasonField;
         
@@ -1758,6 +2077,10 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         private System.Nullable<AxdEnum_NoYes> eXCEIPE_DownLoadCDRField;
         
         private bool eXCEIPE_DownLoadCDRFieldSpecified;
+        
+        private System.Nullable<System.DateTime> eXCEIPE_FEFechaCertificada1Field;
+        
+        private bool eXCEIPE_FEFechaCertificada1FieldSpecified;
         
         private string eXCEIPE_FEUUIDField;
         
@@ -6309,7 +6632,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=243)]
-        public System.Nullable<AxdEnum_boolean> ExcPECustRelatedDocType {
+        public System.Nullable<AxdEnum_ABC> ExcPECustRelatedDocType {
             get {
                 return this.excPECustRelatedDocTypeField;
             }
@@ -6345,6 +6668,18 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=245)]
+        public string ARQ_ConfirmDocNum {
+            get {
+                return this.aRQ_ConfirmDocNumField;
+            }
+            set {
+                this.aRQ_ConfirmDocNumField = value;
+                this.RaisePropertyChanged("ARQ_ConfirmDocNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=246)]
         public string CreditNoteReason {
             get {
                 return this.creditNoteReasonField;
@@ -6356,7 +6691,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=246)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=247)]
         public string CreditNoteTypeId {
             get {
                 return this.creditNoteTypeIdField;
@@ -6368,7 +6703,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=247)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=248)]
         public string ElectronicDocumentTypeId {
             get {
                 return this.electronicDocumentTypeIdField;
@@ -6380,7 +6715,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=248)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=249)]
         public System.Nullable<decimal> EXCEIPE_AmountPendingPayment {
             get {
                 return this.eXCEIPE_AmountPendingPaymentField;
@@ -6404,7 +6739,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=249)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=250)]
         public string EXCEIPE_CodeTipoAfectacionIGV {
             get {
                 return this.eXCEIPE_CodeTipoAfectacionIGVField;
@@ -6416,7 +6751,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=250)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=251)]
         public string EXCEIPE_ConceptsOtherTributeId {
             get {
                 return this.eXCEIPE_ConceptsOtherTributeIdField;
@@ -6428,7 +6763,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=251)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=252)]
         public System.Nullable<AxdEnum_NoYes> EXCEIPE_DownLoadCDR {
             get {
                 return this.eXCEIPE_DownLoadCDRField;
@@ -6452,7 +6787,31 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=252)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true, Order=253)]
+        public System.Nullable<System.DateTime> EXCEIPE_FEFechaCertificada1 {
+            get {
+                return this.eXCEIPE_FEFechaCertificada1Field;
+            }
+            set {
+                this.eXCEIPE_FEFechaCertificada1Field = value;
+                this.RaisePropertyChanged("EXCEIPE_FEFechaCertificada1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool EXCEIPE_FEFechaCertificada1Specified {
+            get {
+                return this.eXCEIPE_FEFechaCertificada1FieldSpecified;
+            }
+            set {
+                this.eXCEIPE_FEFechaCertificada1FieldSpecified = value;
+                this.RaisePropertyChanged("EXCEIPE_FEFechaCertificada1Specified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=254)]
         public string EXCEIPE_FEUUID {
             get {
                 return this.eXCEIPE_FEUUIDField;
@@ -6464,7 +6823,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=253)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=255)]
         public System.Nullable<AxdEnum_NoYes> EXCEIPE_IsPaymentAdvance {
             get {
                 return this.eXCEIPE_IsPaymentAdvanceField;
@@ -6488,7 +6847,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=254)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=256)]
         public string EXCEIPE_MethodOfPayment {
             get {
                 return this.eXCEIPE_MethodOfPaymentField;
@@ -6500,7 +6859,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=255)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=257)]
         public System.Nullable<int> EXCEIPE_NumOfQuotas {
             get {
                 return this.eXCEIPE_NumOfQuotasField;
@@ -6524,7 +6883,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=256)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=258)]
         public System.Nullable<decimal> EXCEIPE_RetentionPercentage {
             get {
                 return this.eXCEIPE_RetentionPercentageField;
@@ -6548,7 +6907,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=257)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=259)]
         public string EXCEIPE_TextDetractionsId {
             get {
                 return this.eXCEIPE_TextDetractionsIdField;
@@ -6560,7 +6919,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=258)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=260)]
         public System.Nullable<int> OfficialNumberInteger {
             get {
                 return this.officialNumberIntegerField;
@@ -6584,7 +6943,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=259)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=261)]
         public string OperationTypeId {
             get {
                 return this.operationTypeIdField;
@@ -6596,7 +6955,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=260)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=262)]
         public string PaymentMeansCodeId {
             get {
                 return this.paymentMeansCodeIdField;
@@ -6654,7 +7013,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_RefNum {
@@ -6676,7 +7035,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_NoYes {
@@ -6689,7 +7048,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_TaxPrintOnInvoice {
@@ -6702,7 +7061,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_ListcodeId {
@@ -6736,7 +7095,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_TaxSpecifyLine {
@@ -6749,7 +7108,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_EInvoiceLineSpecific {
@@ -6762,7 +7121,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_OneTimeCustomer {
@@ -6775,7 +7134,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SalesType {
@@ -6821,7 +7180,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InterCompanyPosted {
@@ -6834,7 +7193,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_EUROTriangulation {
@@ -6847,7 +7206,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_InclTax {
@@ -6860,7 +7219,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_PaymentStubInvoiceId {
@@ -6903,7 +7262,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ReturnStatusHeader {
@@ -6925,7 +7284,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_CustVendProforma {
@@ -6938,905 +7297,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdEntityKey_LogisticsPostalAddress : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string location_LocationIdField;
-        
-        private AxdExtType_EffectiveDateTime validFromField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Location_LocationId {
-            get {
-                return this.location_LocationIdField;
-            }
-            set {
-                this.location_LocationIdField = value;
-                this.RaisePropertyChanged("Location_LocationId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public AxdExtType_EffectiveDateTime ValidFrom {
-            get {
-                return this.validFromField;
-            }
-            set {
-                this.validFromField = value;
-                this.RaisePropertyChanged("ValidFrom");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_EffectiveDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VendBankAccountExpiryDate))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VendBankAccountActiveDate))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_TrvDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMARepairFinishDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMASignOffDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMAPreferredServiceDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ApprovedDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_PurchReqSubmittedDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_VersioningTimeStamp))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ActivationDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_TransDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentSeniorityDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentStartDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentTransitionDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentLastWorkedDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentAdjStartDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ValidFromDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ValidToDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ToDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_FromDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_DateTimeExecuted))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_DOCommonLastSyncDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_StartDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_EndDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_smmDateTimeLastEdit))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_JournalSessionLoginDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_JournalPostedDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_PostReleaseDate))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentValidTo))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_HcmEmploymentValidFrom))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ExpirationDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ModifiedDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_CreatedDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_AttributeValueDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_SMALatestCompletionDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_ClosedDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_BankStatementBookingDate))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_BankStmtISODateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_InvoiceReleaseDate))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_EffectiveDateTime))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AxdExtType_UTCTimestamp))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdType_DateTime : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.DateTime localDateTimeField;
-        
-        private bool localDateTimeFieldSpecified;
-        
-        private AxdEnum_Timezone timezoneField;
-        
-        private bool timezoneFieldSpecified;
-        
-        private System.DateTime valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public System.DateTime localDateTime {
-            get {
-                return this.localDateTimeField;
-            }
-            set {
-                this.localDateTimeField = value;
-                this.RaisePropertyChanged("localDateTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool localDateTimeSpecified {
-            get {
-                return this.localDateTimeFieldSpecified;
-            }
-            set {
-                this.localDateTimeFieldSpecified = value;
-                this.RaisePropertyChanged("localDateTimeSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public AxdEnum_Timezone timezone {
-            get {
-                return this.timezoneField;
-            }
-            set {
-                this.timezoneField = value;
-                this.RaisePropertyChanged("timezone");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool timezoneSpecified {
-            get {
-                return this.timezoneFieldSpecified;
-            }
-            set {
-                this.timezoneFieldSpecified = value;
-                this.RaisePropertyChanged("timezoneSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public System.DateTime Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_Timezone {
-        
-        /// <remarks/>
-        GMTMINUS1200INTERNATIONALDATELINEWEST,
-        
-        /// <remarks/>
-        GMTMINUS1100COORDINATEDUNIVERSALTIME,
-        
-        /// <remarks/>
-        GMTMINUS1000HAWAII,
-        
-        /// <remarks/>
-        GMTMINUS0900ALASKA,
-        
-        /// <remarks/>
-        GMTMINUS0800PACIFICTIME,
-        
-        /// <remarks/>
-        GMTMINUS0800TIJUANA_BAJACALIFORNIA,
-        
-        /// <remarks/>
-        GMTMINUS0700ARIZONA,
-        
-        /// <remarks/>
-        GMTMINUS0700MOUNTAINTIME,
-        
-        /// <remarks/>
-        GMTMINUS0700CHIHUAHUA_LAPAZ_MAZATLAN,
-        
-        /// <remarks/>
-        GMTMINUS0600CENTRALAMERICA,
-        
-        /// <remarks/>
-        GMTMINUS0600CENTRALTIME,
-        
-        /// <remarks/>
-        GMTMINUS0600GUADALAJARA_MEXICOCITY,
-        
-        /// <remarks/>
-        GMTMINUS0600SASKATCHEWAN,
-        
-        /// <remarks/>
-        GMTMINUS0500BOGOTA_LIMA_QUITO_RIOBRANCO,
-        
-        /// <remarks/>
-        GMTMINUS0500EASTERNTIME_MEXICO,
-        
-        /// <remarks/>
-        GMTMINUS0500EASTERNTIME,
-        
-        /// <remarks/>
-        GMTMINUS0500INDIANA,
-        
-        /// <remarks/>
-        GMTMINUS0430CARACAS,
-        
-        /// <remarks/>
-        GMTMINUS0400ASUNCION,
-        
-        /// <remarks/>
-        GMTMINUS0400ATLANTICTIME,
-        
-        /// <remarks/>
-        GMTMINUS0400LAPAZ,
-        
-        /// <remarks/>
-        GMTMINUS0400MANAUS,
-        
-        /// <remarks/>
-        GMTMINUS0330NEWFOUNDLAND,
-        
-        /// <remarks/>
-        GMTMINUS0300BRASILIA,
-        
-        /// <remarks/>
-        GMTMINUS0300BUENOSAIRES,
-        
-        /// <remarks/>
-        GMTMINUS0300BUENOSAIRES_GEORGETOWN,
-        
-        /// <remarks/>
-        GMTMINUS0300GREENLAND,
-        
-        /// <remarks/>
-        GMTMINUS0300MONTEVIDEO,
-        
-        /// <remarks/>
-        GMTMINUS0300_SALVADOR,
-        
-        /// <remarks/>
-        GMTMINUS0300SANTIAGO,
-        
-        /// <remarks/>
-        GMTMINUS0200MIDATLANTIC,
-        
-        /// <remarks/>
-        GMTMINUS0100AZORES,
-        
-        /// <remarks/>
-        GMTMINUS0100CAPEVERDIS,
-        
-        /// <remarks/>
-        GMT_CASABLANCA,
-        
-        /// <remarks/>
-        GMT_COORDINATEDUNIVERSALTIME,
-        
-        /// <remarks/>
-        GMT_CASABLANCA_MONTROVIA_REYKJAVIK,
-        
-        /// <remarks/>
-        GMT_DUBLIN_EDINBURGH_LISBON_LONDON,
-        
-        /// <remarks/>
-        GMTPLUS0100_AMSTERDAM_BERLIN_BERN_ROME,
-        
-        /// <remarks/>
-        GMTPLUS0100BELGRADE_BRATISLAVA_BUDAPEST,
-        
-        /// <remarks/>
-        GMTPLUS0100BRUSSELS_COPENHAGEN_MADRID,
-        
-        /// <remarks/>
-        GMTPLUS0100SARAJEVO_SKOPJE_WARSAW_ZAGREB,
-        
-        /// <remarks/>
-        GMTPLUS0100TRIPOLI,
-        
-        /// <remarks/>
-        GMTPLUS0100WESTCENTRALAFRICA,
-        
-        /// <remarks/>
-        GMTPLUS0200AMMAN,
-        
-        /// <remarks/>
-        GMTPLUS0200ATHENS_BUCHAREST_ISTANBUL,
-        
-        /// <remarks/>
-        GMTPLUS0200BEIRUT,
-        
-        /// <remarks/>
-        GMTPLUS0200MINSK,
-        
-        /// <remarks/>
-        GMTPLUS0200CAIRO,
-        
-        /// <remarks/>
-        GMTPLUS0200_DAMASCUS,
-        
-        /// <remarks/>
-        GMTPLUS0200HARARE_PRETORIA,
-        
-        /// <remarks/>
-        GMTPLUS0200HELSINKI_KYIV_RIGA_VILNIUS,
-        
-        /// <remarks/>
-        GMTPLUS0200JERUSALEM,
-        
-        /// <remarks/>
-        GMTPLUS0200WINDHOEK,
-        
-        /// <remarks/>
-        GMTPLUS0300ISTANBUL,
-        
-        /// <remarks/>
-        GMT_PLUS0300KALININGRAD_MINSK,
-        
-        /// <remarks/>
-        GMTPLUS0300BAGHDAD,
-        
-        /// <remarks/>
-        GMTPLUS0300KUWAIT_RIYADH,
-        
-        /// <remarks/>
-        GMTPLUS0300MOSCOW_STPETERSBURG_VOLGOGRAD,
-        
-        /// <remarks/>
-        GMTPLUS0400PORTLOUIS,
-        
-        /// <remarks/>
-        GMTPLUS0300NAIROBI,
-        
-        /// <remarks/>
-        GMTPLUS0300TBILISI,
-        
-        /// <remarks/>
-        GMTPLUS0330TEHRAN,
-        
-        /// <remarks/>
-        GMTPLUS0400ABUDHABI_MUSCAT,
-        
-        /// <remarks/>
-        GMTPLUS0400BAKU,
-        
-        /// <remarks/>
-        GMTPLUS0400IZHEVSK_SAMARA,
-        
-        /// <remarks/>
-        GMTPLUS0400CAUCASUSSTANDARDTIME,
-        
-        /// <remarks/>
-        GMTPLUS0400YEREVAN,
-        
-        /// <remarks/>
-        GMTPLUS0430KABUL,
-        
-        /// <remarks/>
-        GMTPLUS0500EKATERINBURG,
-        
-        /// <remarks/>
-        GMTPLUS0500ISLAMABAD_KARACHI,
-        
-        /// <remarks/>
-        GMTPLUS0500ISLAMABAD_KARACHI_TASHKENT,
-        
-        /// <remarks/>
-        GMTPLUS0530CHENNAI_KOLKATA_MUMBAI,
-        
-        /// <remarks/>
-        GMTPLUS0530SRIJAYAWARDENEPURA,
-        
-        /// <remarks/>
-        GMTPLUS0545KATHMANDU,
-        
-        /// <remarks/>
-        GMTPLUS0600ASTANA_DHAKA,
-        
-        /// <remarks/>
-        GMTPLUS0600DHAKA,
-        
-        /// <remarks/>
-        GMTPLUS0600ALMATY_NOVOSIBIRSK,
-        
-        /// <remarks/>
-        GMTPLUS0630_YANGON,
-        
-        /// <remarks/>
-        GMTPLUS0700_BANGKOK_HANOI_JAKARTA,
-        
-        /// <remarks/>
-        GMTPLUS0700KRASNOYARSK,
-        
-        /// <remarks/>
-        GMTPLUS0800BEIJING_CHONGQING_HONGKONG,
-        
-        /// <remarks/>
-        GMTPLUS0800IRKUTSK_ULAANBATAAR,
-        
-        /// <remarks/>
-        GMTPLUS0800_ULAANBAATAR,
-        
-        /// <remarks/>
-        GMTPLUS0800KUALALUMPUR_SINGAPORE,
-        
-        /// <remarks/>
-        GMTPLUS0800PERTH,
-        
-        /// <remarks/>
-        GMTPLUS0800TAIPEI,
-        
-        /// <remarks/>
-        GMTPLUS0900OSAKA_SAPPORO_TOKYO,
-        
-        /// <remarks/>
-        GMTPLUS0900SEOUL,
-        
-        /// <remarks/>
-        GMTPLUS0900YAKUTSK,
-        
-        /// <remarks/>
-        GMTPLUS0930ADELAIDE,
-        
-        /// <remarks/>
-        GMTPLUS0930DARWIN,
-        
-        /// <remarks/>
-        GMTPLUS1000BRISBANE,
-        
-        /// <remarks/>
-        GMTPLUS1000CANBERRA_MELBOURNE_SYDNEY,
-        
-        /// <remarks/>
-        GMTPLUS1000GUAM_PORTMORESBY,
-        
-        /// <remarks/>
-        GMTPLUS1000HOBART,
-        
-        /// <remarks/>
-        GMTPLUS1000VLADIVOSTOK,
-        
-        /// <remarks/>
-        GMTPLUS1100CHOKURDAKH,
-        
-        /// <remarks/>
-        GMTPLUS1100MAGADAN_SOLOMONIS,
-        
-        /// <remarks/>
-        GMTPLUS0600MAGADAN,
-        
-        /// <remarks/>
-        GMTPLUS1200ANADYR_PETRO_KAMCHATSKY,
-        
-        /// <remarks/>
-        GMTPLUS1200AUCKLAND_WELLINGTON,
-        
-        /// <remarks/>
-        GMTPLUS1200COORDINATEDUNIVERSALTIME,
-        
-        /// <remarks/>
-        GMTPLUS1200FIJI_KAMCHATKA_MARSHALLIS,
-        
-        /// <remarks/>
-        GMTMINUS1100MIDWAYISLAND_SAMOA,
-        
-        /// <remarks/>
-        GMTPLUS1300NUKU_ALOFA,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_VendBankAccountExpiryDate : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_VendBankAccountActiveDate : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_TrvDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_SMARepairFinishDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_SMASignOffDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_SMAPreferredServiceDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ApprovedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_PurchReqSubmittedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_VersioningTimeStamp : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ActivationDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_TransDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_HcmEmploymentSeniorityDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_HcmEmploymentStartDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_HcmEmploymentTransitionDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_HcmEmploymentLastWorkedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_HcmEmploymentAdjStartDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ValidFromDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ValidToDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ToDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_FromDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_DateTimeExecuted : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_DOCommonLastSyncDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_StartDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_EndDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_smmDateTimeLastEdit : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_JournalSessionLoginDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_JournalPostedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_PostReleaseDate : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_HcmEmploymentValidTo : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_HcmEmploymentValidFrom : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ExpirationDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ModifiedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_CreatedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_AttributeValueDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_SMALatestCompletionDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_ClosedDateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_BankStatementBookingDate : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_BankStmtISODateTime : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_InvoiceReleaseDate : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdExtType_UTCTimestamp : AxdType_DateTime {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdEntityKey_BankLCExportLine : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int lineNumField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int LineNum {
-            get {
-                return this.lineNumField;
-            }
-            set {
-                this.lineNumField = value;
-                this.RaisePropertyChanged("LineNum");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_InvoiceType {
@@ -7855,7 +7316,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_CommissionType {
@@ -7868,7 +7329,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_CommissionOnPrepayment {
@@ -7881,7 +7342,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_NoYesId {
@@ -7894,7 +7355,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_CreditNoteType {
@@ -7910,7 +7371,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_NotIncludeDiscount {
@@ -7923,7 +7384,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_RentInvoicePrintType {
@@ -7945,7 +7406,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TiposAlquiler {
@@ -7976,7 +7437,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_TiposVentas {
@@ -7998,7 +7459,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_RentCanon {
@@ -8035,7 +7496,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_IncludeTariffCode {
@@ -8048,7 +7509,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LATARPrePayment {
@@ -8061,7 +7522,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_LATARUseGood {
@@ -8074,7 +7535,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EXCEIUY_FEStatus {
@@ -8099,7 +7560,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ABC {
@@ -8118,7 +7579,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdExtType_Draft {
@@ -8131,7 +7592,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SIIInvoiceIssuedTypePost {
@@ -8156,7 +7617,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_SIIInvoiceTypeRectification {
@@ -8172,7 +7633,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_InvoiceIdentification_IN {
@@ -8185,7 +7646,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EXCEIMX_FEStatus {
@@ -8201,7 +7662,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EXCEIPE_FEStatus {
@@ -8226,7 +7687,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_LATPEAutoDetractionStatus {
@@ -8242,7 +7703,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_EXCEICL_ReferenceCode {
@@ -8258,7 +7719,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ExcEIPE_EIMethod {
@@ -8271,7 +7732,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_ExcPE_DetractorType {
@@ -8284,7 +7745,7 @@ namespace ROP_Informe.tablaCabeceraFacturas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_AxdEntityAction {
@@ -8300,6 +7761,469 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         
         /// <remarks/>
         delete,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/DiarioFacturas")]
+    public partial class AxdDiarioFacturas : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private System.Nullable<AxdEnum_boolean> clearNilFieldsOnUpdateField;
+        
+        private bool clearNilFieldsOnUpdateFieldSpecified;
+        
+        private System.Nullable<AxdEnum_XMLDocPurpose> docPurposeField;
+        
+        private bool docPurposeFieldSpecified;
+        
+        private string senderIdField;
+        
+        private AxdEntity_CustInvoiceJour[] custInvoiceJourField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public System.Nullable<AxdEnum_boolean> ClearNilFieldsOnUpdate {
+            get {
+                return this.clearNilFieldsOnUpdateField;
+            }
+            set {
+                this.clearNilFieldsOnUpdateField = value;
+                this.RaisePropertyChanged("ClearNilFieldsOnUpdate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ClearNilFieldsOnUpdateSpecified {
+            get {
+                return this.clearNilFieldsOnUpdateFieldSpecified;
+            }
+            set {
+                this.clearNilFieldsOnUpdateFieldSpecified = value;
+                this.RaisePropertyChanged("ClearNilFieldsOnUpdateSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public System.Nullable<AxdEnum_XMLDocPurpose> DocPurpose {
+            get {
+                return this.docPurposeField;
+            }
+            set {
+                this.docPurposeField = value;
+                this.RaisePropertyChanged("DocPurpose");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DocPurposeSpecified {
+            get {
+                return this.docPurposeFieldSpecified;
+            }
+            set {
+                this.docPurposeFieldSpecified = value;
+                this.RaisePropertyChanged("DocPurposeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string SenderId {
+            get {
+                return this.senderIdField;
+            }
+            set {
+                this.senderIdField = value;
+                this.RaisePropertyChanged("SenderId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CustInvoiceJour", Order=3)]
+        public AxdEntity_CustInvoiceJour[] CustInvoiceJour {
+            get {
+                return this.custInvoiceJourField;
+            }
+            set {
+                this.custInvoiceJourField = value;
+                this.RaisePropertyChanged("CustInvoiceJour");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_boolean {
+        
+        /// <remarks/>
+        @false,
+        
+        /// <remarks/>
+        @true,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_XMLDocPurpose {
+        
+        /// <remarks/>
+        Original,
+        
+        /// <remarks/>
+        Duplicate,
+        
+        /// <remarks/>
+        Proforma,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dataSourceNameField;
+        
+        private string fieldNameField;
+        
+        private Operator operatorField;
+        
+        private string value1Field;
+        
+        private string value2Field;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string DataSourceName {
+            get {
+                return this.dataSourceNameField;
+            }
+            set {
+                this.dataSourceNameField = value;
+                this.RaisePropertyChanged("DataSourceName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string FieldName {
+            get {
+                return this.fieldNameField;
+            }
+            set {
+                this.fieldNameField = value;
+                this.RaisePropertyChanged("FieldName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Operator Operator {
+            get {
+                return this.operatorField;
+            }
+            set {
+                this.operatorField = value;
+                this.RaisePropertyChanged("Operator");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Value1 {
+            get {
+                return this.value1Field;
+            }
+            set {
+                this.value1Field = value;
+                this.RaisePropertyChanged("Value1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Value2 {
+            get {
+                return this.value2Field;
+            }
+            set {
+                this.value2Field = value;
+                this.RaisePropertyChanged("Value2");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public enum Operator {
+        
+        /// <remarks/>
+        Equal,
+        
+        /// <remarks/>
+        NotEqual,
+        
+        /// <remarks/>
+        Greater,
+        
+        /// <remarks/>
+        GreaterOrEqual,
+        
+        /// <remarks/>
+        Less,
+        
+        /// <remarks/>
+        LessOrEqual,
+        
+        /// <remarks/>
+        Range,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CriteriaElement[] criteriaElementField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
+        public CriteriaElement[] CriteriaElement {
+            get {
+                return this.criteriaElementField;
+            }
+            set {
+                this.criteriaElementField = value;
+                this.RaisePropertyChanged("CriteriaElement");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaCabeceraFacturas.DiarioFacturasService")]
+    public interface DiarioFacturasService {
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (DiarioFacturasServiceFindRequest) del mensaje DiarioFacturasServiceFindRequest no coincide con el valor predeterminado (find)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/find", ReplyAction="http://tempuri.org/DiarioFacturasService/findResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaCabeceraFacturas.AifFault), Action="http://tempuri.org/DiarioFacturasService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AxdType_DateTime))]
+        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindResponse find(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/find", ReplyAction="http://tempuri.org/DiarioFacturasService/findResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindResponse> findAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (DiarioFacturasServiceFindKeysRequest) del mensaje DiarioFacturasServiceFindKeysRequest no coincide con el valor predeterminado (findKeys)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/findKeys", ReplyAction="http://tempuri.org/DiarioFacturasService/findKeysResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaCabeceraFacturas.AifFault), Action="http://tempuri.org/DiarioFacturasService/findKeysAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AxdType_DateTime))]
+        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse findKeys(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/findKeys", ReplyAction="http://tempuri.org/DiarioFacturasService/findKeysResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (DiarioFacturasServiceReadRequest) del mensaje DiarioFacturasServiceReadRequest no coincide con el valor predeterminado (read)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/read", ReplyAction="http://tempuri.org/DiarioFacturasService/readResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaCabeceraFacturas.AifFault), Action="http://tempuri.org/DiarioFacturasService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AxdType_DateTime))]
+        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadResponse read(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DiarioFacturasService/read", ReplyAction="http://tempuri.org/DiarioFacturasService/readResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadResponse> readAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceReadRequest request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+    public partial class CallContext : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string companyField;
+        
+        private string languageField;
+        
+        private string logonAsUserField;
+        
+        private string messageIdField;
+        
+        private string partitionKeyField;
+        
+        private ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] propertyBagField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string Company {
+            get {
+                return this.companyField;
+            }
+            set {
+                this.companyField = value;
+                this.RaisePropertyChanged("Company");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string Language {
+            get {
+                return this.languageField;
+            }
+            set {
+                this.languageField = value;
+                this.RaisePropertyChanged("Language");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string LogonAsUser {
+            get {
+                return this.logonAsUserField;
+            }
+            set {
+                this.logonAsUserField = value;
+                this.RaisePropertyChanged("LogonAsUser");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public string MessageId {
+            get {
+                return this.messageIdField;
+            }
+            set {
+                this.messageIdField = value;
+                this.RaisePropertyChanged("MessageId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        public string PartitionKey {
+            get {
+                return this.partitionKeyField;
+            }
+            set {
+                this.partitionKeyField = value;
+                this.RaisePropertyChanged("PartitionKey");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("KeyValueOfstringstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] PropertyBag {
+            get {
+                return this.propertyBagField;
+            }
+            set {
+                this.propertyBagField = value;
+                this.RaisePropertyChanged("PropertyBag");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
+    public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string keyField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -8340,6 +8264,127 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         
         public DiarioFacturasServiceFindResponse(ROP_Informe.tablaCabeceraFacturas.AxdDiarioFacturas DiarioFacturas) {
             this.DiarioFacturas = DiarioFacturas;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private KeyField[] keyDataField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public KeyField[] KeyData {
+            get {
+                return this.keyDataField;
+            }
+            set {
+                this.keyDataField = value;
+                this.RaisePropertyChanged("KeyData");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string fieldField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Field {
+            get {
+                return this.fieldField;
+            }
+            set {
+                this.fieldField = value;
+                this.RaisePropertyChanged("Field");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DiarioFacturasServiceFindKeysRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class DiarioFacturasServiceFindKeysRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ROP_Informe.tablaCabeceraFacturas.CallContext CallContext;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+        public ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria;
+        
+        public DiarioFacturasServiceFindKeysRequest() {
+        }
+        
+        public DiarioFacturasServiceFindKeysRequest(ROP_Informe.tablaCabeceraFacturas.CallContext CallContext, ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria) {
+            this.CallContext = CallContext;
+            this.QueryCriteria = QueryCriteria;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DiarioFacturasServiceFindKeysResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class DiarioFacturasServiceFindKeysResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
+        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
+        public ROP_Informe.tablaCabeceraFacturas.EntityKey[] EntityKeyList;
+        
+        public DiarioFacturasServiceFindKeysResponse() {
+        }
+        
+        public DiarioFacturasServiceFindKeysResponse(ROP_Informe.tablaCabeceraFacturas.EntityKey[] EntityKeyList) {
+            this.EntityKeyList = EntityKeyList;
         }
     }
     
@@ -8413,31 +8458,6 @@ namespace ROP_Informe.tablaCabeceraFacturas {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService.findKeys(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request) {
-            return base.Channel.findKeys(request);
-        }
-        
-        public ROP_Informe.tablaCabeceraFacturas.EntityKey[] findKeys(ROP_Informe.tablaCabeceraFacturas.CallContext CallContext, ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest inValue = new ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest();
-            inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse retVal = ((ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService)(this)).findKeys(inValue);
-            return retVal.EntityKeyList;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse> ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService.findKeysAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request) {
-            return base.Channel.findKeysAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaCabeceraFacturas.CallContext CallContext, ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria) {
-            ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest inValue = new ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest();
-            inValue.CallContext = CallContext;
-            inValue.QueryCriteria = QueryCriteria;
-            return ((ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService)(this)).findKeysAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindResponse ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService.find(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindRequest request) {
             return base.Channel.find(request);
         }
@@ -8460,6 +8480,31 @@ namespace ROP_Informe.tablaCabeceraFacturas {
             inValue.CallContext = CallContext;
             inValue.QueryCriteria = QueryCriteria;
             return ((ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService)(this)).findAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService.findKeys(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request) {
+            return base.Channel.findKeys(request);
+        }
+        
+        public ROP_Informe.tablaCabeceraFacturas.EntityKey[] findKeys(ROP_Informe.tablaCabeceraFacturas.CallContext CallContext, ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest inValue = new ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest();
+            inValue.CallContext = CallContext;
+            inValue.QueryCriteria = QueryCriteria;
+            ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse retVal = ((ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService)(this)).findKeys(inValue);
+            return retVal.EntityKeyList;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse> ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService.findKeysAsync(ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest request) {
+            return base.Channel.findKeysAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaCabeceraFacturas.CallContext CallContext, ROP_Informe.tablaCabeceraFacturas.QueryCriteria QueryCriteria) {
+            ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest inValue = new ROP_Informe.tablaCabeceraFacturas.DiarioFacturasServiceFindKeysRequest();
+            inValue.CallContext = CallContext;
+            inValue.QueryCriteria = QueryCriteria;
+            return ((ROP_Informe.tablaCabeceraFacturas.DiarioFacturasService)(this)).findKeysAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

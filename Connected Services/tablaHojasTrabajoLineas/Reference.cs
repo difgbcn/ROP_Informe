@@ -12,7 +12,7 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -115,7 +115,7 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -273,7 +273,7 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -319,7 +319,7 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -379,7 +379,7 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services")]
     public enum InfologMessageType {
@@ -395,528 +395,26 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/WorkPaperLines")]
-    public partial class AxdEntity_WorkPaperPaletLines : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string bOMIdField;
-        
-        private System.Nullable<AxdExtType_NoYesId> custMisuseField;
-        
-        private bool custMisuseFieldSpecified;
-        
-        private AxdType_DimensionAttributeValueSet defaultDimensionField;
-        
-        private string inventDimIdField;
-        
-        private string inventLocationIdField;
-        
-        private System.Nullable<AxdEnum_ItemDevolutionType> itemDevolutionTypeField;
-        
-        private bool itemDevolutionTypeFieldSpecified;
-        
-        private string itemIdField;
-        
-        private string journalIdField;
-        
-        private System.Nullable<decimal> lineNumField;
-        
-        private bool lineNumFieldSpecified;
-        
-        private string obraIdField;
-        
-        private string packingSlipDevolutionIdField;
-        
-        private System.Nullable<AxdExtType_PmfTotalCostAllocation> pmfTotalCostAllocationField;
-        
-        private bool pmfTotalCostAllocationFieldSpecified;
-        
-        private string prodIdField;
-        
-        private decimal qtyField;
-        
-        private System.Nullable<long> recIdField;
-        
-        private bool recIdFieldSpecified;
-        
-        private System.Nullable<int> recVersionField;
-        
-        private bool recVersionFieldSpecified;
-        
-        private System.Nullable<decimal> theoreticalHoursField;
-        
-        private bool theoreticalHoursFieldSpecified;
-        
-        private System.Nullable<decimal> weightVolumeField;
-        
-        private bool weightVolumeFieldSpecified;
-        
-        private string wMSPalletIdField;
-        
-        private string workPaperPaletIdField;
-        
-        private string classField;
-        
-        private AxdEnum_AxdEntityAction actionField;
-        
-        private bool actionFieldSpecified;
-        
-        public AxdEntity_WorkPaperPaletLines() {
-            this.classField = "entity";
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string BOMId {
-            get {
-                return this.bOMIdField;
-            }
-            set {
-                this.bOMIdField = value;
-                this.RaisePropertyChanged("BOMId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public System.Nullable<AxdExtType_NoYesId> CustMisuse {
-            get {
-                return this.custMisuseField;
-            }
-            set {
-                this.custMisuseField = value;
-                this.RaisePropertyChanged("CustMisuse");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CustMisuseSpecified {
-            get {
-                return this.custMisuseFieldSpecified;
-            }
-            set {
-                this.custMisuseFieldSpecified = value;
-                this.RaisePropertyChanged("CustMisuseSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public AxdType_DimensionAttributeValueSet DefaultDimension {
-            get {
-                return this.defaultDimensionField;
-            }
-            set {
-                this.defaultDimensionField = value;
-                this.RaisePropertyChanged("DefaultDimension");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public string InventDimId {
-            get {
-                return this.inventDimIdField;
-            }
-            set {
-                this.inventDimIdField = value;
-                this.RaisePropertyChanged("InventDimId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
-        public string InventLocationId {
-            get {
-                return this.inventLocationIdField;
-            }
-            set {
-                this.inventLocationIdField = value;
-                this.RaisePropertyChanged("InventLocationId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
-        public System.Nullable<AxdEnum_ItemDevolutionType> ItemDevolutionType {
-            get {
-                return this.itemDevolutionTypeField;
-            }
-            set {
-                this.itemDevolutionTypeField = value;
-                this.RaisePropertyChanged("ItemDevolutionType");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ItemDevolutionTypeSpecified {
-            get {
-                return this.itemDevolutionTypeFieldSpecified;
-            }
-            set {
-                this.itemDevolutionTypeFieldSpecified = value;
-                this.RaisePropertyChanged("ItemDevolutionTypeSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public string ItemId {
-            get {
-                return this.itemIdField;
-            }
-            set {
-                this.itemIdField = value;
-                this.RaisePropertyChanged("ItemId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
-        public string JournalId {
-            get {
-                return this.journalIdField;
-            }
-            set {
-                this.journalIdField = value;
-                this.RaisePropertyChanged("JournalId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
-        public System.Nullable<decimal> LineNum {
-            get {
-                return this.lineNumField;
-            }
-            set {
-                this.lineNumField = value;
-                this.RaisePropertyChanged("LineNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool LineNumSpecified {
-            get {
-                return this.lineNumFieldSpecified;
-            }
-            set {
-                this.lineNumFieldSpecified = value;
-                this.RaisePropertyChanged("LineNumSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
-        public string ObraId {
-            get {
-                return this.obraIdField;
-            }
-            set {
-                this.obraIdField = value;
-                this.RaisePropertyChanged("ObraId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
-        public string PackingSlipDevolutionId {
-            get {
-                return this.packingSlipDevolutionIdField;
-            }
-            set {
-                this.packingSlipDevolutionIdField = value;
-                this.RaisePropertyChanged("PackingSlipDevolutionId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
-        public System.Nullable<AxdExtType_PmfTotalCostAllocation> PmfTotalCostAllocation {
-            get {
-                return this.pmfTotalCostAllocationField;
-            }
-            set {
-                this.pmfTotalCostAllocationField = value;
-                this.RaisePropertyChanged("PmfTotalCostAllocation");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PmfTotalCostAllocationSpecified {
-            get {
-                return this.pmfTotalCostAllocationFieldSpecified;
-            }
-            set {
-                this.pmfTotalCostAllocationFieldSpecified = value;
-                this.RaisePropertyChanged("PmfTotalCostAllocationSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=12)]
-        public string ProdId {
-            get {
-                return this.prodIdField;
-            }
-            set {
-                this.prodIdField = value;
-                this.RaisePropertyChanged("ProdId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
-        public decimal Qty {
-            get {
-                return this.qtyField;
-            }
-            set {
-                this.qtyField = value;
-                this.RaisePropertyChanged("Qty");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=14)]
-        public System.Nullable<long> RecId {
-            get {
-                return this.recIdField;
-            }
-            set {
-                this.recIdField = value;
-                this.RaisePropertyChanged("RecId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RecIdSpecified {
-            get {
-                return this.recIdFieldSpecified;
-            }
-            set {
-                this.recIdFieldSpecified = value;
-                this.RaisePropertyChanged("RecIdSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=15)]
-        public System.Nullable<int> RecVersion {
-            get {
-                return this.recVersionField;
-            }
-            set {
-                this.recVersionField = value;
-                this.RaisePropertyChanged("RecVersion");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RecVersionSpecified {
-            get {
-                return this.recVersionFieldSpecified;
-            }
-            set {
-                this.recVersionFieldSpecified = value;
-                this.RaisePropertyChanged("RecVersionSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=16)]
-        public System.Nullable<decimal> TheoreticalHours {
-            get {
-                return this.theoreticalHoursField;
-            }
-            set {
-                this.theoreticalHoursField = value;
-                this.RaisePropertyChanged("TheoreticalHours");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TheoreticalHoursSpecified {
-            get {
-                return this.theoreticalHoursFieldSpecified;
-            }
-            set {
-                this.theoreticalHoursFieldSpecified = value;
-                this.RaisePropertyChanged("TheoreticalHoursSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=17)]
-        public System.Nullable<decimal> WeightVolume {
-            get {
-                return this.weightVolumeField;
-            }
-            set {
-                this.weightVolumeField = value;
-                this.RaisePropertyChanged("WeightVolume");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool WeightVolumeSpecified {
-            get {
-                return this.weightVolumeFieldSpecified;
-            }
-            set {
-                this.weightVolumeFieldSpecified = value;
-                this.RaisePropertyChanged("WeightVolumeSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=18)]
-        public string WMSPalletId {
-            get {
-                return this.wMSPalletIdField;
-            }
-            set {
-                this.wMSPalletIdField = value;
-                this.RaisePropertyChanged("WMSPalletId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
-        public string WorkPaperPaletId {
-            get {
-                return this.workPaperPaletIdField;
-            }
-            set {
-                this.workPaperPaletIdField = value;
-                this.RaisePropertyChanged("WorkPaperPaletId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string @class {
-            get {
-                return this.classField;
-            }
-            set {
-                this.classField = value;
-                this.RaisePropertyChanged("class");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public AxdEnum_AxdEntityAction action {
-            get {
-                return this.actionField;
-            }
-            set {
-                this.actionField = value;
-                this.RaisePropertyChanged("action");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool actionSpecified {
-            get {
-                return this.actionFieldSpecified;
-            }
-            set {
-                this.actionFieldSpecified = value;
-                this.RaisePropertyChanged("actionSpecified");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdExtType_NoYesId {
-        
-        /// <remarks/>
-        No,
-        
-        /// <remarks/>
-        Yes,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdType_DimensionAttributeValueSet : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private AxdType_DimensionAttributeValue[] valuesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Value", IsNullable=false)]
-        public AxdType_DimensionAttributeValue[] Values {
-            get {
-                return this.valuesField;
-            }
-            set {
-                this.valuesField = value;
-                this.RaisePropertyChanged("Values");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public partial class AxdType_DimensionAttributeValue : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string nameField;
+        private string fieldField;
         
         private string valueField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Name {
+        public string Field {
             get {
-                return this.nameField;
+                return this.fieldField;
             }
             set {
-                this.nameField = value;
-                this.RaisePropertyChanged("Name");
+                this.fieldField = value;
+                this.RaisePropertyChanged("Field");
             }
         }
         
@@ -943,61 +441,542 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_ItemDevolutionType {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
+    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private KeyField[] keyDataField;
         
         /// <remarks/>
-        None,
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public KeyField[] KeyData {
+            get {
+                return this.keyDataField;
+            }
+            set {
+                this.keyDataField = value;
+                this.RaisePropertyChanged("KeyData");
+            }
+        }
         
-        /// <remarks/>
-        Repair,
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
-        /// <remarks/>
-        BadItem,
-        
-        /// <remarks/>
-        New,
-        
-        /// <remarks/>
-        Seminew,
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdExtType_PmfTotalCostAllocation {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dataSourceNameField;
+        
+        private string fieldNameField;
+        
+        private Operator operatorField;
+        
+        private string value1Field;
+        
+        private string value2Field;
         
         /// <remarks/>
-        No,
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string DataSourceName {
+            get {
+                return this.dataSourceNameField;
+            }
+            set {
+                this.dataSourceNameField = value;
+                this.RaisePropertyChanged("DataSourceName");
+            }
+        }
         
         /// <remarks/>
-        Yes,
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string FieldName {
+            get {
+                return this.fieldNameField;
+            }
+            set {
+                this.fieldNameField = value;
+                this.RaisePropertyChanged("FieldName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Operator Operator {
+            get {
+                return this.operatorField;
+            }
+            set {
+                this.operatorField = value;
+                this.RaisePropertyChanged("Operator");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Value1 {
+            get {
+                return this.value1Field;
+            }
+            set {
+                this.value1Field = value;
+                this.RaisePropertyChanged("Value1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Value2 {
+            get {
+                return this.value2Field;
+            }
+            set {
+                this.value2Field = value;
+                this.RaisePropertyChanged("Value2");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_AxdEntityAction {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public enum Operator {
         
         /// <remarks/>
-        create,
+        Equal,
         
         /// <remarks/>
-        update,
+        NotEqual,
         
         /// <remarks/>
-        replace,
+        Greater,
         
         /// <remarks/>
-        delete,
+        GreaterOrEqual,
+        
+        /// <remarks/>
+        Less,
+        
+        /// <remarks/>
+        LessOrEqual,
+        
+        /// <remarks/>
+        Range,
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CriteriaElement[] criteriaElementField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
+        public CriteriaElement[] CriteriaElement {
+            get {
+                return this.criteriaElementField;
+            }
+            set {
+                this.criteriaElementField = value;
+                this.RaisePropertyChanged("CriteriaElement");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaHojasTrabajoLineas.WorkPaperLinesService")]
+    public interface WorkPaperLinesService {
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (WorkPaperLinesServiceFindKeysRequest) del mensaje WorkPaperLinesServiceFindKeysRequest no coincide con el valor predeterminado (findKeys)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/findKeys", ReplyAction="http://tempuri.org/WorkPaperLinesService/findKeysResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaHojasTrabajoLineas.AifFault), Action="http://tempuri.org/WorkPaperLinesService/findKeysAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysResponse findKeys(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/findKeys", ReplyAction="http://tempuri.org/WorkPaperLinesService/findKeysResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (WorkPaperLinesServiceReadRequest) del mensaje WorkPaperLinesServiceReadRequest no coincide con el valor predeterminado (read)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/read", ReplyAction="http://tempuri.org/WorkPaperLinesService/readResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaHojasTrabajoLineas.AifFault), Action="http://tempuri.org/WorkPaperLinesService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse read(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/read", ReplyAction="http://tempuri.org/WorkPaperLinesService/readResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse> readAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (WorkPaperLinesServiceFindRequest) del mensaje WorkPaperLinesServiceFindRequest no coincide con el valor predeterminado (find)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/find", ReplyAction="http://tempuri.org/WorkPaperLinesService/findResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaHojasTrabajoLineas.AifFault), Action="http://tempuri.org/WorkPaperLinesService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindResponse find(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/find", ReplyAction="http://tempuri.org/WorkPaperLinesService/findResponse")]
+        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindResponse> findAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindRequest request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+    public partial class CallContext : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string companyField;
+        
+        private string languageField;
+        
+        private string logonAsUserField;
+        
+        private string messageIdField;
+        
+        private string partitionKeyField;
+        
+        private ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] propertyBagField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string Company {
+            get {
+                return this.companyField;
+            }
+            set {
+                this.companyField = value;
+                this.RaisePropertyChanged("Company");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string Language {
+            get {
+                return this.languageField;
+            }
+            set {
+                this.languageField = value;
+                this.RaisePropertyChanged("Language");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string LogonAsUser {
+            get {
+                return this.logonAsUserField;
+            }
+            set {
+                this.logonAsUserField = value;
+                this.RaisePropertyChanged("LogonAsUser");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public string MessageId {
+            get {
+                return this.messageIdField;
+            }
+            set {
+                this.messageIdField = value;
+                this.RaisePropertyChanged("MessageId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        public string PartitionKey {
+            get {
+                return this.partitionKeyField;
+            }
+            set {
+                this.partitionKeyField = value;
+                this.RaisePropertyChanged("PartitionKey");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("KeyValueOfstringstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] PropertyBag {
+            get {
+                return this.propertyBagField;
+            }
+            set {
+                this.propertyBagField = value;
+                this.RaisePropertyChanged("PropertyBag");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
+    public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string keyField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="WorkPaperLinesServiceFindKeysRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class WorkPaperLinesServiceFindKeysRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
+        public ROP_Informe.tablaHojasTrabajoLineas.QueryCriteria QueryCriteria;
+        
+        public WorkPaperLinesServiceFindKeysRequest() {
+        }
+        
+        public WorkPaperLinesServiceFindKeysRequest(ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext, ROP_Informe.tablaHojasTrabajoLineas.QueryCriteria QueryCriteria) {
+            this.CallContext = CallContext;
+            this.QueryCriteria = QueryCriteria;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="WorkPaperLinesServiceFindKeysResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class WorkPaperLinesServiceFindKeysResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
+        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
+        public ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList;
+        
+        public WorkPaperLinesServiceFindKeysResponse() {
+        }
+        
+        public WorkPaperLinesServiceFindKeysResponse(ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList) {
+            this.EntityKeyList = EntityKeyList;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/WorkPaperLines")]
+    public partial class AxdWorkPaperLines : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private System.Nullable<AxdEnum_boolean> clearNilFieldsOnUpdateField;
+        
+        private bool clearNilFieldsOnUpdateFieldSpecified;
+        
+        private System.Nullable<AxdEnum_XMLDocPurpose> docPurposeField;
+        
+        private bool docPurposeFieldSpecified;
+        
+        private string senderIdField;
+        
+        private AxdEntity_WorkPaperPaletTable[] workPaperPaletTableField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public System.Nullable<AxdEnum_boolean> ClearNilFieldsOnUpdate {
+            get {
+                return this.clearNilFieldsOnUpdateField;
+            }
+            set {
+                this.clearNilFieldsOnUpdateField = value;
+                this.RaisePropertyChanged("ClearNilFieldsOnUpdate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ClearNilFieldsOnUpdateSpecified {
+            get {
+                return this.clearNilFieldsOnUpdateFieldSpecified;
+            }
+            set {
+                this.clearNilFieldsOnUpdateFieldSpecified = value;
+                this.RaisePropertyChanged("ClearNilFieldsOnUpdateSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public System.Nullable<AxdEnum_XMLDocPurpose> DocPurpose {
+            get {
+                return this.docPurposeField;
+            }
+            set {
+                this.docPurposeField = value;
+                this.RaisePropertyChanged("DocPurpose");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DocPurposeSpecified {
+            get {
+                return this.docPurposeFieldSpecified;
+            }
+            set {
+                this.docPurposeFieldSpecified = value;
+                this.RaisePropertyChanged("DocPurposeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string SenderId {
+            get {
+                return this.senderIdField;
+            }
+            set {
+                this.senderIdField = value;
+                this.RaisePropertyChanged("SenderId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("WorkPaperPaletTable", Order=3)]
+        public AxdEntity_WorkPaperPaletTable[] WorkPaperPaletTable {
+            get {
+                return this.workPaperPaletTableField;
+            }
+            set {
+                this.workPaperPaletTableField = value;
+                this.RaisePropertyChanged("WorkPaperPaletTable");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_boolean {
+        
+        /// <remarks/>
+        @false,
+        
+        /// <remarks/>
+        @true,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_XMLDocPurpose {
+        
+        /// <remarks/>
+        Original,
+        
+        /// <remarks/>
+        Duplicate,
+        
+        /// <remarks/>
+        Proforma,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1831,7 +1810,99 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdExtType_NoYesId {
+        
+        /// <remarks/>
+        No,
+        
+        /// <remarks/>
+        Yes,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdType_DimensionAttributeValueSet : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private AxdType_DimensionAttributeValue[] valuesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Value", IsNullable=false)]
+        public AxdType_DimensionAttributeValue[] Values {
+            get {
+                return this.valuesField;
+            }
+            set {
+                this.valuesField = value;
+                this.RaisePropertyChanged("Values");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public partial class AxdType_DimensionAttributeValue : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string nameField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+                this.RaisePropertyChanged("Name");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("Value");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_NoYes {
@@ -1844,7 +1915,7 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
     public enum AxdEnum_WorkRegisterType {
@@ -1875,337 +1946,448 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/WorkPaperLines")]
-    public partial class AxdWorkPaperLines : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class AxdEntity_WorkPaperPaletLines : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private System.Nullable<AxdEnum_boolean> clearNilFieldsOnUpdateField;
+        private string bOMIdField;
         
-        private bool clearNilFieldsOnUpdateFieldSpecified;
+        private System.Nullable<AxdExtType_NoYesId> custMisuseField;
         
-        private System.Nullable<AxdEnum_XMLDocPurpose> docPurposeField;
+        private bool custMisuseFieldSpecified;
         
-        private bool docPurposeFieldSpecified;
+        private AxdType_DimensionAttributeValueSet defaultDimensionField;
         
-        private string senderIdField;
+        private string inventDimIdField;
         
-        private AxdEntity_WorkPaperPaletTable[] workPaperPaletTableField;
+        private string inventLocationIdField;
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public System.Nullable<AxdEnum_boolean> ClearNilFieldsOnUpdate {
-            get {
-                return this.clearNilFieldsOnUpdateField;
-            }
-            set {
-                this.clearNilFieldsOnUpdateField = value;
-                this.RaisePropertyChanged("ClearNilFieldsOnUpdate");
-            }
+        private System.Nullable<AxdEnum_ItemDevolutionType> itemDevolutionTypeField;
+        
+        private bool itemDevolutionTypeFieldSpecified;
+        
+        private string itemIdField;
+        
+        private string journalIdField;
+        
+        private System.Nullable<decimal> lineNumField;
+        
+        private bool lineNumFieldSpecified;
+        
+        private string obraIdField;
+        
+        private string packingSlipDevolutionIdField;
+        
+        private System.Nullable<AxdExtType_PmfTotalCostAllocation> pmfTotalCostAllocationField;
+        
+        private bool pmfTotalCostAllocationFieldSpecified;
+        
+        private string prodIdField;
+        
+        private decimal qtyField;
+        
+        private System.Nullable<long> recIdField;
+        
+        private bool recIdFieldSpecified;
+        
+        private System.Nullable<int> recVersionField;
+        
+        private bool recVersionFieldSpecified;
+        
+        private System.Nullable<decimal> theoreticalHoursField;
+        
+        private bool theoreticalHoursFieldSpecified;
+        
+        private System.Nullable<decimal> weightVolumeField;
+        
+        private bool weightVolumeFieldSpecified;
+        
+        private string wMSPalletIdField;
+        
+        private string workPaperPaletIdField;
+        
+        private string classField;
+        
+        private AxdEnum_AxdEntityAction actionField;
+        
+        private bool actionFieldSpecified;
+        
+        public AxdEntity_WorkPaperPaletLines() {
+            this.classField = "entity";
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ClearNilFieldsOnUpdateSpecified {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string BOMId {
             get {
-                return this.clearNilFieldsOnUpdateFieldSpecified;
+                return this.bOMIdField;
             }
             set {
-                this.clearNilFieldsOnUpdateFieldSpecified = value;
-                this.RaisePropertyChanged("ClearNilFieldsOnUpdateSpecified");
+                this.bOMIdField = value;
+                this.RaisePropertyChanged("BOMId");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public System.Nullable<AxdEnum_XMLDocPurpose> DocPurpose {
+        public System.Nullable<AxdExtType_NoYesId> CustMisuse {
             get {
-                return this.docPurposeField;
+                return this.custMisuseField;
             }
             set {
-                this.docPurposeField = value;
-                this.RaisePropertyChanged("DocPurpose");
+                this.custMisuseField = value;
+                this.RaisePropertyChanged("CustMisuse");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DocPurposeSpecified {
+        public bool CustMisuseSpecified {
             get {
-                return this.docPurposeFieldSpecified;
+                return this.custMisuseFieldSpecified;
             }
             set {
-                this.docPurposeFieldSpecified = value;
-                this.RaisePropertyChanged("DocPurposeSpecified");
+                this.custMisuseFieldSpecified = value;
+                this.RaisePropertyChanged("CustMisuseSpecified");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string SenderId {
+        public AxdType_DimensionAttributeValueSet DefaultDimension {
             get {
-                return this.senderIdField;
+                return this.defaultDimensionField;
             }
             set {
-                this.senderIdField = value;
-                this.RaisePropertyChanged("SenderId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("WorkPaperPaletTable", Order=3)]
-        public AxdEntity_WorkPaperPaletTable[] WorkPaperPaletTable {
-            get {
-                return this.workPaperPaletTableField;
-            }
-            set {
-                this.workPaperPaletTableField = value;
-                this.RaisePropertyChanged("WorkPaperPaletTable");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_boolean {
-        
-        /// <remarks/>
-        @false,
-        
-        /// <remarks/>
-        @true,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
-    public enum AxdEnum_XMLDocPurpose {
-        
-        /// <remarks/>
-        Original,
-        
-        /// <remarks/>
-        Duplicate,
-        
-        /// <remarks/>
-        Proforma,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class KeyField : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string fieldField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Field {
-            get {
-                return this.fieldField;
-            }
-            set {
-                this.fieldField = value;
-                this.RaisePropertyChanged("Field");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey")]
-    public partial class EntityKey : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private KeyField[] keyDataField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public KeyField[] KeyData {
-            get {
-                return this.keyDataField;
-            }
-            set {
-                this.keyDataField = value;
-                this.RaisePropertyChanged("KeyData");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tempuri.org", ConfigurationName="tablaHojasTrabajoLineas.WorkPaperLinesService")]
-    public interface WorkPaperLinesService {
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (WorkPaperLinesServiceReadRequest) del mensaje WorkPaperLinesServiceReadRequest no coincide con el valor predeterminado (read)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/read", ReplyAction="http://tempuri.org/WorkPaperLinesService/readResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaHojasTrabajoLineas.AifFault), Action="http://tempuri.org/WorkPaperLinesService/readAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse read(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/read", ReplyAction="http://tempuri.org/WorkPaperLinesService/readResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse> readAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (WorkPaperLinesServiceFindKeysRequest) del mensaje WorkPaperLinesServiceFindKeysRequest no coincide con el valor predeterminado (findKeys)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/findKeys", ReplyAction="http://tempuri.org/WorkPaperLinesService/findKeysResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaHojasTrabajoLineas.AifFault), Action="http://tempuri.org/WorkPaperLinesService/findKeysAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysResponse findKeys(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/findKeys", ReplyAction="http://tempuri.org/WorkPaperLinesService/findKeysResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysResponse> findKeysAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (WorkPaperLinesServiceFindRequest) del mensaje WorkPaperLinesServiceFindRequest no coincide con el valor predeterminado (find)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/find", ReplyAction="http://tempuri.org/WorkPaperLinesService/findResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ROP_Informe.tablaHojasTrabajoLineas.AifFault), Action="http://tempuri.org/WorkPaperLinesService/findAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindResponse find(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/WorkPaperLinesService/find", ReplyAction="http://tempuri.org/WorkPaperLinesService/findResponse")]
-        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindResponse> findAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindRequest request);
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-    public partial class CallContext : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string companyField;
-        
-        private string languageField;
-        
-        private string logonAsUserField;
-        
-        private string messageIdField;
-        
-        private string partitionKeyField;
-        
-        private ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] propertyBagField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string Company {
-            get {
-                return this.companyField;
-            }
-            set {
-                this.companyField = value;
-                this.RaisePropertyChanged("Company");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Language {
-            get {
-                return this.languageField;
-            }
-            set {
-                this.languageField = value;
-                this.RaisePropertyChanged("Language");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string LogonAsUser {
-            get {
-                return this.logonAsUserField;
-            }
-            set {
-                this.logonAsUserField = value;
-                this.RaisePropertyChanged("LogonAsUser");
+                this.defaultDimensionField = value;
+                this.RaisePropertyChanged("DefaultDimension");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
-        public string MessageId {
+        public string InventDimId {
             get {
-                return this.messageIdField;
+                return this.inventDimIdField;
             }
             set {
-                this.messageIdField = value;
-                this.RaisePropertyChanged("MessageId");
+                this.inventDimIdField = value;
+                this.RaisePropertyChanged("InventDimId");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
-        public string PartitionKey {
+        public string InventLocationId {
             get {
-                return this.partitionKeyField;
+                return this.inventLocationIdField;
             }
             set {
-                this.partitionKeyField = value;
-                this.RaisePropertyChanged("PartitionKey");
+                this.inventLocationIdField = value;
+                this.RaisePropertyChanged("InventLocationId");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("KeyValueOfstringstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
-        public ArrayOfKeyValueOfstringstringKeyValueOfstringstring[] PropertyBag {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
+        public System.Nullable<AxdEnum_ItemDevolutionType> ItemDevolutionType {
             get {
-                return this.propertyBagField;
+                return this.itemDevolutionTypeField;
             }
             set {
-                this.propertyBagField = value;
-                this.RaisePropertyChanged("PropertyBag");
+                this.itemDevolutionTypeField = value;
+                this.RaisePropertyChanged("ItemDevolutionType");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ItemDevolutionTypeSpecified {
+            get {
+                return this.itemDevolutionTypeFieldSpecified;
+            }
+            set {
+                this.itemDevolutionTypeFieldSpecified = value;
+                this.RaisePropertyChanged("ItemDevolutionTypeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string ItemId {
+            get {
+                return this.itemIdField;
+            }
+            set {
+                this.itemIdField = value;
+                this.RaisePropertyChanged("ItemId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
+        public string JournalId {
+            get {
+                return this.journalIdField;
+            }
+            set {
+                this.journalIdField = value;
+                this.RaisePropertyChanged("JournalId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=8)]
+        public System.Nullable<decimal> LineNum {
+            get {
+                return this.lineNumField;
+            }
+            set {
+                this.lineNumField = value;
+                this.RaisePropertyChanged("LineNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool LineNumSpecified {
+            get {
+                return this.lineNumFieldSpecified;
+            }
+            set {
+                this.lineNumFieldSpecified = value;
+                this.RaisePropertyChanged("LineNumSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=9)]
+        public string ObraId {
+            get {
+                return this.obraIdField;
+            }
+            set {
+                this.obraIdField = value;
+                this.RaisePropertyChanged("ObraId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=10)]
+        public string PackingSlipDevolutionId {
+            get {
+                return this.packingSlipDevolutionIdField;
+            }
+            set {
+                this.packingSlipDevolutionIdField = value;
+                this.RaisePropertyChanged("PackingSlipDevolutionId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=11)]
+        public System.Nullable<AxdExtType_PmfTotalCostAllocation> PmfTotalCostAllocation {
+            get {
+                return this.pmfTotalCostAllocationField;
+            }
+            set {
+                this.pmfTotalCostAllocationField = value;
+                this.RaisePropertyChanged("PmfTotalCostAllocation");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PmfTotalCostAllocationSpecified {
+            get {
+                return this.pmfTotalCostAllocationFieldSpecified;
+            }
+            set {
+                this.pmfTotalCostAllocationFieldSpecified = value;
+                this.RaisePropertyChanged("PmfTotalCostAllocationSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=12)]
+        public string ProdId {
+            get {
+                return this.prodIdField;
+            }
+            set {
+                this.prodIdField = value;
+                this.RaisePropertyChanged("ProdId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public decimal Qty {
+            get {
+                return this.qtyField;
+            }
+            set {
+                this.qtyField = value;
+                this.RaisePropertyChanged("Qty");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=14)]
+        public System.Nullable<long> RecId {
+            get {
+                return this.recIdField;
+            }
+            set {
+                this.recIdField = value;
+                this.RaisePropertyChanged("RecId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RecIdSpecified {
+            get {
+                return this.recIdFieldSpecified;
+            }
+            set {
+                this.recIdFieldSpecified = value;
+                this.RaisePropertyChanged("RecIdSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=15)]
+        public System.Nullable<int> RecVersion {
+            get {
+                return this.recVersionField;
+            }
+            set {
+                this.recVersionField = value;
+                this.RaisePropertyChanged("RecVersion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RecVersionSpecified {
+            get {
+                return this.recVersionFieldSpecified;
+            }
+            set {
+                this.recVersionFieldSpecified = value;
+                this.RaisePropertyChanged("RecVersionSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=16)]
+        public System.Nullable<decimal> TheoreticalHours {
+            get {
+                return this.theoreticalHoursField;
+            }
+            set {
+                this.theoreticalHoursField = value;
+                this.RaisePropertyChanged("TheoreticalHours");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TheoreticalHoursSpecified {
+            get {
+                return this.theoreticalHoursFieldSpecified;
+            }
+            set {
+                this.theoreticalHoursFieldSpecified = value;
+                this.RaisePropertyChanged("TheoreticalHoursSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=17)]
+        public System.Nullable<decimal> WeightVolume {
+            get {
+                return this.weightVolumeField;
+            }
+            set {
+                this.weightVolumeField = value;
+                this.RaisePropertyChanged("WeightVolume");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool WeightVolumeSpecified {
+            get {
+                return this.weightVolumeFieldSpecified;
+            }
+            set {
+                this.weightVolumeFieldSpecified = value;
+                this.RaisePropertyChanged("WeightVolumeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=18)]
+        public string WMSPalletId {
+            get {
+                return this.wMSPalletIdField;
+            }
+            set {
+                this.wMSPalletIdField = value;
+                this.RaisePropertyChanged("WMSPalletId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
+        public string WorkPaperPaletId {
+            get {
+                return this.workPaperPaletIdField;
+            }
+            set {
+                this.workPaperPaletIdField = value;
+                this.RaisePropertyChanged("WorkPaperPaletId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string @class {
+            get {
+                return this.classField;
+            }
+            set {
+                this.classField = value;
+                this.RaisePropertyChanged("class");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public AxdEnum_AxdEntityAction action {
+            get {
+                return this.actionField;
+            }
+            set {
+                this.actionField = value;
+                this.RaisePropertyChanged("action");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool actionSpecified {
+            get {
+                return this.actionFieldSpecified;
+            }
+            set {
+                this.actionFieldSpecified = value;
+                this.RaisePropertyChanged("actionSpecified");
             }
         }
         
@@ -2220,49 +2402,57 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
-    public partial class ArrayOfKeyValueOfstringstringKeyValueOfstringstring : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string keyField;
-        
-        private string valueField;
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_ItemDevolutionType {
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
+        None,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("Value");
-            }
-        }
+        Repair,
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        /// <remarks/>
+        BadItem,
         
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
+        /// <remarks/>
+        New,
+        
+        /// <remarks/>
+        Seminew,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdExtType_PmfTotalCostAllocation {
+        
+        /// <remarks/>
+        No,
+        
+        /// <remarks/>
+        Yes,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2008/01/sharedtypes")]
+    public enum AxdEnum_AxdEntityAction {
+        
+        /// <remarks/>
+        create,
+        
+        /// <remarks/>
+        update,
+        
+        /// <remarks/>
+        replace,
+        
+        /// <remarks/>
+        delete,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2304,196 +2494,6 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
         
         public WorkPaperLinesServiceReadResponse(ROP_Informe.tablaHojasTrabajoLineas.AxdWorkPaperLines WorkPaperLines) {
             this.WorkPaperLines = WorkPaperLines;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class QueryCriteria : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private CriteriaElement[] criteriaElementField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CriteriaElement", Order=0)]
-        public CriteriaElement[] CriteriaElement {
-            get {
-                return this.criteriaElementField;
-            }
-            set {
-                this.criteriaElementField = value;
-                this.RaisePropertyChanged("CriteriaElement");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public partial class CriteriaElement : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string dataSourceNameField;
-        
-        private string fieldNameField;
-        
-        private Operator operatorField;
-        
-        private string value1Field;
-        
-        private string value2Field;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string DataSourceName {
-            get {
-                return this.dataSourceNameField;
-            }
-            set {
-                this.dataSourceNameField = value;
-                this.RaisePropertyChanged("DataSourceName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string FieldName {
-            get {
-                return this.fieldNameField;
-            }
-            set {
-                this.fieldNameField = value;
-                this.RaisePropertyChanged("FieldName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Operator Operator {
-            get {
-                return this.operatorField;
-            }
-            set {
-                this.operatorField = value;
-                this.RaisePropertyChanged("Operator");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string Value1 {
-            get {
-                return this.value1Field;
-            }
-            set {
-                this.value1Field = value;
-                this.RaisePropertyChanged("Value1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Value2 {
-            get {
-                return this.value2Field;
-            }
-            set {
-                this.value2Field = value;
-                this.RaisePropertyChanged("Value2");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-    public enum Operator {
-        
-        /// <remarks/>
-        Equal,
-        
-        /// <remarks/>
-        NotEqual,
-        
-        /// <remarks/>
-        Greater,
-        
-        /// <remarks/>
-        GreaterOrEqual,
-        
-        /// <remarks/>
-        Less,
-        
-        /// <remarks/>
-        LessOrEqual,
-        
-        /// <remarks/>
-        Range,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="WorkPaperLinesServiceFindKeysRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class WorkPaperLinesServiceFindKeysRequest {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/QueryCriteria")]
-        public ROP_Informe.tablaHojasTrabajoLineas.QueryCriteria QueryCriteria;
-        
-        public WorkPaperLinesServiceFindKeysRequest() {
-        }
-        
-        public WorkPaperLinesServiceFindKeysRequest(ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext, ROP_Informe.tablaHojasTrabajoLineas.QueryCriteria QueryCriteria) {
-            this.CallContext = CallContext;
-            this.QueryCriteria = QueryCriteria;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="WorkPaperLinesServiceFindKeysResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class WorkPaperLinesServiceFindKeysResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList", Order=0)]
-        [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKeyList")]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/dynamics/2006/02/documents/EntityKey", IsNullable=false)]
-        public ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList;
-        
-        public WorkPaperLinesServiceFindKeysResponse() {
-        }
-        
-        public WorkPaperLinesServiceFindKeysResponse(ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList) {
-            this.EntityKeyList = EntityKeyList;
         }
     }
     
@@ -2566,31 +2566,6 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService.read(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request) {
-            return base.Channel.read(request);
-        }
-        
-        public ROP_Informe.tablaHojasTrabajoLineas.AxdWorkPaperLines read(ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext, ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList) {
-            ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest inValue = new ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest();
-            inValue.CallContext = CallContext;
-            inValue.EntityKeyList = EntityKeyList;
-            ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse retVal = ((ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService)(this)).read(inValue);
-            return retVal.WorkPaperLines;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse> ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService.readAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request) {
-            return base.Channel.readAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse> readAsync(ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext, ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList) {
-            ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest inValue = new ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest();
-            inValue.CallContext = CallContext;
-            inValue.EntityKeyList = EntityKeyList;
-            return ((ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService)(this)).readAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysResponse ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService.findKeys(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceFindKeysRequest request) {
             return base.Channel.findKeys(request);
         }
@@ -2613,6 +2588,31 @@ namespace ROP_Informe.tablaHojasTrabajoLineas {
             inValue.CallContext = CallContext;
             inValue.QueryCriteria = QueryCriteria;
             return ((ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService)(this)).findKeysAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService.read(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request) {
+            return base.Channel.read(request);
+        }
+        
+        public ROP_Informe.tablaHojasTrabajoLineas.AxdWorkPaperLines read(ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext, ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList) {
+            ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest inValue = new ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest();
+            inValue.CallContext = CallContext;
+            inValue.EntityKeyList = EntityKeyList;
+            ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse retVal = ((ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService)(this)).read(inValue);
+            return retVal.WorkPaperLines;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse> ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService.readAsync(ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest request) {
+            return base.Channel.readAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadResponse> readAsync(ROP_Informe.tablaHojasTrabajoLineas.CallContext CallContext, ROP_Informe.tablaHojasTrabajoLineas.EntityKey[] EntityKeyList) {
+            ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest inValue = new ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesServiceReadRequest();
+            inValue.CallContext = CallContext;
+            inValue.EntityKeyList = EntityKeyList;
+            return ((ROP_Informe.tablaHojasTrabajoLineas.WorkPaperLinesService)(this)).readAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

@@ -16,28 +16,28 @@
       <xsd:import schemaLocation="http://axaos2012prep-new.alsina.red:8101/DynamicsAx/Services/InventTransService?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="InventTransOriginServiceFindKeysRequest">
-    <wsdl:part name="parameters" element="tns:InventTransOriginServiceFindKeysRequest" />
-  </wsdl:message>
-  <wsdl:message name="InventTransOriginServiceFindKeysRequest_Headers">
-    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
-  </wsdl:message>
-  <wsdl:message name="InventTransOriginServiceFindKeysResponse">
-    <wsdl:part name="parameters" element="tns:InventTransOriginServiceFindKeysResponse" />
-  </wsdl:message>
-  <wsdl:message name="InventTransOriginService_findKeys_AifFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
-  </wsdl:message>
   <wsdl:message name="InventTransOriginServiceReadRequest">
     <wsdl:part name="parameters" element="tns:InventTransOriginServiceReadRequest" />
   </wsdl:message>
   <wsdl:message name="InventTransOriginServiceReadRequest_Headers">
-    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
   </wsdl:message>
   <wsdl:message name="InventTransOriginServiceReadResponse">
     <wsdl:part name="parameters" element="tns:InventTransOriginServiceReadResponse" />
   </wsdl:message>
   <wsdl:message name="InventTransOriginService_read_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="InventTransOriginServiceFindKeysRequest">
+    <wsdl:part name="parameters" element="tns:InventTransOriginServiceFindKeysRequest" />
+  </wsdl:message>
+  <wsdl:message name="InventTransOriginServiceFindKeysRequest_Headers">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="InventTransOriginServiceFindKeysResponse">
+    <wsdl:part name="parameters" element="tns:InventTransOriginServiceFindKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="InventTransOriginService_findKeys_AifFaultFault_FaultMessage">
     <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q4:AifFault" />
   </wsdl:message>
   <wsdl:message name="InventTransOriginServiceFindRequest">
@@ -53,15 +53,15 @@
     <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q6:AifFault" />
   </wsdl:message>
   <wsdl:portType name="InventTransOriginService">
-    <wsdl:operation name="findKeys">
-      <wsdl:input wsaw:Action="http://tempuri.org/InventTransOriginService/findKeys" name="InventTransOriginServiceFindKeysRequest" message="tns:InventTransOriginServiceFindKeysRequest" />
-      <wsdl:output wsaw:Action="http://tempuri.org/InventTransOriginService/findKeysResponse" name="InventTransOriginServiceFindKeysResponse" message="tns:InventTransOriginServiceFindKeysResponse" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/InventTransOriginService/findKeysAifFaultFault" name="AifFaultFault" message="tns:InventTransOriginService_findKeys_AifFaultFault_FaultMessage" />
-    </wsdl:operation>
     <wsdl:operation name="read">
       <wsdl:input wsaw:Action="http://tempuri.org/InventTransOriginService/read" name="InventTransOriginServiceReadRequest" message="tns:InventTransOriginServiceReadRequest" />
       <wsdl:output wsaw:Action="http://tempuri.org/InventTransOriginService/readResponse" name="InventTransOriginServiceReadResponse" message="tns:InventTransOriginServiceReadResponse" />
       <wsdl:fault wsaw:Action="http://tempuri.org/InventTransOriginService/readAifFaultFault" name="AifFaultFault" message="tns:InventTransOriginService_read_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findKeys">
+      <wsdl:input wsaw:Action="http://tempuri.org/InventTransOriginService/findKeys" name="InventTransOriginServiceFindKeysRequest" message="tns:InventTransOriginServiceFindKeysRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/InventTransOriginService/findKeysResponse" name="InventTransOriginServiceFindKeysResponse" message="tns:InventTransOriginServiceFindKeysResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/InventTransOriginService/findKeysAifFaultFault" name="AifFaultFault" message="tns:InventTransOriginService_findKeys_AifFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="find">
       <wsdl:input wsaw:Action="http://tempuri.org/InventTransOriginService/find" name="InventTransOriginServiceFindRequest" message="tns:InventTransOriginServiceFindRequest" />

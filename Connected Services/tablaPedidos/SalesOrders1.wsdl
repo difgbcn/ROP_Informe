@@ -34,19 +34,6 @@
   <wsdl:binding name="NetTcpBinding_SalesOrdersService" type="i0:SalesOrdersService">
     <wsp:PolicyReference URI="#NetTcpBinding_SalesOrdersService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="findKeys">
-      <soap12:operation soapAction="http://tempuri.org/SalesOrdersService/findKeys" style="document" />
-      <wsdl:input name="SalesOrdersServiceFindKeysRequest">
-        <soap12:header message="i0:SalesOrdersServiceFindKeysRequest_Headers" part="context" use="literal" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="SalesOrdersServiceFindKeysResponse">
-        <soap12:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="AifFaultFault">
-        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
     <wsdl:operation name="read">
       <soap12:operation soapAction="http://tempuri.org/SalesOrdersService/read" style="document" />
       <wsdl:input name="SalesOrdersServiceReadRequest">
@@ -54,6 +41,19 @@
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output name="SalesOrdersServiceReadResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AifFaultFault">
+        <soap12:fault use="literal" name="AifFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findKeys">
+      <soap12:operation soapAction="http://tempuri.org/SalesOrdersService/findKeys" style="document" />
+      <wsdl:input name="SalesOrdersServiceFindKeysRequest">
+        <soap12:header message="i0:SalesOrdersServiceFindKeysRequest_Headers" part="context" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SalesOrdersServiceFindKeysResponse">
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="AifFaultFault">
