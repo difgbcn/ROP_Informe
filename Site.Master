@@ -33,10 +33,11 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="Default">Informe<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="Informe">Informe<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item" <%=validarUsuario?"":"style='display:none'" %>>
-                    <a class="nav-link" href="Configuracion">Configuración</a>
+                <%--<li class="nav-item" id="mConfiguracion" runat="server">--%>
+                    <a class="nav-link" id="menuConfiguracion" href="Configuracion" runat="server">Configuración</a>
                 </li>
             </ul>
         </div>

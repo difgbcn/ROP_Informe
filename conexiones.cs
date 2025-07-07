@@ -18,14 +18,7 @@ namespace ROP_Informe
 
         public static void crearConexion()
         {
-            strConexion = ConfigurationManager.ConnectionStrings["SQL_ROP"].ToString();
-            conexion = new SqlConnection(strConexion);
-            conexion.Open();
-        }
-
-        public static void crearConexionBI()
-        {
-            strConexion = ConfigurationManager.ConnectionStrings["SQL_ROP_BI"].ToString();
+            strConexion = funcionalidades.recuperarTexto(ConfigurationManager.ConnectionStrings["SQL_ROP"].ToString());
             conexion = new SqlConnection(strConexion);
             conexion.Open();
         }

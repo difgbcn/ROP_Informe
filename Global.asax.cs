@@ -17,5 +17,17 @@ namespace ROP_Informe
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        //protected void Session_Start(Object sender, EventArgs e)
+        //{
+        //    // Limpiar las variables de sesión
+        //    Session.Clear();
+        //}
+
+        void Application_End(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+        }
     }
 }

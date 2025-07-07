@@ -24,6 +24,15 @@ namespace ROP_Informe
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderContent;
 
         /// <summary>
+        /// Control menuConfiguracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor menuConfiguracion;
+
+        /// <summary>
         /// Control MainContent.
         /// </summary>
         /// <remarks>

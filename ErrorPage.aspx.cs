@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.Services;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace ROP_Informe 
 {
@@ -12,14 +9,16 @@ namespace ROP_Informe
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Exception exc = Server.GetLastError();
-            //if (exc is HttpUnhandledException)
-            //{
-            lblMensajeError.Text = "Error: ";// + exc.Message;
-            //}
-            Server.ClearError();
+            conexiones.crearConexion();
+            conexiones.consulta = "ROP_Flags_ConsultaTodos";
+            conexiones.comando = new SqlCommand(conexiones.consulta, conexiones.conexion);
+            conexiones.comando.CommandType = CommandType.StoredProcedure;
 
-            //lblMensajeError.Text = "Error"; // Session["mensajeError"].ToString();
+            SqlDataReader dr = conexiones.comando.ExecuteReader();
+            grvTablas.DataSource = dr;
+            grvTablas.DataBind();
+
+            conexiones.conexion.Close();
         }
     }
 }

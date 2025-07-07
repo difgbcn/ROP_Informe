@@ -1,28 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master"  CodeBehind="ErrorPage.aspx.cs" Inherits="ROP_Informe.ErrorPage" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Error:</h2>
+    <h2>Error de las tabla SQL / Copias de AXAPTA:</h2>
     <p></p>
-    <asp:Label ID="lblMensajeError" runat="server" Text="Label" Font-Size="Large" style="color: red"></asp:Label>
-
-    <asp:Panel ID="DetailedErrorPanel" runat="server" Visible="false">
+    <asp:Panel ID="DetailedErrorPanel" runat="server" Visible="true">
         <p>&nbsp;</p>
-  <%--      <h4>Detalle de error:</h4>
-        <p>
-            <asp:Label ID="ErrorDetailedMsg" runat="server" Font-Size="Small" /><br />
-        </p>
-
-        <h4>Error:</h4>
-        <p>
-            <asp:Label ID="ErrorHandler" runat="server" Font-Size="Small" /><br />
-        </p>
-
-        <h4>Detalle de error:</h4>
-        <p>
-            <asp:Label ID="InnerMessage" runat="server" Font-Size="Small" /><br />
-        </p>
-        <p>
-            <asp:Label ID="InnerTrace" runat="server"  />
-        </p>--%>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <asp:GridView ID="grvTablas" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" Font-Size="Small">
+                        <Columns>
+                            <asp:BoundField DataField="OrigenDatos" HeaderText="Tabla" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="150" />
+                            <asp:BoundField DataField="FechaValidada" HeaderText="Fecha validada" DataFormatString="{0:d}" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="150" />
+                            <asp:CheckBoxField DataField="DatosOk"  HeaderText="¿Dato OK?" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"  HeaderStyle-Width="100" />
+                        </Columns>
+                        <HeaderStyle BackColor="#17a2b8" ForeColor="white" />
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
     </asp:Panel>
 </asp:Content>
